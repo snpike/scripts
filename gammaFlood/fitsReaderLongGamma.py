@@ -30,19 +30,41 @@ for k in range(32):
 
 files = np.array([['/disk/lif2/spike/detectorData/longGammaFlood/pixelData/H100_long_gamma_Am241_Co57_-10_0V_x' + str(k) + '_y' + str(j) + '.fits' for k in range(32)] for j in range(32)])
 
-for x in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H100_long_gamma_Co57_-10.0V.fits'], ['Am241', '/disk/lif2/spike/detectorData/longGammaFlood/20170913_H100_long_gamma_Am241_-10.0V.fits']]:
+for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H100_long_gamma_Co57_-10.0V.fits'], ['Am241', '/disk/lif2/spike/detectorData/longGammaFlood/20170913_H100_long_gamma_Am241_-10.0V.fits']]:
     file = fits.open(x[1], memmap=True)
     data = file[1].data
-    START = 0
+
+    sortedIndices = np.argsort(data, order=('RAWX', 'RAWY'))
+
     i = 0
+    for x in range(32):
+        print(str(x))
+        for y in range(32):
+            newdata = {'TIME': [], 'CHANNEL': [], 'GRADE': [], 'STIM': [], 'PH_COM': [], 'SOURCE': []}
+            while (data.field('RAWY')[sortedIndices[i]]==y):
+                if data.field('TEMP')[sortedIndices[i]] > -50:
+                    temp = data.field('PH_COM')[sortedIndices[i]].reshape(3,3)
+                    if np.sum(temp) > 0:
+                        mask = (temp > 0).astype(int)
+                        channel = np.sum(np.multiply(mask, temp))
+                            if (not np.isnan(channel)):
+                                newdata['TIME'].append(data.field('TIME')[sortedIndices[i]])
+                                newdata['CHANNEL'].append(channel)
+                                newdata['GRADE'].append(data.field('GRADE')[sortedIndices[i]])
+                                newdata['STIM'].append(data.field('STIM')[sortedIndices[i]])
+                                newdata['PH_COM'].append(data.field('PH_COM')[sortedIndices[i]])
+                                newdata['SOURCE'].append(source[0])
+                i += 1
+            tmpfile=fits.open(files[x, y], memmap=True, mode='update')
+            for key in newdata:
+                tmpfile[1].data[key] = np.concatenate(tmpfile[1].data[key], newdata[key])
+            tmpfile.flush()
+            tmpfile.close()
+print('done')
 
-# Skip the beginning
-    while data.field('TEMP')[i] < -50:
-        i += 1
 
-    START = i
-
-    while i < len(data.field('PH')):
+'''
+    for i in sortedIndices:
         temp = data.field('PH_COM')[i].reshape(3,3)
         if np.sum(temp) > 0:
             mask = (temp > 0).astype(int)
@@ -54,13 +76,11 @@ for x in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H100_lo
                 tmpfile[1].data['GRADE'] = np.append(tmpfile[1].data['GRADE'], data.field('GRADE')[i])
                 tmpfile[1].data['STIM'] = np.append(tmpfile[1].data['STIM'], data.field('STIM')[i])
                 tmpfile[1].data['PH_COM'] = np.append(tmpfile[1].data['PH_COM'], data.field('PH_COM')[i])
-                tmpfile[1].data['SOURCE'] = np.append(tmpfile[1].data['SOURCE'], x[0])
+                tmpfile[1].data['SOURCE'] = np.append(tmpfile[1].data['SOURCE'], source[0])
                 tmpfile.flush()
                 tmpfile.close()
         i += 1
 
-print('Done')
-'''
 # Apply the first-level gain and offset corrections
 while i < len(data.field('PH_COM')):
 	rawx = data.field('RAWX')[i]
