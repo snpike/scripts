@@ -31,7 +31,7 @@ for k in range(32):
 files = np.array([['/disk/lif2/spike/detectorData/longGammaFlood/pixelData/H100_long_gamma_Am241_Co57_-10_0V_x' + str(k) + '_y' + str(j) + '.fits' for k in range(32)] for j in range(32)])
 
 for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H100_long_gamma_Co57_-10.0V.fits'], ['Am241', '/disk/lif2/spike/detectorData/longGammaFlood/20170913_H100_long_gamma_Am241_-10.0V.fits']]:
-    file = fits.open(x[1], memmap=True)
+    file = fits.open(source[1], memmap=True)
     data = file[1].data
 
     sortedIndices = np.argsort(data, order=('RAWX', 'RAWY'))
