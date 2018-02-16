@@ -57,7 +57,10 @@ for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H1
                 i += 1
             tmpfile=fits.open(files[x, y], memmap=True, mode='update')
             for key in newdata:
-                tmpfile[1].data[key] = np.concatenate((tmpfile[1].data[key], newdata[key]))
+                if len(tmpfile[1].data[key]):
+                    tmpfile[1].data[key] = np.concatenate((tmpfile[1].data[key], newdata[key]))
+                else:
+                    tmpfile[1].data[key] = newdata[key]
             tmpfile.flush()
             tmpfile.close()
 print('done')
