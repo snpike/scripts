@@ -47,13 +47,13 @@ for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H1
                     if np.sum(temp) > 0:
                         mask = (temp > 0).astype(int)
                         channel = np.sum(np.multiply(mask, temp))
-                            if (not np.isnan(channel)):
-                                newdata['TIME'].append(data.field('TIME')[sortedIndices[i]])
-                                newdata['CHANNEL'].append(channel)
-                                newdata['GRADE'].append(data.field('GRADE')[sortedIndices[i]])
-                                newdata['STIM'].append(data.field('STIM')[sortedIndices[i]])
-                                newdata['PH_COM'].append(data.field('PH_COM')[sortedIndices[i]])
-                                newdata['SOURCE'].append(source[0])
+                        if (not np.isnan(channel)):
+                            newdata['TIME'].append(data.field('TIME')[sortedIndices[i]])
+                            newdata['CHANNEL'].append(channel)
+                            newdata['GRADE'].append(data.field('GRADE')[sortedIndices[i]])
+                            newdata['STIM'].append(data.field('STIM')[sortedIndices[i]])
+                            newdata['PH_COM'].append(data.field('PH_COM')[sortedIndices[i]])
+                            newdata['SOURCE'].append(source[0])
                 i += 1
             tmpfile=fits.open(files[x, y], memmap=True, mode='update')
             for key in newdata:
