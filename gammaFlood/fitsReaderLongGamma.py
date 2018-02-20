@@ -22,13 +22,14 @@ del gainFile
 del tempoffset
 del tempgain'''
 
-collist = [fits.Column(name='TIME', format='D'), fits.Column(name='CHANNEL', format='D'), fits.Column(name='GRADE', format='K'), fits.Column(name='STIM', format='K'), fits.Column(name='PH_COM', format='9D'), fits.Column(name='SOURCE', format='5A')]
-
-for k in range(32):
-    for j in range(32):
-        fits.BinTableHDU.from_columns(collist).writeto('/disk/lif2/spike/detectorData/longGammaFlood/pixelData/H100_long_gamma_Am241_Co57_-10_0V_x' + str(k) + '_y' + str(j) + '.fits')
+collist = [fits.Column(name='TIME', format='D', array=[]), fits.Column(name='CHANNEL', format='D', array=[]), fits.Column(name='GRADE', format='K', array=[]), \
+    fits.Column(name='STIM', format='K', array=[]), fits.Column(name='PH_COM', format='9D', array=[]), fits.Column(name='SOURCE', format='5A', array=[])]
 
 files = np.array([['/disk/lif2/spike/detectorData/longGammaFlood/pixelData/H100_long_gamma_Am241_Co57_-10_0V_x' + str(k) + '_y' + str(j) + '.fits' for k in range(32)] for j in range(32)])
+
+for j in range(32):
+    for k in range(32):
+        fits.BinTableHDU.from_columns(collist).writeto(files[j,k])
 
 for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H100_long_gamma_Co57_-10.0V.fits'], ['Am241', '/disk/lif2/spike/detectorData/longGammaFlood/20170913_H100_long_gamma_Am241_-10.0V.fits']]:
     file = fits.open(source[1], memmap=True)
@@ -58,10 +59,7 @@ for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H1
             if len(newdata['TIME']):
                 tmpfile=fits.open(files[x, y], memmap=True, mode='update')
                 for key in newdata:
-                    if len(tmpfile[1].data[key]):
-                        tmpfile[1].data[key] = np.concatenate((tmpfile[1].data[key], np.array(newdata[key])))
-                    else:
-                        tmpfile[1].data[key] = np.array(newdata[key])
+                    tmpfile[1].data[key] = np.concatenate((tmpfile[1].data[key], newdata[key]))
                 tmpfile.flush()
                 tmpfile.close()
 print('done')
