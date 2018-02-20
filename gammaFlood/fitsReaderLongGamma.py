@@ -22,16 +22,10 @@ del gainFile
 del tempoffset
 del tempgain'''
 
-collist = [fits.Column(name='TIME', format='D', array=[]), fits.Column(name='CHANNEL', format='D', array=[]), fits.Column(name='GRADE', format='K', array=[]), \
-    fits.Column(name='STIM', format='K', array=[]), fits.Column(name='PH_COM', format='9D', array=[]), fits.Column(name='SOURCE', format='5A', array=[])]
-
-files = np.array([['/disk/lif2/spike/detectorData/longGammaFlood/pixelData/H100_long_gamma_Am241_Co57_-10_0V_x' + str(k) + '_y' + str(j) + '.fits' for k in range(32)] for j in range(32)])
-
-for j in range(32):
-    for k in range(32):
-        fits.BinTableHDU.from_columns(collist).writeto(files[j,k])
+formats = {'TIME': 'D', 'CHANNEL': 'D', 'GRADE': 'K', 'STIM': 'K', 'PH_COM': '9D', 'SOURCE': '5A'}
 
 for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H100_long_gamma_Co57_-10.0V.fits'], ['Am241', '/disk/lif2/spike/detectorData/longGammaFlood/20170913_H100_long_gamma_Am241_-10.0V.fits']]:
+
     file = fits.open(source[1], memmap=True)
     data = file[1].data
 
@@ -41,6 +35,7 @@ for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H1
     for x in range(32):
         print(str(x))
         for y in range(32):
+            collist = []
             newdata = {'TIME': [], 'CHANNEL': [], 'GRADE': [], 'STIM': [], 'PH_COM': [], 'SOURCE': []}
             while (data.field('RAWY')[sortedIndices[i]]==y):
                 if data.field('TEMP')[sortedIndices[i]] > -50:
@@ -56,12 +51,10 @@ for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H1
                             newdata['PH_COM'].append(data.field('PH_COM')[sortedIndices[i]])
                             newdata['SOURCE'].append(source[0])
                 i += 1
-            if len(newdata['TIME']):
-                tmpfile=fits.open(files[x, y], memmap=True, mode='update')
-                for key in newdata:
-                    tmpfile[1].data[key] = np.concatenate((tmpfile[1].data[key], newdata[key]))
-                tmpfile.flush()
-                tmpfile.close()
+            for key in newdata:
+                collist.append(fits.Column(name=key, format=formats[key], array=newdata[key]))
+            fits.BinTableHDU.from_columns(collist).writeto('/disk/lif2/spike/detectorData/longGammaFlood/pixelData/H100_long_gamma_' + source[0] + '_-10_0V_x' + str(x) + '_y' + str(y) + '.fits')
+
 print('done')
 
 
