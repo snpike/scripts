@@ -1,26 +1,7 @@
 from astropy.io import fits
 import matplotlib.pyplot as plt
 import numpy as np
-import pickle
 
-events = np.array([[{'TIME': [], 'CHANNEL': [], 'GRADE': [], 'STIM': [], 'PH_COM': [], 'SOURCE': []} for i in range(32)] for j in range(32)])
-#events = {'RAWX': [], 'RAWY': [], 'TIME': [], 'CHANNEL': [], 'GRADE': [], 'STIM': [], 'PH_COM': []}
-
-'''
-gainFile = fits.open('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_-10_gain_offset.fits')
-tempgain = np.reshape(gainFile[1].data.field('GAIN_GRADE0'), (32,32))
-#print(np.reshape(gainFile[1].data.field('RAWX'), (32,32)))
-tempoffset = np.reshape(gainFile[1].data.field('OFFSET_GRADE0'), (32,32))
-
-gain = np.zeros((34, 34))
-offset = np.zeros((34, 34))
-
-gain[1:33, 1:33] = tempgain
-offset[1:33, 1:33] = tempoffset
-
-del gainFile
-del tempoffset
-del tempgain'''
 
 formats = {'TIME': 'D', 'CHANNEL': 'D', 'GRADE': 'K', 'STIM': 'K', 'PH_COM': '9D', 'SOURCE': '5A'}
 
