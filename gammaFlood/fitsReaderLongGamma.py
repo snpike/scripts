@@ -24,7 +24,7 @@ del tempgain'''
 
 formats = {'TIME': 'D', 'CHANNEL': 'D', 'GRADE': 'K', 'STIM': 'K', 'PH_COM': '9D', 'SOURCE': '5A'}
 
-for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H100_long_gamma_Co57_-10.0V.fits'], ['Am241', '/disk/lif2/spike/detectorData/longGammaFlood/20170913_H100_long_gamma_Am241_-10.0V.fits']]:
+for source in [['Co57','/disk/lif2/spike/detectorData/H100/longGammaFlood/20170908_H100_long_gamma_Co57_-10.0V.fits'], ['Am241', '/disk/lif2/spike/detectorData/H100/longGammaFlood/20170913_H100_long_gamma_Am241_-10.0V.fits']]:
 
     file = fits.open(source[1], memmap=True)
     data = file[1].data
@@ -37,7 +37,7 @@ for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H1
         for y in range(32):
             collist = []
             newdata = {'TIME': [], 'CHANNEL': [], 'GRADE': [], 'STIM': [], 'PH_COM': [], 'SOURCE': []}
-            while (data.field('RAWY')[sortedIndices[i]]==y):
+            while (data.field('RAWY')[sortedIndices[i]]==y) and (i < len(sortedIndices)):
                 if data.field('TEMP')[sortedIndices[i]] > -50:
                     temp = data.field('PH_COM')[sortedIndices[i]].reshape(3,3)
                     if np.sum(temp) > 0:
@@ -53,7 +53,7 @@ for source in [['Co57','/disk/lif2/spike/detectorData/longGammaFlood/20170908_H1
                 i += 1
             for key in newdata:
                 collist.append(fits.Column(name=key, format=formats[key], array=newdata[key]))
-            fits.BinTableHDU.from_columns(collist).writeto('/disk/lif2/spike/detectorData/longGammaFlood/pixelData/H100_long_gamma_' + source[0] + '_-10_0V_x' + str(x) + '_y' + str(y) + '.fits')
+            fits.BinTableHDU.from_columns(collist).writeto('/disk/lif2/spike/detectorData/H100/longGammaFlood/pixelData/H100_long_gamma_' + source[0] + '_-10_0V_x' + str(x) + '_y' + str(y) + '.fits')
 
 print('done')
 
