@@ -18,7 +18,7 @@ for source in [['Co57','/disk/lif2/spike/detectorData/H100/longGammaFlood/201709
         for y in range(32):
             collist = []
             newdata = {'TIME': [], 'CHANNEL': [], 'GRADE': [], 'STIM': [], 'PH_COM': [], 'SOURCE': []}
-            while (data.field('RAWY')[sortedIndices[i]]==y) and (i < len(sortedIndices)):
+            while (data.field('RAWY')[sortedIndices[i]]==y):
                 if data.field('TEMP')[sortedIndices[i]] > -50:
                     temp = data.field('PH_COM')[sortedIndices[i]].reshape(3,3)
                     if np.sum(temp) > 0:
@@ -32,6 +32,8 @@ for source in [['Co57','/disk/lif2/spike/detectorData/H100/longGammaFlood/201709
                             newdata['PH_COM'].append(data.field('PH_COM')[sortedIndices[i]])
                             newdata['SOURCE'].append(source[0])
                 i += 1
+                if not (i < len(sortedIndices)):
+                    break
             for key in newdata:
                 collist.append(fits.Column(name=key, format=formats[key], array=newdata[key]))
             fits.BinTableHDU.from_columns(collist).writeto('/disk/lif2/spike/detectorData/H100/longGammaFlood/pixelData/H100_long_gamma_' + source[0] + '_-10_0V_x' + str(x) + '_y' + str(y) + '.fits')
