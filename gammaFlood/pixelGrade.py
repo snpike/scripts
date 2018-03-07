@@ -22,8 +22,8 @@ gainOffset =  fits.open('/disk/lif2/spike/detectorData/H100/H100_long_gamma_Co57
 gain = np.zeros((34, 34))
 offset = np.zeros((34, 34))
 
-gain[1:33, 1:33] = gainOffset['GAIN'].reshape(32, 32)
-offset[1:33, 1:33] = gainOffset['OFFSET'].reshape(32, 32)
+gain[1:33, 1:33] = gainOffset['GAIN'].reshape(32, 32).T
+offset[1:33, 1:33] = gainOffset['OFFSET'].reshape(32, 32).T
 
 print(gainOffset['RAWX'])
 print(gainOffset['GAIN'])
