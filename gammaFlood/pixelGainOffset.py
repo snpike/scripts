@@ -57,8 +57,6 @@ for x in range(32):
 				fit_g_low = fitting.LevMarLSQFitter()
 				g_low = fit_g_low(g_init_low, fit_channels_low, spectrumAm[0][fit_channels_low[0]:fit_channels_low[-1]+1])
 				
-				#print(fit_g.fit_info['param_cov'])
-				#print(np.min(channelGrade[grade]))
 				row[2] = (line_high-line_low)/(g_high.mean - g_low.mean)
 				row[3] = (line_low*g_high.mean - line_high*g_low.mean)/(g_high.mean - g_low.mean)
 				plt.plot(fit_channels_high, g_high(fit_channels_high))

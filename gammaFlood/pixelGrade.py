@@ -54,7 +54,7 @@ for x in range(32):
 					plt.xlabel('Channel')
 					plt.legend()					
 
-					if np.max(channelGrade[grade]) > 12000 and np.max(channelGradeAm[grade]) > 6000:
+					if np.max(channelGradeCo[grade]) > 12000 and np.max(channelGradeAm[grade]) > 6000:
 						centroid_high = np.argmax(spectrumCo[0][6000:12000]) + 6000
 						fit_channels_high = np.arange(centroid_high-100, centroid_high + 250)
 						g_init_high = models.Gaussian1D(amplitude=spectrumCo[0][centroid_high], mean=centroid_high, stddev = 75)
@@ -67,8 +67,6 @@ for x in range(32):
 						fit_g_low = fitting.LevMarLSQFitter()
 						g_low = fit_g_low(g_init_low, fit_channels_low, spectrumAm[0][fit_channels_low[0]:fit_channels_low[-1]+1])
 						
-						#print(fit_g.fit_info['param_cov'])
-						#print(np.min(channelGrade[grade]))
 						row[2 + grade] = (line_high-line_low)/(g_high.mean - g_low.mean)
 						row[15 + grade] = (line_low*g_high.mean - line_high*g_low.mean)/(g_high.mean - g_low.mean)
 						plt.plot(fit_channels_high, g_high(fit_channels_high))
@@ -93,5 +91,5 @@ for i in range(13):
 for i in range(13):
 	fits_columns.append(fits.Column(name='OFFSET_GRADE' + str(i), format='D', array=columns[i + 15]))
 t = fits.BinTableHDU.from_columns(fits_columns)
-t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_-10_gain_offset.fits')
+t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_Am241_-10_gain_offset_grade.fits')
 

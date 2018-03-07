@@ -4,11 +4,11 @@ from astropy.io import fits
 import skimage.io as imgio
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
-data = fits.open('/disk/lif2/spike/detectorData/H100/H100_long_gamma_Co57_Am241_-10_gain_offset_grade0.0V.fits')[1].data
+data = fits.open('/disk/lif2/spike/detectorData/H100/H100_long_gamma_Co57_Am241_-10_gain_offset.0V.fits')[1].data
 
 heatmap = np.reshape(data['GAIN'], [32, 32])
 
-images = [[imgio.imread('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(i) + '_y' + str(j) + '_grade0_linefit.0V.eps') for j in range(32)] for i in range(32)]
+images = [[imgio.imread('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(i) + '_y' + str(j) + '_gain_offset_linefit.0V.eps') for j in range(32)] for i in range(32)]
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
