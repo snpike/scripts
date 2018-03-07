@@ -26,6 +26,7 @@ gain[1:33, 1:33] = gainOffset['GAIN'].reshape(32, 32).T
 offset[1:33, 1:33] = gainOffset['OFFSET'].reshape(32, 32).T
 
 print(gainOffset['RAWX'])
+print(gainOffset['RAWY'])
 print(gainOffset['GAIN'])
 print(gain)
 
