@@ -17,6 +17,9 @@ rows =[]
 
 for x in range(32):
 	for y in range(32):
+
+		plt.figure()
+
 		row = [x, y, 1.0, 0.0]
 
 		dataCo = fits.open('/disk/lif2/spike/detectorData/H100/longGammaFlood/pixelData/H100_long_gamma_Co57_-10_0V_x' + str(x) + '_y' + str(y) + '.fits', memmap=True)[1].data
@@ -34,6 +37,13 @@ for x in range(32):
 		if len(channelCo) and len(channelAm):
 			spectrumCo = np.histogram(channelCo, bins=int(np.ceil(np.max(channelCo))))
 			spectrumAm = np.histogram(channelAm, bins=int(np.ceil(np.max(channelAm))))
+
+			plt.plot(range(len(spectrumCo[0])), spectrumCo[0], label = 'Co57')
+			plt.plot(range(len(spectrumAm[0])), spectrumAm[0], label = 'Am241', color = 'r')
+			plt.ylabel('Counts')
+			plt.xlabel('Channel')
+			plt.legend()
+
 			if np.max(channelCo) > 12000 and np.max(channelAm) > 6000:
 				centroid_high = np.argmax(spectrumCo[0][6000:12000]) + 6000
 				fit_channels_high = np.arange(centroid_high-100, centroid_high + 250)
@@ -51,18 +61,12 @@ for x in range(32):
 				#print(np.min(channelGrade[grade]))
 				row[2] = (line_high-line_low)/(g_high.mean - g_low.mean)
 				row[3] = (line_low*g_high.mean - line_high*g_low.mean)/(g_high.mean - g_low.mean)
-				plt.figure()
-				plt.plot(range(len(spectrumCo[0])), spectrumCo[0], label = 'Co57')
-				plt.plot(range(len(spectrumAm[0])), spectrumAm[0], label = 'Am241', color = 'r')
-				plt.legend()
 				plt.plot(fit_channels_high, g_high(fit_channels_high))
 				plt.plot(fit_channels_low, g_low(fit_channels_low))
-				plt.ylabel('Counts')
-				plt.xlabel('Channel')
+				
+		plt.savefig('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(x) + '_y' + str(y) + '_gain_offset_linefit.0V.eps')
+		plt.close()
 
-				plt.savefig('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(x) + '_y' + str(y) + '_grade0_linefit.0V.eps')
-				#plt.show()
-				plt.close()
 		rows.append(row)
 
 columns = np.array(rows).T
@@ -74,7 +78,7 @@ fits_columns.append(col1)
 fits_columns.append(fits.Column(name='GAIN', format='D', array=columns[2]))
 fits_columns.append(fits.Column(name='OFFSET', format='D', array=columns[3]))
 t = fits.BinTableHDU.from_columns(fits_columns)
-t.writeto('/disk/lif2/spike/detectorData/H100/H100_long_gamma_Co57_Am241_-10_gain_offset_grade0.0V.fits')
+t.writeto('/disk/lif2/spike/detectorData/H100/H100_long_gamma_Co57_Am241_-10_gain_offset.0V.fits')
 
 
 
