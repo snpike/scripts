@@ -51,7 +51,7 @@ for x in range(32):
 				fit_g_high = fitting.LevMarLSQFitter()
 				g_high = fit_g_high(g_init_high, fit_channels_high, spectrumCo[0][fit_channels_high[0]:fit_channels_high[-1]+1])
 
-				centroid_low = np.argmax(spectrumAm[0][4000:6000]) + 4000
+				centroid_low = np.argmax(spectrumAm[0][2500:6000]) + 2500
 				fit_channels_low = np.arange(centroid_low-100, centroid_low + 250)
 				g_init_low = models.Gaussian1D(amplitude=spectrumAm[0][centroid_low], mean=centroid_low, stddev = 75)
 				fit_g_low = fitting.LevMarLSQFitter()
