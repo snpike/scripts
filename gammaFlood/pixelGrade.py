@@ -59,7 +59,7 @@ for x in range(32):
 					temp = dataAm['PH_COM'][i].reshape(3,3)
 					mask = (temp > 0).astype(int)
 					channel = np.sum(np.add(np.multiply(np.multiply(mask, temp), gain[x:x + 3, y:y + 3]), np.multiply(mask, offset[x:x + 3, y:y + 3])))
-					channelGradeCo[dataAm['GRADE'][i]].append(channel)
+					channelGradeAm[dataAm['GRADE'][i]].append(channel)
 
 			for grade in range(np.min([len(channelGradeCo), len(channelGradeAm)])):
 
