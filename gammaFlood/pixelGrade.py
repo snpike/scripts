@@ -93,8 +93,9 @@ for x in range(32):
 						row[15 + grade] = (line_low*g_high.mean - line_high*g_low.mean)/(g_high.mean - g_low.mean)
 						plt.plot(fit_channels_high, g_high(fit_channels_high))
 						plt.plot(fit_channels_low, g_low(fit_channels_low))
+						plt.show()
 
-				plt.savefig('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(x) + '_y' + str(y) + '_gain_offset_grade' + str(grade) + '_linefit.0V.eps')
+				#plt.savefig('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(x) + '_y' + str(y) + '_gain_offset_grade' + str(grade) + '_linefit.0V.eps')
 				plt.close()
 		
 		rows.append(row)
@@ -113,5 +114,4 @@ for i in range(13):
 for i in range(13):
 	fits_columns.append(fits.Column(name='OFFSET_GRADE' + str(i), format='D', array=columns[i + 15]))
 t = fits.BinTableHDU.from_columns(fits_columns)
-t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_Am241_-10_gain_offset_grade.fits')'''
-
+#t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_Am241_-10_gain_offset_grade.fits')
