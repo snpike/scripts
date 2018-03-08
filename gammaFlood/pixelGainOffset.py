@@ -61,8 +61,9 @@ for x in range(32):
 				row[3] = (line_low*g_high.mean - line_high*g_low.mean)/(g_high.mean - g_low.mean)
 				plt.plot(fit_channels_high, g_high(fit_channels_high))
 				plt.plot(fit_channels_low, g_low(fit_channels_low))
+				plt.show()
 				
-		plt.savefig('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(x) + '_y' + str(y) + '_gain_offset_linefit.0V.eps')
+		#plt.savefig('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(x) + '_y' + str(y) + '_gain_offset_linefit.0V.eps')
 		plt.close()
 
 		rows.append(row)
@@ -76,7 +77,7 @@ fits_columns.append(col1)
 fits_columns.append(fits.Column(name='GAIN', format='D', array=columns[2]))
 fits_columns.append(fits.Column(name='OFFSET', format='D', array=columns[3]))
 t = fits.BinTableHDU.from_columns(fits_columns)
-t.writeto('/disk/lif2/spike/detectorData/H100/H100_long_gamma_Co57_Am241_-10_gain_offset.0V.fits')
+#t.writeto('/disk/lif2/spike/detectorData/H100/H100_long_gamma_Co57_Am241_-10_gain_offset.0V.fits')
 
 
 

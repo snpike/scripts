@@ -25,11 +25,11 @@ offset = np.zeros((34, 34))
 gain[1:33, 1:33] = gainOffset['GAIN'].reshape(32, 32).T
 offset[1:33, 1:33] = gainOffset['OFFSET'].reshape(32, 32).T
 
+'''
 print(gainOffset['RAWX'])
 print(gainOffset['RAWY'])
 print(gainOffset['GAIN'])
 print(gain)
-
 '''
 
 for x in range(32):
@@ -41,6 +41,7 @@ for x in range(32):
 
 		dataAm = fits.open('/disk/lif2/spike/detectorData/H100/longGammaFlood/pixelData/H100_long_gamma_Am241_-10_0V_x' + str(x) + '_y' + str(y) + '.fits', memmap=True)[1].data
 
+
 		if len(dataCo['CHANNEL']) and len(dataAm['CHANNEL']):
 
 			channelGradeCo = [[] for i in range(np.max(dataCo['GRADE'])+1)]
@@ -48,11 +49,17 @@ for x in range(32):
 
 			for i in range(len(dataCo['CHANNEL'])):
 				if (dataCo['CHANNEL'][i] < 20000):
-					channelGradeCo[dataCo['GRADE'][i]].append(dataCo['CHANNEL'][i])
+					temp = dataCo['PH_COM'][i].reshape(3,3)
+					mask = (temp > 0).astype(int)
+					channel = np.sum(np.add(np.multiply(np.multiply(mask, temp), gain[x:x + 3, y:y + 3]), np.multiply(mask, offset[x:x + 3, y:y + 3])))
+					channelGradeCo[dataCo['GRADE'][i]].append(channel)
 
 			for i in range(len(dataAm['CHANNEL'])):
 				if (dataAm['CHANNEL'][i] < 20000):
-					channelGradeAm[dataAm['GRADE'][i]].append(dataAm['CHANNEL'][i])
+					temp = dataAm['PH_COM'][i].reshape(3,3)
+					mask = (temp > 0).astype(int)
+					channel = np.sum(np.add(np.multiply(np.multiply(mask, temp), gain[x:x + 3, y:y + 3]), np.multiply(mask, offset[x:x + 3, y:y + 3])))
+					channelGradeCo[dataAm['GRADE'][i]].append(channel)
 
 			for grade in range(len(channelGradeCo)):
 
