@@ -25,11 +25,11 @@ offset = np.zeros((34, 34))
 gain[1:33, 1:33] = gainOffset['GAIN'].reshape(32, 32).T
 offset[1:33, 1:33] = gainOffset['OFFSET'].reshape(32, 32).T
 
-'''
+
 print(gainOffset['RAWX'])
 print(gainOffset['RAWY'])
 print(gainOffset['GAIN'])
-print(gain)
+print(gain[0:4, 0:4])
 '''
 
 for x in range(32):
@@ -114,4 +114,4 @@ for i in range(13):
 for i in range(13):
 	fits_columns.append(fits.Column(name='OFFSET_GRADE' + str(i), format='D', array=columns[i + 15]))
 t = fits.BinTableHDU.from_columns(fits_columns)
-#t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_Am241_-10_gain_offset_grade.fits')
+#t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_Am241_-10_gain_offset_grade.fits')'''
