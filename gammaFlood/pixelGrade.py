@@ -61,7 +61,7 @@ for x in range(32):
 					channel = np.sum(np.add(np.multiply(np.multiply(mask, temp), gain[x:x + 3, y:y + 3]), np.multiply(mask, offset[x:x + 3, y:y + 3])))
 					channelGradeCo[dataAm['GRADE'][i]].append(channel)
 
-			for grade in range(np.min(len(channelGradeCo), len(channelGradeAm))):
+			for grade in range(np.min([len(channelGradeCo), len(channelGradeAm)])):
 
 				plt.figure()
 				
