@@ -67,8 +67,8 @@ for x in range(32):
 				
 				if len(channelGradeCo[grade]) and len(channelGradeAm[grade]):
 
-					spectrumCo = np.histogram(channelGradeCo, bins=int(np.ceil(np.max(channelGradeCo))))
-					spectrumAm = np.histogram(channelGradeAm, bins=int(np.ceil(np.max(channelGradeAm))))
+					spectrumCo = np.histogram(channelGradeCo[grade], bins=int(np.ceil(np.max(channelGradeCo[grade]))))
+					spectrumAm = np.histogram(channelGradeAm[grade], bins=int(np.ceil(np.max(channelGradeAm[grade]))))
 
 					plt.plot(range(len(spectrumCo[0])), spectrumCo[0], label = 'Co57')
 					plt.plot(range(len(spectrumAm[0])), spectrumAm[0], label = 'Am241', color = 'r')
