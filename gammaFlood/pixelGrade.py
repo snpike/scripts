@@ -22,10 +22,10 @@ gainOffset =  fits.open('/disk/lif2/spike/detectorData/H100/H100_long_gamma_Co57
 gain = np.zeros((34, 34))
 offset = np.zeros((34, 34))
 
-gain[1:33, 1:33] = gainOffset['GAIN'].reshape(32, 32).T
-offset[1:33, 1:33] = gainOffset['OFFSET'].reshape(32, 32).T
+gain[1:33, 1:33] = gainOffset['GAIN'].reshape(32, 32)
+offset[1:33, 1:33] = gainOffset['OFFSET'].reshape(32, 32)
 
-
+'''
 print(gainOffset['RAWX'])
 print(gainOffset['RAWY'])
 print(gainOffset['GAIN'])
@@ -114,4 +114,4 @@ for i in range(13):
 for i in range(13):
 	fits_columns.append(fits.Column(name='OFFSET_GRADE' + str(i), format='D', array=columns[i + 15]))
 t = fits.BinTableHDU.from_columns(fits_columns)
-#t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_Am241_-10_gain_offset_grade.fits')'''
+#t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_Am241_-10_gain_offset_grade.fits')
