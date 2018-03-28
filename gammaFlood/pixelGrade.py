@@ -22,17 +22,17 @@ gainOffset =  fits.open('/disk/lif2/spike/detectorData/H100/H100_long_gamma_Co57
 gain = np.zeros((34, 34))
 offset = np.zeros((34, 34))
 
-gain[1:33, 1:33] = gainOffset['RAWX'].reshape(32, 32)
-offset[1:33, 1:33] = gainOffset['RAWY'].reshape(32, 32)
-print(gain[2:5, 9:12].T)
-print(offset[2:5, 9:12].T)
+gain[1:33, 1:33] = gainOffset['GAIN'].reshape(32, 32)
+offset[1:33, 1:33] = gainOffset['OFFSET'].reshape(32, 32)
+#print(gain[2:5, 9:12].T)
+#print(offset[2:5, 9:12].T)
 
 '''
 print(gainOffset['RAWX'])
 print(gainOffset['RAWY'])
 print(gainOffset['GAIN'])
 print(gain[0:4, 6:10])
-
+'''
 
 for x in range(32):
 	for y in range(32):
@@ -53,14 +53,14 @@ for x in range(32):
 				if (dataCo['CHANNEL'][i] < 20000):
 					temp = dataCo['PH_COM'][i].reshape(3,3)
 					mask = (temp > 0).astype(int)
-					channel = np.sum(np.add(np.multiply(np.multiply(mask, temp), gain[x:x + 3, y:y + 3]), np.multiply(mask, offset[x:x + 3, y:y + 3])))
+					channel = np.sum(np.add(np.multiply(np.multiply(mask, temp), gain[x:x + 3, y:y + 3].T), np.multiply(mask, offset[x:x + 3, y:y + 3].T)))
 					channelGradeCo[dataCo['GRADE'][i]].append(channel)
 
 			for i in range(len(dataAm['CHANNEL'])):
 				if (dataAm['CHANNEL'][i] < 20000):
 					temp = dataAm['PH_COM'][i].reshape(3,3)
 					mask = (temp > 0).astype(int)
-					channel = np.sum(np.add(np.multiply(np.multiply(mask, temp), gain[x:x + 3, y:y + 3]), np.multiply(mask, offset[x:x + 3, y:y + 3])))
+					channel = np.sum(np.add(np.multiply(np.multiply(mask, temp), gain[x:x + 3, y:y + 3].T), np.multiply(mask, offset[x:x + 3, y:y + 3].T)))
 					channelGradeAm[dataAm['GRADE'][i]].append(channel)
 
 			for grade in range(np.min([len(channelGradeCo), len(channelGradeAm)])):
@@ -95,9 +95,9 @@ for x in range(32):
 						row[15 + grade] = (line_low*g_high.mean - line_high*g_low.mean)/(g_high.mean - g_low.mean)
 						plt.plot(fit_channels_high, g_high(fit_channels_high))
 						plt.plot(fit_channels_low, g_low(fit_channels_low))
-						plt.show()
+						#plt.show()
 
-				#plt.savefig('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(x) + '_y' + str(y) + '_gain_offset_grade' + str(grade) + '_linefit.0V.eps')
+				plt.savefig('/disk/lif2/spike/detectorData/H100/figures/pixelFits/H100_long_gamma_Co57_Am241_-10_x' + str(x) + '_y' + str(y) + '_gain_offset_grade' + str(grade) + '_linefit.0V.eps')
 				plt.close()
 		
 		rows.append(row)
@@ -116,4 +116,4 @@ for i in range(13):
 for i in range(13):
 	fits_columns.append(fits.Column(name='OFFSET_GRADE' + str(i), format='D', array=columns[i + 15]))
 t = fits.BinTableHDU.from_columns(fits_columns)
-#t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_Am241_-10_gain_offset_grade.fits')'''
+t.writeto('/Volumes/LaCie/CdTe/longGammaFlood/20170908_H100_long_gamma_Co57_Am241_-10_gain_offset_grade.fits')
