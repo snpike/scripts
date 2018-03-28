@@ -24,8 +24,8 @@ offset = np.zeros((34, 34))
 
 gain[1:33, 1:33] = gainOffset['RAWX'].reshape(32, 32)
 offset[1:33, 1:33] = gainOffset['RAWY'].reshape(32, 32)
-print(gain)
-print(offset)
+print(gain[2:5, 9:12])
+print(offset[2:5, 9:12])
 
 '''
 print(gainOffset['RAWX'])
