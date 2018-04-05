@@ -35,3 +35,5 @@ plt.imshow(pixelmap[0])
 plt.colorbar()
 plt.show()
 plt.close()
+
+print(spectrum[0])
