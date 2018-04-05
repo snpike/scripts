@@ -36,7 +36,7 @@ plt.colorbar()
 plt.show()
 plt.close()
 
-noiseHist = np.histogram(pixelmap[0].flatten, bins = 50)
+noiseHist = np.histogram(pixelmap[0].flatten(), bins = 50)
 plt.figure()
 plt.plot(noiseHist[1][:-1], noiseHist[0])
 plt.show()
