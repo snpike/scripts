@@ -45,6 +45,7 @@ plt.close()
 
 trigSum = 0
 
+FWHM = []
 for x in trigX:
 	for y in trigY:
 		if(channelMap[x][y]):
@@ -57,12 +58,19 @@ for x in trigX:
 			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
+			FPMA.append(2*np.sqrt(2*np.log(2))*g.stddev)
 			#plt.plot(range(len(tempSpec[0])), tempSpec[0])
 			#plt.plot(range(len(tempSpec[0])), g(range(len(tempSpec[0]))))
 			#plt.show()
 			#plt.close()
 			
 print(trigSum)	
+
+FWHM_hist = np.histogram(FWHM, bins = 20)
+plt.figure()
+plt.plot(range(len(FWHM_hist[0])), FWHM_hist[0])
+plt.show()
+plt.close()
 
 '''
 noiseHist = np.histogram(pixelmap[0].flatten(), bins = 20)
