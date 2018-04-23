@@ -13,14 +13,15 @@ mask = data['TEMP'] > -20
 START = np.argmax(mask)
 END = len(mask) - np.argmax(mask[::-1])
 
+trigX = [3*j + 1 for j in range(11)]
+trigY = [3*j for j in range(5)] + [3*j + 16 for j in range(6)]
+
 channel = []
-rawx = []
-rawy = []
+channelMap = np.array([[[] for i in range(32)] for j in range(32)])
 for i in np.arange(START, END):
 	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < 50000):
 		channel.append(data['PH'][i])
-		rawx.append(data['RAWX'][i])
-		rawy.append(data['RAWY'][i])
+		channelMap[data['RAWX'][i], data['RAWY'][i]].append(data['PH'][i])
 
 
 spectrum = np.histogram(channel, bins=int(np.ceil(np.max(channel))))
@@ -36,8 +37,22 @@ plt.colorbar()
 plt.show()
 plt.close()
 
+for x in trigX:
+	for y in trigY:
+		tempSpec = np.histogram(channelMap[x,y], bins=int(np.ceil(np.max(channelMap[x,y]))))
+		centroid = np.argmax(tempSpec[0][200:]) + 200
+		fit_channels = np.arange(centroid-100, centroid + 250)
+		g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
+		fit_g = fitting.LevMarLSQFitter()
+		g = fit_g(g_init, fit_channels, tempSpec[0][fit_channels[0]:fit_channels[-1]+1])
+		plt.plot(range(len(tempSpec[0])), tempSpec[0])
+		plt.plot(fit_channels, g(fit_channels))
+		plt.show()
+				
+
+'''
 noiseHist = np.histogram(pixelmap[0].flatten(), bins = 20)
 plt.figure()
 plt.step(noiseHist[1][:-1], noiseHist[0], where='post')
 plt.show()
-plt.close()
+plt.close()'''
