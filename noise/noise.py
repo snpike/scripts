@@ -43,15 +43,19 @@ plt.close()
 
 for x in trigX:
 	for y in trigY:
-		tempSpec = np.histogram(channelMap[x][y], bins=int(np.ceil(np.max(channelMap[x][y]))))
-		centroid = np.argmax(tempSpec[0])
-		fit_channels = np.arange(centroid-100, centroid + 250)
-		g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
-		fit_g = fitting.LevMarLSQFitter()
-		g = fit_g(g_init, fit_channels, tempSpec[0][fit_channels[0]:fit_channels[-1]+1])
-		plt.plot(range(len(tempSpec[0])), tempSpec[0])
-		plt.plot(fit_channels, g(fit_channels))
-		plt.show()
+		if(channelMap[x][y]):
+			print(x)
+			print(y)
+			tempSpec = np.histogram(channelMap[x][y], bins=int(np.ceil(np.max(channelMap[x][y]))))
+			centroid = np.argmax(tempSpec[0])
+			fit_channels = np.arange(centroid-100, centroid + 250)
+			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
+			fit_g = fitting.LevMarLSQFitter()
+			g = fit_g(g_init, fit_channels, tempSpec[0][fit_channels[0]:fit_channels[-1]+1])
+			plt.plot(range(len(tempSpec[0])), tempSpec[0])
+			plt.plot(fit_channels, g(fit_channels))
+			plt.show()
+			plt.close()
 				
 
 '''
