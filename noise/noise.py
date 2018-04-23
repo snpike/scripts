@@ -21,7 +21,7 @@ channelMap = [[[] for i in range(32)] for j in range(32)]
 for i in np.arange(START, END):
 	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < 50000):
 		channel.append(data['PH'][i])
-		channelMap[data['RAWX'][i], data['RAWY'][i]].append(data['PH'][i])
+		channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
 
 
 spectrum = np.histogram(channel, bins=int(np.ceil(np.max(channel))))
@@ -39,7 +39,7 @@ plt.close()
 
 for x in trigX:
 	for y in trigY:
-		tempSpec = np.histogram(channelMap[x,y], bins=int(np.ceil(np.max(channelMap[x,y]))))
+		tempSpec = np.histogram(channelMap[x][y], bins=int(np.ceil(np.max(channelMap[x][y]))))
 		centroid = np.argmax(tempSpec[0][200:]) + 200
 		fit_channels = np.arange(centroid-100, centroid + 250)
 		g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
