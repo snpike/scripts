@@ -42,12 +42,12 @@ plt.colorbar()
 plt.show()
 plt.close()
 
-print(pixelmap)
-
+trigSum = 0
 
 for x in trigX:
 	for y in trigY:
 		if(channelMap[x][y]):
+			trigSum += 1
 			print(x)
 			print(y)
 			tempSpec = np.histogram(channelMap[x][y], bins=int(np.ceil(np.max(channelMap[x][y]))))
@@ -56,11 +56,12 @@ for x in trigX:
 			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
-			plt.plot(range(len(tempSpec[0])), tempSpec[0])
-			plt.plot(range(len(tempSpec[0])), g(range(len(tempSpec[0]))))
-			plt.show()
-			plt.close()
-				
+			#plt.plot(range(len(tempSpec[0])), tempSpec[0])
+			#plt.plot(range(len(tempSpec[0])), g(range(len(tempSpec[0]))))
+			#plt.show()
+			#plt.close()
+			
+print(trigSum)	
 
 '''
 noiseHist = np.histogram(pixelmap[0].flatten(), bins = 20)
