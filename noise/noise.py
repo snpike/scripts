@@ -17,7 +17,7 @@ trigX = [3*j + 1 for j in range(11)]
 trigY = [3*j for j in range(5)] + [3*j + 16 for j in range(6)]
 
 channel = []
-channelMap = np.array([[[] for i in range(32)] for j in range(32)])
+channelMap = [[[] for i in range(32)] for j in range(32)]
 for i in np.arange(START, END):
 	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < 50000):
 		channel.append(data['PH'][i])
