@@ -14,8 +14,8 @@ mask = data['TEMP'] > -20
 START = np.argmax(mask)
 END = len(mask) - np.argmax(mask[::-1])
 
-trigX = [3*j for j in range(5)] + [3*j + 16 for j in range(6)]
-trigY = [3*j for j in range(5)] + [3*j + 16 for j in range(6)]
+trigX = [3*j for j in range(6)] + [3*j + 19 for j in range(5)]
+trigY = [3*j for j in range(6)] + [3*j + 19 for j in range(5)]
 
 channel = []
 channelMap = [[[] for i in range(32)] for j in range(32)]
@@ -37,7 +37,7 @@ plt.close()
 
 pixelmap = np.histogram2d(rawx, rawy, bins = (32,32))
 plt.figure()
-plt.imshow(pixelmap[0].T)
+plt.imshow(pixelmap[0])
 plt.colorbar()
 plt.show()
 plt.close()
