@@ -14,8 +14,8 @@ mask = data['TEMP'] > -20
 START = np.argmax(mask)
 END = len(mask) - np.argmax(mask[::-1])
 
-trigY = [3*j + 1 for j in range(11)]
-trigX = [3*j for j in range(5)] + [3*j + 16 for j in range(6)]
+trigX = [3*j + 1 for j in range(11)]
+trigY = [3*j for j in range(5)] + [3*j + 16 for j in range(6)]
 
 channel = []
 channelMap = [[[] for i in range(32)] for j in range(32)]
