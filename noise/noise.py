@@ -52,7 +52,7 @@ for x in trigX:
 			#fit_channels = np.arange(centroid-100, centroid + 250)
 			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
 			fit_g = fitting.LevMarLSQFitter()
-			g = fit_g(g_init, np.range(len(tempSpec[0])), tempSpec[0])
+			g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
 			plt.plot(range(len(tempSpec[0])), tempSpec[0])
 			plt.plot(range(len(tempSpec[0])), g(range(len(tempSpec[0]))))
 			plt.show()
