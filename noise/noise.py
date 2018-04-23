@@ -24,7 +24,7 @@ rawy = []
 for i in np.arange(START, END):
 	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < 50000):
 		channel.append(data['PH'][i])
-		channelMap[data['RAWY'][i]][data['RAWX'][i]].append(data['PH'][i])
+		channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
 		rawx.append(data['RAWX'][i])
 		rawy.append(data['RAWY'][i])
 
@@ -46,7 +46,7 @@ trigSum = 0
 
 for x in trigX:
 	for y in trigY:
-		if(channelMap[y][x]):
+		if(channelMap[x][y]):
 			trigSum += 1
 			#print(x)
 			#print(y)
