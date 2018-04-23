@@ -35,7 +35,7 @@ plt.plot(range(len(spectrum[0])), spectrum[0])
 plt.show()
 plt.close()
 
-pixelmap = np.histogram2d(rawx, rawy, bins = (32,32))
+pixelmap = np.histogram2d(rawy, rawx, bins = (32,32))
 plt.figure()
 plt.imshow(pixelmap[0])
 plt.colorbar()
