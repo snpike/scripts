@@ -46,7 +46,7 @@ trigSum = 0
 
 for x in trigX:
 	for y in trigY:
-		if(channelMap[x][y]):
+		if(channelMap[y][x]):
 			trigSum += 1
 			#print(x)
 			#print(y)
