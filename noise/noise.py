@@ -28,7 +28,7 @@ for i in np.arange(START, END):
 		rawx.append(data['RAWX'][i])
 		rawy.append(data['RAWY'][i])
 
-countMap = [[np.sum(channelMap[i][j]) for i in range(32)] for j in range(32)]
+countMap = [[len(channelMap[i][j]) for i in range(32)] for j in range(32)]
 print(countMap)
 '''
 spectrum = np.histogram(channel, bins=int(np.ceil(np.max(channel))))
