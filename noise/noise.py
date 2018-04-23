@@ -18,10 +18,14 @@ trigY = [3*j for j in range(5)] + [3*j + 16 for j in range(6)]
 
 channel = []
 channelMap = [[[] for i in range(32)] for j in range(32)]
+rawx = []
+rawy = []
 for i in np.arange(START, END):
 	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < 50000):
 		channel.append(data['PH'][i])
 		channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
+		rawx.append(data['RAWX'][i])
+		rawy.append(data['RAWY'][i])
 
 
 spectrum = np.histogram(channel, bins=int(np.ceil(np.max(channel))))
