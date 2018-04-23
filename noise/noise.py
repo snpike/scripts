@@ -1,6 +1,7 @@
 from astropy.io import fits
 import matplotlib.pyplot as plt
 import numpy as np
+from astropy.modeling import models, fitting
 
 filepath = input('Please enter the filepath to the noise data:')
 
