@@ -38,6 +38,7 @@ plt.show()
 plt.close()'''
 
 pixelmap = np.histogram2d(rawx, rawy, bins = (32,32))
+print(pixelmap[0])
 plt.figure()
 plt.imshow(pixelmap[0])
 plt.colorbar()
