@@ -58,7 +58,7 @@ for x in trigX:
 			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
-			FPMA.append(2*np.sqrt(2*np.log(2))*g.stddev)
+			FWHM.append(2*np.sqrt(2*np.log(2))*g.stddev)
 			#plt.plot(range(len(tempSpec[0])), tempSpec[0])
 			#plt.plot(range(len(tempSpec[0])), g(range(len(tempSpec[0]))))
 			#plt.show()
