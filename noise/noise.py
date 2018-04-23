@@ -48,8 +48,8 @@ for x in trigX:
 	for y in trigY:
 		if(channelMap[x][y]):
 			trigSum += 1
-			print(x)
-			print(y)
+			#print(x)
+			#print(y)
 			tempSpec = np.histogram(channelMap[x][y], bins=int(np.ceil(np.max(channelMap[x][y]))))
 			centroid = np.argmax(tempSpec[0])
 			#fit_channels = np.arange(centroid-100, centroid + 250)
