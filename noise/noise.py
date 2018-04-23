@@ -17,8 +17,6 @@ END = len(mask) - np.argmax(mask[::-1])
 trigX = [3*j for j in range(5)] + [3*j + 16 for j in range(6)]
 trigY = [3*j for j in range(5)] + [3*j + 16 for j in range(6)]
 
-print(trigX)
-
 channel = []
 channelMap = [[[] for i in range(32)] for j in range(32)]
 rawx = []
@@ -52,12 +50,12 @@ for x in trigX:
 			trigSum += 1
 			#print(x)
 			#print(y)
-			tempSpec = np.histogram(channelMap[x][y], bins=int(np.ceil(np.max(channelMap[x][y]))))
-			centroid = np.argmax(tempSpec[0])
+			#tempSpec = np.histogram(channelMap[x][y], bins=int(np.ceil(np.max(channelMap[x][y]))))
+			#centroid = np.argmax(tempSpec[0])
 			#fit_channels = np.arange(centroid-100, centroid + 250)
-			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
-			fit_g = fitting.LevMarLSQFitter()
-			g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
+			#g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
+			#fit_g = fitting.LevMarLSQFitter()
+			#g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
 			#plt.plot(range(len(tempSpec[0])), tempSpec[0])
 			#plt.plot(range(len(tempSpec[0])), g(range(len(tempSpec[0]))))
 			#plt.show()
