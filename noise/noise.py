@@ -22,7 +22,7 @@ channelMap = [[[] for i in range(32)] for j in range(32)]
 rawx = []
 rawy = []
 for i in np.arange(START, END):
-	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < 50000):
+	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < 5000):
 		channel.append(data['PH'][i])
 		channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
 		rawx.append(data['RAWX'][i])
@@ -43,6 +43,7 @@ plt.colorbar()
 plt.show()
 plt.close()
 
+'''
 trigSum = 0
 
 FWHM = []
@@ -71,10 +72,20 @@ plt.figure()
 plt.plot(range(len(FWHM_hist[0])), FWHM_hist[0])
 plt.show()
 plt.close()
-
 '''
+
 noiseHist = np.histogram(pixelmap[0].flatten(), bins = 20)
 plt.figure()
 plt.step(noiseHist[1][:-1], noiseHist[0], where='post')
+plt.ylabel('Pixels')
+plt.xlabel('Counts')
 plt.show()
-plt.close()'''
+plt.close()
+
+bins = np.arange(1,5000)
+spectrum = np.histogram(data['PH'][START:END], bins = bins)
+plt.plot(spectrum[1][:-1], spectrum[0])
+plt.xlabel('Channel')
+plt.ylabel('Counts')
+plt.show()
+plt.close()
