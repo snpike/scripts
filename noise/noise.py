@@ -84,6 +84,7 @@ noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.arange(0,np.max
 plt.figure()
 plt.step(noiseHist[1][:-1], noiseHist[0], where='mid')
 plt.xlim(1, noiseHist[1][-1])
+plt.ylim(0,noiseHist[0][1] + 1)
 plt.ylabel('Pixels')
 plt.xlabel('Counts')
 plt.title(detector + ' ' + test + ' Count Histogram ' + '(' + etc + ')')
