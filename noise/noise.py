@@ -4,6 +4,9 @@ import numpy as np
 from astropy.modeling import models, fitting
 
 filepath = input('Please enter the filepath to the noise data:')
+detector = input('Please enter the detector ID:')
+test = input('Please enter the type of data (eg leakage, noise, etc.):')
+etc = input('Please enter any other important information (temperature, voltage, etc.):')
 
 file = fits.open(filepath)
 
@@ -39,7 +42,9 @@ plt.close()'''
 countMap = [[len(channelMap[i][j]) for i in range(32)] for j in range(32)]
 plt.figure()
 plt.imshow(countMap)
-plt.colorbar()
+c = plt.colorbar()
+c.set_label('Counts')
+plt.title(detector + ' ' + test + ' Pixel Map ' + '(' + etc + ')')
 plt.show()
 plt.close()
 
@@ -74,11 +79,12 @@ plt.show()
 plt.close()
 '''
 
-noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.arange(1,15))
+noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.arange(0,15))
 plt.figure()
 plt.step(noiseHist[1][:-1], noiseHist[0], where='mid')
 plt.ylabel('Pixels')
 plt.xlabel('Counts')
+plt.title(detector + ' ' + test + ' Count Histogram ' + '(' + etc + ')')
 plt.show()
 plt.close()
 
@@ -87,5 +93,6 @@ spectrum = np.histogram(data['PH'][START:END], bins = bins)
 plt.plot(spectrum[1][:-1], spectrum[0])
 plt.xlabel('Channel')
 plt.ylabel('Counts')
+plt.title(detector + ' ' + test + ' Spectrum ' + '(' + etc + ')')
 plt.show()
 plt.close()
