@@ -3,10 +3,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 from astropy.modeling import models, fitting
 
-filepath = input('Please enter the filepath to the noise data:')
-detector = input('Please enter the detector ID:')
-test = input('Please enter the type of data (eg leakage, noise, etc.):')
-etc = input('Please enter any other important information (temperature, voltage, etc.):')
+filepath = input('Please enter the filepath to the noise data: ')
+
+slash = 0
+i = 0
+for char in filepath:
+	if char == '/':
+		slash = i
+	i += 1
+
+filename = filepath[slash + 1:]
+detector = input('Please enter the detector ID: ')
+test = input('Please enter the type of data (eg leakage, noise, etc.): ')
+etc = input('Please enter any other important information (temperature, voltage, etc.): ')
 
 file = fits.open(filepath)
 
@@ -46,6 +55,7 @@ c = plt.colorbar()
 c.set_label('Counts')
 plt.title(detector + ' ' + test + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
+plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + '.pixmap.eps')
 plt.show()
 plt.close()
 
@@ -90,6 +100,7 @@ plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
 plt.title(detector + ' ' + test + ' Count Histogram ' + '(' + etc + ')')
 plt.tight_layout()
+plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + '.pixhist.eps')
 plt.show()
 plt.close()
 
@@ -100,5 +111,6 @@ plt.xlabel('Channel')
 plt.ylabel('Counts')
 plt.title(detector + ' ' + test + ' Spectrum ' + '(' + etc + ')')
 plt.tight_layout()
+plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + '.spec.eps')
 plt.show()
 plt.close()
