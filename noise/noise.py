@@ -73,7 +73,7 @@ plt.show()
 plt.close()
 '''
 
-noiseHist = np.histogram(np.array(countMap).flatten(), bins = 20)
+noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.array(1,15))
 plt.figure()
 plt.step(noiseHist[1][:-1], noiseHist[0], where='post')
 plt.ylabel('Pixels')
