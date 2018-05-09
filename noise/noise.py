@@ -80,7 +80,7 @@ plt.show()
 plt.close()
 '''
 
-noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.arange(1,15))
+noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.arange(1,np.max(np.array(countMap).flatten()) + 1))
 plt.figure()
 plt.step(noiseHist[1][:-1], noiseHist[0], where='mid')
 plt.ylabel('Pixels')
