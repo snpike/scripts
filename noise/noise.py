@@ -28,7 +28,6 @@ for i in np.arange(START, END):
 		rawx.append(data['RAWX'][i])
 		rawy.append(data['RAWY'][i])
 
-#print(countMap)
 '''
 spectrum = np.histogram(channel, bins=int(np.ceil(np.max(channel))))
 plt.figure()
@@ -74,7 +73,7 @@ plt.show()
 plt.close()
 '''
 
-noiseHist = np.histogram(countMap[0].flatten(), bins = 20)
+noiseHist = np.histogram(countMap.flatten(), bins = 20)
 plt.figure()
 plt.step(noiseHist[1][:-1], noiseHist[0], where='post')
 plt.ylabel('Pixels')
