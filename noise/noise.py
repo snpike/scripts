@@ -91,7 +91,7 @@ plt.show()
 plt.close()
 
 bins = np.arange(1,maxchannel)
-spectrum = np.histogram(data['PH'][START:END], bins = bins)
+spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, 5000))
 plt.plot(spectrum[1][:-1], spectrum[0])
 plt.xlabel('Channel')
 plt.ylabel('Counts')
