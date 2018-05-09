@@ -17,12 +17,13 @@ END = len(mask) - np.argmax(mask[::-1])
 trigX = [(3*j) + 1  for j in range(11)]
 trigY = [(3*j) + 1  for j in range(11)]
 
+maxchannel = 1000
 channel = []
 channelMap = [[[] for i in range(32)] for j in range(32)]
 rawx = []
 rawy = []
 for i in np.arange(START, END):
-	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < 5000):
+	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < maxchannel):
 		channel.append(data['PH'][i])
 		channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
 		rawx.append(data['RAWX'][i])
@@ -81,7 +82,7 @@ plt.xlabel('Counts')
 plt.show()
 plt.close()
 
-bins = np.arange(1,5000)
+bins = np.arange(1,maxchannel)
 spectrum = np.histogram(data['PH'][START:END], bins = bins)
 plt.plot(spectrum[1][:-1], spectrum[0])
 plt.xlabel('Channel')
