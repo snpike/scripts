@@ -30,18 +30,12 @@ trigX = [(3*j) + 1  for j in range(11)]
 trigY = [(3*j) + 1  for j in range(11)]
 
 maxchannel = 10000
-channel = []
-channelMap = [[[] for i in range(32)] for j in range(32)]
-rawx = []
-rawy = []
+
+countMap = [[0 for i in range(32)] for j in range(32)]
 for i in np.arange(START, END):
     if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < maxchannel):
-        channel.append(data['PH'][i])
-        channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
-        rawx.append(data['RAWX'][i])
-        rawy.append(data['RAWY'][i])
+        countMap[data['RAWX'][i]][data['RAWY'][i]] += 1
 
-countMap = [[len(channelMap[i][j]) for i in range(32)] for j in range(32)]
 plt.figure()
 plt.imshow(countMap)
 c = plt.colorbar()
