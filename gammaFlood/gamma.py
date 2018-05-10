@@ -33,7 +33,7 @@ maxchannel = 10000
 
 countMap = [[0 for i in range(32)] for j in range(32)]
 for i in np.arange(START, END):
-    if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < maxchannel):
+    if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < maxchannel) and not data['STIM'][i]:
         countMap[data['RAWX'][i]][data['RAWY'][i]] += 1
 
 plt.figure()
@@ -99,10 +99,10 @@ fit_channels = np.arange(centroid-100, centroid + 250)
 g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
 fit_g = fitting.LevMarLSQFitter()
 g = fit_g(g_init, range(len(spectrum[0])), spectrum[0])
-plt.text(maxchannel*3/4, spectrum[0][centroid]*4/5, r'$\mathrm{FWHM}=$' + str(2*np.sqrt(2*np.log(2))*g.stddev))
+plt.text(maxchannel*3/4, spectrum[0][centroid]*4/5, r'$\mathrm{FWHM}=$' + str(int(2*np.sqrt(2*np.log(2))*g.stddev)))
 
 plt.plot(spectrum[1][:-1], spectrum[0])
-plt.plot(spectrum[1][:-1], g(range(len(spectrum[0]))))
+plt.plot(fit_channels, g(range(len(spectrum[0]))))
 plt.xlabel('Channel')
 plt.ylabel('Counts')
 plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
