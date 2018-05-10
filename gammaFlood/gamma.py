@@ -102,7 +102,7 @@ g = fit_g(g_init, range(len(spectrum[0])), spectrum[0])
 plt.text(maxchannel*3/4, spectrum[0][centroid]*4/5, r'$\mathrm{FWHM}=$' + str(int(2*np.sqrt(2*np.log(2))*g.stddev)))
 
 plt.plot(spectrum[1][:-1], spectrum[0])
-plt.plot(fit_channels, g(range(len(spectrum[0]))))
+plt.plot(fit_channels, g(fit_channels))
 plt.xlabel('Channel')
 plt.ylabel('Counts')
 plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
