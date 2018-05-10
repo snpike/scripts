@@ -93,7 +93,16 @@ plt.close()
 
 bins = np.arange(1,maxchannel)
 spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, maxchannel))
+
+centroid = np.argmax(spectrum[0][1000:]) + 1000
+fit_channels = np.arange(centroid-100, centroid + 250)
+g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
+fit_g = fitting.LevMarLSQFitter()
+g = fit_g(g_init, range(len(spectrum[0])), spectrum[0])
+plt.text(maxchannel*3/4, spectrum[0][centroid]*4/5, r'$\mathrm{FWHM}=$' + str(2*np.sqrt(2*np.log(2))*g.stddev))
+
 plt.plot(spectrum[1][:-1], spectrum[0])
+plt.plot(spectrum[1][:-1], g(range(len(spectrum[0]))))
 plt.xlabel('Channel')
 plt.ylabel('Counts')
 plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
