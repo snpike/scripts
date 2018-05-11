@@ -14,8 +14,9 @@ for char in filepath:
 
 filename = filepath[slash + 1:]
 detector = input('Please enter the detector ID: ')
-test = input('Please enter the type of data (eg leakage, noise, etc.): ')
 etc = input('Please enter any other important information (temperature, voltage, etc.): ')
+
+test = 'noise'
 
 file = fits.open(filepath)
 
@@ -34,12 +35,11 @@ channel = []
 channelMap = [[[] for i in range(32)] for j in range(32)]
 rawx = []
 rawy = []
-if test == 'noise':
-	for i in np.arange(START, END):
-		if data['UP'][i]:
-			channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
-			rawx.append(data['RAWX'][i])
-			rawy.append(data['RAWY'][i])
+for i in np.arange(START, END):
+	if data['UP'][i]:
+		channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
+		rawx.append(data['RAWX'][i])
+		rawy.append(data['RAWY'][i])
 
 countMap = [[len(channelMap[i][j]) for i in range(32)] for j in range(32)]
 plt.figure()
