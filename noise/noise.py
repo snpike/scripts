@@ -36,10 +36,11 @@ rawx = []
 rawy = []
 for i in np.arange(START, END):
 	if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < maxchannel):
-		channel.append(data['PH'][i])
-		channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
-		rawx.append(data['RAWX'][i])
-		rawy.append(data['RAWY'][i])
+		if (test == 'noise') and (data['UP'][i]):
+			channel.append(data['PH'][i])
+			channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
+			rawx.append(data['RAWX'][i])
+			rawy.append(data['RAWY'][i])
 
 '''
 spectrum = np.histogram(channel, bins=int(np.ceil(np.max(channel))))
