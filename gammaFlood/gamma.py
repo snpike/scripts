@@ -31,8 +31,8 @@ trigY = [(3*j) + 1  for j in range(11)]
 
 maxchannel = 10000
 
-PHmask = np.array(0 < np.array(data['PH'][START:END]) < maxchannel)
-STIMmask = np.array(not np.array(data['STIM'][START:END]))
+PHmask = np.multiply(0 < np.array(data['PH'][START:END]),np.array(data['PH'][START:END]) < maxchannel)
+STIMmask = not np.array(data['STIM'][START:END])
 TOTmask = np.multiply(PHmask, STIMmask)
 
 countMap = [[np.sum(np.multiply(TOTmask, np.array(np.array(data['RAWX'])==i and np.array(data['RAWY'])==j))) for i in range(32)] for j in range(32)]
