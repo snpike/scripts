@@ -31,10 +31,16 @@ trigY = [(3*j) + 1  for j in range(11)]
 
 maxchannel = 10000
 
-countMap = [[0 for i in range(32)] for j in range(32)]
+PHmask = np.array(0 < data['PH'][START:END] < maxchannel)
+STIMmask = np.array(not data['STIM'][START:END])
+TOTmask = np.multiply(PHmask, STIMmask)
+
+countMap = [[np.sum(np.multiply(TOTmask, np.array(data['RAWX']==i and data['RAWY']==j))) for i in range(32)] for j in range(32)]
+
+'''
 for i in np.arange(START, END):
     if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < maxchannel) and not data['STIM'][i]:
-        countMap[data['RAWX'][i]][data['RAWY'][i]] += 1
+        countMap[data['RAWX'][i]][data['RAWY'][i]] += 1'''
 
 plt.figure()
 plt.imshow(countMap)
@@ -99,7 +105,7 @@ fit_channels = np.arange(centroid-200, centroid + 250)
 g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
 fit_g = fitting.LevMarLSQFitter()
 g = fit_g(g_init, range(len(spectrum[0])), spectrum[0])
-plt.text(maxchannel*3/4, spectrum[0][centroid]*4/5, r'$\mathrm{FWHM}=$' + str(int(2*np.sqrt(2*np.log(2))*g.stddev)), fontsize=20)
+plt.text(maxchannel*3/4, spectrum[0][centroid]*4/5, r'$\mathrm{FWHM}=$' + str(int(2*np.sqrt(2*np.log(2))*g.stddev)), fontsize=16)
 
 plt.plot(spectrum[1][:-1], spectrum[0])
 plt.plot(fit_channels, g(fit_channels))
