@@ -1,5 +1,6 @@
 from astropy.io import fits
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import numpy as np
 from astropy.modeling import models, fitting
 
@@ -89,7 +90,7 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.close()
 
 plt.figure()
-current_cmap = matplotlib.cm.get_cmap()
+current_cmap = mpl.cm.get_cmap()
 current_cmap.set_bad(color='gray')
 plt.imshow(FWHM_map)
 c = plt.colorbar()
