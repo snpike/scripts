@@ -87,6 +87,16 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.show()
 plt.close()
 
+plt.figure()
+plt.imshow(FWHM_map)
+c = plt.colorbar()
+c.set_label('FWHM (channels)')
+plt.title(detector + ' ' + test + ' FWHM Map ' + '(' + etc + ')')
+plt.tight_layout()
+plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap.eps')
+plt.show()
+plt.close()
+
 
 noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.arange(0,np.max(np.array(countMap).flatten()) + 3))
 plt.figure()
