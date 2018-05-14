@@ -30,7 +30,10 @@ END = len(mask) - np.argmax(mask[::-1])
 trigX = [(3*j) + 1  for j in range(11)]
 trigY = [(3*j) + 1  for j in range(11)]
 
-maxchannel = 1000
+
+maxchannel = 2000
+bins = np.arange(1,maxchannel)
+
 channel = []
 channelMap = [[[] for i in range(32)] for j in range(32)]
 rawx = []
@@ -52,36 +55,38 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.show()
 plt.close()
 
-'''
-trigSum = 0
-
 FWHM = []
+FWHM_map = [[None for i in range(32)] for j in range(32)]
 for x in trigX:
 	for y in trigY:
 		if(channelMap[x][y]):
-			trigSum += 1
-			#print(x)
-			#print(y)
-			tempSpec = np.histogram(channelMap[x][y], bins=int(np.ceil(np.max(channelMap[x][y]))))
+			tempSpec = np.histogram(channelMap[x][y], bins=bins, range = (0,maxchannel*2))
 			centroid = np.argmax(tempSpec[0])
 			fit_channels = np.arange(centroid-100, centroid + 250)
 			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
 			FWHM.append(2*np.sqrt(2*np.log(2))*g.stddev)
-			#plt.plot(range(len(tempSpec[0])), tempSpec[0])
-			#plt.plot(range(len(tempSpec[0])), g(range(len(tempSpec[0]))))
-			#plt.show()
-			#plt.close()
-			
-print(trigSum)	
+			FWHM_map[x][y] = 2*np.sqrt(2*np.log(2))*g.stddev
+			plt.step(tempSpec[1][:-1], tempSpec[0], where='mid')
+			plt.plot(fit_channels, g(fit_channels))
+			plt.ylabel('Counts')
+			plt.xlabel('Channel')
+			plt.tight_layout()
+			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + x + 'y' + y + '_spec.eps')
+			plt.close()
 
 FWHM_hist = np.histogram(FWHM, bins = 20)
 plt.figure()
-plt.plot(range(len(FWHM_hist[0])), FWHM_hist[0])
+plt.step(FWHM_hist[1][:-1], FWHM_hist[0], where='mid')
+plt.ylabel('Pixels')
+plt.xlabel('FWHM (channels)')
+plt.title(detector + ' ' + test + ' FWHM Histogram ' + '(' + etc + ')')
+plt.tight_layout()
+plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist.eps')
 plt.show()
 plt.close()
-'''
+
 
 noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.arange(0,np.max(np.array(countMap).flatten()) + 3))
 plt.figure()
@@ -94,16 +99,15 @@ plt.xlabel('Counts')
 plt.title(detector + ' ' + test + ' Count Histogram ' + '(' + etc + ')')
 plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist.eps')
-plt.show()
+#plt.show()
 plt.close()
 
-bins = np.arange(1,maxchannel)
-spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, 5000))
+spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, maxchannel*2))
 plt.plot(spectrum[1][:-1], spectrum[0])
 plt.xlabel('Channel')
 plt.ylabel('Counts')
 plt.title(detector + ' ' + test + ' Spectrum ' + '(' + etc + ')')
 plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'spec.eps')
-plt.show()
+#plt.show()
 plt.close()
