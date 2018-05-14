@@ -56,7 +56,7 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.close()
 
 FWHM = []
-FWHM_map = [[0 for i in range(32)] for j in range(32)]
+FWHM_map = [[np.nan for i in range(32)] for j in range(32)]
 for x in trigX:
 	for y in trigY:
 		if(channelMap[x][y]):
@@ -67,7 +67,8 @@ for x in trigX:
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
 			FWHM.append(2*np.sqrt(2*np.log(2))*g.stddev)
-			FWHM_map[x][y] = 2*np.sqrt(2*np.log(2))*g.stddev
+			if 2*np.sqrt(2*np.log(2))*g.stddev < 1000:
+				FWHM_map[x][y] = 2*np.sqrt(2*np.log(2))*g.stddev
 			plt.step(tempSpec[1][:-1], tempSpec[0], where='mid')
 			plt.plot(fit_channels, g(fit_channels))
 			plt.ylabel('Counts')
@@ -88,6 +89,8 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.close()
 
 plt.figure()
+current_cmap = matplotlib.cm.get_cmap()
+current_cmap.set_bad(color='gray')
 plt.imshow(FWHM_map)
 c = plt.colorbar()
 c.set_label('FWHM (channels)')
