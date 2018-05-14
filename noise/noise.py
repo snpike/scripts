@@ -37,13 +37,9 @@ bins = np.arange(1,maxchannel)
 
 channel = []
 channelMap = [[[] for i in range(32)] for j in range(32)]
-rawx = []
-rawy = []
 for i in np.arange(START, END):
 	if data['UP'][i]:
 		channelMap[data['RAWX'][i]][data['RAWY'][i]].append(data['PH'][i])
-		rawx.append(data['RAWX'][i])
-		rawy.append(data['RAWY'][i])
 
 countMap = [[len(channelMap[i][j]) for i in range(32)] for j in range(32)]
 plt.figure()
