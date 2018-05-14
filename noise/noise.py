@@ -73,7 +73,7 @@ for x in trigX:
 			plt.ylabel('Counts')
 			plt.xlabel('Channel')
 			plt.tight_layout()
-			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + x + 'y' + y + '_spec.eps')
+			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(x) + 'y' + str(y) + '_spec.eps')
 			plt.close()
 
 FWHM_hist = np.histogram(FWHM, bins = 20)
