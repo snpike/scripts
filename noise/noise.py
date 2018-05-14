@@ -52,11 +52,11 @@ c.set_label('Counts')
 plt.title(detector + ' ' + test + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixmap.eps')
-plt.show()
+#plt.show()
 plt.close()
 
 FWHM = []
-FWHM_map = [[None for i in range(32)] for j in range(32)]
+FWHM_map = [[0 for i in range(32)] for j in range(32)]
 for x in trigX:
 	for y in trigY:
 		if(channelMap[x][y]):
@@ -84,7 +84,7 @@ plt.xlabel('FWHM (channels)')
 plt.title(detector + ' ' + test + ' FWHM Histogram ' + '(' + etc + ')')
 plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist.eps')
-plt.show()
+#plt.show()
 plt.close()
 
 plt.figure()
