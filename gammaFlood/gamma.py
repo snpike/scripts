@@ -105,8 +105,8 @@ fit_channels = np.arange(centroid-200, centroid + 200)
 g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
 fit_g = fitting.LevMarLSQFitter()
 g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
-print(np.diag(g.fit_info['param_cov']))
-sigma_err = np.diag(g.fit_info['param_cov'])[1]
+print(np.diag(fit_g.fit_info['param_cov']))
+sigma_err = np.diag(fit_g.fit_info['param_cov'])[1]
 plt.text(maxchannel*3/5, spectrum[0][centroid]*4/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + r'$\pm$' + str(int(2*np.sqrt(2*np.log(2))*sigma_err)), fontsize=16)
 
 plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}Am$')
