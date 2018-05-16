@@ -65,7 +65,7 @@ FWHM_map = [[np.nan for i in range(32)] for j in range(32)]
 for x in range(32):
 	for y in range(32):
 		if(channelMap[x][y]):
-			tempSpec = np.histogram(channelMap[x][y], bins=bins, range = (maxchannel*(-2),maxchannel*2))
+			tempSpec = np.histogram(channelMap[x][y], bins=bins, range = (0-maxchannel,maxchannel))
 			centroid = np.argmax(tempSpec[0])
 			fit_channels = np.arange(0, centroid + 250)
 			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
@@ -83,7 +83,7 @@ for x in range(32):
 			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(x) + 'y' + str(y) + '_spec_corr.eps')
 			plt.close()
 
-FWHM_hist = np.histogram(FWHM, bins = 50, range = (0, 600))
+FWHM_hist = np.histogram(FWHM, bins = 50, range = (0, 300))
 plt.figure()
 plt.step(FWHM_hist[1][:-1], FWHM_hist[0], where='mid')
 plt.ylabel('Pixels')
@@ -123,7 +123,7 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 #plt.show()
 plt.close()
 
-spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, maxchannel*2))
+spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0-maxchannel, maxchannel))
 plt.plot(spectrum[1][:-1], spectrum[0])
 plt.xlabel('Channel')
 plt.ylabel('Counts')
