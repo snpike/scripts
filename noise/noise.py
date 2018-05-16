@@ -63,9 +63,10 @@ for x in trigX:
 			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
-			FWHM.append(2*np.sqrt(2*np.log(2))*g.stddev)
-			if 2*np.sqrt(2*np.log(2))*g.stddev < 1000:
-				FWHM_map[x][y] = 2*np.sqrt(2*np.log(2))*g.stddev
+			#FWHM.append(2*np.sqrt(2*np.log(2))*g.stddev)
+			FWHM.append(g.fwhm)
+			if g.fwhm < 1000:
+				FWHM_map[x][y] = g.fwhm
 			plt.step(tempSpec[1][:-1], tempSpec[0], where='mid')
 			plt.plot(fit_channels, g(fit_channels))
 			plt.ylabel('Counts')
@@ -74,7 +75,7 @@ for x in trigX:
 			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(x) + 'y' + str(y) + '_spec.eps')
 			plt.close()
 
-FWHM_hist = np.histogram(FWHM, bins = 20, range = (0, 500))
+FWHM_hist = np.histogram(FWHM, bins = 20, range = (0, 1000))
 plt.figure()
 plt.step(FWHM_hist[1][:-1], FWHM_hist[0], where='mid')
 plt.ylabel('Pixels')
