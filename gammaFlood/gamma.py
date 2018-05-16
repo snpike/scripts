@@ -106,7 +106,9 @@ g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stdde
 fit_g = fitting.LevMarLSQFitter()
 g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
 print(np.diag(fit_g.fit_info['param_cov']))
+print(g.fwhm)
 sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
+print(str(2*np.sqrt(2*np.log(2))*sigma_err))
 #plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + r'$\pm$' + str(int(2*np.sqrt(2*np.log(2))*sigma_err)), fontsize=16)
 plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + ' channels', fontsize=14)
 
