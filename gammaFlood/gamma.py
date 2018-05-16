@@ -110,7 +110,7 @@ print(g.fwhm)
 sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
 print(str(2*np.sqrt(2*np.log(2))*sigma_err))
 #plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + r'$\pm$' + str(int(2*np.sqrt(2*np.log(2))*sigma_err)), fontsize=16)
-plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + ' channels', fontsize=14)
+plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(g.fwhm, 0))) + ' channels', fontsize=14)
 
 plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}{\rm Am}$')
 plt.plot(fit_channels, g(fit_channels), label = 'Gaussian fit')
