@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from astropy.modeling import models, fitting
 
+Am_line = 59.5412
+
 filepath = input('Please enter the filepath to the gamma flood data: ')
 
 slash = 0
@@ -106,11 +108,16 @@ g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stdde
 fit_g = fitting.LevMarLSQFitter()
 g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
 print(np.diag(fit_g.fit_info['param_cov']))
-print(g.fwhm)
+print(Am_line * g.fwhm/g.mean)
 sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
-print(str(2*np.sqrt(2*np.log(2))*sigma_err))
+fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
+mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
+frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
+print(frac_err)
+print(frac_err * Am_line)
 #plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + r'$\pm$' + str(int(2*np.sqrt(2*np.log(2))*sigma_err)), fontsize=16)
-plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(g.fwhm, 0))) + ' channels', fontsize=14)
+plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{\frac{FWHM}{\mu}}=$' + str(int(round(100*g.fwhm/g.mean, 0))) + '%', fontsize=14)
+plt.text(maxchannel*3/5, spectrum[0][centroid]*2/5, r'$\mathrm{FWHM}=$' + str(int(round(Am_line * 1000 * g.fwhm/g.mean, 0))) + ' eV', fontsize=14)
 
 plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}{\rm Am}$')
 plt.plot(fit_channels, g(fit_channels), label = 'Gaussian fit')
