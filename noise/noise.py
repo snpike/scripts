@@ -85,6 +85,8 @@ plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist.eps')
 #plt.show()
 plt.close()
+print(np.mean(FWHM))
+print(np.std(FWHM))
 
 plt.figure()
 current_cmap = mpl.cm.get_cmap()
