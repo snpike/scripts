@@ -83,7 +83,7 @@ for x in range(32):
 			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(x) + 'y' + str(y) + '_spec_corr.eps')
 			plt.close()
 
-FWHM_hist = np.histogram(FWHM, bins = 20, range = (0, 600))
+FWHM_hist = np.histogram(FWHM, bins = 50, range = (0, 600))
 plt.figure()
 plt.step(FWHM_hist[1][:-1], FWHM_hist[0], where='mid')
 plt.ylabel('Pixels')
