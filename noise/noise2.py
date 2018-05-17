@@ -66,12 +66,11 @@ for x in range(32):
 	for y in range(32):
 		if(channelMap[x][y]):
 			tempSpec = np.histogram(channelMap[x][y], bins=bins, range = (0-maxchannel,maxchannel))
-			centroid = np.argmax(tempSpec[0])
-			fit_channels = np.arange(0, centroid + 250)
-			g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
+			#centroid = np.argmax(tempSpec[0])
+			fit_channels = tempSpec[1][:-1]
+			g_init = models.Gaussian1D(amplitude=np.max(tempSpec[0]), mean=0, stddev = 75)
 			fit_g = fitting.LevMarLSQFitter()
-			g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
-			#FWHM.append(2*np.sqrt(2*np.log(2))*g.stddev)
+			g = fit_g(g_init, fit_channels, tempSpec[0])
 			FWHM.append(g.fwhm)
 			if g.fwhm < 1000:
 				FWHM_map[x][y] = g.fwhm
@@ -109,11 +108,11 @@ plt.show()
 plt.close()
 
 
-noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.arange(0,np.max(np.array(countMap).flatten()) + 3))
+noiseHist = np.histogram(np.array(countMap).flatten(), bins = 50)
 plt.figure()
 plt.step(noiseHist[1][:-1], noiseHist[0], where='mid')
-plt.xlim(0.5, noiseHist[1][-1])
-plt.ylim(-1,np.max(noiseHist[0][1:]) + 1)
+# plt.xlim(0.5, noiseHist[1][-1])
+# plt.ylim(-1,np.max(noiseHist[0][1:]) + 1)
 plt.ylabel('Pixels')
 plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
