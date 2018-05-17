@@ -104,7 +104,7 @@ c.set_label('FWHM (channels)')
 #plt.title(detector + ' ' + test + ' FWHM Map ' + '(' + etc + ')')
 plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap_corr.eps')
-plt.show()
+#plt.show()
 plt.close()
 
 
