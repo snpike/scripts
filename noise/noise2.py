@@ -37,7 +37,7 @@ channelMap = [[[] for i in range(33)] for j in range(33)]
 for i in np.arange(START, END):
 	if data['UP'][i]:
 		for j in range(9):
-			channelMap[data['RAWX'][i] + (j%3) - 1][data['RAWY'][i] - (j<3) + (j>5)].append(data['PH_RAW'][i][j])
+			channelMap[data['RAWY'][i] - (j<3) + (j>5)][data['RAWX'][i] + (j%3) - 1].append(data['PH_RAW'][i][j])
 
 '''		channelMap[data['RAWX'][i]-1][data['RAWY'][i]-1].append(data['PH_RAW'][i][0])
 		channelMap[data['RAWX'][i]+0][data['RAWY'][i]-1].append(data['PH_RAW'][i][1])
@@ -49,7 +49,7 @@ for i in np.arange(START, END):
 		channelMap[data['RAWX'][i]+0][data['RAWY'][i]+1].append(data['PH_RAW'][i][7])
 		channelMap[data['RAWX'][i]+1][data['RAWY'][i]+1].append(data['PH_RAW'][i][8])'''
 
-countMap = [[len(channelMap[i][j]) for i in range(32)] for j in range(32)]
+countMap = [[len(channelMap[j][i]) for i in range(32)] for j in range(32)]
 plt.figure()
 plt.imshow(countMap)
 c = plt.colorbar()
