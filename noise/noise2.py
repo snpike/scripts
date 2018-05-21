@@ -1,10 +1,11 @@
 from astropy.io import fits
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-import numpy as np
+f
 from astropy.modeling import models, fitting
 
 filepath = input('Please enter the filepath to the noise data: ')
+pos = int(input('What is the position of the detector? '))
 
 slash = 0
 i = 0
@@ -23,7 +24,7 @@ file = fits.open(filepath)
 
 data = file[1].data
 
-mask = data['TEMP'] > -20
+mask = np.multiply((data['DET_ID'] == pos), (data['TEMP'] > -20))
 
 START = np.argmax(mask)
 END = len(mask) - np.argmax(mask[::-1])
