@@ -7,7 +7,7 @@ filepath = input('Please enter the directory with the leakage data: ').strip()
 if filepath[-1]=='/':
 	filepath = filepath[:-1]
 detector = input('Please enter the detector ID: ').strip()
-pos = int(input('What is the position of the detector? ').strip())
+pos = int(input('Please enter the position of the detector: ').strip())
 
 START = -1024 * (1 + pos)
 
@@ -109,6 +109,9 @@ plt.figure()
 for T in Tlist:
 	plt.plot(CPlist, Tlist[T], label = r'$T=$' + T)
 plt.legend()
+plt.xlabel('Bias Voltage (V)')
+plt.ylabel('Mean Leakage Current (pA)')
+plt.tight_layout()
 plt.show()
 
 
