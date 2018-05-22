@@ -24,7 +24,7 @@ Tlist  = ['-5C', '5C', '15C', '23C']
 CPlist = ['100V', '200V', '300V', '400V', '500V', '600V']
 Nlist  = ['300V', '400V', '500V', '600V']
 
-outfile = open(filepath + '/leakage.out', 'w')
+outfile = open('/disk/lif2/spike/detectorData/' + detector + '/leakage.out', 'w')
 
 for T in Tlist:
 	outfile.write('T = ' + str(T))
