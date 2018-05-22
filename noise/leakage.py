@@ -35,12 +35,12 @@ for T in Tlist:
 	ADC_0V_N = np.zeros((32,32))
 	
 	for i in range(1024):
-		CPx = CPdata.field('col4')[START + i]
-		CPy = CPdata.field('col5')[START + i]
-		Nx = Ndata.field('col4')[START + i]
-		Ny = Ndata.field('col5')[START + i]
-		ADC_0V_CP[CPx, CPy] = CPdata.field('col6')[START + i]
-		ADC_0V_N[Nx, Ny] = Ndata.field('col6')[START + i]
+		CPcol = CPdata.field('col4')[START + i]
+		CProw = CPdata.field('col5')[START + i]
+		Ncol = Ndata.field('col4')[START + i]
+		Nrow = Ndata.field('col5')[START + i]
+		ADC_0V_CP[CProw, CPcol] = CPdata.field('col6')[START + i]
+		ADC_0V_N[Nrow, Ncol] = Ndata.field('col6')[START + i]
 	
 	for HV in CPlist:
 		print('HV = ' + str(HV))
@@ -49,9 +49,9 @@ for T in Tlist:
 		CPmap = np.zeros((32,32))
 
 		for i in range(1024):
-			CPx = CPdata.field('col4')[START + i]
-			CPy = CPdata.field('col5')[START + i]
-			CPmap[CPx, CPy] = (CPdata.field('col6')[START + i] - ADC_0V_CP[CPx, CPy]) * (1.7e3)/3000
+			CPcol = CPdata.field('col4')[START + i]
+			CProw = CPdata.field('col5')[START + i]
+			CPmap[CProw, CPcol] = (CPdata.field('col6')[START + i] - ADC_0V_CP[CProw, CPcol]) * (1.7e3)/3000
 
 		plt.figure()
 		plt.imshow(CPmap)
@@ -79,9 +79,9 @@ for T in Tlist:
 			Nmap = np.zeros((32,32))
 
 			for i in range(1024):
-				Nx = Ndata.field('col4')[START + i]
-				Ny = Ndata.field('col5')[START + i]
-				Nmap[Nx, Ny] = (Ndata.field('col6')[START + i] - ADC_0V_N[Nx, Ny]) * (1.7e3)/150
+				Ncol = Ndata.field('col4')[START + i]
+				Nrow = Ndata.field('col5')[START + i]
+				Nmap[Nrow, Ncol] = (Ndata.field('col6')[START + i] - ADC_0V_N[Nrow, Ncol]) * (1.7e3)/150
 
 			plt.figure()
 			plt.imshow(Nmap)
