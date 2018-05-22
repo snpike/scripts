@@ -20,9 +20,9 @@ for char in filepath:
 
 filename = filepath[slash + 1:]
 
-Tlist  = ['-5C', '5C', '15C', '23C']
-CPlist = ['100V', '200V', '300V', '400V', '500V', '600V']
-Nlist  = ['300V', '400V', '500V', '600V']
+Tlist  = {'-5C': [], '5C': [], '15C': [], '23C': []}
+CPlist = [100, 200, 300, 400, 500, 600]
+Nlist  = [300, 400, 500, 600]
 
 outfile = open('/disk/lif2/spike/detectorData/' + detector + '/leakage.out', 'w')
 
@@ -43,9 +43,9 @@ for T in Tlist:
 		ADC_0V_N[Nrow, Ncol] = Ndata.field('col6')[START + i]
 	
 	for HV in CPlist:
-		outfile.write('HV = ' + str(HV) + '\n')
+		outfile.write('HV = ' + str(HV) + 'V\n')
 		outfile.write('CP mode' + '\n')
-		CPdata = asciio.read(filepath + '/' + filename + '_' + T + '.C' + HV + '.txt')
+		CPdata = asciio.read(filepath + '/' + filename + '_' + T + '.C' + str(HV) + 'V.txt')
 		CPmap = np.zeros((32,32))
 
 		for i in range(1024):
@@ -58,7 +58,7 @@ for T in Tlist:
 		c = plt.colorbar()
 		c.set_label('Leakage Current (pA)')
 		plt.tight_layout()
-		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + HV + '.map.eps')
+		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.map.eps')
 		plt.close()
 
 		plt.figure()
@@ -66,16 +66,17 @@ for T in Tlist:
 		plt.ylabel('Pixels')
 		plt.xlabel('Leakage Current (pA)')
 		plt.tight_layout()
-		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + HV + '.hist.eps')
+		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.hist.eps')
 		plt.close()
 
 		outfile.write('Mean leakage current: ' + str(np.mean(CPmap)) + '\n')
 		outfile.write('leakage current standard deviation: ' + str(np.std(CPmap)) + '\n')
+		Tlist[T].append(np.mean(CPmap))
 
 
 		if HV in Nlist:
 			outfile.write('N mode' + '\n')
-			Ndata = asciio.read(filepath + '/' + filename + '_' + T  + '.N' + HV + '.txt')
+			Ndata = asciio.read(filepath + '/' + filename + '_' + T  + '.N' + str(HV) + 'V.txt')
 			Nmap = np.zeros((32,32))
 
 			for i in range(1024):
@@ -88,7 +89,7 @@ for T in Tlist:
 			c = plt.colorbar()
 			c.set_label('Leakage Current (pA)')
 			plt.tight_layout()
-			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + HV + '.map.eps')
+			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.map.eps')
 			plt.close()
 
 			plt.figure()
@@ -96,11 +97,18 @@ for T in Tlist:
 			plt.ylabel('Pixels')
 			plt.xlabel('Leakage Current (pA)')
 			plt.tight_layout()
-			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + HV + '.hist.eps')
+			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.hist.eps')
 			plt.close()
 
 			outfile.write('Mean leakage current: ' + str(np.mean(Nmap)) + '\n')
 			outfile.write('leakage current standard deviation: ' + str(np.std(Nmap)) + '\n')
 
 outfile.close()
+
+plt.figure()
+for T in Tlist:
+	plt.plot(CPlist, Tlist[T], label = r'$T=$' + T)
+plt.legend()
+plt.show()
+
 
