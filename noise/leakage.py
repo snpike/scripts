@@ -112,6 +112,7 @@ plt.legend()
 plt.xlabel('Bias Voltage (V)')
 plt.ylabel('Mean Leakage Current (pA)')
 plt.tight_layout()
-plt.show()
+plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '.HV_T_plot.eps')
+#plt.show()
 
 
