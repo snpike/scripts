@@ -27,7 +27,7 @@ Nlist  = ['300V', '400V', '500V', '600V']
 outfile = open('/disk/lif2/spike/detectorData/' + detector + '/leakage.out', 'w')
 
 for T in Tlist:
-	outfile.write('T = ' + str(T))
+	outfile.write('T = ' + str(T) + '\n')
 	# First construct the maps of ADC_0V
 	CPdata = asciio.read(filepath + '/' + filename + '_' + T + '.C0V.txt')
 	Ndata = asciio.read(filepath + '/' + filename + '_' + T + '.N0V.txt')
@@ -43,8 +43,8 @@ for T in Tlist:
 		ADC_0V_N[Nrow, Ncol] = Ndata.field('col6')[START + i]
 	
 	for HV in CPlist:
-		outfile.write('HV = ' + str(HV))
-		outfile.write('CP mode')
+		outfile.write('HV = ' + str(HV) + '\n')
+		outfile.write('CP mode' + '\n')
 		CPdata = asciio.read(filepath + '/' + filename + '_' + T + '.C' + HV + '.txt')
 		CPmap = np.zeros((32,32))
 
@@ -69,12 +69,12 @@ for T in Tlist:
 		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + HV + '.hist.eps')
 		plt.close()
 
-		outfile.write('Mean leakage current: ' + str(np.mean(CPmap)))
-		outfile.write('leakage current standard deviation: ' + str(np.std(CPmap)))
+		outfile.write('Mean leakage current: ' + str(np.mean(CPmap)) + '\n')
+		outfile.write('leakage current standard deviation: ' + str(np.std(CPmap)) + '\n')
 
 
 		if HV in Nlist:
-			outfile.write('N mode')
+			outfile.write('N mode' + '\n')
 			Ndata = asciio.read(filepath + '/' + filename + '_' + T  + '.N' + HV + '.txt')
 			Nmap = np.zeros((32,32))
 
@@ -99,8 +99,8 @@ for T in Tlist:
 			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + HV + '.hist.eps')
 			plt.close()
 
-			outfile.write('Mean leakage current: ' + str(np.mean(Nmap)))
-			outfile.write('leakage current standard deviation: ' + str(np.std(Nmap)))
+			outfile.write('Mean leakage current: ' + str(np.mean(Nmap)) + '\n')
+			outfile.write('leakage current standard deviation: ' + str(np.std(Nmap)) + '\n')
 
 outfile.close()
 
