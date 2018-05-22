@@ -5,7 +5,6 @@ import numpy as np
 from astropy.modeling import models, fitting
 
 filepath = input('Please enter the filepath to the noise data: ')
-pos = int(input('What is the position of the detector? '))
 
 slash = 0
 i = 0
@@ -16,6 +15,7 @@ for char in filepath:
 
 filename = filepath[slash + 1:]
 detector = input('Please enter the detector ID: ')
+pos = int(input('What is the position of the detector? '))
 etc = input('Please enter any other important information (temperature, voltage, etc.): ')
 
 test = 'noise'
@@ -38,7 +38,7 @@ channelMap = [[[] for i in range(33)] for j in range(33)]
 for i in np.arange(START, END):
 	if data['UP'][i]:
 		for j in range(9):
-			channelMap[data['RAWY'][i] - (j<3) + (j>5)][data['RAWX'][i] + (j%3) - 1].append(data['PH_RAW'][i][j])
+			channelMap[data['RAWY'][i] + (j//3) - 1][data['RAWX'][i] + (j%3) - 1].append(data['PH_RAW'][i][j])
 
 '''		channelMap[data['RAWX'][i]-1][data['RAWY'][i]-1].append(data['PH_RAW'][i][0])
 		channelMap[data['RAWX'][i]+0][data['RAWY'][i]-1].append(data['PH_RAW'][i][1])
@@ -83,13 +83,13 @@ for x in range(32):
 			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(x) + 'y' + str(y) + '_spec_corr.eps')
 			plt.close()
 
-FWHM_hist = np.histogram(FWHM, bins = 50, range = (0, 300))
+#FWHM_hist = np.histogram(FWHM, bins = 50, range = (0, 300))
 plt.figure()
-plt.step(FWHM_hist[1][:-1], FWHM_hist[0], where='mid')
+plt.hist(FWHM, bins = 50, range = (0, 300), histtype='step')
 plt.ylabel('Pixels')
 plt.xlabel('FWHM (channels)')
-plt.xlim((0, 300))
-plt.ylim(ymin=0)
+#plt.xlim((0, 300))
+#plt.ylim(ymin=0)
 #plt.title(detector + ' ' + test + ' FWHM Histogram ' + '(' + etc + ')')
 plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_corr.eps')
@@ -111,11 +111,11 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.close()
 
 
-noiseHist = np.histogram(np.array(countMap).flatten(), bins = 50)
+#noiseHist = np.histogram(np.array(countMap).flatten(), bins = 50)
 plt.figure()
-plt.step(noiseHist[1][:-1], noiseHist[0], where='mid')
-plt.xlim(noiseHist[1][0], noiseHist[1][-1])
-plt.ylim(ymin=0)
+plt.hist(np.array(countMap), bins = 50, histtype = 'step')
+# plt.xlim(noiseHist[1][0], noiseHist[1][-1])
+# plt.ylim(ymin=0)
 plt.ylabel('Pixels')
 plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
@@ -124,7 +124,7 @@ plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_corr.eps')
 #plt.show()
 plt.close()
-
+'''
 spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0-maxchannel, maxchannel))
 plt.plot(spectrum[1][:-1], spectrum[0])
 plt.xlabel('Channel')
@@ -133,4 +133,4 @@ plt.ylabel('Counts')
 plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'spec_corr.eps')
 #plt.show()
-plt.close()
+plt.close()'''
