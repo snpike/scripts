@@ -65,7 +65,7 @@ plt.close()
 
 stimcountMap = [[len(stimMap[j][i]) for i in range(32)] for j in range(32)]
 plt.figure()
-plt.imshow(countMap)
+plt.imshow(stimcountMap)
 c = plt.colorbar()
 c.set_label('Counts')
 #plt.title(detector + ' ' + test + ' Pixel Map ' + '(' + etc + ')')
