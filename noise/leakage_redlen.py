@@ -20,9 +20,9 @@ for char in filepath:
 
 filename = filepath[slash + 1:]
 
-Tlist  = {'23C': []}
-CPlist = [100, 200, 300]
-Nlist  = [300, 400]
+Tlist  = {'-5C': [], '5C': [], '15C': [], '23C': []}
+CPlist = [100, 200, 300, 400, 500, 600]
+Nlist  = [300, 400, 500, 600]
 
 outfile = open('/disk/lif2/spike/detectorData/' + detector + '/leakage.out', 'w')
 
@@ -104,7 +104,7 @@ for T in Tlist:
 			outfile.write('leakage current standard deviation: ' + str(np.std(Nmap)) + '\n')
 
 outfile.close()
-'''
+
 plt.figure()
 for T in Tlist:
 	plt.plot(CPlist, Tlist[T], label = r'$T=$' + T)
@@ -113,6 +113,6 @@ plt.xlabel('Bias Voltage (V)')
 plt.ylabel('Mean Leakage Current (pA)')
 plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '.HV_T_plot.eps')
-#plt.show()'''
+#plt.show()
 
 

@@ -33,14 +33,12 @@ END = len(mask) - np.argmax(mask[::-1])
 maxchannel = 1000
 bins = np.arange(0-maxchannel,maxchannel)
 
-stimMap = [[[] for i in range(32)] for j in range(32)]
+# There's no STIM data
 channelMap = [[[] for i in range(33)] for j in range(33)]
 for i in np.arange(START, END):
 	if data['UP'][i]:
 		for j in range(9):
 			channelMap[data['RAWY'][i] + (j//3) - 1][data['RAWX'][i] + (j%3) - 1].append(data['PH_RAW'][i][j])
-	elif data['STIM'][i]:
-		stimMap[data['RAWY'][i]][data['RAWX'][i]].append(data['PH'][i])
 
 '''		channelMap[data['RAWX'][i]-1][data['RAWY'][i]-1].append(data['PH_RAW'][i][0])
 		channelMap[data['RAWX'][i]+0][data['RAWY'][i]-1].append(data['PH_RAW'][i][1])
@@ -61,17 +59,6 @@ c.set_label('Counts')
 plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixmap_corr.eps')
 #plt.show()
-plt.close()
-
-stimcountMap = [[len(stimMap[j][i]) for i in range(32)] for j in range(32)]
-plt.figure()
-plt.imshow(stimcountMap)
-c = plt.colorbar()
-c.set_label('Counts')
-#plt.title(detector + ' ' + test + ' Pixel Map ' + '(' + etc + ')')
-plt.tight_layout()
-#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixmap_corr.eps')
-plt.show()
 plt.close()
 
 FWHM = []
