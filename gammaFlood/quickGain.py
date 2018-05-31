@@ -71,7 +71,10 @@ for x in range(32):
 
 
 plt.figure()
-plt.imshow(gain)
+masked = np.ma.masked_values(gain, 0.0)
+current_cmap = mpl.cm.get_cmap()
+current_cmap.set_bad(color='gray')
+plt.imshow(masked)
 c = plt.colorbar()
 c.set_label('keV/Channels')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
@@ -81,17 +84,13 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.close()
 
 # interpolate gain for pixels where fit was unsuccessful
-interpgain = []
 newgain = np.zeros((34,34))
 newgain[1:33, 1:33] = gain
-empty = np.transpose(np.nonzero(gain == 0))
-print(empty)
-for i in range(len(empty)):
-	temp = newgain[empty[i][0]:empty[i][0]+3, empty[i][1]:empty[i][1]+3]
-	interpgain.append(np.sum(temp)/np.count_nonzero(temp))
-
-for i in range(len(empty)):
-	gain[empty[i]] = interpgain[i]
+empty = np.transpose(np.nonzero(gain == 0.0))
+#print(empty)
+for x in empty:
+	temp = newgain[x[0]:x[0]+3, x[1]:x[1]+3]
+	gain[x] = np.sum(temp)/np.count_nonzero(temp)
 
 plt.figure()
 plt.imshow(gain)

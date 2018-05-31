@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from astropy.modeling import models, fitting
 import os.path
+import pickle
 
 Am_line = 59.54
 
@@ -21,6 +22,9 @@ source = input('Please enter the source: ').strip()
 etc = input('Please enter any other important information (temperature, voltage, etc.): ')
 
 gainBool = os.path.exists('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt')
+
+gain = np.zeros((34, 34))
+gain[1:33][1:33] = pickle.load(open('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt', 'rb'))
 
 file = fits.open(filepath)
 
@@ -48,7 +52,10 @@ for i in np.arange(START, END):
         countMap[data['RAWX'][i]][data['RAWY'][i]] += 1'''
 
 plt.figure()
-plt.imshow(countMap)
+masked = np.ma.masked_values(countMap, 0.0)
+current_cmap = mpl.cm.get_cmap()
+current_cmap.set_bad(color='gray')
+plt.imshow(masked)
 c = plt.colorbar()
 c.set_label('Counts')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
@@ -57,42 +64,8 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 #plt.show()
 plt.close()
 
-'''
-trigSum = 0
-
-FWHM = []
-for x in trigX:
-    for y in trigY:
-        if(channelMap[x][y]):
-            trigSum += 1
-            #print(x)
-            #print(y)
-            tempSpec = np.histogram(channelMap[x][y], bins=int(np.ceil(np.max(channelMap[x][y]))))
-            centroid = np.argmax(tempSpec[0])
-            fit_channels = np.arange(centroid-100, centroid + 250)
-            g_init = models.Gaussian1D(amplitude=tempSpec[0][centroid], mean=centroid, stddev = 75)
-            fit_g = fitting.LevMarLSQFitter()
-            g = fit_g(g_init, range(len(tempSpec[0])), tempSpec[0])
-            FWHM.append(g.fwhm)
-            #plt.plot(range(len(tempSpec[0])), tempSpec[0])
-            #plt.plot(range(len(tempSpec[0])), g(range(len(tempSpec[0]))))
-            ##plt.show()
-            #plt.close()
-            
-print(trigSum)  
-
-FWHM_hist = np.histogram(FWHM, bins = 20)
 plt.figure()
-plt.plot(range(len(FWHM_hist[0])), FWHM_hist[0])
-#plt.show()
-plt.close()
-'''
-
-noiseHist = np.histogram(np.array(countMap).flatten(), bins = np.arange(0,np.max(np.array(countMap).flatten()) + 3))
-plt.figure()
-plt.step(noiseHist[1][:-1], noiseHist[0], where='mid')
-plt.xlim(0.5, noiseHist[1][-1])
-plt.ylim(-1,np.max(noiseHist[0][1:]) + 1)
+plt.hist(np.array(countMap), bins = 100, range = (0, np.max(countMap) + 1), histtype = 'step')
 plt.ylabel('Pixels')
 plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
