@@ -2,10 +2,11 @@ from astropy.io import fits
 import matplotlib.pyplot as plt
 import numpy as np
 from astropy.modeling import models, fitting
+import os.path
 
-Am_line = 59.5412
+Am_line = 59.54
 
-filepath = input('Please enter the filepath to the gamma flood data: ')
+filepath = input('Please enter the filepath to the gamma flood data: ').strip()
 
 slash = 0
 i = 0
@@ -15,9 +16,11 @@ for char in filepath:
     i += 1
 
 filename = filepath[slash + 1:]
-detector = input('Please enter the detector ID: ')
-source = input('Please enter the source: ')
+detector = input('Please enter the detector ID: ').strip()
+source = input('Please enter the source: ').strip()
 etc = input('Please enter any other important information (temperature, voltage, etc.): ')
+
+gainBool = os.path.exists('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt')
 
 file = fits.open(filepath)
 
