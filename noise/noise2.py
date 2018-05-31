@@ -148,10 +148,7 @@ plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
 #plt.title(detector + ' ' + test + ' Count Histogram ' + '(' + etc + ')')
 plt.tight_layout()
-if gainBool:
-	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_gain.eps')
-else:
-	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_corr.eps')
+plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_corr.eps')
 #plt.show()
 plt.close()
 '''
