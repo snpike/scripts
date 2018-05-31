@@ -84,7 +84,7 @@ plt.close()
 interpgain = []
 newgain = np.zeros((34,34))
 newgain[1:33, 1:33] = gain
-empty = np.nonzero(gain == 0.0)
+empty = np.transpose(np.nonzero(gain == 0))
 print(empty)
 for i in range(len(empty)):
 	temp = newgain[empty[i][0]:empty[i][0]+3, empty[i][1]:empty[i][1]+3]
