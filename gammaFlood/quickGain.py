@@ -69,6 +69,13 @@ for x in range(32):
 		plt.close()
 
 
-pickle.dump('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt')
+pickle.dump(gain, '/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt')
 
-
+plt.figure()
+plt.imshow(gain)
+c = plt.colorbar()
+c.set_label('Counts')
+#plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
+plt.tight_layout()
+plt.show()
+plt.close()
