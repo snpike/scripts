@@ -68,7 +68,8 @@ for x in range(32):
 		plt.tight_layout()		
 		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + '_x' + str(x) + '_y' + str(y) + '_gammaspec.eps')
 		plt.close()
-'''
+
+# interpolate gain for pixels where fit was unsuccessful
 interpgain = []
 newgain = np.zeros((34,34))
 newgain[1:33, 1:33] = gain
@@ -79,7 +80,7 @@ for i in range(len(empty)):
 
 for i in range(len(empty)):
 	gain[empty[i]] = interpgain[i]
-'''
+
 pickle.dump(gain, open('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt', 'wb'))
 
 plt.figure()
