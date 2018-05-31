@@ -80,7 +80,7 @@ for i in range(len(empty)):
 for i in range(len(empty)):
 	gain[empty[i]] = interpgain[i]
 '''
-pickle.dump(gain, '/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt')
+pickle.dump(gain, open('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt', 'w'))
 
 plt.figure()
 plt.imshow(gain)
