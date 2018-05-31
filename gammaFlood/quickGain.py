@@ -44,7 +44,7 @@ for x in range(32):
 
 		channel = data.field('PH')[START:END][np.nonzero(np.multiply((data.field('RAWX')[START:END] == x), (data.field('RAWY')[START:END] == y)))]
 
-		if len(channel):
+		if len(channel)>1000:
 			spectrum = np.histogram(channel, bins=bins, range = (0, maxchannel))
 			centroid = np.argmax(spectrum[0][1000:]) + 1000
 			fit_channels = np.arange(centroid-100, centroid + 200)
@@ -67,15 +67,26 @@ for x in range(32):
 		plt.tight_layout()		
 		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + '_x' + str(x) + '_y' + str(y) + '_gammaspec.eps')
 		plt.close()
+'''
+interpgain = []
+newgain = np.zeros((34,34))
+newgain[1:33, 1:33] = gain
+empty = np.nonzero(gain == 0)
+for i in range(len(empty)):
+	temp = newgain[empty[i][0]:empty[i][0]+3, empty[i][1]:empty[i][1]+3]
+	interpgain.append(np.sum(temp)/np.count_nonzero(temp))
 
-
+for i in range(len(empty)):
+	gain[empty[i]] = interpgain[i]
+'''
 pickle.dump(gain, '/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt')
 
 plt.figure()
 plt.imshow(gain)
 c = plt.colorbar()
-c.set_label('Counts')
+c.set_label('keV/Channels')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
 plt.show()
+plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gainmap.eps')
 plt.close()
