@@ -51,6 +51,7 @@ for i in np.arange(START, END):
     if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < maxchannel) and not data['STIM'][i]:
         countMap[data['RAWX'][i]][data['RAWY'][i]] += 1'''
 
+# Plot some info about counts
 plt.figure()
 masked = np.ma.masked_values(countMap, 0.0)
 current_cmap = mpl.cm.get_cmap()
@@ -74,6 +75,16 @@ plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammahist.eps')
 #plt.show()
 plt.close()
+
+# If there's gain data then correct the spectrum
+energyList = []
+if gainBool:
+    for event in data[START:END]:
+        row = event['RAWY']
+        col = event['RAWX']
+        temp = event['PH_COM'].reshape(3,3)
+        mask = (temp > 0).astype(int)
+        energyList.append(np.sum(np.multiply(np.multiply(mask, temp), gain[row:row + 3, col:col + 3])))
 
 bins = np.arange(1,maxchannel)
 spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, maxchannel))
