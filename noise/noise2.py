@@ -89,10 +89,12 @@ for row in range(32):
 			plt.ylabel('Counts')
 			if gainBool:
 				plt.xlabel('Energy (keV)')
+				plt.tight_layout()
+				plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_gain.eps')
 			else:
 				plt.xlabel('Channel')
-			plt.tight_layout()
-			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_corr.eps')
+				plt.tight_layout()
+				plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_corr.eps')
 			plt.close()
 
 #FWHM_hist = np.histogram(FWHM, bins = 50, range = (0, 300))
@@ -108,7 +110,10 @@ plt.ylabel('Pixels')
 #plt.ylim(ymin=0)
 #plt.title(detector + ' ' + test + ' FWHM Histogram ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_corr.eps')
+if gainBool:
+	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_gain.eps')
+else:
+	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_corr.eps')
 #plt.show()
 plt.close()
 print(np.mean(FWHM))
@@ -125,7 +130,10 @@ else:
 	c.set_label('FWHM (channels)')
 #plt.title(detector + ' ' + test + ' FWHM Map ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap_corr.eps')
+if gainBool:
+	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap_gain.eps')
+else:
+	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap_corr.eps')
 #plt.show()
 plt.close()
 
@@ -140,7 +148,10 @@ plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
 #plt.title(detector + ' ' + test + ' Count Histogram ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_corr.eps')
+if gainBool:
+	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_gain.eps')
+else:
+	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_corr.eps')
 #plt.show()
 plt.close()
 '''
