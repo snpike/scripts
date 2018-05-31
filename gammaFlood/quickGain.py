@@ -35,7 +35,7 @@ END = len(mask) - np.argmax(mask[::-1])
 maxchannel = 10000
 bins = np.arange(1,maxchannel)
 
-gain = np.zeroes((32,32))
+gain = np.zeros((32,32))
 
 for x in range(32):
 	for y in range(32):
