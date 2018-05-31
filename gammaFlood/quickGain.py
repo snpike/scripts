@@ -51,7 +51,7 @@ for x in range(32):
 			g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
-			if len(fit_g.fit_info['param_cov']):
+			if fit_g.fit_info['param_cov'] is not None:
 				sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
 				fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
 				mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
