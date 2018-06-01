@@ -1,5 +1,6 @@
 from astropy.io import fits
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import numpy as np
 from astropy.modeling import models, fitting
 import os.path
