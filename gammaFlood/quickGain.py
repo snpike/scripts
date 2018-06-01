@@ -91,16 +91,18 @@ empty = np.transpose(np.nonzero(gain == 0.0))
 #print(empty)
 for x in empty:
 	temp = newgain[x[0]:x[0]+3, x[1]:x[1]+3]
-	gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
+	if np.count_nonzero(temp):
+		gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
 
 # One more pass for good measure
 newgain = np.zeros((34,34))
 newgain[1:33, 1:33] = gain
 empty = np.transpose(np.nonzero(gain == 0.0))
-print(empty)
+#print(empty)
 for x in empty:
 	temp = newgain[x[0]:x[0]+3, x[1]:x[1]+3]
-	gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
+	if np.count_nonzero(temp):
+		gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
 
 plt.figure()
 plt.imshow(gain)
