@@ -28,7 +28,7 @@ etc = input('Please enter any other important information (temperature, voltage,
 gainBool = os.path.exists(gainpath)
 
 gain = np.zeros((34, 34))
-gain[1:33][1:33] = pickle.load(open(gainpath, 'rb'))
+gain[1:33,1:33] = pickle.load(open(gainpath, 'rb'))
 
 file = fits.open(filepath)
 
@@ -38,9 +38,6 @@ mask = data['TEMP'] > -20
 
 START = np.argmax(mask)
 END = len(mask) - np.argmax(mask[::-1])
-
-trigX = [(3*j) + 1  for j in range(11)]
-trigY = [(3*j) + 1  for j in range(11)]
 
 maxchannel = 10000
 
