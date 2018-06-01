@@ -47,7 +47,7 @@ for x in range(32):
 
 		if len(channel):
 			spectrum = np.histogram(channel, bins=bins, range = (0, maxchannel))
-			centroid = np.argmax(spectrum[0][3000:]) + 3000
+			centroid = np.argmax(spectrum[0][3000:6000]) + 3000
 			fit_channels = np.arange(centroid-100, centroid + 200)
 			g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
 			fit_g = fitting.LevMarLSQFitter()

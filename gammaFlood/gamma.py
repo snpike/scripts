@@ -86,35 +86,69 @@ if gainBool:
         mask = (temp > 0).astype(int)
         energyList.append(np.sum(np.multiply(np.multiply(mask, temp), gain[row:row + 3, col:col + 3])))
 
-bins = np.arange(1,maxchannel)
-spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, maxchannel))
+    bins = np.arange(1,maxchannel)
+    spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, maxchannel))
 
-centroid = np.argmax(spectrum[0][1000:]) + 1000
-fit_channels = np.arange(centroid-100, centroid + 200)
-g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
-fit_g = fitting.LevMarLSQFitter()
-g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
-print(np.diag(fit_g.fit_info['param_cov']))
-sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
-fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
-mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
-frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
-print(g.fwhm/g.mean)
-print(frac_err)
-print(Am_line * g.fwhm/g.mean)
-print(frac_err * Am_line)
-#plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + r'$\pm$' + str(int(2*np.sqrt(2*np.log(2))*sigma_err)), fontsize=16)
-#plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{\frac{FWHM}{\mu}}=$' + str(int(round(100*g.fwhm/g.mean, 0))) + '%', fontsize=14)
-plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(Am_line * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * Am_line*1000))) + ' eV', fontsize=13)
+    centroid = np.argmax(spectrum[0][1000:]) + 1000
+    fit_channels = np.arange(centroid-100, centroid + 200)
+    g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
+    fit_g = fitting.LevMarLSQFitter()
+    g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
+    print(np.diag(fit_g.fit_info['param_cov']))
+    sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
+    fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
+    mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
+    frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
+    print(g.fwhm/g.mean)
+    print(frac_err)
+    print(Am_line * g.fwhm/g.mean)
+    print(frac_err * Am_line)
+    #plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + r'$\pm$' + str(int(2*np.sqrt(2*np.log(2))*sigma_err)), fontsize=16)
+    #plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{\frac{FWHM}{\mu}}=$' + str(int(round(100*g.fwhm/g.mean, 0))) + '%', fontsize=14)
+    plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(Am_line * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * Am_line*1000))) + ' eV', fontsize=13)
 
-plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}{\rm Am}$')
-plt.plot(fit_channels, g(fit_channels), label = 'Gaussian fit')
-plt.xlabel('Channel')
-plt.ylabel('Counts')
-plt.legend()
+    plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}{\rm Am}$')
+    plt.plot(fit_channels, g(fit_channels), label = 'Gaussian fit')
+    plt.xlabel('Channel')
+    plt.ylabel('Counts')
+    plt.legend()
 
-#plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
-plt.tight_layout()
-plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.eps')
-#plt.show()
-plt.close()
+    #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
+    plt.tight_layout()
+    plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.eps')
+    #plt.show()
+    plt.close()
+
+else:
+    bins = np.arange(1,maxchannel)
+    spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, maxchannel))
+
+    centroid = np.argmax(spectrum[0][1000:]) + 1000
+    fit_channels = np.arange(centroid-100, centroid + 200)
+    g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
+    fit_g = fitting.LevMarLSQFitter()
+    g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
+    print(np.diag(fit_g.fit_info['param_cov']))
+    sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
+    fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
+    mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
+    frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
+    print(g.fwhm/g.mean)
+    print(frac_err)
+    print(Am_line * g.fwhm/g.mean)
+    print(frac_err * Am_line)
+    #plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + r'$\pm$' + str(int(2*np.sqrt(2*np.log(2))*sigma_err)), fontsize=16)
+    #plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{\frac{FWHM}{\mu}}=$' + str(int(round(100*g.fwhm/g.mean, 0))) + '%', fontsize=14)
+    plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(Am_line * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * Am_line*1000))) + ' eV', fontsize=13)
+
+    plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}{\rm Am}$')
+    plt.plot(fit_channels, g(fit_channels), label = 'Gaussian fit')
+    plt.xlabel('Channel')
+    plt.ylabel('Counts')
+    plt.legend()
+
+    #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
+    plt.tight_layout()
+    plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.eps')
+    #plt.show()
+    plt.close()
