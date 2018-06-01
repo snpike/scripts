@@ -6,8 +6,12 @@ import os.path
 import pickle
 
 Am_line = 59.54
+# From http://www.nndc.bnl.gov/nudat2/indx_dec.jsp
+lines = {'Am241': [59.54, r'${}^{241}{\rm Am}$'], 'Co57': [122.06, r'${}^{57}{\rm Co}$']}
 
 filepath = input('Please enter the filepath to the gamma flood data: ').strip()
+
+gainpath = input('Please enter the filepath to the gain data: ').strip()
 
 slash = 0
 i = 0
@@ -21,10 +25,10 @@ detector = input('Please enter the detector ID: ').strip()
 source = input('Please enter the source: ').strip()
 etc = input('Please enter any other important information (temperature, voltage, etc.): ')
 
-gainBool = os.path.exists('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt')
+gainBool = os.path.exists(gainpath)
 
 gain = np.zeros((34, 34))
-gain[1:33][1:33] = pickle.load(open('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt', 'rb'))
+gain[1:33][1:33] = pickle.load(open(gainpath, 'rb'))
 
 file = fits.open(filepath)
 
@@ -115,7 +119,7 @@ if gainBool:
 
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
-    plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.eps')
+    plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.eps')
     #plt.show()
     plt.close()
 
