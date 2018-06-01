@@ -89,7 +89,7 @@ if gainBool:
         energyList.append(np.sum(np.multiply(np.multiply(mask, temp), gain[row:row + 3, col:col + 3])))
 
     bins = 10000
-    spectrum = np.histogram(energyList, bins = bins, range= (0, 120))
+    spectrum = np.histogram(energyList, bins = bins, range= (0.01, 120))
 
     centroid = np.argmax(spectrum[0][1000:]) + 1000
     fit_channels = np.arange(centroid-100, centroid + 200)
