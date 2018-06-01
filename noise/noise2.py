@@ -6,9 +6,11 @@ from astropy.modeling import models, fitting
 import os.path
 import pickle
 
-filepath = input('Please enter the filepath to the noise data: ')
+filepath = input('Please enter the filepath to the noise data: ').strip()
 while not os.path.exists(filepath):
-	filepath = input('Please enter the filepath to the noise data: ')
+	filepath = input('Please enter the filepath to the noise data: ').strip()
+
+gainpath = input('Please enter the filepath to the gain data: ').strip()
 
 slash = 0
 i = 0
@@ -18,14 +20,14 @@ for char in filepath:
 	i += 1
 
 filename = filepath[slash + 1:]
-detector = input('Please enter the detector ID: ')
-pos = int(input('What is the position of the detector? '))
+detector = input('Please enter the detector ID: ').strip()
+pos = int(input('What is the position of the detector? ')).strip()
 etc = input('Please enter any other important information (temperature, voltage, etc.): ')
 
-gainBool = os.path.exists('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt')
+gainBool = os.path.exists(gainpath)
 gain = np.ones((32,32))
 if gainBool:
-	gain = pickle.load(open('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt', 'rb'))
+	gain = pickle.load(open(gainpath, 'rb'))
 
 test = 'noise'
 
