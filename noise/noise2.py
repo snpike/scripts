@@ -21,7 +21,7 @@ for char in filepath:
 
 filename = filepath[slash + 1:]
 detector = input('Please enter the detector ID: ').strip()
-pos = int(input('What is the position of the detector? ')).strip()
+pos = int(input('What is the position of the detector? ').strip())
 etc = input('Please enter any other important information (temperature, voltage, etc.): ')
 
 gainBool = os.path.exists(gainpath)
