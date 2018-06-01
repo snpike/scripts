@@ -90,8 +90,8 @@ if gainBool:
         mask = (temp > 0).astype(int)
         energyList.append(np.sum(np.multiply(np.multiply(mask, temp), gain[row:row + 3, col:col + 3])))
 
-    bins = np.arange(1,maxchannel)
-    spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, maxchannel))
+    bins = 10000
+    spectrum = np.histogram(energyList, bins = bins, range= (0, 120))
 
     centroid = np.argmax(spectrum[0][1000:]) + 1000
     fit_channels = np.arange(centroid-100, centroid + 200)
@@ -112,8 +112,8 @@ if gainBool:
     plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(Am_line * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * Am_line*1000))) + ' eV', fontsize=13)
 
     plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}{\rm Am}$')
-    plt.plot(fit_channels, g(fit_channels), label = 'Gaussian fit')
-    plt.xlabel('Channel')
+    plt.plot(spectrum[1][fit_channels], g(fit_channels), label = 'Gaussian fit')
+    plt.xlabel('Energy (keV)')
     plt.ylabel('Counts')
     plt.legend()
 
