@@ -102,15 +102,15 @@ for T in Tlist:
 			plt.close()
 
 			plt.figure()
-			plt.hist(Nmap.flatten(), bins = 50, histtype='step')
+			plt.hist(masked.flatten(), bins = 50, histtype='step')
 			plt.ylabel('Pixels')
 			plt.xlabel('Leakage Current (pA)')
 			plt.tight_layout()
 			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.hist.eps')
 			plt.close()
 
-			outfile.write('Mean leakage current: ' + str(np.mean(Nmap)) + '\n')
-			outfile.write('leakage current standard deviation: ' + str(np.std(Nmap)) + '\n')
+			outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
+			outfile.write('leakage current standard deviation: ' + str(np.std(masked)) + '\n')
 
 outfile.close()
 
