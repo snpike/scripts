@@ -68,7 +68,7 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.close()
 
 plt.figure()
-plt.hist(np.array(countMap), bins = 100, range = (0, np.max(countMap) + 1), histtype = 'step')
+plt.hist(np.flatten(countMap), bins = 100, range = (0, np.max(countMap) + 1), histtype = 'step')
 plt.ylabel('Pixels')
 plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
