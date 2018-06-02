@@ -54,7 +54,7 @@ for T in Tlist:
 			CPmap[CProw, CPcol] = (CPdata.field('col6')[START + i] - ADC_0V_CP[CProw, CPcol]) * (1.7e3)/3000
 
 		plt.figure()
-		masked = np.ma.masked_where(CPmap > 100, CPmap)
+		masked = np.ma.masked_where(CPmap > 75, CPmap)
 		current_cmap = mpl.cm.get_cmap()
 		current_cmap.set_bad(color='gray')
 		plt.imshow(masked)
@@ -76,7 +76,7 @@ for T in Tlist:
 
 		outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
 		outfile.write('leakage current standard deviation: ' + str(np.std(masked)) + '\n')
-		Tlist[T].append(np.mean(masked))
+		Tlist[T].append(np.mean(CPmap))
 
 
 		if HV in Nlist:
@@ -91,7 +91,7 @@ for T in Tlist:
 
 			plt.figure()
 			#plt.imshow(Nmap)
-			masked = np.ma.masked_where(Nmap > 100, Nmap)
+			masked = np.ma.masked_where(Nmap > 75, Nmap)
 			current_cmap = mpl.cm.get_cmap()
 			current_cmap.set_bad(color='gray')
 			plt.imshow(masked)
