@@ -54,7 +54,11 @@ for T in Tlist:
 			CPmap[CProw, CPcol] = (CPdata.field('col6')[START + i] - ADC_0V_CP[CProw, CPcol]) * (1.7e3)/3000
 
 		plt.figure()
-		plt.imshow(CPmap)
+		masked = np.ma.masked_where(CPmap > 500, CPmap)
+		current_cmap = mpl.cm.get_cmap()
+		current_cmap.set_bad(color='gray')
+		plt.imshow(masked)
+		#plt.imshow(CPmap)
 		c = plt.colorbar()
 		c.set_label('Leakage Current (pA)')
 		plt.tight_layout()
@@ -62,16 +66,17 @@ for T in Tlist:
 		plt.close()
 
 		plt.figure()
-		plt.hist(CPmap.flatten(), bins = 50, histtype='step')
+		#plt.hist(CPmap.flatten(), bins = 50, histtype='step')
+		plt.hist(masked.flatten(), bins = 50, histtype='step')
 		plt.ylabel('Pixels')
 		plt.xlabel('Leakage Current (pA)')
 		plt.tight_layout()
 		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.hist.eps')
 		plt.close()
 
-		outfile.write('Mean leakage current: ' + str(np.mean(CPmap)) + '\n')
-		outfile.write('leakage current standard deviation: ' + str(np.std(CPmap)) + '\n')
-		Tlist[T].append(np.mean(CPmap))
+		outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
+		outfile.write('leakage current standard deviation: ' + str(np.std(masked)) + '\n')
+		Tlist[T].append(np.mean(masked))
 
 
 		if HV in Nlist:
