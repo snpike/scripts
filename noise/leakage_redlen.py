@@ -90,7 +90,11 @@ for T in Tlist:
 				Nmap[Nrow, Ncol] = (Ndata.field('col6')[START + i] - ADC_0V_N[Nrow, Ncol]) * (1.7e3)/150
 
 			plt.figure()
-			plt.imshow(Nmap)
+			#plt.imshow(Nmap)
+			masked = np.ma.masked_where(Nmap > 750, Nmap)
+			current_cmap = mpl.cm.get_cmap()
+			current_cmap.set_bad(color='gray')
+			plt.imshow(masked)
 			c = plt.colorbar()
 			c.set_label('Leakage Current (pA)')
 			plt.tight_layout()
