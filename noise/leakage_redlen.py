@@ -54,7 +54,7 @@ for T in Tlist:
 			CPmap[CProw, CPcol] = (CPdata.field('col6')[START + i] - ADC_0V_CP[CProw, CPcol]) * (1.7e3)/3000
 
 		plt.figure()
-		masked = np.ma.masked_where(CPmap > 500, CPmap)
+		masked = np.ma.masked_where(CPmap > 100, CPmap)
 		current_cmap = mpl.cm.get_cmap()
 		current_cmap.set_bad(color='gray')
 		plt.imshow(masked)
@@ -91,7 +91,7 @@ for T in Tlist:
 
 			plt.figure()
 			#plt.imshow(Nmap)
-			masked = np.ma.masked_where(Nmap > 750, Nmap)
+			masked = np.ma.masked_where(Nmap > 100, Nmap)
 			current_cmap = mpl.cm.get_cmap()
 			current_cmap.set_bad(color='gray')
 			plt.imshow(masked)
