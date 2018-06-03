@@ -2,6 +2,12 @@ import astropy.io.ascii as asciio
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
+import seaborn as sns
+from matplotlib.gridspec import GridSpec
+
+sns.set_context('talk')
+sns.set_style("ticks")
+sns.set_palette("colorblind")
 
 filepath = input('Please enter the directory with the leakage data: ').strip()
 if filepath[-1]=='/':
@@ -20,7 +26,6 @@ for char in filepath:
 
 filename = filepath[slash + 1:]
 
-Tlist  = {'23C': []}
 CPlist = [100, 200, 300]
 Nlist  = [300, 400]
 
@@ -54,7 +59,11 @@ for T in Tlist:
 			CPmap[CProw, CPcol] = (CPdata.field('col6')[START + i] - ADC_0V_CP[CProw, CPcol]) * (1.7e3)/3000
 
 		plt.figure()
-		plt.imshow(CPmap)
+		masked = np.ma.masked_where(CPmap > 75, CPmap)
+		current_cmap = mpl.cm.get_cmap()
+		current_cmap.set_bad(color='gray')
+		plt.imshow(masked)
+		#plt.imshow(CPmap)
 		c = plt.colorbar()
 		c.set_label('Leakage Current (pA)')
 		plt.tight_layout()
@@ -62,16 +71,16 @@ for T in Tlist:
 		plt.close()
 
 		plt.figure()
-		plt.hist(CPmap.flatten(), bins = 50, histtype='step')
+		#plt.hist(CPmap.flatten(), bins = 50, histtype='step')
+		plt.hist(masked.flatten(), bins = 50, histtype='step')
 		plt.ylabel('Pixels')
 		plt.xlabel('Leakage Current (pA)')
 		plt.tight_layout()
 		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.hist.eps')
 		plt.close()
 
-		outfile.write('Mean leakage current: ' + str(np.mean(CPmap)) + '\n')
-		outfile.write('leakage current standard deviation: ' + str(np.std(CPmap)) + '\n')
-		Tlist[T].append(np.mean(CPmap))
+		outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
+		outfile.write('leakage current standard deviation: ' + str(np.std(masked)) + '\n')
 
 
 		if HV in Nlist:
@@ -85,7 +94,11 @@ for T in Tlist:
 				Nmap[Nrow, Ncol] = (Ndata.field('col6')[START + i] - ADC_0V_N[Nrow, Ncol]) * (1.7e3)/150
 
 			plt.figure()
-			plt.imshow(Nmap)
+			#plt.imshow(Nmap)
+			masked = np.ma.masked_where(Nmap > 75, Nmap)
+			current_cmap = mpl.cm.get_cmap()
+			current_cmap.set_bad(color='gray')
+			plt.imshow(masked)
 			c = plt.colorbar()
 			c.set_label('Leakage Current (pA)')
 			plt.tight_layout()
@@ -93,26 +106,16 @@ for T in Tlist:
 			plt.close()
 
 			plt.figure()
-			plt.hist(Nmap.flatten(), bins = 50, histtype='step')
+			plt.hist(masked.flatten(), bins = 50, histtype='step')
 			plt.ylabel('Pixels')
 			plt.xlabel('Leakage Current (pA)')
 			plt.tight_layout()
 			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.hist.eps')
 			plt.close()
 
-			outfile.write('Mean leakage current: ' + str(np.mean(Nmap)) + '\n')
-			outfile.write('leakage current standard deviation: ' + str(np.std(Nmap)) + '\n')
+			outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
+			outfile.write('leakage current standard deviation: ' + str(np.std(masked)) + '\n')
 
 outfile.close()
-'''
-plt.figure()
-for T in Tlist:
-	plt.plot(CPlist, Tlist[T], label = r'$T=$' + T)
-plt.legend()
-plt.xlabel('Bias Voltage (V)')
-plt.ylabel('Mean Leakage Current (pA)')
-plt.tight_layout()
-plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '.HV_T_plot.eps')
-#plt.show()'''
 
 

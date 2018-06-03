@@ -108,7 +108,7 @@ for row in range(32):
 #FWHM_hist = np.histogram(FWHM, bins = 50, range = (0, 300))
 plt.figure()
 if gainBool:
-	plt.hist(FWHM, bins = 50, range = (0, 5), histtype='step')
+	plt.hist(FWHM, bins = 50, range = (0, 4), histtype='step')
 	plt.xlabel('FWHM (keV)')
 else:
 	plt.hist(FWHM, bins = 50, range = (0, 300), histtype='step')
