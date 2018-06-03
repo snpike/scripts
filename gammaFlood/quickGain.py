@@ -4,6 +4,12 @@ import matplotlib as mpl
 import numpy as np
 from astropy.modeling import models, fitting
 import pickle
+import seaborn as sns
+from matplotlib.gridspec import GridSpec
+
+sns.set_context('talk')
+sns.set_style("ticks")
+sns.set_palette("colorblind")
 
 # From http://www.nndc.bnl.gov/nudat2/indx_dec.jsp
 lines = {'Am241': [59.54, r'${}^{241}{\rm Am}$'], 'Co57': [122.06, r'${}^{57}{\rm Co}$']}
@@ -75,9 +81,9 @@ plt.figure()
 masked = np.ma.masked_values(gain, 0.0)
 current_cmap = mpl.cm.get_cmap()
 current_cmap.set_bad(color='gray')
-plt.imshow(masked)
+plt.imshow(np.multiply(masked, 1000))
 c = plt.colorbar()
-c.set_label('keV/Channels')
+c.set_label('eV/channel')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
 #plt.show()
@@ -105,9 +111,9 @@ for x in empty:
 		gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
 
 plt.figure()
-plt.imshow(gain)
+plt.imshow(np.multiply(gain, 1000))
 c = plt.colorbar()
-c.set_label('keV/Channels')
+c.set_label('eV/channel')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
 #plt.show()

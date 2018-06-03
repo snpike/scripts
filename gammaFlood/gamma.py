@@ -5,6 +5,12 @@ import numpy as np
 from astropy.modeling import models, fitting
 import os.path
 import pickle
+import seaborn as sns
+from matplotlib.gridspec import GridSpec
+
+sns.set_context('talk')
+sns.set_style("ticks")
+sns.set_palette("colorblind")
 
 Am_line = 59.54
 # From http://www.nndc.bnl.gov/nudat2/indx_dec.jsp

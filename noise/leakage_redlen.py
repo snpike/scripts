@@ -2,6 +2,12 @@ import astropy.io.ascii as asciio
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
+import seaborn as sns
+from matplotlib.gridspec import GridSpec
+
+sns.set_context('talk')
+sns.set_style("ticks")
+sns.set_palette("colorblind")
 
 filepath = input('Please enter the directory with the leakage data: ').strip()
 if filepath[-1]=='/':

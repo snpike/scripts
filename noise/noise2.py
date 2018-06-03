@@ -5,6 +5,12 @@ import numpy as np
 from astropy.modeling import models, fitting
 import os.path
 import pickle
+import seaborn as sns
+from matplotlib.gridspec import GridSpec
+
+sns.set_context('talk')
+sns.set_style("ticks")
+sns.set_palette("colorblind")
 
 filepath = input('Please enter the filepath to the noise data: ').strip()
 while not os.path.exists(filepath):
