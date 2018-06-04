@@ -120,4 +120,12 @@ plt.tight_layout()
 plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gainmap_interp.eps')
 plt.close()
 
+plt.figure()
+plt.hist(np.multiply(gain, 1000).flatten(), bins = 50, histtype = 'step')
+plt.ylabel('Pixels')
+plt.xlabel('Gain (eV/channel)')
+plt.tight_layout()
+plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gainhist.eps')
+plt.close()
+
 pickle.dump(gain, open('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt', 'wb'))

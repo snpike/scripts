@@ -98,7 +98,7 @@ if gainBool:
     spectrum = np.histogram(energyList, bins = bins, range= (0.01, 120))
 
     centroid = np.argmax(spectrum[0][1000:]) + 1000
-    fit_channels = np.arange(centroid-100, centroid + 200)
+    fit_channels = np.arange(centroid-80, centroid + 150)
     g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
     fit_g = fitting.LevMarLSQFitter()
     g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
@@ -113,7 +113,7 @@ if gainBool:
     print(frac_err * Am_line)
     #plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(g.fwhm)) + r'$\pm$' + str(int(2*np.sqrt(2*np.log(2))*sigma_err)), fontsize=16)
     #plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{\frac{FWHM}{\mu}}=$' + str(int(round(100*g.fwhm/g.mean, 0))) + '%', fontsize=14)
-    plt.text(80, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(Am_line * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * Am_line*1000))) + ' eV', fontsize=13)
+    plt.text(70, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(Am_line * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * Am_line*1000))) + ' eV', fontsize=13)
 
     plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}{\rm Am}$')
     plt.plot(spectrum[1][fit_channels], g(fit_channels), label = 'Gaussian fit')
