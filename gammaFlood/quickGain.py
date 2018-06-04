@@ -121,7 +121,7 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.close()
 
 plt.figure()
-plt.hist(np.multiply(gain, 1000).flatten(), bins = 50, histtype = 'step')
+plt.hist(np.multiply(gain, 1000).flatten(), bins = 50, range = (10, 16) histtype = 'step')
 plt.ylabel('Pixels')
 plt.xlabel('Gain (eV/channel)')
 plt.tight_layout()
