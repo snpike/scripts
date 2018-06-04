@@ -79,7 +79,7 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.close()
 
 FWHM = []
-FWHM_map = [[np.nan for i in range(32)] for j in range(32)]
+FWHM_map = np.array([[np.nan for i in range(32)] for j in range(32)])
 for row in range(32):
 	for col in range(32):
 		if (channelMap[row][col]):
