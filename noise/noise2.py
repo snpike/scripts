@@ -46,7 +46,6 @@ mask = np.multiply((data['DET_ID'] == pos), (data['TEMP'] > -20))
 START = np.argmax(mask)
 END = len(mask) - np.argmax(mask[::-1])
 
-
 maxchannel = 1000
 bins = np.arange(0-maxchannel,maxchannel)
 
@@ -124,8 +123,13 @@ else:
 	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_corr.eps')
 #plt.show()
 plt.close()
-print(np.mean(FWHM))
-print(np.std(FWHM))
+
+outfile = open('/disk/lif2/spike/detectorData/' + detector + '/noise2.out', 'w')
+outfile.write('Mean FWHM: '  +'\n')
+outfile.write(str(np.mean(FWHM)) + '\n')
+outfile.write('Std dev FWHM: '  +'\n')
+outfile.write(str(np.std(FWHM)) + '\n')
+outfile.close()
 
 plt.figure()
 masked = np.ma.masked_where(FWHM_map > 5, FWHM_map)
