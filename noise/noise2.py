@@ -91,7 +91,7 @@ for row in range(32):
 			FWHM.append(g.fwhm * gain[row][col])
 			if g.fwhm < 1000:
 				FWHM_map[row][col] = g.fwhm * gain[row][col]
-			plt.hist(np.multiply(channelMap[row][col], gain[row][col]), bins = np.multiply(bins, gain[row][col]), range = (0-maxchannel*gain[row][col],maxchannel*gain[row][col]), histtype='step')
+			plt.hist(np.multiply(channelMap[row][col], gain[row][col]), bins = np.multiply(bins, gain[row][col]), range = (0-maxchannel*gain[row][col],maxchannel*gain[row][col]), histtype='stepfilled')
 			plt.plot(np.multiply(fit_channels, gain[row][col]), g(fit_channels))
 			plt.ylabel('Counts')
 			if gainBool:
@@ -107,10 +107,10 @@ for row in range(32):
 #FWHM_hist = np.histogram(FWHM, bins = 50, range = (0, 300))
 plt.figure()
 if gainBool:
-	plt.hist(FWHM, bins = 50, range = (0, 4), histtype='step')
+	plt.hist(FWHM, bins = 50, range = (0, 4), histtype='stepfilled')
 	plt.xlabel('FWHM (keV)')
 else:
-	plt.hist(FWHM, bins = 50, range = (0, 300), histtype='step')
+	plt.hist(FWHM, bins = 50, range = (0, 300), histtype='stepfilled')
 	plt.xlabel('FWHM (channels)')
 plt.ylabel('Pixels')
 #plt.xlim((0, 300))
@@ -153,7 +153,7 @@ plt.close()
 
 #noiseHist = np.histogram(np.array(countMap).flatten(), bins = 50)
 plt.figure()
-plt.hist(np.array(countMap).flatten(), bins = 50, histtype = 'step')
+plt.hist(np.array(countMap).flatten(), bins = 50, histtype = 'stepfilled')
 # plt.xlim(noiseHist[1][0], noiseHist[1][-1])
 # plt.ylim(ymin=0)
 plt.ylabel('Pixels')

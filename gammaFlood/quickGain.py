@@ -66,7 +66,7 @@ for x in range(32):
 				plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(lines[source][0] * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * lines[source][0]*1000))) + ' eV', fontsize=13)
 				gain[y][x] = lines[source][0]/g.mean
 
-				plt.hist(np.multiply(channel,lines[source][0]/g.mean), bins=np.multiply(bins,lines[source][0]/g.mean), range = (0, maxchannel * lines[source][0]/g.mean), histtype='step')
+				plt.hist(np.multiply(channel,lines[source][0]/g.mean), bins=np.multiply(bins,lines[source][0]/g.mean), range = (0, maxchannel * lines[source][0]/g.mean), histtype='stepfilled')
 				plt.plot(np.multiply(fit_channels,lines[source][0]/g.mean), g(fit_channels), label = 'Gaussian fit')
 				plt.ylabel('Counts')
 				plt.xlabel('Energy')
@@ -121,7 +121,7 @@ plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename
 plt.close()
 
 plt.figure()
-plt.hist(np.multiply(gain, 1000).flatten(), bins = 50, range = (10, 16) histtype = 'step')
+plt.hist(np.multiply(gain, 1000).flatten(), bins = 50, range = (12, 16), histtype = 'stepfilled')
 plt.ylabel('Pixels')
 plt.xlabel('Gain (eV/channel)')
 plt.tight_layout()

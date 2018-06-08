@@ -52,7 +52,7 @@ PHmask = np.multiply(0 < np.array(data['PH'][START:END]),np.array(data['PH'][STA
 STIMmask = np.array(data['STIM'][START:END])==0
 TOTmask = np.multiply(PHmask, STIMmask)
 
-countMap = [[np.sum(np.multiply(TOTmask, np.multiply(np.array(data['RAWX'][START:END])==i, np.array(data['RAWY'][START:END])==j))) for i in range(32)] for j in range(32)]
+countMap = [[np.sum(np.multiply(STIMmask, np.multiply(np.array(data['RAWX'][START:END])==i, np.array(data['RAWY'][START:END])==j))) for i in range(32)] for j in range(32)]
 
 '''
 for i in np.arange(START, END):
@@ -69,18 +69,20 @@ c = plt.colorbar()
 c.set_label('Counts')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'floodmap.eps')
+#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'floodmap.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'floodmap.eps')
 #plt.show()
 plt.close()
 
 plt.figure()
-plt.hist(np.array(countMap).flatten(), bins = 100, range = (0, np.max(countMap) + 1), histtype = 'step')
+plt.hist(np.array(countMap).flatten(), bins = 100, range = (0, np.max(countMap) + 1), histtype = 'stepfilled')
 plt.ylabel('Pixels')
 plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
 #plt.title(detector + ' ' + source + ' Count Histogram ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammahist.eps')
+#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammahist.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammahist.eps')
 #plt.show()
 plt.close()
 
@@ -123,7 +125,8 @@ if gainBool:
 
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
-    plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.eps')
+    #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.eps')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain.eps')
     #plt.show()
     plt.close()
 
@@ -157,6 +160,7 @@ else:
 
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
-    plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.eps')
+    #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.eps')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec.eps')
     #plt.show()
     plt.close()

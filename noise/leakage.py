@@ -72,7 +72,7 @@ for T in Tlist:
 
 		plt.figure()
 		#plt.hist(CPmap.flatten(), bins = 50, histtype='step')
-		plt.hist(masked.flatten(), bins = 50, histtype='step')
+		plt.hist(masked.flatten(), bins = 50, histtype='stepfilled')
 		plt.ylabel('Pixels')
 		plt.xlabel('Leakage Current (pA)')
 		plt.tight_layout()
@@ -106,7 +106,7 @@ for T in Tlist:
 			plt.close()
 
 			plt.figure()
-			plt.hist(masked.flatten(), bins = 50, histtype='step')
+			plt.hist(masked.flatten(), bins = 50, histtype='stepfilled')
 			plt.ylabel('Pixels')
 			plt.xlabel('Leakage Current (pA)')
 			plt.tight_layout()
