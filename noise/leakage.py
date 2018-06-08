@@ -67,7 +67,8 @@ for T in Tlist:
 		c = plt.colorbar()
 		c.set_label('Leakage Current (pA)')
 		plt.tight_layout()
-		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.map.eps')
+		#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.map.eps')
+		plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '_' + T + '.C' + str(HV) + 'V.map.eps')
 		plt.close()
 
 		plt.figure()
@@ -76,7 +77,8 @@ for T in Tlist:
 		plt.ylabel('Pixels')
 		plt.xlabel('Leakage Current (pA)')
 		plt.tight_layout()
-		plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.hist.eps')
+		#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.hist.eps')
+		plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '_' + T + '.C' + str(HV) + 'V.hist.eps')
 		plt.close()
 
 		outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
@@ -102,7 +104,8 @@ for T in Tlist:
 			c = plt.colorbar()
 			c.set_label('Leakage Current (pA)')
 			plt.tight_layout()
-			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.map.eps')
+			#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.map.eps')
+			plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '_' + T + '.N' + str(HV) + 'V.map.eps')
 			plt.close()
 
 			plt.figure()
@@ -110,7 +113,8 @@ for T in Tlist:
 			plt.ylabel('Pixels')
 			plt.xlabel('Leakage Current (pA)')
 			plt.tight_layout()
-			plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.hist.eps')
+			#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.hist.eps')
+			plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '_' + T + '.N' + str(HV) + 'V.hist.eps')
 			plt.close()
 
 			outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')

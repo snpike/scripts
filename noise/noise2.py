@@ -73,7 +73,8 @@ c = plt.colorbar()
 c.set_label('Counts')
 #plt.title(detector + ' ' + test + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixmap_corr.eps')
+#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixmap_corr.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'pixmap_corr.eps')
 #plt.show()
 plt.close()
 
@@ -97,11 +98,13 @@ for row in range(32):
 			if gainBool:
 				plt.xlabel('Energy (keV)')
 				plt.tight_layout()
-				plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_gain.eps')
+				#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_gain.eps')
+				plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_gain.eps')
 			else:
 				plt.xlabel('Channel')
 				plt.tight_layout()
-				plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_corr.eps')
+				#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_corr.eps')
+				plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_corr.eps')
 			plt.close()
 
 #FWHM_hist = np.histogram(FWHM, bins = 50, range = (0, 300))
@@ -118,9 +121,11 @@ plt.ylabel('Pixels')
 #plt.title(detector + ' ' + test + ' FWHM Histogram ' + '(' + etc + ')')
 plt.tight_layout()
 if gainBool:
-	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_gain.eps')
+	#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_gain.eps')
+	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMhist_gain.eps')
 else:
-	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_corr.eps')
+	#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_corr.eps')
+	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMhist_corr.eps')
 #plt.show()
 plt.close()
 
@@ -144,9 +149,11 @@ else:
 #plt.title(detector + ' ' + test + ' FWHM Map ' + '(' + etc + ')')
 plt.tight_layout()
 if gainBool:
-	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap_gain.eps')
+	#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap_gain.eps')
+	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMmap_gain.eps')
 else:
-	plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap_corr.eps')
+	#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap_corr.eps')
+	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMmap_corr.eps')
 #plt.show()
 plt.close()
 
@@ -161,7 +168,8 @@ plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
 #plt.title(detector + ' ' + test + ' Count Histogram ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_corr.eps')
+#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_corr.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'pixhist_corr.eps')
 #plt.show()
 plt.close()
 '''
