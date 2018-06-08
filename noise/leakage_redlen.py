@@ -84,7 +84,8 @@ for T in Tlist:
 
 		outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
 		outfile.write('leakage current standard deviation: ' + str(np.std(masked)) + '\n')
-		Tlist[T].append(np.mean(CPmap))
+		outliers = np.sum(np.absolute(np.subtract(CPmap, np.mean(CPmap))) > 3*np.std(CPmap))
+		Tlist[T].append(outliers)
 
 
 		if HV in Nlist:
@@ -129,7 +130,7 @@ for T in Tlist:
 	plt.plot(CPlist, Tlist[T], label = r'$T=$' + T)
 plt.legend()
 plt.xlabel('Bias Voltage (V)')
-plt.ylabel('Mean Leakage Current (pA)')
+plt.ylabel('Number of outlier pixels (>' + r'$3\sigma$' + ')')
 plt.tight_layout()
 #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '.HV_T_plot.eps')
 plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '.HV_T_plot.eps')
