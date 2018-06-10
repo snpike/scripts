@@ -85,7 +85,7 @@ plt.tight_layout()
 plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammahist.eps')
 #plt.show()
 plt.close()
-
+'''
 # If there's gain data then correct the spectrum
 energyList = []
 if gainBool:
@@ -163,4 +163,4 @@ else:
     #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.eps')
     plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec.eps')
     #plt.show()
-    plt.close()
+    plt.close()'''
