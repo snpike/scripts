@@ -74,7 +74,7 @@ for T in Tlist:
 
 		plt.figure()
 		#plt.hist(CPmap.flatten(), bins = 50, histtype='step')
-		plt.hist(masked.flatten(), bins = 50, histtype='stepfilled')
+		plt.hist(masked.flatten(), bins = 50, histtype='stepfilled', range = (-10, 30))
 		plt.ylabel('Pixels')
 		plt.xlabel('Leakage Current (pA)')
 		bot, top = plt.ylim()
