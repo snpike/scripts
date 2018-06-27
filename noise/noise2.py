@@ -111,7 +111,7 @@ for row in range(32):
 plt.figure()
 if gainBool:
 	plt.hist(FWHM, bins = 50, range = (0, 4), histtype='stepfilled')
-	plt.text(plt.get_xlim()*0.5, plt.get_ylim()*0.8, 'Mean FWHM = ' + str(int(round(np.mean(FWHM) * 1000, 0))) +r'\,eV', fontsize = 16)
+	plt.text(plt.get_xlim()*0.5, plt.get_ylim()*0.8, 'Mean = ' + str(int(round(np.mean(FWHM) * 1000, 0))) +r'\,eV', fontsize = 16)
 	plt.text(plt.get_xlim()*0.5, plt.get_ylim()*0.6, '1-Sigma = ' + str(int(round(np.std(FWHM) * 1000, 0))) +r'\,eV', fontsize = 16)
 	plt.xlabel('FWHM (keV)')
 else:
