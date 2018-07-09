@@ -7,7 +7,7 @@ sns.set_style('ticks')
 sns.set_palette('colorblind')
 
 filepath = input('Please enter the path to the interpixel data: ').strip()
-pathsplit = filepath.split()
+pathsplit = filepath.split('/')
 detector = input('Please enter the detector ID: ').strip()
 
 row_data = []
