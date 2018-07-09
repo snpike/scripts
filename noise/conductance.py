@@ -29,7 +29,7 @@ row_data = np.array(row_data).astype(int)
 col_data = np.array(col_data).astype(int).T
 
 plt.figure()
-plt.imshow(row_data)
+plt.imshow(row_data, vmin=0, vmax=2)
 c = plt.colorbar()
 c.set_label('(S/1.7e10)')
 plt.tight_layout()
@@ -37,7 +37,7 @@ plt.savefig('/users/spike/det_figs/' + detector + '/' + pathsplit[-3] + '_row_ma
 plt.close()
 
 plt.figure()
-plt.imshow(col_data)
+plt.imshow(col_data, vmin=0, vmax=2)
 c = plt.colorbar()
 c.set_label('(S/1.7e10)')
 plt.tight_layout()
