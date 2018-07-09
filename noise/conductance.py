@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 sns.set_context('talk')
-sns.set_context('ticks')
-sns.set_context('colorblind')
+sns.set_style('ticks')
+sns.set_palette('colorblind')
 
 filepath = input('Please enter the path to the interpixel data: ').strip()
 pathsplit = filepath.split()
