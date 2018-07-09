@@ -13,7 +13,7 @@ detector = input('Please enter the detector ID: ').strip()
 row_data = []
 col_data = []
 
-file = open('filepath', 'r')
+file = open(filepath, 'r')
 for line in file:
 	if 4<i<69:
 		if not i%2:
