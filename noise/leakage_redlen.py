@@ -75,11 +75,11 @@ for T in Tlist:
 
 		plt.figure()
 		#plt.hist(CPmap.flatten(), bins = 50, histtype='step')
-		plt.hist(masked.flatten(), bins = 50, histtype='stepfilled', range = (-10, 30))
+		plt.hist(masked.flatten(), bins = 50, histtype='stepfilled', range = (-10, 75))
 		plt.ylabel('Pixels')
 		plt.xlabel('Leakage Current (pA)')
 		bot, top = plt.ylim()
-		left, right = plt.xlim(-10, 30)
+		left, right = plt.xlim()
 		plt.text((left + right + 2)/2, top*0.8, 'Mean = ' + str(round(np.mean(masked), 2)) + ' pA', fontsize = 16)
 		plt.text((left + right + 2)/2, top*0.6, '1-Sigma = ' + str(round(np.std(masked), 2)) + ' pA', fontsize = 16)
 		plt.tight_layout()
