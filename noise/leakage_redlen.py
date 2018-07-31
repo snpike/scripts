@@ -27,7 +27,7 @@ for char in filepath:
 filename = filepath[slash + 1:]
 
 #Tlist  = {'-5C': [], '5C': [], '15C': [], '23C': []}
-Tlist  = {'23C': []}
+Tlist  = {'23C': [[], [], []]}
 CPlist = [100, 200, 300, 400, 500, 600]
 Nlist  = [300, 400, 500, 600]
 
@@ -90,7 +90,9 @@ for T in Tlist:
 		outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
 		outfile.write('leakage current standard deviation: ' + str(np.std(masked)) + '\n')
 		outliers = np.sum(np.absolute(np.subtract(CPmap, np.mean(CPmap))) > 5*np.std(CPmap))
-		Tlist[T].append(outliers)
+		Tlist[T][0].append(np.mean(masked))
+		Tlist[T][1].append(np.std(masked))
+		Tlist[T][2].append(outliers)
 
 
 		if HV in Nlist:
@@ -136,13 +138,26 @@ outfile.close()
 
 plt.figure()
 for T in Tlist:
-	plt.plot(CPlist, Tlist[T], label = r'$T=$' + T)
+	plt.plot(CPlist, Tlist[T][2], label = r'$T=$' + T)
 plt.legend()
 plt.xlabel('Bias Voltage (V)')
 plt.ylabel('Number of outlier pixels (>' + r'$5\sigma$' + ')')
 plt.tight_layout()
 #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '.HV_T_plot.eps')
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '.HV_T_plot.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '.HV_T_outliers.eps')
+#plt.show()
+
+outfile.close()
+
+plt.figure()
+for T in Tlist:
+	plt.errorbar(CPlist, Tlist[T][0], yerr =Tlist[T][1], label = r'$T=$' + T)
+plt.legend()
+plt.xlabel('Bias Voltage (V)')
+plt.ylabel('Mean leakage current (pA)')
+plt.tight_layout()
+#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '.HV_T_plot.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '.HV_T_mean.eps')
 #plt.show()
 
 
