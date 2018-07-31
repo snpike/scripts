@@ -61,7 +61,7 @@ for T in Tlist:
 			CPmap[CProw, CPcol] = (CPdata.field('col6')[START + i] - ADC_0V_CP[CProw, CPcol]) * (1.7e3)/3000
 
 		plt.figure()
-		masked = np.ma.masked_where(CPmap > 75, CPmap)
+		masked = np.ma.masked_where(CPmap > 100, CPmap)
 		current_cmap = mpl.cm.get_cmap()
 		current_cmap.set_bad(color='gray')
 		plt.imshow(masked)
@@ -75,7 +75,7 @@ for T in Tlist:
 
 		plt.figure()
 		#plt.hist(CPmap.flatten(), bins = 50, histtype='step')
-		plt.hist(masked.flatten(), bins = 50, histtype='stepfilled', range = (-10, 75))
+		plt.hist(masked.flatten(), bins = 50, histtype='stepfilled', range = (-5, 100))
 		plt.ylabel('Pixels')
 		plt.xlabel('Leakage Current (pA)')
 		bot, top = plt.ylim()
@@ -107,7 +107,7 @@ for T in Tlist:
 
 			plt.figure()
 			#plt.imshow(Nmap)
-			masked = np.ma.masked_where(Nmap > 75, Nmap)
+			masked = np.ma.masked_where(Nmap > 100, Nmap)
 			current_cmap = mpl.cm.get_cmap()
 			current_cmap.set_bad(color='gray')
 			plt.imshow(masked)
