@@ -26,7 +26,8 @@ for char in filepath:
 
 filename = filepath[slash + 1:]
 
-Tlist  = {'-5C': [], '5C': [], '15C': [], '23C': []}
+#Tlist  = {'-5C': [], '5C': [], '15C': [], '23C': []}
+Tlist  = {'23C': []}
 CPlist = [100, 200, 300, 400, 500, 600]
 Nlist  = [300, 400, 500, 600]
 
