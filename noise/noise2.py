@@ -68,8 +68,6 @@ for i in np.arange(START, END):
 
 file.close()
 
-channelMap = np.array(channelMap)
-
 countMap = [[len(channelMap[j][i]) for i in range(32)] for j in range(32)]
 plt.figure()
 plt.imshow(countMap)
@@ -153,7 +151,10 @@ pickle.dump(FWHM_map, dumpfile)
 dumpfile.close()
 
 plt.figure()
-masked = np.ma.masked_where(FWHM_map > 5, FWHM_map)
+if gainBool:
+	masked = np.ma.masked_where(FWHM_map > 5, FWHM_map)
+else:
+	masked = np.ma.masked_where(FWHM_map > 400, FWHM_map)
 current_cmap = mpl.cm.get_cmap()
 current_cmap.set_bad(color='gray')
 plt.imshow(masked)
