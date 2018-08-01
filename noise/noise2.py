@@ -119,7 +119,7 @@ if gainBool:
 	plt.text(right*0.5, top*0.6, '1-Sigma = ' + str(int(round(np.std(FWHM) * 1000, 0))) + ' eV', fontsize = 16)
 	plt.xlabel('FWHM (keV)')
 else:
-	plt.hist(FWHM, bins = 50, range = (0, 300), histtype='stepfilled')
+	plt.hist(FWHM, bins = 50, range = (0, 150), histtype='stepfilled')
 	bot, top = plt.ylim()
 	left, right = plt.xlim()
 	plt.text(right*0.5, top*0.8, 'Mean = ' + str(round(np.mean(FWHM), 0)) + ' channels', fontsize = 16)
