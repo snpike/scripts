@@ -16,7 +16,7 @@ filepath = input('Please enter the filepath to the noise data: ').strip()
 while not os.path.exists(filepath):
 	filepath = input('Please enter the filepath to the noise data: ').strip()
 
-gainpath = input('Please enter the filepath to the gain data: ').strip()
+gainpath = input('Please enter the filepath to the gain data. If gain data is not available, press enter: ').strip()
 
 slash = 0
 i = 0
@@ -65,6 +65,8 @@ for i in np.arange(START, END):
 		channelMap[data['RAWX'][i]-1][data['RAWY'][i]+1].append(data['PH_RAW'][i][6])
 		channelMap[data['RAWX'][i]+0][data['RAWY'][i]+1].append(data['PH_RAW'][i][7])
 		channelMap[data['RAWX'][i]+1][data['RAWY'][i]+1].append(data['PH_RAW'][i][8])'''
+
+file.close()
 
 countMap = [[len(channelMap[j][i]) for i in range(32)] for j in range(32)]
 plt.figure()
@@ -133,7 +135,7 @@ if gainBool:
 	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMhist_gain.eps')
 else:
 	#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMhist_corr.eps')
-	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMhist_corr.eps')
+	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMhist.eps')
 #plt.show()
 plt.close()
 
@@ -165,7 +167,7 @@ if gainBool:
 	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMmap_gain.eps')
 else:
 	#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'FWHMmap_corr.eps')
-	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMmap_corr.eps')
+	plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'FWHMmap.eps')
 #plt.show()
 plt.close()
 
@@ -181,7 +183,7 @@ plt.xlabel('Counts')
 #plt.title(detector + ' ' + test + ' Count Histogram ' + '(' + etc + ')')
 plt.tight_layout()
 #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'pixhist_corr.eps')
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'pixhist_corr.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'pixhist.eps')
 #plt.show()
 plt.close()
 '''
