@@ -68,6 +68,8 @@ for i in np.arange(START, END):
 
 file.close()
 
+channelMap = np.array(channelMap)
+
 countMap = [[len(channelMap[j][i]) for i in range(32)] for j in range(32)]
 plt.figure()
 plt.imshow(countMap)
