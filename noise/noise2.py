@@ -99,11 +99,15 @@ for row in range(32):
 			plt.ylabel('Counts')
 			if gainBool:
 				plt.xlabel('Energy (keV)')
+				plt.text(gain[row][col] * (g.mean + g.fwhm), g.amplitude*0.8, 'Mean = ' + str(gain[row][col] * g.mean) + 'keV')
+				plt.text(gain[row][col] * (g.mean + g.fwhm), g.amplitude*0.5, 'FWHM = ' + str(gain[row][col] * g.fwhm) + 'keV')
 				plt.tight_layout()
 				#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_gain.eps')
 				plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_gain.eps')
 			else:
 				plt.xlabel('Channel')
+				plt.text(g.mean + g.fwhm, g.amplitude*0.8, 'Mean = ' + str(g.mean) + 'channels')
+				plt.text(g.mean + g.fwhm, g.amplitude*0.5, 'FWHM = ' + str(g.fwhm) + 'channels')
 				plt.tight_layout()
 				#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_corr.eps')
 				plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec.eps')
