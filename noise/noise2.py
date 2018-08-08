@@ -106,8 +106,8 @@ for row in range(32):
 				plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_gain.pdf')
 			else:
 				plt.xlabel('Channel')
-				plt.text(g.mean + g.fwhm, g.amplitude*0.8, 'Mean = ' + str(g.mean.value) + 'channels')
-				plt.text(g.mean + g.fwhm, g.amplitude*0.5, 'FWHM = ' + str(g.fwhm) + 'channels')
+				plt.text(g.mean + g.fwhm, g.amplitude*0.8, 'Mean = ' + str(round(g.mean.value, 2)) + 'channels')
+				plt.text(g.mean + g.fwhm, g.amplitude*0.5, 'FWHM = ' + str(round(g.fwhm.value, 2)) + 'channels')
 				plt.tight_layout()
 				#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_corr.pdf')
 				plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec.pdf')
