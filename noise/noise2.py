@@ -92,8 +92,7 @@ for row in range(32):
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, fit_channels, tempSpec[0])
 			FWHM.append(g.fwhm * gain[row][col])
-			if g.fwhm < 1000:
-				FWHM_map[row][col] = g.fwhm * gain[row][col]
+			FWHM_map[row][col] = g.fwhm * gain[row][col]
 			plt.hist(np.multiply(channelMap[row][col], gain[row][col]), bins = np.multiply(bins, gain[row][col]), range = (0-maxchannel*gain[row][col],maxchannel*gain[row][col]), histtype='stepfilled')
 			plt.plot(np.multiply(fit_channels, gain[row][col]), g(fit_channels))
 			plt.ylabel('Counts')
