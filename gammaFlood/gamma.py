@@ -34,9 +34,6 @@ etc = input('Please enter any other important information (temperature, voltage,
 
 gainBool = os.path.exists(gainpath)
 
-gain = np.zeros((34, 34))
-gain[1:33,1:33] = pickle.load(open(gainpath, 'rb'))
-
 file = fits.open(filepath)
 
 data = file[1].data
@@ -70,7 +67,7 @@ c = plt.colorbar()
 c.set_label('Counts')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'floodmap.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'floodmap.pdf')
 #plt.show()
 plt.close()
 
@@ -81,13 +78,15 @@ plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
 #plt.title(detector + ' ' + source + ' Count Histogram ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammahist.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammahist.pdf')
 #plt.show()
 plt.close()
 
 # If there's gain data then correct the spectrum
 energyList = []
 if gainBool:
+    gain = np.zeros((34, 34))
+    gain[1:33,1:33] = pickle.load(open(gainpath, 'rb'))
     for event in data[START:END]:
         row = event['RAWY']
         col = event['RAWX']
@@ -124,8 +123,8 @@ if gainBool:
 
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
-    #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.eps')
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain.eps')
+    #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain.pdf')
     #plt.show()
     plt.close()
 
@@ -159,7 +158,7 @@ else:
 
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
-    #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.eps')
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec.eps')
+    #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec.pdf')
     #plt.show()
     plt.close()
