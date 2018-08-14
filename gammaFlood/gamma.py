@@ -97,7 +97,7 @@ if gainBool:
     bins = 10000
     spectrum = np.histogram(energyList, bins = bins, range= (0.01, 120))
 
-    centroid = np.argmax(spectrum[0][1000:]) + 1000
+    centroid = np.argmax(spectrum[0][3000:]) + 3000
     fit_channels = np.arange(centroid-80, centroid + 150)
     g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
     fit_g = fitting.LevMarLSQFitter()
@@ -132,7 +132,7 @@ else:
     bins = np.arange(1,maxchannel)
     spectrum = np.histogram(data['PH'][START:END], bins = bins, range= (0, maxchannel))
 
-    centroid = np.argmax(spectrum[0][1000:]) + 1000
+    centroid = np.argmax(spectrum[0][3000:]) + 3000
     fit_channels = np.arange(centroid-100, centroid + 200)
     g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
     fit_g = fitting.LevMarLSQFitter()
