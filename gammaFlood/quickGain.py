@@ -73,8 +73,8 @@ for x in range(32):
 				plt.legend()
 
 		plt.tight_layout()		
-		#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + '_x' + str(x) + '_y' + str(y) + '_gammaspec.eps')
-		plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + '_x' + str(x) + '_y' + str(y) + '_gammaspec.eps')
+		#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + '_x' + str(x) + '_y' + str(y) + '_gammaspec.pdf')
+		plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + '_x' + str(x) + '_y' + str(y) + '_gammaspec.pdf')
 		plt.close()
 
 
@@ -88,8 +88,8 @@ c.set_label('eV/channel')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
 #plt.show()
-#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gainmap.eps')
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gainmap.eps')
+#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gainmap.pdf')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gainmap.pdf')
 plt.close()
 
 # interpolate gain for pixels where fit was unsuccessful
@@ -119,8 +119,8 @@ c.set_label('eV/channel')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
 #plt.show()
-#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gainmap_interp.eps')
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gainmap_interp.eps')
+#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gainmap_interp.pdf')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gainmap_interp.pdf')
 plt.close()
 
 plt.figure()
@@ -128,8 +128,8 @@ plt.hist(np.multiply(gain, 1000).flatten(), bins = 50, range = (12, 16), histtyp
 plt.ylabel('Pixels')
 plt.xlabel('Gain (eV/channel)')
 plt.tight_layout()
-#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gainhist.eps')
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gainhist.eps')
+#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gainhist.pdf')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gainhist.pdf')
 plt.close()
 
 pickle.dump(gain, open('/disk/lif2/spike/detectorData/' + detector + '/' + filename[:-4] + 'quickgain.txt', 'wb'))
