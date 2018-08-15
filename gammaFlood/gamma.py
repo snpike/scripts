@@ -52,7 +52,7 @@ STIMmask = np.array(data['STIM'][START:END])==0
 
 countMap = [[np.sum(np.multiply(STIMmask, np.multiply(np.array(data['RAWX'][START:END])==i, np.array(data['RAWY'][START:END])==j))) for i in range(32)] for j in range(32)]
 
-badsigma = 3
+badsigma = 2
 badpix = np.argwhere(countMap > (np.mean(countMap) + (np.std(countMap)*badsigma)))
 for x in badpix:
     countMap[x[0]][x[1]] = 0.0
