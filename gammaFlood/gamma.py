@@ -52,6 +52,9 @@ STIMmask = np.array(data['STIM'][START:END])==0
 
 countMap = [[np.sum(np.multiply(STIMmask, np.multiply(np.array(data['RAWX'][START:END])==i, np.array(data['RAWY'][START:END])==j))) for i in range(32)] for j in range(32)]
 
+bad = np.argwhere(countMap > (np.mean(countMap) + (np.std(countMap)*5)))
+for x in bad:
+    countMap[x[0]][x[1]] = 0.0
 '''
 for i in np.arange(START, END):
     if (not np.isnan(data['PH'][i])) and (0 < data['PH'][i] < maxchannel) and not data['STIM'][i]:
@@ -90,9 +93,10 @@ if gainBool:
     for event in data[START:END]:
         row = event['RAWY']
         col = event['RAWX']
-        temp = event['PH_COM'].reshape(3,3)
-        mask = (temp > 0).astype(int)
-        energyList.append(np.sum(np.multiply(np.multiply(mask, temp), gain[row:row + 3, col:col + 3])))
+        if [row, col] not in bad:
+            temp = event['PH_COM'].reshape(3,3)
+            mask = (temp > 0).astype(int)
+            energyList.append(np.sum(np.multiply(np.multiply(mask, temp), gain[row:row + 3, col:col + 3])))
 
     bins = 10000
     spectrum = np.histogram(energyList, bins = bins, range= (0.01, 120))
