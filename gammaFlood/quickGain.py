@@ -64,7 +64,9 @@ for x in range(32):
 				mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
 				frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
 				plt.text(maxchannel*3/5, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(lines[source][0] * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * lines[source][0]*1000))) + ' eV', fontsize=13)
-				gain[y][x] = lines[source][0]/g.mean
+				# If the gain is not near  0.013 then the spectrum was probably not good enough to get a real gain value. Skip it
+				if 0.012 < (lines[source][0]/g.mean) < 0.014:
+					gain[y][x] = lines[source][0]/g.mean
 
 				plt.hist(np.multiply(channel,lines[source][0]/g.mean), bins=np.multiply(bins,lines[source][0]/g.mean), range = (0, maxchannel * lines[source][0]/g.mean), histtype='stepfilled')
 				plt.plot(np.multiply(fit_channels,lines[source][0]/g.mean), g(fit_channels), label = 'Gaussian fit')
