@@ -38,10 +38,10 @@ file = fits.open(filepath)
 
 data = file[1].data
 
-mask = data['TEMP'] > -20
+T_mask = data['TEMP'] > -20
 
-START = np.argmax(mask)
-END = len(mask) - np.argmax(mask[::-1])
+START = np.argmax(T_mask)
+END = len(T_mask) - np.argmax(T_mask[::-1])
 
 maxchannel = 10000
 
@@ -53,8 +53,8 @@ STIMmask = np.array(data['STIM'][START:END])==0
 countMap = [[np.sum(np.multiply(STIMmask, np.multiply(np.array(data['RAWX'][START:END])==i, np.array(data['RAWY'][START:END])==j))) for i in range(32)] for j in range(32)]
 
 badsigma = 3
-bad = np.argwhere(countMap > (np.mean(countMap) + (np.std(countMap)*badsigma)))
-for x in bad:
+badpix = np.argwhere(countMap > (np.mean(countMap) + (np.std(countMap)*badsigma)))
+for x in badpix:
     countMap[x[0]][x[1]] = 0.0
 '''
 for i in np.arange(START, END):
@@ -91,13 +91,34 @@ energyList = []
 if gainBool:
     gain = np.zeros((34, 34))
     gain[1:33,1:33] = pickle.load(open(gainpath, 'rb'))
-    for event in data[START:END]:
-        row = event['RAWY']
-        col = event['RAWX']
-        if [row, col] not in bad:
-            temp = event['PH_COM'].reshape(3,3)
-            mask = (temp > 0).astype(int)
-            energyList.append(np.sum(np.multiply(np.multiply(mask, temp), gain[row:row + 3, col:col + 3])))
+    # for event in data[START:END]:
+    #     row = event['RAWY']
+    #     col = event['RAWX']
+    #     if [row, col] not in badpix:
+    #         temp = event['PH_COM'].reshape(3,3)
+    #         mask = (temp > 0).astype(int)
+    #         energyList.append(np.sum(np.multiply(np.multiply(mask, temp), gain[row:row + 3, col:col + 3])))
+
+    for row in range(32):
+        row_mask = data['RAWY'] == row
+        for col in range(32):
+            if [row, col] not in badpix:
+                col_mask = data['RAWX'] == col
+                # Getting indices ('inds') and PH_COM values ('pulses') of 
+                # all events at current pixel.
+                inds = np.nonzero(np.multiply(np.multiply(row_mask, col_mask), T_mask))
+                pulses = data.field('PH_COM')[inds]
+                # The gain for the 3x3 grid around this pixel
+                gain_grid = gain[row:row + 3, col:col + 3]
+                # iterating through the PH_COM values for this pixel
+                for pulse in pulses:
+                    # Append the sum of positive energies in the 
+                    # pulse grid to 'energies'
+                    pulse_grid = pulse.reshape(3, 3)
+                    mask = (pulse_grid > 0).astype(int)
+                    energyList.append(np.sum(np.multiply(
+                        np.multiply(mask, pulse_grid), gain_grid)))
+
 
     bins = 10000
     spectrum = np.histogram(energyList, bins = bins, range= (0.01, 120))
