@@ -28,8 +28,9 @@ for line in file:
 row_data = np.array(row_data).astype(int)
 col_data = np.array(col_data).astype(int).T
 
+vmax = np.max([np.max(row_data), np.max(col_data)])
 plt.figure()
-plt.imshow(row_data, vmin=0, vmax=np.max(row_data))
+plt.imshow(row_data, vmin=0, vmax=vmax)
 c = plt.colorbar()
 c.set_label('(S/1.7e10)')
 plt.tight_layout()
@@ -37,7 +38,7 @@ plt.savefig('/users/spike/det_figs/' + detector + '/' + pathsplit[-3] + '_row_ma
 plt.close()
 
 plt.figure()
-plt.imshow(col_data, vmin=0, vmax=np.max(col_data))
+plt.imshow(col_data, vmin=0, vmax=vmax)
 c = plt.colorbar()
 c.set_label('(S/1.7e10)')
 plt.tight_layout()
