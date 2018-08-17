@@ -108,9 +108,10 @@ if gainBool:
         for col in range(32):
             if [row, col] not in badpix:
                 col_mask = data['RAWX'] == col
+                grade_mask  = data['GRADE'] == 0
                 # Getting indices ('inds') and PH_COM values ('pulses') of 
                 # all events at current pixel.
-                inds = np.nonzero(np.multiply(np.multiply(row_mask, col_mask), T_mask))
+                inds = np.nonzero(np.multiply(np.multiply(np.multiply(row_mask, col_mask), T_mask), grade_mask))
                 pulses = data.field('PH_COM')[inds]
                 # The gain for the 3x3 grid around this pixel
                 gain_grid = gain[row:row + 3, col:col + 3]
@@ -189,6 +190,6 @@ else:
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
     #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.pdf')
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_singlepixel.pdf')
     #plt.show()
     plt.close()
