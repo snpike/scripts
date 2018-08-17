@@ -52,8 +52,11 @@ STIMmask = np.array(data['STIM'][START:END])==0
 
 countMap = [[np.sum(np.multiply(STIMmask, np.multiply(np.array(data['RAWX'][START:END])==i, np.array(data['RAWY'][START:END])==j))) for i in range(32)] for j in range(32)]
 
+pix_on = np.nonzero(countMap)
+count_array = np.array(countMap)
+
 badsigma = 2
-badpix = np.argwhere(countMap > (np.mean(countMap) + (np.std(countMap)*badsigma)))
+badpix = np.argwhere(countMap > (np.mean(count_array[pix_on]) + (np.std(count_array[pix_on])*badsigma)))
 for x in badpix:
     countMap[x[0]][x[1]] = 0.0
 '''
@@ -104,9 +107,10 @@ if gainBool:
         for col in range(32):
             if [row, col] not in badpix:
                 col_mask = data['RAWX'] == col
+                grade_mask  = data['GRADE'] == 0
                 # Getting indices ('inds') and PH_COM values ('pulses') of 
                 # all events at current pixel.
-                inds = np.nonzero(np.multiply(np.multiply(row_mask, col_mask), T_mask))
+                inds = np.nonzero(np.multiply(np.multiply(np.multiply(row_mask, col_mask), T_mask)), grade_mask)
                 pulses = data.field('PH_COM')[inds]
                 # The gain for the 3x3 grid around this pixel
                 gain_grid = gain[row:row + 3, col:col + 3]
@@ -150,7 +154,7 @@ if gainBool:
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
     #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.pdf')
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain_singlepixel.pdf')
     #plt.show()
     plt.close()
 
