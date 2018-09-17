@@ -63,12 +63,12 @@ for i in np.arange(START, END):
 			reset.append(data['RESET'][i])
 
 plt.figure()
-plt.scatter(prior, channel)
+plt.scatter(prior, channel, marker = '.')
 plt.show()
 plt.close()
 
 plt.figure()
-plt.scatter(reset, channel)
+plt.scatter(reset, channel, marker = '.')
 plt.show()
 plt.close()
 
