@@ -63,13 +63,17 @@ for i in np.arange(START, END):
 			reset.append(data['RESET'][i])
 
 plt.figure()
-plt.scatter(prior, channel, marker = '.')
-plt.show()
+plt.scatter(prior, channel, marker = ',')
+plt.xlabel('Time since last event')
+plt.ylabel('Channel')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + '_last_event.pdf')
 plt.close()
 
 plt.figure()
-plt.scatter(reset, channel, marker = '.')
-plt.show()
+plt.scatter(reset, channel, marker = ',')
+plt.xlabel('Time since last reset')
+plt.ylabel('Channel')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + '_last_reset.pdf')
 plt.close()
 
 
