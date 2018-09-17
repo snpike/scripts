@@ -22,16 +22,16 @@ cutoffpl_ratio = ['/Users/sean/Desktop/SMC_X-1_final/products001_part1/tbabs_tbp
 
 epochs = {'epochI': ['/Users/sean/Desktop/SMC_X-1_final/products001_part1/eeufspec_const_epoch1.qdp', \
 		  '/Users/sean/Desktop/SMC_X-1_final/products001_part1/pl_ratio_epoch1.qdp', \
-		  '/Users/sean/Desktop/SMC_X-1_final/products001_part1/tbabs_tbpcf_cutoffpl_gauss_gauss_ratio.qdp', \
-		  '/Users/sean/Desktop/SMC_X-1_final/products001_part1/tbabs_tbabs_fdcut_gauss_gauss_ratio_epoch1.qdp'], \
+		  '/Users/sean/Desktop/SMC_X-1_final/products001_part1/tbpcf_cutoffpl_gauss_gauss_frozengamma_ratio.qdp', \
+		  '/Users/sean/Desktop/SMC_X-1_final/products001_part1/tbabs_fdcut_bb_gauss_gauss.qdp'], \
 		  'epochII': ['/Users/sean/Desktop/SMC_X-1_final/products001_part2/eeufspec_const_epoch2.qdp', \
 		   '/Users/sean/Desktop/SMC_X-1_final/products001_part2/pl_ratio_epoch2.qdp', \
-		   '/Users/sean/Desktop/SMC_X-1_final/products001_part2/tbabs_tbpcf_cutoffpl_gauss_gauss_ratio.qdp', \
-		   '/Users/sean/Desktop/SMC_X-1_final/products001_part2/tbabs_tbabs_fdcut_gauss_gauss_ratio_epoch2.qdp'], \
+		   '/Users/sean/Desktop/SMC_X-1_final/products001_part2/tbpcf_cutoffpl_gauss_gauss_frozengamma_ratio.qdp', \
+		   '/Users/sean/Desktop/SMC_X-1_final/products001_part2/tbabs_fdcut_bb_gauss_gauss_ratio.qdp'], \
 		   'epochIII': ['/Users/sean/Desktop/SMC_X-1_final/products003/eeufspec_const_epoch3.qdp', \
 			'/Users/sean/Desktop/SMC_X-1_final/products003/pl_ratio_epoch3.qdp', \
-			'/Users/sean/Desktop/SMC_X-1_final/products003/tbabs_tbpcf_cutoffpl_bb_gauss_ratio.qdp', \
-			'/Users/sean/Desktop/SMC_X-1_final/products003/tbabs_fdcut_bb_gauss_ratio_epoch3.qdp']}
+			'/Users/sean/Desktop/SMC_X-1_final/products003/tbpcf_cutoffpl_bb_bb_gauss_frozengamma_ratio.qdp', \
+			'/Users/sean/Desktop/SMC_X-1_final/products003/fdcut_bb_bb_gauss_ratio.qdp']}
 
 for key in epochs:
 	file = open(epochs[key][0], 'r')
@@ -120,9 +120,9 @@ for key in epochs:
 	ax3.axhline(y=0, lw = 0.8)
 	ax3.set_ylim((-0.15, 0.15))
 	if key == 'epochIII':
-		ax3.text(3.1, -0.13125, r'$tbabs \times (fdcut + gauss + bbody)$')
+		ax3.text(3.1, -0.13125, r'$tbabs \times (fdcut + bbody_{0.3} + bbody_{1.5} + gauss_{6.4})$')
 	else:
-		ax3.text(3.1, -0.13125, r'$tbabs \times (fdcut + gauss + gauss)$')
+		ax3.text(3.1, -0.13125, r'$tbabs \times (fdcut + bbody_{0.3} + gauss_{6.5} + gauss_{13.5})$')
 	ax3.set_yscale('linear')
 	ax3.set_ylabel('(data-model)/model')
 
@@ -149,12 +149,13 @@ for key in epochs:
 	ax4.set_ylim((-0.15, 0.15))
 	ax4.set_yscale('linear')
 	ax4.set_xlabel('Energy (keV)')
+	plt.xticks([3,4,5,6,7,8,9,10,20,30, 40], [3,4,5,6,7,8,9,10,20,30, 40])
 	ax4.set_ylim((-0.15,0.15))
 	if key == 'epochIII':
-		ax4.text(3.1, -0.13125, r'$tbpcf \times (cutoffpl + gauss + bbody)$')
+		ax4.text(3.1, -0.13125, r'$tbpcf \times (cutoffpl + bbody_{0.3} + bbody_{1.5} + gauss_{6.4})$')
 	else:
-		ax4.text(3.1, -0.13125, r'$tbpcf \times (cutoffpl + gauss + gauss)$')
+		ax4.text(3.1, -0.13125, r'$tbpcf \times (cutoffpl + gauss_{6.5} + gauss_{13.5})$')
 	fig.tight_layout(h_pad = 0)
 	#plt.show()
-	plt.savefig('/Users/sean/Desktop/MyPapers/SMC_X-1_letter/figures/spectral_analysis_' + key + '.eps')
+	plt.savefig('/Users/sean/Desktop/MyPapers/SMC_X-1_letter/figures/spectral_analysis_' + key + '.pdf')
 	plt.close()
