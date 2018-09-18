@@ -116,8 +116,8 @@ if gainBool:
                 pulses = data.field('PH_COM')[inds]
                 # The gain for the 3x3 grid around this pixel
                 gain_grid = gain[row:row + 3, col:col + 3]
-                priorList = priorList + data.field('PRIOR')[inds]
-                resetList = resetList + data.field('RESET')[inds]
+                priorList = priorList + list(data.field('PRIOR')[inds])
+                resetList = resetList + list(data.field('RESET')[inds])
                 # iterating through the PH_COM values for this pixel
                 for pulse in pulses:
                     # Append the sum of positive energies in the 
