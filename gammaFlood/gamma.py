@@ -92,6 +92,8 @@ plt.close()
 
 # If there's gain data then correct the spectrum
 energyList = []
+resetList = []
+priorList = []
 if gainBool:
     gain = np.zeros((34, 34))
     gain[1:33,1:33] = pickle.load(open(gainpath, 'rb'))
@@ -114,6 +116,8 @@ if gainBool:
                 pulses = data.field('PH_COM')[inds]
                 # The gain for the 3x3 grid around this pixel
                 gain_grid = gain[row:row + 3, col:col + 3]
+                priorList = priorList + data.field('PRIOR')[inds]
+                resetList = resetList + data.field('RESET')[inds]
                 # iterating through the PH_COM values for this pixel
                 for pulse in pulses:
                     # Append the sum of positive energies in the 
@@ -156,6 +160,22 @@ if gainBool:
     #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.pdf')
     plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain_singlepixel.pdf')
     #plt.show()
+    plt.close()
+
+    plt.figure()
+    plt.scatter(priorList, energyList, s=1, marker = '.')
+    plt.xlabel('Time since last event')
+    plt.ylabel('Energy (keV)')
+    plt.tight_layout()
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event.pdf')
+    plt.close()
+
+    plt.figure()
+    plt.scatter(resetList, energyList, s = 1, marker = '.')
+    plt.xlabel('Time since last reset')
+    plt.ylabel('Energy (keV)')
+    plt.tight_layout()
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset.pdf')
     plt.close()
 
 else:
