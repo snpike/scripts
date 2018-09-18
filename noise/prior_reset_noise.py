@@ -66,14 +66,14 @@ plt.figure()
 plt.scatter(prior, channel, marker = '.', linewidths = 0.01)
 plt.xlabel('Time since last event')
 plt.ylabel('Channel')
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event.pdf')
 plt.close()
 
 plt.figure()
 plt.scatter(reset, channel, marker = '.', linewidths = 0.01)
 plt.xlabel('Time since last reset')
 plt.ylabel('Channel')
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset.eps')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset.pdf')
 plt.close()
 
 
