@@ -49,7 +49,8 @@ for x in range(32):
 
 		plt.figure()
 
-		channel = data.field('PH')[START:END][np.nonzero(np.multiply((data.field('RAWX')[START:END] == x), (data.field('RAWY')[START:END] == y)))]
+		# Only use grade 0
+		channel = data.field('PH')[START:END][np.nonzero(np.multiply(np.multiply((data.field('RAWX')[START:END] == x), (data.field('RAWY')[START:END] == y)), data.field('GRADE')[START:END] == 0))]
 
 		if len(channel):
 			spectrum = np.histogram(channel, bins=bins, range = (0, maxchannel))
