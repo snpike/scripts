@@ -163,7 +163,7 @@ if gainBool:
     plt.close()
 
     plt.figure()
-    plt.scatter(priorList, energyList, s=1, marker = '.')
+    plt.scatter(priorList, energyList, s=1, marker = '.', rasterized=True)
     plt.xlabel('Time since last event')
     plt.ylabel('Energy (keV)')
     plt.tight_layout()
@@ -171,7 +171,7 @@ if gainBool:
     plt.close()
 
     plt.figure()
-    plt.scatter(resetList, energyList, s = 1, marker = '.')
+    plt.scatter(resetList, energyList, s = 1, marker = '.', rasterized=True)
     plt.xlabel('Time since last reset')
     plt.ylabel('Energy (keV)')
     plt.tight_layout()
