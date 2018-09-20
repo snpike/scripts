@@ -30,7 +30,7 @@ for char in filepath:
 filename = filepath[slash + 1:]
 detector = input('Please enter the detector ID: ').strip()
 source = input('Please enter the source: ').strip()
-etc = input('Please enter any other important information (temperature, voltage, etc.): ')
+#etc = input('Please enter any other important information (temperature, voltage, etc.): ')
 
 gainBool = os.path.exists(gainpath)
 
@@ -157,13 +157,16 @@ if gainBool:
 
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
-    #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.pdf')
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain_singlepixel.pdf')
+    plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.pdf')
     #plt.show()
     plt.close()
 
+    priorList = np.array(priorList)
+    energyList = np.array(energyList)
+    resetList = np.array(resetList)
+    rand = np.random.randint(0, len(priorList), size = 10000)
     plt.figure()
-    plt.scatter(priorList, energyList, s=1, marker = '.', rasterized=True)
+    plt.scatter(priorList[rand], energyList[rand], s=1, marker = '.', rasterized=True)
     plt.ylim(0, 120)
     plt.xlabel('Time since last event')
     plt.ylabel('Energy (keV)')
@@ -172,7 +175,7 @@ if gainBool:
     plt.close()
 
     plt.figure()
-    plt.scatter(resetList, energyList, s = 1, marker = '.', rasterized=True)
+    plt.scatter(resetList[rand], energyList[rand], s = 1, marker = '.', rasterized=True)
     plt.ylim(0, 120)
     plt.xlabel('Time since last reset')
     plt.ylabel('Energy (keV)')

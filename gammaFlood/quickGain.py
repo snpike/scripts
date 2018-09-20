@@ -28,7 +28,7 @@ detector = input('Please enter the detector ID: ').strip()
 source = input('Please enter the source (Am241 or Co57): ').strip()
 while source not in lines:
 	source = input('Please enter the source (Am241 or Co57): ').strip()
-etc = input('Please enter any other important information (temperature, voltage, etc.): ')
+#etc = input('Please enter any other important information (temperature, voltage, etc.): ')
 
 file = fits.open(filepath)
 
