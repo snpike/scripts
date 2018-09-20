@@ -157,7 +157,7 @@ if gainBool:
 
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
-    plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec_gain.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain.pdf')
     #plt.show()
     plt.close()
 
