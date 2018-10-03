@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-sns.set_context('paper', font_scale=1.0, rc={"lines.linewidth": 0.8})
+sns.set_context('paper', font_scale=1.2, rc={"lines.linewidth": 0.8})
 sns.set_style("ticks")
 sns.set_palette("colorblind")
 
@@ -54,9 +54,9 @@ for key in epochs:
 	fig, (ax1, ax2, ax3, ax4) = plt.subplots(4,1, sharex=True,  gridspec_kw = {'height_ratios':[3, 1, 1, 1], 'hspace':0})
 	ax1.errorbar(data[0][0],data[0][2], xerr=data[0][1], yerr=data[0][3], ls = 'none', color='black', label='FPMA')	#spectrum
 	if key=='epochIII':
-		ax1.set_ylim((0.2, np.max(data[0][2]) * 1.2))
+		ax1.set_ylim((0.205, np.max(data[0][2]) * 1.2))
 	else:
-		ax1.set_ylim((0.01, 0.1))
+		ax1.set_ylim((0.0105, 0.1))
 	# ax1.plot(data[0][0],data[0][4], ls = 'steps-mid', color = 'black')	#total model?
 	# ax1.plot(data[0][0],data[0][5], ls = '--', color = 'black')	#cutoffpl
 	# ax1.plot(data[0][0],data[0][6], ls = '--', color = 'black')	#13keV bump
@@ -69,8 +69,8 @@ for key in epochs:
 	ax1.set_xscale('log')
 	ax1.set_yscale('log')
 	ax1.set_xlim((3,40))
-	ax1.set_ylabel(r'$\mathrm{keV^2(Photons\ cm^{-2}\ s^{-1}\ keV^{-1})}$')
-	ax1.legend()
+	ax1.set_ylabel(r'$\mathrm{keV^2(\gamma\ cm^{-2}\ s^{-1}\ keV^{-1})}$')
+	ax1.legend(loc=1)
 	#plt.show()
 	#plt.close()
 
@@ -122,7 +122,7 @@ for key in epochs:
 	if key == 'epochIII':
 		ax3.text(3.1, -0.13125, r'$tbabs \times (fdcut + bbody_{0.3} + bbody_{1.5} + gauss_{6.4})$')
 	else:
-		ax3.text(3.1, -0.13125, r'$tbabs \times (fdcut + bbody_{0.3} + gauss_{6.5} + gauss_{13.5})$')
+		ax3.text(3.1, -0.13125, r'$tbabs \times (fdcut + bbody_{0.3} + gauss_{6.4} + gauss_{13.5})$')
 	ax3.set_yscale('linear')
 	ax3.set_ylabel('(data-model)/model')
 
@@ -154,7 +154,7 @@ for key in epochs:
 	if key == 'epochIII':
 		ax4.text(3.1, -0.13125, r'$tbpcf \times (cutoffpl + bbody_{0.3} + bbody_{1.5} + gauss_{6.4})$')
 	else:
-		ax4.text(3.1, -0.13125, r'$tbpcf \times (cutoffpl + gauss_{6.5} + gauss_{13.5})$')
+		ax4.text(3.1, -0.13125, r'$tbpcf \times (cutoffpl + gauss_{6.4} + gauss_{13.5})$')
 	fig.tight_layout(h_pad = 0)
 	#plt.show()
 	plt.savefig('/Users/sean/Desktop/MyPapers/SMC_X-1_letter/figures/spectral_analysis_' + key + '.pdf')

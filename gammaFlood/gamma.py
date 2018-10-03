@@ -175,12 +175,26 @@ if gainBool:
     plt.close()
 
     plt.figure()
+    plt.hist(priorList[rand], bins = 50)
+    plt.xlabel('Time since last event')
+    plt.ylabel('Counts')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event_hist.pdf')
+    plt.close()
+
+    plt.figure()
     plt.scatter(resetList[rand], energyList[rand], s = 1, marker = '.', rasterized=True)
     plt.ylim(0, 120)
     plt.xlabel('Time since last reset')
     plt.ylabel('Energy (keV)')
     plt.tight_layout()
     plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset.pdf')
+    plt.close()
+
+    plt.figure()
+    plt.hist(resetList[rand], bins = 50)
+    plt.xlabel('Time since last reset')
+    plt.ylabel('Counts')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset_hist.pdf')
     plt.close()
 
 else:

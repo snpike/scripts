@@ -62,8 +62,13 @@ for i in np.arange(START, END):
 			prior.append(data['PRIOR'][i])
 			reset.append(data['RESET'][i])
 
+
+prior = np.array(prior)
+channel = np.array(channel)
+reset = np.array(reset)
+rand = np.random.randint(0, len(prior), size = 10000)
 plt.figure()
-plt.scatter(prior, channel, s=1, marker = '.')
+plt.scatter(prior[rand], channel[rand], s=1, marker = '.', rasterized=True)
 plt.xlabel('Time since last event')
 plt.ylabel('Channel')
 plt.tight_layout()
@@ -71,11 +76,25 @@ plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_ev
 plt.close()
 
 plt.figure()
-plt.scatter(reset, channel, s = 1, marker = '.')
+plt.hist(prior[rand], bins = 50)
+plt.xlabel('Time since last event')
+plt.ylabel('Counts')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event_hist.pdf')
+plt.close()
+
+plt.figure()
+plt.scatter(reset[rand], channel[rand], s = 1, marker = '.', rasterized=True)
 plt.xlabel('Time since last reset')
 plt.ylabel('Channel')
 plt.tight_layout()
 plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset.pdf')
+plt.close()
+
+plt.figure()
+plt.hist(reset[rand], bins = 50)
+plt.xlabel('Time since last reset')
+plt.ylabel('Counts')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset_hist.pdf')
 plt.close()
 
 
