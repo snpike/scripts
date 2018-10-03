@@ -178,6 +178,7 @@ if gainBool:
     plt.hist(priorList[rand], bins = 50)
     plt.xlabel('Time since last event')
     plt.ylabel('Counts')
+    plt.tight_layout()
     plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event_hist.pdf')
     plt.close()
 
@@ -194,6 +195,7 @@ if gainBool:
     plt.hist(resetList[rand], bins = 50)
     plt.xlabel('Time since last reset')
     plt.ylabel('Counts')
+    plt.tight_layout()
     plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset_hist.pdf')
     plt.close()
 
