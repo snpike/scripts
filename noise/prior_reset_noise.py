@@ -51,6 +51,8 @@ bins = np.arange(0-maxchannel,maxchannel)
 
 # There's no STIM data
 channelMap = [[[] for i in range(33)] for j in range(33)]
+priorMap = [[[] for i in range(33)] for j in range(33)]
+resetMap = [[[] for i in range(33)] for j in range(33)]
 channel = []
 prior = []
 reset = []
@@ -58,6 +60,8 @@ for i in np.arange(START, END):
 	if data['UP'][i]:
 		for j in range(9):
 			channelMap[data['RAWY'][i] + (j//3) - 1][data['RAWX'][i] + (j%3) - 1].append(data['PH_RAW'][i][j])
+			priorMap[data['RAWY'][i] + (j//3) - 1][data['RAWX'][i] + (j%3) - 1].append(data['PRIOR'][i])
+			resetMap[data['RAWY'][i] + (j//3) - 1][data['RAWX'][i] + (j%3) - 1].append(data['RESET'][i])
 			channel.append(data['PH_RAW'][i][j])
 			prior.append(data['PRIOR'][i])
 			reset.append(data['RESET'][i])
@@ -98,5 +102,40 @@ plt.ylabel('Counts')
 plt.tight_layout()
 plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset_hist.pdf')
 plt.close()
+
+for row in range(32):
+	for col in range(32):
+		plt.figure()
+		plt.scatter(priorMap[col][row], channelMap[col][row], s=1, marker = '.', rasterized=True)
+		plt.xlabel('Time since last event')
+		plt.ylabel('Channel')
+		plt.tight_layout()
+		plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'last_event_x' + str(col) + '_y' + str(row) + '.pdf')
+		plt.close()
+
+		plt.figure()
+		plt.hist(priorMap[col][row], bins = 50)
+		plt.xlabel('Time since last event')
+		plt.ylabel('Counts')
+		plt.tight_layout()
+		plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'last_event_hist_x' + str(col) + '_y' + str(row) + '.pdf')
+		plt.close()
+
+		plt.figure()
+		plt.scatter(resetMap[col][row], channelMap[col][row], s = 1, marker = '.', rasterized=True)
+		plt.xlabel('Time since last reset')
+		plt.ylabel('Channel')
+		plt.tight_layout()
+		plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'last_reset_x' + str(col) + '_y' + str(row) + '.pdf')
+		plt.close()
+
+		plt.figure()
+		plt.hist(resetMap[col][row], bins = 50)
+		plt.xlabel('Time since last reset')
+		plt.ylabel('Counts')
+		plt.tight_layout()
+		plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'last_reset_hist_x' + str(col) + '_y' + str(row) + '.pdf')
+		plt.close()
+
 
 
