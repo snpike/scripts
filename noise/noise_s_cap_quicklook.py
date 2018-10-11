@@ -58,8 +58,21 @@ for i in np.arange(START, END):
 
 file.close()
 
-for i in range(16):
-	plt.figure()
-	tempSpec = plt.hist(channelMap[15][15][i], bins=bins, range = (0-maxchannel,maxchannel))
-	plt.show()
-	plt.close()
+for row in range(32):
+	for col in range(32):
+		for cap in range(16):
+
+			plt.figure()
+			tempSpec = plt.hist(channelMap[row][col][cap], bins=bins, range = (0-maxchannel,maxchannel))
+			
+    		g_init = models.Gaussian1D(amplitude=np.max(tempSpec[0]), mean=0, stddev = 35)
+		    fit_g = fitting.LevMarLSQFitter()
+		    g = fit_g(g_init, tempSpec[1], spectrum[0])
+		    plt.plot(spectrum[1], g(spectrum[1]))
+		    plt.text(g.mean + g.fwhm, g.amplitude, 'Mean: ' + str(round(g.mean, 2)))
+
+			plt.xlabel('Channel')
+			plt.ylabel('Counts')
+			plt.tight_layout()
+			plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + '_start_cap_x' + str(col) + '_y' + str(row) + '.pdf')
+			plt.close()
