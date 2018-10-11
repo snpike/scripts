@@ -67,8 +67,8 @@ for row in range(32):
 			
 			g_init = models.Gaussian1D(amplitude=np.max(tempSpec[0]), mean=0, stddev = 35)
 			fit_g = fitting.LevMarLSQFitter()
-			g = fit_g(g_init, tempSpec[1], tempSpec[0])
-			plt.plot(tempSpec[1], g(tempSpec[1]))
+			g = fit_g(g_init, tempSpec[1][:-1], tempSpec[0])
+			plt.plot(tempSpec[1][:-1], g(tempSpec[1]))
 			plt.text(g.mean + g.fwhm, g.amplitude, 'Mean: ' + str(round(g.mean, 2)))
 
 			plt.xlabel('Channel')
