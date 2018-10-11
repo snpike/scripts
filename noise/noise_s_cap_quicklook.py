@@ -65,11 +65,11 @@ for row in range(32):
 			plt.figure()
 			tempSpec = plt.hist(channelMap[row][col][cap], bins=bins, range = (0-maxchannel,maxchannel))
 			
-    		g_init = models.Gaussian1D(amplitude=np.max(tempSpec[0]), mean=0, stddev = 35)
-		    fit_g = fitting.LevMarLSQFitter()
-		    g = fit_g(g_init, tempSpec[1], spectrum[0])
-		    plt.plot(spectrum[1], g(spectrum[1]))
-		    plt.text(g.mean + g.fwhm, g.amplitude, 'Mean: ' + str(round(g.mean, 2)))
+			g_init = models.Gaussian1D(amplitude=np.max(tempSpec[0]), mean=0, stddev = 35)
+			fit_g = fitting.LevMarLSQFitter()
+			g = fit_g(g_init, tempSpec[1], tempSpec[0])
+			plt.plot(tempSpec[1], g(tempSpec[1]))
+			plt.text(g.mean + g.fwhm, g.amplitude, 'Mean: ' + str(round(g.mean, 2)))
 
 			plt.xlabel('Channel')
 			plt.ylabel('Counts')
