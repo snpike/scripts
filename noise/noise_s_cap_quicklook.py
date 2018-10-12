@@ -69,7 +69,7 @@ for row in range(32):
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, tempSpec[1][:-1], tempSpec[0])
 			plt.plot(tempSpec[1][:-1], g(tempSpec[1][:-1]))
-			plt.text(g.mean.value + g.fwhm.value, g.amplitude.value, 'Mean: ' + str(round(g.mean.value, 2)))
+			plt.text(g.mean.value + g.fwhm, g.amplitude.value, 'Mean: ' + str(round(g.mean.value, 2)))
 
 			plt.xlabel('Channel')
 			plt.ylabel('Counts')
