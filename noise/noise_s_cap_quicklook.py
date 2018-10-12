@@ -74,5 +74,5 @@ for row in range(32):
 			plt.xlabel('Channel')
 			plt.ylabel('Counts')
 			plt.tight_layout()
-			plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + '_start_cap_x' + str(col) + '_y' + str(row) + '.pdf')
+			plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_startcap_' + str(cap) + '.pdf')
 			plt.close()
