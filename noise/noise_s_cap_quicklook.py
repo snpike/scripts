@@ -17,6 +17,9 @@ filepath = input('Please enter the filepath to the noise data: ').strip()
 while not os.path.exists(filepath):
 	filepath = input('Please enter the filepath to the noise data: ').strip()
 
+if filepath[-1] == '/':
+	filepath = filepath[:-1]
+
 gainpath = input('Please enter the filepath to the gain data. If gain data is not available, press enter: ').strip()
 
 slash = 0
@@ -59,21 +62,25 @@ for i in np.arange(START, END):
 
 file.close()
 
+cap_offset = np.array([[[0 for c in range(16)] for x in range(32)] for y in range(32)])
 for row in range(32):
 	for col in range(32):
 		for cap in range(16):
 
-			plt.figure()
-			tempSpec = plt.hist(channelMap[row][col][cap], bins=bins, range = (0-maxchannel,maxchannel))
+			# plt.figure()
+			tempSpec = np.histogram(channelMap[row][col][cap], bins=bins, range = (0-maxchannel,maxchannel))
 			
 			g_init = models.Gaussian1D(amplitude=np.max(tempSpec[0]), mean=0, stddev = 35)
 			fit_g = fitting.LevMarLSQFitter()
 			g = fit_g(g_init, tempSpec[1][:-1], tempSpec[0])
-			plt.plot(tempSpec[1][:-1], g(tempSpec[1][:-1]))
-			plt.text(g.mean.value + g.fwhm, g.amplitude.value, 'Mean: ' + str(round(g.mean.value, 2)))
+			cap_offset[row][col][cap] = g.mean.value
+			# plt.plot(tempSpec[1][:-1], g(tempSpec[1][:-1]))
+			# plt.text(g.mean.value + g.fwhm, g.amplitude.value, 'Mean: ' + str(round(g.mean.value, 2)))
 
-			plt.xlabel('Channel')
-			plt.ylabel('Counts')
-			plt.tight_layout()
-			plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_startcap_' + str(cap) + '.pdf')
-			plt.close()
+			# plt.xlabel('Channel')
+			# plt.ylabel('Counts')
+			# plt.tight_layout()
+			# plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_startcap_' + str(cap) + '.pdf')
+			# plt.close()
+
+np.savetxt(filepath[:-5] + '_startcap_offset.txt', cap_offset)
