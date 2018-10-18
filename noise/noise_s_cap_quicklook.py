@@ -83,4 +83,4 @@ for row in range(32):
 			# plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_startcap_' + str(cap) + '.pdf')
 			# plt.close()
 
-np.savetxt(filepath[:-5] + '_startcap_offset.txt', cap_offset)
+np.save(filepath[:-5] + '_startcap_offset.npy', cap_offset)

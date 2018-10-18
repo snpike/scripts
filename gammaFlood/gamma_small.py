@@ -106,11 +106,10 @@ for source in sourcelist:
     plt.close()
 
     # If there's gain data then correct the spectrum
+    gain = np.zeros((34, 34))
     energyList = []
-    resetList = []
-    priorList = []
+
     if gainBool:
-        gain = np.zeros((34, 34))
         gain[1:33,1:33] = pickle.load(open(gainpath, 'rb'))
         # for event in data[START:END]:
         #     row = event['RAWY']
@@ -120,58 +119,63 @@ for source in sourcelist:
         #         mask = (temp > 0).astype(int)
         #         energyList.append(np.sum(np.multiply(np.multiply(mask, temp), gain[row:row + 3, col:col + 3])))
 
+    else:
         for row in np.arange(region[0][1], region[1][1] + 1):
             row_mask = data['RAWY'] == row
             for col in np.arange(region[0][0], region[1][0] + 1):
                 if [row, col] not in badpix:
                     col_mask = data['RAWX'] == col
-                    # Getting indices ('inds') and PH_COM values ('pulses') of 
-                    # all events at current pixel.
-                    inds = np.nonzero(np.multiply(np.multiply(row_mask, col_mask), T_mask))
-                    pulses = data.field('PH_COM')[inds]
-                    # The gain for the 3x3 grid around this pixel
-                    gain_grid = gain[row:row + 3, col:col + 3]
-                    priorList = priorList + list(data.field('PRIOR')[inds])
-                    resetList = resetList + list(data.field('RESET')[inds])
-                    # iterating through the PH_COM values for this pixel
-                    for pulse in pulses:
-                        # Append the sum of positive energies in the 
-                        # pulse grid to 'energies'
-                        pulse_grid = pulse.reshape(3, 3)
-                        mask = (pulse_grid > 0).astype(int)
-                        energyList.append(np.sum(np.multiply(
-                            np.multiply(mask, pulse_grid), gain_grid)))
+
+    for row in np.arange(region[0][1], region[1][1] + 1):
+        row_mask = data['RAWY'] == row
+        for col in np.arange(region[0][0], region[1][0] + 1):
+            if [row, col] not in badpix:
+                col_mask = data['RAWX'] == col
+                # Getting indices ('inds') and PH_COM values ('pulses') of 
+                # all events at current pixel.
+                inds = np.nonzero(np.multiply(np.multiply(row_mask, col_mask), T_mask))
+                pulses = data.field('PH_COM')[inds]
+                # The gain for the 3x3 grid around this pixel
+                gain_grid = gain[row:row + 3, col:col + 3]
+                # iterating through the PH_COM values for this pixel
+                for pulse in pulses:
+                    # Append the sum of positive energies in the 
+                    # pulse grid to 'energies'
+                    pulse_grid = pulse.reshape(3, 3)
+                    mask = (pulse_grid > 0).astype(int)
+                    energyList.append(np.sum(np.multiply(
+                        np.multiply(mask, pulse_grid), gain_grid)))
 
 
-        bins = 10000
-        spectra[source] = np.histogram(energyList, bins = bins, range= (0.01, 120))
+    bins = 10000
+    spectra[source] = np.histogram(energyList, bins = bins, range= (0.01, 120))
 
-        for line in lines:
-            centroid = np.argmax(spectrum[0][int(line/0.013)-500:int(line/0.013)+500]) + int(line/0.013)-500
-            fit_channels = np.arange(centroid-70, centroid + 150)
-            g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
-            fit_g = fitting.LevMarLSQFitter()
-            g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
-            # print(np.diag(fit_g.fit_info['param_cov']))
-            sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
-            fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
-            mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
-            frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
-            # print(g.fwhm/g.mean)
-            # print(frac_err)
-            # print(Am_line * g.fwhm/g.mean)
-            # print(frac_err * Am_line)
-            plt.text(70, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(Am_line * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * Am_line*1000))) + ' eV', fontsize=13)
+    for line in lines:
+        centroid = np.argmax(spectrum[0][int(line/0.013)-500:int(line/0.013)+500]) + int(line/0.013)-500
+        fit_channels = np.arange(centroid-70, centroid + 150)
+        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
+        fit_g = fitting.LevMarLSQFitter()
+        g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
+        # print(np.diag(fit_g.fit_info['param_cov']))
+        sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
+        fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
+        mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
+        frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
+        # print(g.fwhm/g.mean)
+        # print(frac_err)
+        # print(Am_line * g.fwhm/g.mean)
+        # print(frac_err * Am_line)
+        plt.text(70, spectrum[0][centroid]*3/5, r'$\mathrm{FWHM}=$' + str(int(round(Am_line * 1000 * g.fwhm/g.mean, 0))) + r'$\pm$' + str(int(round(frac_err * Am_line*1000))) + ' eV', fontsize=13)
 
-            plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}{\rm Am}$')
-            plt.plot(spectrum[1][fit_channels], g(fit_channels), label = 'Gaussian fit')
-            plt.xlabel('Energy (keV)')
-            plt.ylabel('Counts')
-            plt.legend()
+        plt.plot(spectrum[1][:-1], spectrum[0], label = r'${}^{241}{\rm Am}$')
+        plt.plot(spectrum[1][fit_channels], g(fit_channels), label = 'Gaussian fit')
+        plt.xlabel('Energy (keV)')
+        plt.ylabel('Counts')
+        plt.legend()
 
-            plt.tight_layout()
-            plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_gammaspec_gain.pdf')
-            plt.close()
+        plt.tight_layout()
+        plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_gammaspec_gain.pdf')
+        plt.close()
 
     else:
         bins = np.arange(1,maxchannel)
