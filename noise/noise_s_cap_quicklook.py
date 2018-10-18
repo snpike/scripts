@@ -68,7 +68,8 @@ for row in range(32):
 		for cap in range(16):
 
 			plt.figure()
-			tempSpec = np.histogram(channelMap[row][col][cap], bins=bins, range = (0-maxchannel,maxchannel))
+			#tempSpec = np.histogram(channelMap[row][col][cap], bins=bins, range = (0-maxchannel,maxchannel))
+			tempSpec = plt.hist(channelMap[row][col][cap], bins=bins, range = (0-maxchannel,maxchannel))
 			
 			g_init = models.Gaussian1D(amplitude=np.max(tempSpec[0]), mean=0, stddev = 35)
 			fit_g = fitting.LevMarLSQFitter()
