@@ -95,13 +95,12 @@ else:
             row_mask = data['RAWY'][START:END] == row
             
             for col in np.arange(region[0][0], region[1][0] + 1):
-                plt.figure()
 
                 col_mask = data['RAWX'][START:END] == col
                 channel = data.field('PH')[START:END][np.nonzero(np.multiply(np.multiply((col_mask), (row_mask)), data.field('GRADE')[START:END] == 0))]
             
                 if len(channel):
-
+                    plt.figure()
                     spectrum = plt.hist(channel, bins=bins, range = (0, maxchannel))
                     
                     for line in lines:
@@ -115,15 +114,17 @@ else:
                         if fit_g.fit_info['param_cov'] is not None:
                             
                             plt.plot(fit_channels, g(fit_channels), label = 'Gaussian fit (' + str(round(line, 0)) + ' keV)')
-                            plt.ylabel('Counts')
-                            plt.xlabel('Channel')
-                            plt.legend()
-                            plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_spec.pdf')
 
                             # If the gain is not near  0.013 then the spectrum was probably not good enough to get a real gain value. Skip it
                             if 0.01 < (line/g.mean) < 0.016:
                                 # Put the line energy (in keV) and the mean in channels in the gain data points
                                 gain_points[row][col].append([g.mean, line])
+
+                    plt.ylabel('Counts')
+                    plt.xlabel('Channel')
+                    plt.legend()
+                    plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_spec.pdf')
+                    plt.close()
 
     for row in range(32):
         for col in range(32):
