@@ -250,7 +250,7 @@ for source in sourcelist:
         mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
         frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
         plt.plot(spectrum[1][fit_channels], g(fit_channels), label = 'Gaussian fit')
-        print('FWHM ' + str(g.fwhm) + '+/-' + str(fwhm_err) + ' at ' str(round(line, 0)) + ' keV')
+        print('FWHM ' + str(g.fwhm) + '+/-' + str(fwhm_err) + ' at ' + str(round(line, 0)) + ' keV')
 
     plt.xlabel('Energy (keV)')
     plt.ylabel('Counts')
