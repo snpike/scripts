@@ -50,7 +50,7 @@ mask = np.multiply((data['DET_ID'] == pos), (data['TEMP'] > -20))
 START = np.argmax(mask)
 END = len(mask) - np.argmax(mask[::-1])
 
-maxchannel = 1000
+maxchannel = 250
 bins = np.arange(0-maxchannel,maxchannel)
 
 # There's no STIM data
