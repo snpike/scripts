@@ -49,8 +49,8 @@ else:
 
 gainBool = os.path.exists(gainpath)
 
-maxchannel = 10000
-bins = 10000
+maxchannel = 15000
+bins = 15000
 
 spectra = {}
 
