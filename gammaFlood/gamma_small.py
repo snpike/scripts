@@ -92,12 +92,12 @@ else:
 
         for row in np.arange(region[0][1], region[1][1] + 1):
 
-            row_mask = data['RAWY'] == row
+            row_mask = data['RAWY'][START:END] == row
             
             for col in np.arange(region[0][0], region[1][0] + 1):
                 plt.figure()
 
-                col_mask = data['RAWX'] == col
+                col_mask = data['RAWX'][START:END] == col
                 channel = data.field('PH')[START:END][np.nonzero(np.multiply(np.multiply((col_mask), (row_mask)), data.field('GRADE')[START:END] == 0))]
             
                 if len(channel):
