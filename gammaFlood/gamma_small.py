@@ -118,7 +118,7 @@ else:
                             plt.ylabel('Counts')
                             plt.xlabel('Channel')
                             plt.legend()
-                            plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(x) + '_y' + str(y) + '_spec.pdf')
+                            plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_spec.pdf')
 
                             # If the gain is not near  0.013 then the spectrum was probably not good enough to get a real gain value. Skip it
                             if 0.01 < (line/g.mean) < 0.016:
