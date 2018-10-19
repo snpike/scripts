@@ -29,7 +29,7 @@ filepath_dict = {'Am241': input('Please enter the filepath to the Am241 flood da
                 'Eu155': input('Please enter the filepath to the Eu155 flood data: ').strip()}
 
 for source in sourcelist:
-    if not os.path.exists(sourcelist[source][2]):
+    if not os.path.exists(filepath_dict[source]):
         print('Could not find the file entered for ' + source + '. The script will now exit.')
         exit()
 
