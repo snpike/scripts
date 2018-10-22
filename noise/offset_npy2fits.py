@@ -48,4 +48,4 @@ hdu3 = fits.BinTableHDU.from_columns(coldefs)
 
 hdu = fits.HDUList([primary_hdu, hdu0, hdu1, hdu2, hdu3])
 
-hdu.writeto(filepath[:-4] + '.fits')
+hdu.writeto(filepath[:-4] + '.fits', overwrite = True)
