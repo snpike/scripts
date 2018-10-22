@@ -26,7 +26,7 @@ rawy = []
 offset = []
 
 for row in range(32):
-	for col in range(32)
+	for col in range(32):
 		rawx.append(col)
 		rawy.append(row)
 		offset.append(npy_data[row][col])
