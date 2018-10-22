@@ -41,10 +41,10 @@ hdr = fits.Header()
 
 primary_hdu = fits.PrimaryHDU(header = hdr)
 
-hdu0 = fits.BinTableHDU.from_columns(coldefs)
-hdu1 = fits.BinTableHDU.from_columns(coldefs)
-hdu2 = fits.BinTableHDU.from_columns(coldefs)
-hdu3 = fits.BinTableHDU.from_columns(coldefs)
+hdu0 = fits.BinTableHDU.from_columns(coldefs, name = 'OFFSET')
+hdu1 = fits.BinTableHDU.from_columns(coldefs, name = 'OFFSET')
+hdu2 = fits.BinTableHDU.from_columns(coldefs, name = 'OFFSET')
+hdu3 = fits.BinTableHDU.from_columns(coldefs, name = 'OFFSET')
 
 hdu = fits.HDUList([primary_hdu, hdu0, hdu1, hdu2, hdu3])
 
