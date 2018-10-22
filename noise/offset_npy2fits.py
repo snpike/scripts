@@ -37,13 +37,11 @@ col3 = fits.Column(name = 'OFFSET', format = '16E', array = offset)
 
 coldefs = fits.ColDefs([col1, col2, col3])
 
-hdu = fits.BinTableHDU.from_columns(coldefs)
+hdu0 = fits.BinTableHDU.from_columns(coldefs)
 hdu1 = fits.BinTableHDU.from_columns(coldefs)
 hdu2 = fits.BinTableHDU.from_columns(coldefs)
 hdu3 = fits.BinTableHDU.from_columns(coldefs)
 
-hdu.append(hdu1)
-hdu.append(hdu2)
-hdu.append(hdu3)
+hdu = fits.HDUList([hdu0, hdu1, hdu2, hdu3])
 
 hdu.writeto(filepath[:-4] + '.fits')
