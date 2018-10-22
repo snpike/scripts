@@ -129,7 +129,7 @@ else:
     for row in range(32):
         for col in range(32):
             if len(gain_points[row][col]):
-                points = np.array(gain_points[row][col]).T
+                points = np.array(gain_points[row][col])
                 gain[row][col] = stats.linregress(points)[0]
 
     # interpolate gain for pixels where fit was unsuccessful
