@@ -62,7 +62,7 @@ for i in np.arange(START, END):
 
 file.close()
 
-cap_offset = np.array([[[0 for c in range(16)] for x in range(32)] for y in range(32)])
+cap_offset = np.array([[[0.0 for c in range(16)] for x in range(32)] for y in range(32)])
 for row in range(32):
 	for col in range(32):
 		for cap in range(16):
@@ -84,4 +84,4 @@ for row in range(32):
 			plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_startcap_' + str(cap) + '.pdf')
 			plt.close()
 
-np.save(filepath[:-5] + '_startcap_offset.npy', cap_offset)
+np.savetxt(filepath[:-5] + '_startcap_offset.npy', cap_offset)
