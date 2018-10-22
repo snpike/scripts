@@ -3,7 +3,7 @@ import numpy as np
 import os.path
 
 filepath = input('Enter the path to the .npy offset file to convert:').strip()
-npy_data = np.loadtxt(filepath)
+npy_data = np.load(filepath)
 
 while npy_data.shape != (32,32,16):
 	print('The shape of the offset array should be (32, 32, 16). Instead got ' + str(offsets.shape) + '. Try again.')
