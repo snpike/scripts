@@ -130,6 +130,7 @@ else:
         for col in range(32):
             if len(gain_points[row][col])>1:
                 points = np.array(gain_points[row][col])
+                print(points)
                 gain[row][col] = stats.linregress(points).slope
             elif len(gain_points[row][col]) == 1:
                 points = np.array(gain_points[row][col])
