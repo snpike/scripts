@@ -37,11 +37,15 @@ col3 = fits.Column(name = 'OFFSET', format = '16E', array = offset)
 
 coldefs = fits.ColDefs([col1, col2, col3])
 
+hdr = fits.Header()
+
+primary_hdu = fits.PrimaryHDU(header = hdr)
+
 hdu0 = fits.BinTableHDU.from_columns(coldefs)
 hdu1 = fits.BinTableHDU.from_columns(coldefs)
 hdu2 = fits.BinTableHDU.from_columns(coldefs)
 hdu3 = fits.BinTableHDU.from_columns(coldefs)
 
-hdu = fits.HDUList([hdu0, hdu1, hdu2, hdu3])
+hdu = fits.HDUList([primary_hdu, hdu0, hdu1, hdu2, hdu3])
 
 hdu.writeto(filepath[:-4] + '.fits')
