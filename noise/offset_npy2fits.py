@@ -39,4 +39,4 @@ coldefs = fits.ColDefs([col1, col2, col3])
 
 hdu = fits.BinTableHDU.from_columns(coldefs)
 
-hdu.writeto('/disk/lif2/spike/detectorData/' + str(detector) + '/' + filename[:-4] + '.fits')
+hdu.writeto(filepath[:-4] + '.fits')
