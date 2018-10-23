@@ -118,7 +118,7 @@ else:
                             # If the gain is not near  0.013 then the spectrum was probably not good enough to get a real gain value. Skip it
                             if 0.01 < (line/g.mean) < 0.016:
                                 # Put the line energy (in keV) and the mean in channels in the gain data points
-                                gain_points[row][col].append([g.mean, line])
+                                gain_points[row][col].append([g.mean.value, line])
 
                     plt.ylabel('Counts')
                     plt.xlabel('Channel')
