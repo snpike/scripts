@@ -161,6 +161,8 @@ else:
                     gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
 
     np.savetxt('/disk/lif2/spike/detectorData/' + detector + '/fullgain_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + 'high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '.npy', gain)
+    print(buff_gain.shape)
+    print(gain.shape)
     buff_gain[1:33, 1:33] = gain
 
 
