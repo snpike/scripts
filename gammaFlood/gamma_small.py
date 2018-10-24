@@ -43,7 +43,7 @@ while temp_response not in ['y','yes', 'n', 'no']:
 
 full_det = (temp_response in ['y','yes'])
 if full_det:
-    region = [[0,32][0,32]]
+    region = [[0,31][0,31]]
 else:
     region = [[int(input('Low column? ').strip()), int(input('Low row? ').strip())],[int(input('High column? ').strip()), int(input('High row? ').strip())]]
 
@@ -57,7 +57,7 @@ spectra = {}
 buff_gain = np.zeros((34, 34))
 
 if gainBool:
-    buff_gain[1:33][1:33] = numpy.loadtxt(gainpath)
+    buff_gain[1:33, 1:33] = numpy.loadtxt(gainpath)
 
 else:
     # Collect energy-channel pairs at each spectral line which we will later fit to a polynomial to find the gain
@@ -161,7 +161,7 @@ else:
                     gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
 
     np.savetxt('/disk/lif2/spike/detectorData/' + detector + '/fullgain_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + 'high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '.npy', gain)
-    buff_gain[1:33][1:33] = gain
+    buff_gain[1:33, 1:33] = gain
 
 
 for source in sourcelist:
