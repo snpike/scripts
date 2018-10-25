@@ -114,7 +114,7 @@ else:
                         if fit_g.fit_info['param_cov'] is not None:
                             
                             plt.plot(np.multiply(fit_channels, (line/g.mean)), g(fit_channels), \
-                                label = 'Gaussian fit (' + str(round(line, 0)) + ' keV)\n Gain: ' + str(round(line*1000.0/g.mean), 1) +  'eV/channel\nFWHM = ' +str(int(g.fwhm*line*1000.0/g.mean)) + 'eV')
+                                label = 'Gaussian fit (' + str(round(line, 0)) + ' keV)\n Gain: ' + str(round(line*1000.0/g.mean, 1)) +  'eV/channel\nFWHM = ' +str(int(g.fwhm*line*1000.0/g.mean)) + 'eV')
 
                             # If the gain is not near  0.013 then the spectrum was probably not good enough to get a real gain value. Skip it
                             if 0.01 < (line/g.mean) < 0.016:
