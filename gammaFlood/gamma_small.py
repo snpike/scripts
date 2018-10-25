@@ -113,7 +113,8 @@ else:
                 
                         if fit_g.fit_info['param_cov'] is not None:
                             
-                            plt.plot(fit_channels, g(fit_channels), label = 'Gaussian fit (' + str(round(line, 0)) + ' keV)')
+                            plt.plot(np.multiply(fit_channels, (line/g.mean)), g(fit_channels), \
+                                label = 'Gaussian fit (' + str(round(line, 0)) + ' keV)\n Gain: ' + str(round(line*1000.0/g.mean), 1) +  'eV/channel\nFWHM = ' +str(int(g.fwhm*line*1000.0/g.mean)) + 'eV')
 
                             # If the gain is not near  0.013 then the spectrum was probably not good enough to get a real gain value. Skip it
                             if 0.01 < (line/g.mean) < 0.016:
@@ -123,6 +124,7 @@ else:
                     plt.ylabel('Counts')
                     plt.xlabel('Channel')
                     plt.legend()
+                    plt.tight_layout()
                     plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_spec.pdf')
                     plt.close()
 
@@ -161,8 +163,6 @@ else:
                     gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
 
     np.savetxt('/disk/lif2/spike/detectorData/' + detector + '/fullgain_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + 'high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '.npy', gain)
-    print(buff_gain.shape)
-    print(gain.shape)
     buff_gain[1:33, 1:33] = gain
 
 
@@ -211,7 +211,7 @@ for source in sourcelist:
     plt.close()
 
     plt.figure()
-    plt.hist(np.array(countMap).flatten(), bins = 100, range = (0, np.max(countMap) + 1), histtype = 'stepfilled')
+    plt.hist(np.array(countMap).flatten(), bins = 20, histtype = 'stepfilled')
     plt.ylabel('Pixels')
     plt.xlabel('Counts')
     plt.tight_layout()
@@ -240,22 +240,23 @@ for source in sourcelist:
                 mask = (pulse_grid > 0).astype(int)
                 energyList.append(np.sum(np.multiply(np.multiply(mask, pulse_grid), gain_grid)))
 
-
-    spectra[source] = np.histogram(energyList, bins = bins, range= (0.01, 120))
+    spectrum = np.histogram(energyList, bins = bins, range= (0.01, 190))
+    spectra[source] = spectrum
     plt.figure()
     plt.plot(spectrum[1][:-1], spectrum[0], label = latex_label)
 
     for line in lines:
         centroid = np.argmax(spectrum[0][int(line/0.013)-500:int(line/0.013)+500]) + int(line/0.013)-500
         fit_channels = np.arange(centroid-70, centroid + 150)
-        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
+        fit_energy = spectrum[1][fit_channels]
+        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=spectrum[1][centroid], stddev = 0.5)
         fit_g = fitting.LevMarLSQFitter()
-        g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
+        g = fit_g(g_init, fit_energy, spectrum[0][fit_channels])
         sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
         fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
         mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
         frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
-        plt.plot(spectrum[1][fit_channels], g(fit_channels), label = 'Gaussian fit')
+        plt.plot(fit_energy, g(fit_energy), label = 'FWHM ' + str(g.fwhm) + '+/-' + str(fwhm_err) + ' at ' + str(round(line, 0)) + ' keV')
         print('FWHM ' + str(g.fwhm) + '+/-' + str(fwhm_err) + ' at ' + str(round(line, 0)) + ' keV')
 
     plt.xlabel('Energy (keV)')
@@ -277,14 +278,15 @@ for source in sourcelist:
     for line in lines:
         centroid = np.argmax(spectrum[0][int(line/0.013)-500:int(line/0.013)+500]) + int(line/0.013)-500
         fit_channels = np.arange(centroid-70, centroid + 150)
-        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=centroid, stddev = 75)
+        fit_energy = spectrum[1][fit_channels]
+        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=spectrum[1][centroid], stddev = 0.5)
         fit_g = fitting.LevMarLSQFitter()
-        g = fit_g(g_init, fit_channels, spectrum[0][fit_channels])
+        g = fit_g(g_init, fit_energy, spectrum[0][fit_channels])
         sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
         fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
         mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
         frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
-        plt.plot(spectrum[1][fit_channels], g(fit_channels), label = 'Gaussian fit')
+        plt.plot(fit_energy, g(fit_energy))
 
 plt.xlabel('Energy (keV)')
 plt.ylabel('Counts')
