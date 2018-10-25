@@ -241,7 +241,6 @@ for source in sourcelist:
                 energyList.append(np.sum(np.multiply(np.multiply(mask, pulse_grid), gain_grid)))
 
 
-    bins = 10000
     spectra[source] = np.histogram(energyList, bins = bins, range= (0.01, 120))
     plt.figure()
     plt.plot(spectrum[1][:-1], spectrum[0], label = latex_label)
