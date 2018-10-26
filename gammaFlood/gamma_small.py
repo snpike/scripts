@@ -240,7 +240,7 @@ for source in sourcelist:
                 mask = (pulse_grid > 0).astype(int)
                 energyList.append(np.sum(np.multiply(np.multiply(mask, pulse_grid), gain_grid)))
 
-    spectrum = np.histogram(energyList, bins = bins, range= (0.01, 190))
+    spectrum = np.histogram(energyList, bins = bins, range= (0.01, 150))
     spectra[source] = spectrum
     plt.figure()
     plt.plot(spectrum[1][:-1], spectrum[0], label = latex_label)
@@ -256,8 +256,8 @@ for source in sourcelist:
         fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
         mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
         frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
-        plt.plot(fit_energy, g(fit_energy), label = 'FWHM ' + str(g.fwhm) + '+/-' + str(fwhm_err) + ' at ' + str(round(line, 0)) + ' keV')
-        print('FWHM ' + str(g.fwhm) + '+/-' + str(fwhm_err) + ' at ' + str(round(line, 0)) + ' keV')
+        plt.plot(fit_energy, g(fit_energy), label = 'FWHM ' + str(round(g.fwhm*1000, 0)) + ' eV at ' + str(int(round(line, 0))) + ' keV')
+        print('FWHM ' + str(round(g.fwhm*1000, 0)) + ' eV at ' + str(int(round(line, 0))) + ' keV')
 
     plt.xlabel('Energy (keV)')
     plt.ylabel('Counts')
