@@ -49,6 +49,8 @@ else:
 
 gainBool = os.path.exists(gainpath)
 
+gain_est = 0.0125
+
 maxchannel = 15000
 bins = 15000
 
@@ -246,10 +248,10 @@ for source in sourcelist:
     plt.plot(spectrum[1][:-1], spectrum[0], label = latex_label)
 
     for line in lines:
-        centroid = np.argmax(spectrum[0][int(line/0.013)-500:int(line/0.013)+500]) + int(line/0.013)-500
+        centroid = np.argmax(spectrum[0][int(line/gain_est)-500:int(line/gain_est)+500]) + int(line/gain_est)-500
         fit_channels = np.arange(centroid-70, centroid + 150)
         fit_energy = spectrum[1][fit_channels]
-        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=spectrum[1][centroid], stddev = 0.5)
+        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=line, stddev = 0.5)
         fit_g = fitting.LevMarLSQFitter()
         g = fit_g(g_init, fit_energy, spectrum[0][fit_channels])
         sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
@@ -276,10 +278,10 @@ for source in sourcelist:
     plt.plot(spectrum[1][:-1], spectrum[0], label = latex_label)
 
     for line in lines:
-        centroid = np.argmax(spectrum[0][int(line/0.013)-500:int(line/0.013)+500]) + int(line/0.013)-500
+        centroid = np.argmax(spectrum[0][int(line/gain_est)-500:int(line/gain_est)+500]) + int(line/gain_est)-500
         fit_channels = np.arange(centroid-70, centroid + 150)
         fit_energy = spectrum[1][fit_channels]
-        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=spectrum[1][centroid], stddev = 0.5)
+        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=line, stddev = 0.5)
         fit_g = fitting.LevMarLSQFitter()
         g = fit_g(g_init, fit_energy, spectrum[0][fit_channels])
         sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
