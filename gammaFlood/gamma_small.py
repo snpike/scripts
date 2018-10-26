@@ -57,7 +57,7 @@ spectra = {}
 buff_gain = np.zeros((34, 34))
 
 if gainBool:
-    buff_gain[1:33, 1:33] = numpy.loadtxt(gainpath)
+    buff_gain[1:33, 1:33] = np.loadtxt(gainpath)
 
 else:
     # Collect energy-channel pairs at each spectral line which we will later fit to a polynomial to find the gain
@@ -162,7 +162,7 @@ else:
                 if np.count_nonzero(temp):
                     gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
 
-    np.savetxt('/disk/lif2/spike/detectorData/' + detector + '/fullgain_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + 'high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '.npy', gain)
+    np.savetxt('/disk/lif2/spike/detectorData/' + detector + '/fullgain_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '.npy', gain)
     buff_gain[1:33, 1:33] = gain
 
 
@@ -292,7 +292,7 @@ plt.xlabel('Energy (keV)')
 plt.ylabel('Counts')
 plt.legend()
 plt.tight_layout()
-plt.savefig('/users/spike/det_figs/' + detector + '/fullspec_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + 'high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '.pdf')
+plt.savefig('/users/spike/det_figs/' + detector + '/fullspec_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '.pdf')
 plt.close()
 
 
