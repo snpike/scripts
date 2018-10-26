@@ -243,12 +243,13 @@ for source in sourcelist:
                 energyList.append(np.sum(np.multiply(np.multiply(mask, pulse_grid), gain_grid)))
 
     spectrum = np.histogram(energyList, bins = bins, range= (0.01, 150))
+    energy_per_bin = (150-0.01)/bins
     spectra[source] = spectrum
     plt.figure()
     plt.plot(spectrum[1][:-1], spectrum[0], label = latex_label)
 
     for line in lines:
-        centroid = np.argmax(spectrum[0][int(line/gain_est)-200:int(line/gain_est)+200]) + int(line/gain_est)-200
+        centroid = np.argmax(spectrum[0][int(line/energy_per_bin)-200:int(line/energy_per_bin)+200]) + int(line/energy_per_bin)-200
         fit_channels = np.arange(centroid-70, centroid + 150)
         fit_energy = spectrum[1][fit_channels]
         g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=line, stddev = 0.5)
@@ -278,7 +279,7 @@ for source in sourcelist:
     plt.plot(spectrum[1][:-1], spectrum[0], label = latex_label)
 
     for line in lines:
-        centroid = np.argmax(spectrum[0][int(line/gain_est)-200:int(line/gain_est)+200]) + int(line/gain_est)-200
+        centroid = np.argmax(spectrum[0][int(line/energy_per_bin)-200:int(line/energy_per_bin)+200]) + int(line/energy_per_bin)-200
         fit_channels = np.arange(centroid-70, centroid + 150)
         fit_energy = spectrum[1][fit_channels]
         g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=line, stddev = 0.5)
