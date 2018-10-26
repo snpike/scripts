@@ -207,7 +207,7 @@ for source in sourcelist:
     plt.xticks(np.arange(0,region[1][0]-region[0][0]+1), [str(int(x)) for x in np.arange(region[0][0], region[1][0] + 1)])
     plt.yticks(np.arange(0,region[1][1]-region[0][1]+1), [str(int(x)) for x in np.arange(region[0][1], region[1][1] + 1)])
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_floodmap.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '_floodmap.pdf')
     plt.close()
 
     plt.figure()
@@ -215,7 +215,7 @@ for source in sourcelist:
     plt.ylabel('Pixels')
     plt.xlabel('Counts')
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_gammahist.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '_gammahist.pdf')
     plt.close()
 
     # If there's gain data then correct the spectrum
@@ -263,7 +263,7 @@ for source in sourcelist:
     plt.ylabel('Counts')
     plt.legend()
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_spec_gain.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) +'_spec_gain.pdf')
     plt.close()
 
 plt.figure()
