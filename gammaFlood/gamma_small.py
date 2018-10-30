@@ -37,6 +37,10 @@ gainpath = input('Please enter the filepath to the gain data: ').strip()
 
 detector = input('Please enter the detector ID: ').strip()
 
+modifier = input('Any modifiers to append to file names? ').strip()
+if len(modifier):
+    modifier = '.' + modifier
+
 temp_response = input('Should I analyze the full detector? (y/n) ').strip()
 while temp_response not in ['y','yes', 'n', 'no']:
     temp_response = input('Should I analyze the full detector? (y/n) ').strip()
@@ -127,7 +131,7 @@ else:
                     plt.xlabel('Channel')
                     plt.legend()
                     plt.tight_layout()
-                    plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_spec.pdf')
+                    plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-5] + '_x' + str(col) + '_y' + str(row) + '_spec' + modifier + '.pdf')
                     plt.close()
 
     for row in range(32):
@@ -164,7 +168,7 @@ else:
                 if np.count_nonzero(temp):
                     gain[x[0], x[1]] = np.sum(temp)/np.count_nonzero(temp)
 
-    np.savetxt('/disk/lif2/spike/detectorData/' + detector + '/fullgain_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '.npy', gain)
+    np.savetxt('/disk/lif2/spike/detectorData/' + detector + '/fullgain_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + modifier + '.npy', gain)
     buff_gain[1:33, 1:33] = gain
 
 
@@ -209,7 +213,7 @@ for source in sourcelist:
     plt.xticks(np.arange(0,region[1][0]-region[0][0]+1), [str(int(x)) for x in np.arange(region[0][0], region[1][0] + 1)])
     plt.yticks(np.arange(0,region[1][1]-region[0][1]+1), [str(int(x)) for x in np.arange(region[0][1], region[1][1] + 1)])
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '_floodmap.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '_floodmap' + modifier + '.pdf')
     plt.close()
 
     plt.figure()
@@ -217,7 +221,7 @@ for source in sourcelist:
     plt.ylabel('Pixels')
     plt.xlabel('Counts')
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '_gammahist.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '_gammahist' + modifier + '.pdf')
     plt.close()
 
     # If there's gain data then correct the spectrum
@@ -266,7 +270,7 @@ for source in sourcelist:
     plt.ylabel('Counts')
     plt.legend()
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) +'_spec_gain.pdf')
+    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) +'_spec_gain' + modifier + '.pdf')
     plt.close()
 
 plt.figure()
@@ -295,7 +299,7 @@ plt.xlabel('Energy (keV)')
 plt.ylabel('Counts')
 plt.legend()
 plt.tight_layout()
-plt.savefig('/users/spike/det_figs/' + detector + '/fullspec_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + '.pdf')
+plt.savefig('/users/spike/det_figs/' + detector + '/fullspec_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + modifier + '.pdf')
 plt.close()
 
 
