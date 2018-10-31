@@ -264,11 +264,11 @@ for source in sourcelist:
         mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
         frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
         plt.plot(fit_energy, g(fit_energy), label = 'FWHM ' + str(round(g.fwhm*1000, 0)) + ' eV at ' + str(int(round(line, 0))) + ' keV')
-        print('FWHM ' + str(round(g.fwhm*1000, 0)) + ' eV at ' + str(int(round(line, 0))) + ' keV')
+        print('FWHM ' + str(int(round(g.fwhm*1000, 0))) + ' eV at ' + str(int(round(line, 0))) + ' keV')
 
     plt.xlabel('Energy (keV)')
     plt.ylabel('Counts')
-    plt.legend()
+    plt.legend(loc = 1)
     plt.tight_layout()
     plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-5] + '_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) +'_spec_gain' + modifier + '.pdf')
     plt.close()
@@ -282,18 +282,18 @@ for source in sourcelist:
 
     plt.plot(spectrum[1][:-1], spectrum[0], label = latex_label)
 
-    for line in lines:
-        centroid = np.argmax(spectrum[0][int(line/energy_per_bin)-200:int(line/energy_per_bin)+200]) + int(line/energy_per_bin)-200
-        fit_channels = np.arange(centroid-70, centroid + 150)
-        fit_energy = spectrum[1][fit_channels]
-        g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=line, stddev = 0.5)
-        fit_g = fitting.LevMarLSQFitter()
-        g = fit_g(g_init, fit_energy, spectrum[0][fit_channels])
-        sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
-        fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
-        mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
-        frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
-        plt.plot(fit_energy, g(fit_energy))
+    # for line in lines:
+    #     centroid = np.argmax(spectrum[0][int(line/energy_per_bin)-200:int(line/energy_per_bin)+200]) + int(line/energy_per_bin)-200
+    #     fit_channels = np.arange(centroid-70, centroid + 150)
+    #     fit_energy = spectrum[1][fit_channels]
+    #     g_init = models.Gaussian1D(amplitude=spectrum[0][centroid], mean=line, stddev = 0.5)
+    #     fit_g = fitting.LevMarLSQFitter()
+    #     g = fit_g(g_init, fit_energy, spectrum[0][fit_channels])
+    #     sigma_err = np.diag(fit_g.fit_info['param_cov'])[2]
+    #     fwhm_err = 2*np.sqrt(2*np.log(2))*sigma_err
+    #     mean_err = np.diag(fit_g.fit_info['param_cov'])[1]
+    #     frac_err = np.sqrt(np.square(fwhm_err) + np.square(g.fwhm*mean_err/g.mean))/g.mean
+    #     plt.plot(fit_energy, g(fit_energy))
 
 plt.xlabel('Energy (keV)')
 plt.ylabel('Counts')
