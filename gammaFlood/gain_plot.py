@@ -34,7 +34,7 @@ modifier = ''
 
 filename_split = filename.split('.')
 
-if len(filename_split > 2):
+if len(filename_split) > 2:
 	modifier = filename_split[-2]
 
 gain = np.loadtxt(filepath)
