@@ -18,6 +18,10 @@ if filepath[-1] =='/':
 
 detector = input('Please enter the detector ID: ').strip()
 
+temp_response = input('Should I analyze the full detector? (y/n) ').strip()
+while temp_response not in ['y','yes', 'n', 'no']:
+    temp_response = input('Should I analyze the full detector? (y/n) ').strip()
+
 full_det = (temp_response in ['y','yes'])
 if full_det:
     region = [[0,31][0,31]]
