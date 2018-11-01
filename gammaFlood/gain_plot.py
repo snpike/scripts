@@ -35,7 +35,7 @@ modifier = ''
 filename_split = filename.split('.')
 
 if len(filename_split) > 2:
-	modifier = filename_split[-2]
+	modifier = '.' + filename_split[-2]
 
 gain = np.loadtxt(filepath)
 gain_reg = gain[region[0][1]:region[1][1] + 1, region[0][0]:region[1][0] + 1]
@@ -47,5 +47,5 @@ c.set_label('Gain (eV/channel)')
 plt.xticks(np.arange(0,region[1][0]-region[0][0]+1), [str(int(x)) for x in np.arange(region[0][0], region[1][0] + 1)])
 plt.yticks(np.arange(0,region[1][1]-region[0][1]+1), [str(int(x)) for x in np.arange(region[0][1], region[1][1] + 1)])
 plt.tight_layout()
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename_split[0] + '_map.' + modifier + '.pdf')
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename_split[0] + '_map' + modifier + '.pdf')
 plt.close()

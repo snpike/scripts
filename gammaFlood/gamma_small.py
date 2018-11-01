@@ -280,7 +280,7 @@ for source in sourcelist:
     latex_label = latex_dict[source]
     spectrum = spectra[source]
 
-    plt.plot(spectrum[1][:-1], spectrum[0], label = latex_label)
+    plt.plot(spectrum[1][:-1], spectrum[0]/np.max(spectrum[0]), label = latex_label)
 
     # for line in lines:
     #     centroid = np.argmax(spectrum[0][int(line/energy_per_bin)-200:int(line/energy_per_bin)+200]) + int(line/energy_per_bin)-200
@@ -296,7 +296,7 @@ for source in sourcelist:
     #     plt.plot(fit_energy, g(fit_energy))
 
 plt.xlabel('Energy (keV)')
-plt.ylabel('Counts')
+plt.ylabel('Normalized Counts')
 plt.legend()
 plt.tight_layout()
 plt.savefig('/users/spike/det_figs/' + detector + '/fullspec_region_low_x' + str(region[0][0]) + '_y' + str(region[0][1]) + '_high_x' + str(region[1][0]) + '_y' + str(region[1][1]) + modifier + '.pdf')
