@@ -1,6 +1,7 @@
 from astropy.io import fits
-import matplotlib.pyplot as plt
 import matplotlib as mpl
+mpl.use('Agg')
+import matplotlib.pyplot as plt
 import numpy as np
 from astropy.modeling import models, fitting
 import os.path
@@ -46,7 +47,7 @@ mask = np.multiply((data['DET_ID'] == pos), (data['TEMP'] > -20))
 START = np.argmax(mask)
 END = len(mask) - np.argmax(mask[::-1])
 
-maxchannel = 1000
+maxchannel = 500
 bins = np.arange(0-maxchannel,maxchannel)
 
 # There's no STIM data
