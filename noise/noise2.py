@@ -98,15 +98,15 @@ for row in range(32):
 			plt.ylabel('Counts')
 			if gainBool:
 				plt.xlabel('Energy (keV)')
-				plt.text(gain[row][col] * (g.mean + g.fwhm), g.amplitude*0.8, 'Mean = ' + str(gain[row][col] * g.mean) + 'keV')
-				plt.text(gain[row][col] * (g.mean + g.fwhm), g.amplitude*0.5, 'FWHM = ' + str(gain[row][col] * g.fwhm) + 'keV')
+				plt.text(gain[row][col] * (g.mean + g.fwhm/2), g.amplitude, 'Mean = ' + str(gain[row][col] * g.mean) + ' keV', fontsize = 12)
+				plt.text(gain[row][col] * (g.mean + g.fwhm/2), g.amplitude*0.8, 'FWHM = ' + str(gain[row][col] * g.fwhm) + ' keV', fontsize = 12)
 				plt.tight_layout()
 				#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_gain.pdf')
 				plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_gain.pdf')
 			else:
 				plt.xlabel('Channel')
-				plt.text(g.mean + g.fwhm, g.amplitude*0.8, 'Mean = ' + str(round(g.mean.value, 2)) + 'channels')
-				plt.text(g.mean + g.fwhm, g.amplitude*0.5, 'FWHM = ' + str(round(g.fwhm, 2)) + 'channels')
+				plt.text(g.mean + g.fwhm/2, g.amplitude, 'Mean = ' + str(int(round(g.mean.value, 0))) + ' channels', fontsize = 12)
+				plt.text(g.mean + g.fwhm/2, g.amplitude*0.8, 'FWHM = ' + str(int(round(g.fwhm, 0))) + ' channels', fontsize = 12)
 				plt.tight_layout()
 				#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/pixel_figs/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec_corr.pdf')
 				plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'x' + str(col) + 'y' + str(row) + '_spec.pdf')
@@ -157,7 +157,7 @@ plt.figure()
 if gainBool:
 	masked = np.ma.masked_where(FWHM_map > 5, FWHM_map)
 else:
-	masked = np.ma.masked_where(FWHM_map > 400, FWHM_map)
+	masked = np.ma.masked_where(FWHM_map > 500, FWHM_map)
 current_cmap = mpl.cm.get_cmap()
 current_cmap.set_bad(color='gray')
 plt.imshow(masked)
