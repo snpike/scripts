@@ -53,18 +53,22 @@ bins = np.arange(0-maxchannel,maxchannel)
 channelMap = [[[] for i in range(33)] for j in range(33)]
 priorMap = [[[] for i in range(33)] for j in range(33)]
 resetMap = [[[] for i in range(33)] for j in range(33)]
+time_riseMap = [[[] for i in range(33)] for j in range(33)]
 channel = []
 prior = []
 reset = []
+time_rise = []
 for i in np.arange(START, END):
 	if data['UP'][i]:
 		for j in range(9):
 			channelMap[data['RAWY'][i] + (j//3) - 1][data['RAWX'][i] + (j%3) - 1].append(data['PH_RAW'][i][j])
 			priorMap[data['RAWY'][i] + (j//3) - 1][data['RAWX'][i] + (j%3) - 1].append(data['PRIOR'][i])
 			resetMap[data['RAWY'][i] + (j//3) - 1][data['RAWX'][i] + (j%3) - 1].append(data['RESET'][i])
+			time_riseMap[data['RAWY'][i] + (j//3) - 1][data['RAWX'][i] + (j%3) - 1].append(data['NUMRISE'][i]/data['DENRISE'][i])
 			channel.append(data['PH_RAW'][i][j])
 			prior.append(data['PRIOR'][i])
 			reset.append(data['RESET'][i])
+			time_rise.append(data['NUMRISE'][i]/data['DENRISE'][i])
 
 
 prior = np.array(prior)
@@ -103,6 +107,22 @@ plt.tight_layout()
 plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset_hist.pdf')
 plt.close()
 
+plt.figure()
+plt.scatter(time_rise[rand], channel[rand], s = 1, marker = '.', rasterized=True)
+plt.xlabel('Time of rise conversion')
+plt.ylabel('Channel')
+plt.tight_layout()
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'time_rise.pdf')
+plt.close()
+
+plt.figure()
+plt.hist(time_rise[rand], bins = 50)
+plt.xlabel('Time of rise conversion')
+plt.ylabel('Counts')
+plt.tight_layout()
+plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'time_rise_hist.pdf')
+plt.close()
+
 for row in range(32):
 	for col in range(32):
 		plt.figure()
@@ -135,6 +155,22 @@ for row in range(32):
 		plt.ylabel('Counts')
 		plt.tight_layout()
 		plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'last_reset_hist_x' + str(col) + '_y' + str(row) + '.pdf')
+		plt.close()
+
+		plt.figure()
+		plt.scatter(time_riseMap[col][row], channelMap[col][row], s = 1, marker = '.', rasterized=True)
+		plt.xlabel('Time of rise conversion')
+		plt.ylabel('Channel')
+		plt.tight_layout()
+		plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'time_rise_x' + str(col) + '_y' + str(row) + '.pdf')
+		plt.close()
+
+		plt.figure()
+		plt.hist(time_riseMap[col][row], bins = 50)
+		plt.xlabel('Time of rise conversion')
+		plt.ylabel('Counts')
+		plt.tight_layout()
+		plt.savefig('/users/spike/det_figs/' + detector + '/pixels/' + filename[:-4] + 'time_rise_hist_x' + str(col) + '_y' + str(row) + '.pdf')
 		plt.close()
 
 
