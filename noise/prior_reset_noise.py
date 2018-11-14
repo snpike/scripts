@@ -74,6 +74,7 @@ for i in np.arange(START, END):
 prior = np.array(prior)
 channel = np.array(channel)
 reset = np.array(reset)
+time_rise = np.array(time_rise)
 rand = np.random.randint(0, len(prior), size = 10000)
 plt.figure()
 plt.scatter(prior[rand], channel[rand], s=1, marker = '.', rasterized=True)
