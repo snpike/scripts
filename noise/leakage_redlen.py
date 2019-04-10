@@ -7,7 +7,7 @@ from matplotlib.gridspec import GridSpec
 
 sns.set_context('talk')
 sns.set_style("ticks")
-sns.set_palette("colorblind")
+sns.set_palette("coolwarm")
 
 filepath = input('Please enter the directory with the leakage data: ').strip()
 if filepath[-1]=='/':

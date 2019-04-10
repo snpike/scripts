@@ -4,7 +4,7 @@ import seaborn as sns
 
 sns.set_context('talk')
 sns.set_style('ticks')
-sns.set_palette('colorblind')
+sns.set_palette('coolwarm')
 
 filepath = input('Please enter the path to the interpixel data: ').strip()
 pathsplit = filepath.split('/')
