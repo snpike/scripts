@@ -71,7 +71,7 @@ file.close()
 
 countMap = [[len(channelMap[j][i]) for i in range(32)] for j in range(32)]
 plt.figure()
-plt.imshow(countMap)
+plt.imshow(countMap, cmap='coolwarm')
 c = plt.colorbar()
 c.set_label('Counts')
 #plt.title(detector + ' ' + test + ' Pixel Map ' + '(' + etc + ')')
