@@ -112,7 +112,7 @@ if gainBool:
                 col_mask = data['RAWX'] == col
                 # Getting indices ('inds') and PH_COM values ('pulses') of 
                 # all events at current pixel.
-                inds = np.nonzero(np.multiply(np.multiply(row_mask, col_mask), T_mask))
+                inds = np.nonzero(np.multipy(STIMmask, np.multiply(np.multiply(row_mask, col_mask), T_mask)))
                 pulses = data.field('PH_COM')[inds]
                 # The gain for the 3x3 grid around this pixel
                 gain_grid = gain[row:row + 3, col:col + 3]
