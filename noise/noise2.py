@@ -161,7 +161,7 @@ else:
 	masked = np.ma.masked_where(FWHM_map > 500, FWHM_map)
 current_cmap = mpl.cm.get_cmap()
 current_cmap.set_bad(color='gray')
-plt.imshow(masked)
+plt.imshow(masked, cmap='coolwarm')
 c = plt.colorbar()
 if gainBool:
 	c.set_label('FWHM (keV)')
