@@ -90,6 +90,7 @@ plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammahi
 #plt.show()
 plt.close()
 
+STIMmask = np.array(data['STIM'])==0
 # If there's gain data then correct the spectrum
 energyList = []
 resetList = []
