@@ -21,10 +21,12 @@ file = open(filepath, 'r')
 for line in file:
 	if 4<i<69:
 		if not i%2:
-			row_data.append(line.split()[1:])
+			row_data.append([line[9:][3*j:(3*j)+3].strip() for j in range(32)])
+			# row_data.append(line.split()[1:])
 	if 71<i<137:
 		if not i%2:
-			col_data.append(line.split()[1:])
+			col_data.append([line[9:][3*j:(3*j)+3].strip() for j in range(32)])
+			# col_data.append(line.split()[1:])
 	i+=1
 
 row_data = np.array(row_data).astype(int)
