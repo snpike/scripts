@@ -38,8 +38,8 @@ outfile = open('/disk/lif2/spike/detectorData/' + detector + '/leakage.out', 'w'
 for T in Tlist:
 	outfile.write('T = ' + str(T) + '\n')
 	# First construct the maps of ADC_0V
-	CPdata = asciio.read(filepath + '/' + filename + '_' + T + '.C0V.txt')
-	Ndata = asciio.read(filepath + '/' + filename + '_' + T + '.N0V.txt')
+	CPdata = asciio.read(filepath + '/' + filename + '_' + T + '.C0V.e.fits')
+	Ndata = asciio.read(filepath + '/' + filename + '_' + T + '.N0V.e.fits')
 	ADC_0V_CP = np.zeros((32,32))
 	ADC_0V_N = np.zeros((32,32))
 	
