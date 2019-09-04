@@ -72,7 +72,7 @@ for T in Tlist:
 		c.set_label('Leakage Current (pA)')
 		plt.tight_layout()
 		#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.map.pdf')
-		plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '_' + T + '.C' + str(HV) + 'V.map.pdf')
+		plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename + '_' + T + '.C' + str(HV) + 'V.map.pdf')
 		plt.close()
 
 		plt.figure()
@@ -86,7 +86,7 @@ for T in Tlist:
 		plt.text((left + right + 2)/2, top*0.6, '1-Sigma = ' + str(round(np.std(masked), 2)) + ' pA', fontsize = 16)
 		plt.tight_layout()
 		#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.C' + str(HV) + 'V.hist.pdf')
-		plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '_' + T + '.C' + str(HV) + 'V.hist.pdf')
+		plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename + '_' + T + '.C' + str(HV) + 'V.hist.pdf')
 		plt.close()
 
 		outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
@@ -117,7 +117,7 @@ for T in Tlist:
 			c.set_label('Leakage Current (pA)')
 			plt.tight_layout()
 			#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.map.pdf')
-			plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '_' + T + '.N' + str(HV) + 'V.map.pdf')
+			plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename + '_' + T + '.N' + str(HV) + 'V.map.pdf')
 			plt.close()
 
 			plt.figure()
@@ -130,7 +130,7 @@ for T in Tlist:
 			plt.text((left + right + 2)/2, top*0.6, '1-Sigma = ' + str(round(np.std(masked), 2)) + ' pA', fontsize = 16)
 			plt.tight_layout()
 			#plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '_' + T + '.N' + str(HV) + 'V.hist.pdf')
-			plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '_' + T + '.N' + str(HV) + 'V.hist.pdf')
+			plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename + '_' + T + '.N' + str(HV) + 'V.hist.pdf')
 			plt.close()
 
 			outfile.write('Mean leakage current: ' + str(np.mean(masked)) + '\n')
@@ -146,7 +146,7 @@ plt.xlabel('Bias Voltage (V)')
 plt.ylabel('Number of outlier pixels (>' + r'$5\sigma$' + ')')
 plt.tight_layout()
 #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '.HV_T_plot.pdf')
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '.HV_T_outliers.pdf')
+plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename + '.HV_T_outliers.pdf')
 #plt.show()
 
 outfile.close()
@@ -159,7 +159,7 @@ plt.xlabel('Bias Voltage (V)')
 plt.ylabel('Mean leakage current (pA)')
 plt.tight_layout()
 #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename + '.HV_T_plot.pdf')
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename + '.HV_T_mean.pdf')
+plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename + '.HV_T_mean.pdf')
 #plt.show()
 
 
