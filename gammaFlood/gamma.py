@@ -76,7 +76,7 @@ c = plt.colorbar()
 c.set_label('Counts')
 #plt.title(detector + ' ' + source + ' Pixel Map ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'floodmap.pdf')
+plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename[:-4] + 'floodmap.pdf')
 #plt.show()
 plt.close()
 
@@ -87,7 +87,7 @@ plt.xlabel('Counts')
 #plt.xticks(noiseHist[1][1:-1])
 #plt.title(detector + ' ' + source + ' Count Histogram ' + '(' + etc + ')')
 plt.tight_layout()
-plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammahist.pdf')
+plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammahist.pdf')
 #plt.show()
 plt.close()
 
@@ -159,7 +159,7 @@ if gainBool:
 
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain.pdf')
+    plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec_gain.pdf')
     #plt.show()
     plt.close()
 
@@ -173,7 +173,7 @@ if gainBool:
     plt.xlabel('Time since last event')
     plt.ylabel('Energy (keV)')
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event.pdf')
+    plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event.pdf')
     plt.close()
 
     plt.figure()
@@ -181,7 +181,7 @@ if gainBool:
     plt.xlabel('Time since last event')
     plt.ylabel('Counts')
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event_hist.pdf')
+    plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_event_hist.pdf')
     plt.close()
 
     plt.figure()
@@ -190,7 +190,7 @@ if gainBool:
     plt.xlabel('Time since last reset')
     plt.ylabel('Energy (keV)')
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset.pdf')
+    plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset.pdf')
     plt.close()
 
     plt.figure()
@@ -198,7 +198,7 @@ if gainBool:
     plt.xlabel('Time since last reset')
     plt.ylabel('Counts')
     plt.tight_layout()
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset_hist.pdf')
+    plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename[:-4] + 'last_reset_hist.pdf')
     plt.close()
 
 else:
@@ -232,6 +232,6 @@ else:
     #plt.title(detector + ' ' + source + ' Spectrum ' + '(' + etc + ')')
     plt.tight_layout()
     #plt.savefig('/disk/lif2/spike/detectorData/' + detector + '/figures/' + filename[:-4] + 'gammaspec.pdf')
-    plt.savefig('/users/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec.pdf')
+    plt.savefig('/disk/lif2/spike/det_figs/' + detector + '/' + filename[:-4] + 'gammaspec.pdf')
     #plt.show()
     plt.close()
