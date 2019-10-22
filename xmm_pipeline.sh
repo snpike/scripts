@@ -14,7 +14,7 @@ fi
 
 echo Which instrument'? (Enter pn, mos1, mos2, or all)'
 read inst
-while [ ! "$inst" == pn ] && [ ! "$inst" == mos1 ] && [ ! "$inst" == mos2 ] && [ ! "$inst" == pn ] 
+while [ ! "$inst" == pn ] && [ ! "$inst" == mos1 ] && [ ! "$inst" == mos2 ] && [ ! "$inst" == all ] 
 do
 	echo Please enter pn, mos1, mos2, or all
 	read inst
