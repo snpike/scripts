@@ -11,7 +11,7 @@ fi
 OBSID="$1"
 echo $OBSID
 
-xrtpipeline indir="$PWD"/"$OBSID" outdir="$PWD"/"$OBSID"_pipe_out steminputs=sw"$OBSID" srcra=OBJECT srcdec=OBJECT >& "$PWD"/"$OBSID"_pipe.log
+xrtpipeline indir="$PWD"/"$OBSID" outdir="$PWD"/"$OBSID"_pipe_out steminputs=sw"$OBSID" srcra=OBJECT srcdec=OBJECT clobber=yes >& "$PWD"/"$OBSID"_pipe.log
 
 if [ ! -d "$PWD"/"$OBSID"_pipe_out ]
 then
