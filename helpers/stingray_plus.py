@@ -361,4 +361,14 @@ def calc_pvals(power,nspec):
     pval = gauss.sf(power)
     return pval
 
+def sum_lc(lc_1, lc_2):
+    lc_2 = lc_2.change_mjdref(lc_1.mjdref)
+    common_gti = sting_gti.cross_two_gtis(lc_1.gti, lc_2.gti)
+    lc_1.gti = common_gti
+    lc_2.gti = common_gti
+    lc_1.apply_gtis()
+    lc_2.apply_gtis()
+    summed_lc = lc.Lightcurve(lc_1.time, lc_1.counts + lc_2.counts, err=np.sqrt(np.square(lc_1.counts_err) + np.square(lc_2.counts_err)), gti=common_gti, mjdref=lc_1.mjdref)
+
+
     
