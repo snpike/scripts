@@ -362,7 +362,6 @@ def calc_pvals(power,nspec):
     return pval
 
 def sum_lc(lc_1, lc_2):
-    lc_2 = lc_2.change_mjdref(lc_1.mjdref)
     common_gti = sting_gti.cross_two_gtis(lc_1.gti, lc_2.gti)
     lc_1.gti = common_gti
     lc_2.gti = common_gti
