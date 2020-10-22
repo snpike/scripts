@@ -16,7 +16,7 @@ xrtpipeline indir="$PWD"/"$OBSID" outdir="$PWD"/"$OBSID"_pipe_out steminputs=sw"
 if [ ! -d "$PWD"/"$OBSID"_pipe_out ]
 then
 	echo xrtpipeline failed
-	exit 1
+	return 1
 fi
 
 echo xrtpipeline done
@@ -93,6 +93,8 @@ xrtmkarf phafile=./src_pc.pha srcx="$srcx" srcy="$srcy" outfile=./src_pc.arf psf
 echo arf file generated
 
 grppha src_pc.pha src_pc_"$OBSID"_10.grp comm="group min 10 & chkey BACKFILE bkg_pc.pha & chkey ANCRFILE src_pc.arf & chkey RESPFILE $CALDB/data/swift/xrt/cpf/rmf/swxpc0to12s6_20130101v014.rmf & exit" >& grppha10.log
+
+# ftgrouppha infile=src_pc.pha outfile=src_pc_"$OBSID"_ftgroup.pha backfile=bkg_pc.pha respfile="$CALDB"/data/swift/xrt/cpf/rmf/swxpc0to12s6_20130101v014.rmf grouptype=opt groupscale=1 minchannel=30 maxchannel=1000 clobber=yes
 
 echo grouped spectrum generated
 echo Processing has finished. Double check log files to make sure that each step was successful.

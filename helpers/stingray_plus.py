@@ -5,6 +5,7 @@ import scipy
 from astropy.io import fits, ascii
 from astropy.table import Table
 from astropy.modeling import functional_models, fitting
+from tqdm import tqdm
 
 import stingray.events as ev
 import stingray.lightcurve as lc
@@ -14,11 +15,14 @@ import stingray.crossspectrum as crossspec
 from hendrics.efsearch import dyn_folding_search, z_n_search, folding_search
 import stingray.gti as sting_gti
 import stingray.pulse.pulsar as plsr
-# from stingray import stats
+from stingray import stats
+
 
 
 class EventList_ext(ev.EventList):
-    # Extend the stingray EventList class to also hold onto the PRIOR column, which shows livetime since last event
+    # Extend the stingray EventList class to also hold onto the PRIOR column, 
+    # which shows livetime since last event, and X and Y position columns.
+
     def __init__(self, time=None, energy=None, ncounts=None, mjdref=0, dt=0, notes="", gti=None, pi=None, prior=None, x=None, y=None, xy_weights = None):
         
         super().__init__(time=time, energy=energy, ncounts=ncounts, mjdref=mjdref, dt=dt, notes=notes, gti=gti, pi=pi)
@@ -46,6 +50,8 @@ class EventList_ext(ev.EventList):
             return temp_times, live_fraction
         
     def make_image(self, plot=False):
+        # Produce a 2D histogram of events
+
         H, xedges, yedges = np.histogram2d(self.x, self.y, bins=500)
         H = H.T
         if plot:
@@ -57,6 +63,9 @@ class EventList_ext(ev.EventList):
         return H, xcenters, ycenters
     
     def set_xy_weights(self, centroid=[520, 460]):
+        # We can weight the events based on their distance from the source.
+        # It's fine to just use region filtering instead, but in the case of really high count rates this might be useful.
+
         H, xcenters, ycenters = self.make_image(plot=False)
         g_init = functional_models.Gaussian2D(amplitude=np.max(H), x_mean=centroid[0], y_mean=centroid[1],\
                                                   x_stddev=10.0, y_stddev=10.0)
@@ -68,7 +77,9 @@ class EventList_ext(ev.EventList):
         
     def fold_events_ltcorr(self, *frequency_derivatives, time_intervals= None, pi_min=35, pi_max=1909, \
                            region_filter=False, centroid = [520,460], radius=46.783962, ref_time=None, nbin = 64, weights  = 1, gtis = None, expocorr=False, weight_pos=False):
-        
+        # Do Epoch folding to look for pulsations while also correction for livetime variations. This is important for high count rates and high pulse fractions.
+        # Includes region and energy filtering, position weighting, and custom weighting.
+
         if centroid == None:
             centroid = self.centroid
         if time_intervals == None:
@@ -158,6 +169,9 @@ class EventList_ext(ev.EventList):
     def fold_events(self, *frequency_derivatives, time_intervals= None, pi_min=35, pi_max=1909, 
                     region_filter=False, centroid = [520,460], radius=46.783962, ref_time=None, nbin = 64, weights = 1, gtis = None, expocorr=False, weight_pos=False):
         
+        # Epoch folding without livetime correction.
+        # Includes region and energy filtering, position weighting, and custom weighting.
+
         if centroid == None:
             centroid = self.centroid
         if time_intervals == None:
@@ -218,6 +232,8 @@ class EventList_ext(ev.EventList):
 
     
     def split_by_gti(self):
+        # Split up the Events object into multiple Events instances based on its gti.
+
         split_ev = []
         for g in self.gti:
             g_mask = (self.time <= g[1]) * (self.time >= g[0])
@@ -228,6 +244,8 @@ class EventList_ext(ev.EventList):
 
     
     def split_by_time(self, bintime=100, gti = None):
+        # Split up the Events object into multiple Events instances based on the input time.
+
         split_ev = []
         if gti is None:
             gti = self.gti
@@ -242,32 +260,45 @@ class EventList_ext(ev.EventList):
                                   x=self.x[g_mask], y=self.y[g_mask], xy_weights = self.xy_weights[g_mask]))
         return split_ev
     
-    def to_lc(self, dt, pi_low = 35, pi_high = 1909, centroid=None, radius = None, tstart=None, tseg=None):
-        if tstart is None and self.gti is not None:
-            tstart = self.gti[0][0]
-            tseg = self.gti[-1][1] - tstart
+    def to_lc(self, dt, pi_low = 35, pi_high = 1909, centroid=None, radius = None, tstart=None, tseg=None, gti=None):
+        # Bin this Events instance into a Lightcurve object.
+        # Unlike the built-in version, this includes region and energy filtering, and you can introduce a new gti.
+
+        if gti is None:
+            gti = self.gti
+
+        else:
+            gti = sting_gti.cross_two_gtis(self.gti, gti)
+
+        if tstart is None and gti is not None:
+            tstart = gti[0][0]
+            tseg = gti[-1][1] - tstart
         
         reg_mask = np.ones(np.shape(self.time)).astype(bool)
         if (centroid is not None) and (radius is not None):
             reg_mask = (np.sqrt(np.square(self.x-centroid[0]) + np.square(self.y-centroid[1])) < radius).astype(bool)
 
         
-        pi_mask = (self.pi > pi_low) * (self.pi < pi_high)
+        pi_mask = (self.pi > pi_low) * (self.pi <= pi_high)
         tot_mask = reg_mask * pi_mask
-        return lc.Lightcurve.make_lightcurve(self.time[tot_mask], dt, tstart=tstart, gti=self.gti, tseg=tseg, mjdref=self.mjdref)
+        return lc.Lightcurve.make_lightcurve(self.time[tot_mask], dt, tstart=tstart, gti=gti, tseg=tseg, mjdref=self.mjdref)
 
 
         
         
         
 def nuproducts_to_stingray_lc(nuprod_lc_file, rebin = False, buffer = False, rebinsize=1.0, buffersize = 100.0, rebin_method='sum'):
+    # Take a light curve produced by nuproducts and turn it into a Stingray Lightcurve instance.
+
     nuproducts_lc = fits.open(nuprod_lc_file)
     time = nuproducts_lc[1].data['TIME'] + nuproducts_lc[1].header['TSTART']
-    dt = time[1]-time[0]
-    counts = nuproducts_lc[1].data['RATE'] * dt
-    error = nuproducts_lc[1].data['ERROR'] * dt
+    dt = nuproducts_lc[1].header['TIMEDEL']
+    countrate = nuproducts_lc[1].data['RATE']
+    error = nuproducts_lc[1].data['ERROR']
     mjdref = nuproducts_lc[1].header['MJDREFI'] + nuproducts_lc[1].header['MJDREFF']
     gti = [[x,y] for x,y in nuproducts_lc[2].data]
+
+    # Buffer around the orbital gaps if specified.
     if buffer:
         buffered_gti = []
         for x,y in gti:
@@ -275,15 +306,17 @@ def nuproducts_to_stingray_lc(nuprod_lc_file, rebin = False, buffer = False, reb
                 buffered_gti.append([x+buffersize, y-buffersize])
         gti = buffered_gti
     if rebin:
-        return lc.Lightcurve(time, counts, err=error, gti=gti, mjdref=mjdref).rebin(dt_new=rebinsize, method=rebin_method)
+        return lc.Lightcurve(time, countrate, err=error, gti=gti, mjdref=mjdref, dt = dt, \
+            input_counts=False, skip_checks=True).rebin(dt_new=rebinsize, method=rebin_method)
     else:
-        return lc.Lightcurve(time, counts, err=error, gti=gti, mjdref=mjdref)
+        return lc.Lightcurve(time, countrate, err=error, gti=gti, mjdref=mjdref, dt = dt, input_counts=False, skip_checks=True)
     
     
     
 def extract_events(file_A, file_B, buff=0):
     # Extracts events for FPMA and FPMB from .evt files (assumed clean).
     # The gtis are crossed to make sure they are the same.
+    # Can also use stingray.io.load_events_and_gtis, but this takes in X, Y, and PRIOR.
     
     ev_files = [fits.open(file_A), fits.open(file_B)] 
     
@@ -313,6 +346,8 @@ def extract_events(file_A, file_B, buff=0):
     return events
 
 def split_ev_by_gti(events):
+    # Split up an Events instance into multiple Events instances based on the gtis.
+    # For use with built-in EventList instances, not EventList_ext, which has its own class-specific version.
     split_ev = []
     gti = events.gti
     for g in gti:
@@ -321,6 +356,8 @@ def split_ev_by_gti(events):
     return split_ev
 
 def split_ev_by_time(events, bintime=100):
+    # Split up an Events instance into multiple Events instances based on the input time.
+    # For use with built-in EventList instances, not EventList_ext, which has its own class-specific version.
     split_ev = []
     gti = events.gti
     for g in gti:
@@ -332,6 +369,8 @@ def split_ev_by_time(events, bintime=100):
     return split_ev
 
 def new_gti(events, gti):
+    # Makes a new EventList instance with the specified gti. 
+    # TODO: Make this work with EventList_ext
     return ev.EventList(time=events.time, gti=gti, pi = events.pi, \
                        mjdref=events.mjdref)
     
@@ -356,18 +395,72 @@ def read_QDP(file):
     return data
     
 def calc_pvals(power,nspec):
+    # Calculates the pvalue for a given power and number of spectra, nspec.
     exp_sigma = np.sqrt(2) / np.sqrt(nspec)
     gauss = scipy.stats.norm(0, exp_sigma)
     pval = gauss.sf(power)
     return pval
 
 def sum_lc(lc_1, lc_2):
+    # Add up two Lightcurve instances. Must be simultaneous and bins must line up.
+
     common_gti = sting_gti.cross_two_gtis(lc_1.gti, lc_2.gti)
     lc_1.gti = common_gti
     lc_2.gti = common_gti
     lc_1.apply_gtis()
     lc_2.apply_gtis()
-    summed_lc = lc.Lightcurve(lc_1.time, lc_1.counts + lc_2.counts, err=np.sqrt(np.square(lc_1.counts_err) + np.square(lc_2.counts_err)), gti=common_gti, mjdref=lc_1.mjdref)
+    if np.sum(lc_1.time != lc_2.time):
+        print('Lightcurves don\'t line up. Exiting')
+        return None
+    summed_err = np.sqrt(np.square(lc_1.counts_err) + np.square(lc_2.counts_err))
 
+    # Handle edge case where counts=0. TODO: more accurate error estimation.
+    summed_err[summed_err==0.0] = 1.0
 
+    # New Lightcurve
+    summed_lc = lc.Lightcurve(lc_1.time, lc_1.counts + lc_2.counts, err=summed_err, gti=common_gti, mjdref=lc_1.mjdref, dt = lc_1.dt, input_counts=True, skip_checks=True)
+    return summed_lc
+
+def bkg_subtract(src_lc, bkg_lc, bkg_bin=5):
+    # Subtract the moving average of a background lightcurve from a source light curve.
+    # bkg_bin is the moving average window in seconds.
+
+    bkg_counts = []
+    bkg_err = []
+    for x in bkg_lc.time:
+        tmp_mask = np.abs(bkg_lc.time - x) <= bkg_bin/2
+        bkg_counts.append(np.mean(bkg_lc.counts[tmp_mask]))
+        bkg_err.append(np.sqrt(np.sum(np.square(bkg_lc.counts_err[tmp_mask])))/np.sum(tmp_mask))
+    bkg_counts = np.array(bkg_counts)
+    bkg_err = np.array(bkg_err)
+    return lc.Lightcurve(src_lc.time, src_lc.counts - bkg_counts, err=np.sqrt(np.square(src_lc.counts_err) + np.square(bkg_err)), gti=src_lc.gti, mjdref=src_lc.mjdref, input_counts=True, skip_checks=True)
     
+def efold_search(events, f_min, f_max, f_steps, time_intervals, nbin = 32, pi_min = 35, pi_max = 260):
+    # Scan over frequency and do livetime corrected epoch folding.
+
+    f_arr = np.linspace(f_min, f_max, num = f_steps)
+    z_prob = []
+    for f in tqdm(f_arr):
+        phase_bins, profile, profile_err, livetime_profile, z_stat = \
+            events.fold_events_ltcorr(f, time_intervals = time_intervals, \
+                                    nbin = nbin, ref_time = events.time[0], region_filter=False, pi_min=pi_min, pi_max=pi_max, weight_pos=True)
+    #     phase_bins_B, profile_B, profile_err_B, livetime_profile_B, z_stat_B = \
+    #         events[1].fold_events_ltcorr(f, time_intervals = [[(np.min(events[0].time) + 24150), (np.min(events[0].time) + 24180)], [(np.min(events[0].time) + 37890), (np.min(events[0].time) + 37900)]], \
+    #                                 nbin = nbin, ref_time = events[0].time[0], region_filter=False, pi_min=35, pi_max=260)
+
+    #     summed_profile = np.mean(livetime_profile_A + livetime_profile_B) * (profile_A + profile_B)/(livetime_profile_A + livetime_profile_B)
+    #     summed_err = np.mean(livetime_profile_A + livetime_profile_B) * np.sqrt(np.square(profile_err_A) + np.square(profile_err_B))/(livetime_profile_A + livetime_profile_B)
+    #     summed_stat = stat.z2_n_probability(z_stat_A, err=summed_err)
+    #     summed_real = 1.0 - plsr.fold_profile_probability(summed_stat, nbin)
+        eps = stats.z2_n_probability(float(z_stat), ntrial=len(f_arr))
+        z_prob.append(1.0-eps)
+
+    z_prob = np.array(z_prob)
+    return f_arr, z_prob
+
+def PI_to_eV(PI):
+    return (PI*40) + 1600
+
+def eV_to_PI(eV):
+    return (eV-1600)/40
+
