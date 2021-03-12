@@ -7,29 +7,78 @@ from astropy.table import Table
 from astropy.modeling import functional_models, fitting
 from tqdm import tqdm
 
+import matplotlib.pyplot as plt
+
 import stingray.events as ev
 import stingray.lightcurve as lc
 from stingray import io
 import stingray.powerspectrum as powspec 
 import stingray.crossspectrum as crossspec
-from hendrics.efsearch import dyn_folding_search, z_n_search, folding_search
 import stingray.gti as sting_gti
 import stingray.pulse.pulsar as plsr
 from stingray import stats
 
+class Lightcurve_ext(lc.Lightcurve):
+    # Extend the stingray Lightcurve class to also hold onto an extraction region 
 
+    def __init__(self, time, counts, err=None, input_counts=True, gti=None, err_dist='poisson', mjdref=0, dt=None, skip_checks=False, low_memory=False, centroid=None, radius=None):
+        
+        super().__init__(time=time, counts=counts, err=err, input_counts=input_counts, gti=gti, err_dist=err_dist, mjdref=mjdref, dt=dt, skip_checks=skip_checks, low_memory=low_memory)
+        self.centroid=centroid
+        self.radius=radius
+    
+    @staticmethod
+    def make_lightcurve(toa, dt, tseg=None, tstart=None, gti=None, mjdref=0, use_hist=False, centroid=None, radius=None):
+        temp_curve = lc.Lightcurve.make_lightcurve(toa, dt, tseg=tseg, tstart=tstart, gti=gti, mjdref=mjdref, use_hist=use_hist)
+        temp_curve.centroid=centroid
+        temp_curve.radius=radius
+        return temp_curve
+
+    def calc_area(self):
+        if self.radius:
+            return np.pi*np.square(self.radius)
+        else:
+            print('The radius has not been defined')
+            return None
 
 class EventList_ext(ev.EventList):
     # Extend the stingray EventList class to also hold onto the PRIOR column, 
     # which shows livetime since last event, and X and Y position columns.
 
-    def __init__(self, time=None, energy=None, ncounts=None, mjdref=0, dt=0, notes="", gti=None, pi=None, prior=None, x=None, y=None, xy_weights = None):
+    def __init__(self, time=None, energy=None, ncounts=None, mjdref=0, dt=0, notes="", gti=None, pi=None, prior=None, x=None, y=None, xy_weights = None, centroid=None, radius=None):
         
         super().__init__(time=time, energy=energy, ncounts=ncounts, mjdref=mjdref, dt=dt, notes=notes, gti=gti, pi=pi)
+        self.centroid = centroid
+        self.radius = radius
         self.prior = prior
         self.x = x
         self.y = y
         self.xy_weights = np.ones(np.shape(self.time))
+
+    def join(self, other):
+        ev_temp = super().join(other)
+
+        sorted_arg = np.argsort(np.concatenate([self.time, other.time]))
+
+        temp_x = np.concatenate([self.x, other.x])
+        temp_x = temp_x[sorted_arg]
+
+        temp_y = np.concatenate([self.y, other.y])
+        temp_y = temp_y[sorted_arg]
+
+        temp_xy_weights = np.concatenate([self.xy_weights, other.xy_weights])
+        temp_xy_weights = temp_xy_weights[sorted_arg]
+
+        temp_prior = np.concatenate([self.prior, other.prior])
+        temp_prior = temp_prior[sorted_arg]
+
+        # temp_pi = np.concatenate([self.pi, other.pi])
+        # temp_pi = temp_pi[sorted_arg]
+
+        ev_new = EventList_ext(time=ev_temp.time, energy=ev_temp.energy, ncounts=ev_temp.ncounts, mjdref=ev_temp.mjdref, dt=ev_temp.dt, gti=ev_temp.gti, pi=ev_temp.pi, prior=temp_prior, \
+            x=temp_x, y=temp_y, xy_weights = temp_xy_weights)
+
+        return ev_new
         
     def get_times(self, PI_min = 35, PI_max = 1909):
         PI_mask = (self.pi >= PI_min) * (self.pi <= PI_max)        
@@ -76,12 +125,14 @@ class EventList_ext(ev.EventList):
         
         
     def fold_events_ltcorr(self, *frequency_derivatives, time_intervals= None, pi_min=35, pi_max=1909, \
-                           region_filter=False, centroid = [520,460], radius=46.783962, ref_time=None, nbin = 64, weights  = 1, gtis = None, expocorr=False, weight_pos=False):
+                           region_filter=False, centroid = None, radius=None, ref_time=None, nbin = 64, weights  = 1, gtis = None, expocorr=False, weight_pos=False):
         # Do Epoch folding to look for pulsations while also correction for livetime variations. This is important for high count rates and high pulse fractions.
         # Includes region and energy filtering, position weighting, and custom weighting.
 
         if centroid == None:
             centroid = self.centroid
+        if radius == None:
+            radius = self.radius
         if time_intervals == None:
             time_intervals = [[self.time[0], self.time[-1]]]
         if ref_time == None:
@@ -167,13 +218,16 @@ class EventList_ext(ev.EventList):
         return phase_bins, profile, profile_err, livetime_profile, z_stat
     
     def fold_events(self, *frequency_derivatives, time_intervals= None, pi_min=35, pi_max=1909, 
-                    region_filter=False, centroid = [520,460], radius=46.783962, ref_time=None, nbin = 64, weights = 1, gtis = None, expocorr=False, weight_pos=False):
+                    region_filter=False, centroid = None, radius=None, ref_time=None, nbin = 64, weights = 1, gtis = None, expocorr=False, weight_pos=False):
         
         # Epoch folding without livetime correction.
         # Includes region and energy filtering, position weighting, and custom weighting.
 
-        if centroid == None:
-            centroid = self.centroid
+        if region_filter or weight_pos:
+            if centroid == None:
+                centroid = self.centroid
+            if radius == None:
+                radius = self.radius
         if time_intervals == None:
             time_intervals = [[self.time[0], self.time[-1]]]
         if ref_time == None:
@@ -200,8 +254,8 @@ class EventList_ext(ev.EventList):
         reg_mask = np.ones(np.shape(self.time)).astype(bool)
         p_weights = 1.0
         if region_filter:
-            if weight_pos:
-                print('Region filtering overrides position weighting.')
+            # if weight_pos:
+                # print('Region filtering overrides position weighting.')
             reg_mask = (np.sqrt(np.square(self.x-centroid[0]) + np.square(self.y-centroid[1])) < radius).astype(bool)
         elif weight_pos:
 #             print('Make sure you have called set_xy_weights')
@@ -213,22 +267,13 @@ class EventList_ext(ev.EventList):
         # The phase of each folded event
         fold_phases = plsr.pulse_phase(fold_times, *frequency_derivatives)
         
-#         print(frequency_derivatives)
-        p_derivs = plsr.p_to_f(*frequency_derivatives)
-        p_t = np.zeros(np.shape(temp_times))
-        # Taylor expand P(t)
-        for i in range(len(p_derivs)):
-            p_t = p_t + (p_derivs[i] * np.power(temp_times-ref_time, i)/scipy.special.factorial(i, exact=True))
-        
         phase_bins, profile, profile_err = plsr.fold_events(fold_times, *frequency_derivatives, ref_time=ref_time, \
                                                            nbin=nbin, weights=weights * p_weights, gtis=gtis, expocorr=expocorr)
-
+        
         
         z_stat = plsr.z_n(fold_phases, n=2, norm=weights * p_weights)
-#         livetime_profile = livetime_profile/np.max(livetime_profile)
         
-        return phase_bins, profile, profile_err, livetime_profile, z_stat
-
+        return phase_bins, profile, profile_err, z_stat
 
     
     def split_by_gti(self):
@@ -281,13 +326,13 @@ class EventList_ext(ev.EventList):
         
         pi_mask = (self.pi > pi_low) * (self.pi <= pi_high)
         tot_mask = reg_mask * pi_mask
-        return lc.Lightcurve.make_lightcurve(self.time[tot_mask], dt, tstart=tstart, gti=gti, tseg=tseg, mjdref=self.mjdref)
+        return Lightcurve_ext.make_lightcurve(self.time[tot_mask], dt, tstart=tstart, gti=gti, tseg=tseg, mjdref=self.mjdref, centroid=centroid, radius=radius)
 
 
         
         
         
-def nuproducts_to_stingray_lc(nuprod_lc_file, rebin = False, buffer = False, rebinsize=1.0, buffersize = 100.0, rebin_method='sum'):
+def nuproducts_to_stingray_lc(nuprod_lc_file, rebin = False, buff = False, rebinsize=1.0, buffersize = 100.0, rebin_method='sum'):
     # Take a light curve produced by nuproducts and turn it into a Stingray Lightcurve instance.
 
     nuproducts_lc = fits.open(nuprod_lc_file)
@@ -297,19 +342,21 @@ def nuproducts_to_stingray_lc(nuprod_lc_file, rebin = False, buffer = False, reb
     error = nuproducts_lc[1].data['ERROR']
     mjdref = nuproducts_lc[1].header['MJDREFI'] + nuproducts_lc[1].header['MJDREFF']
     gti = [[x,y] for x,y in nuproducts_lc[2].data]
+    centroid = [nuproducts_lc[3].data['X'][0], nuproducts_lc[3].data['Y'][0]]
+    radius = nuproducts_lc[3].data['R'][0]
 
     # Buffer around the orbital gaps if specified.
-    if buffer:
+    if buff:
         buffered_gti = []
         for x,y in gti:
             if np.abs(y-x) > 2*buffersize:
                 buffered_gti.append([x+buffersize, y-buffersize])
         gti = buffered_gti
     if rebin:
-        return lc.Lightcurve(time, countrate, err=error, gti=gti, mjdref=mjdref, dt = dt, \
-            input_counts=False, skip_checks=True).rebin(dt_new=rebinsize, method=rebin_method)
+        return Lightcurve_ext(time, countrate, err=error, gti=gti, mjdref=mjdref, dt = dt, \
+            input_counts=False, skip_checks=True, centroid=centroid, radius=radius).rebin(dt_new=rebinsize, method=rebin_method)
     else:
-        return lc.Lightcurve(time, countrate, err=error, gti=gti, mjdref=mjdref, dt = dt, input_counts=False, skip_checks=True)
+        return Lightcurve_ext(time, countrate, err=error, gti=gti, mjdref=mjdref, dt = dt, input_counts=False, skip_checks=True, centroid=centroid, radius=radius)
     
     
     
@@ -409,16 +456,18 @@ def sum_lc(lc_1, lc_2):
     lc_2.gti = common_gti
     lc_1.apply_gtis()
     lc_2.apply_gtis()
-    if np.sum(lc_1.time != lc_2.time):
+    if np.sum(lc_1.time) != np.sum(lc_2.time):
         print('Lightcurves don\'t line up. Exiting')
         return None
-    summed_err = np.sqrt(np.square(lc_1.counts_err) + np.square(lc_2.counts_err))
+
+    area_ratio = lc_1.calc_area()/lc_2.calc_area()
+    summed_err = np.sqrt(np.square(lc_1.counts_err) + np.square(lc_2.counts_err*area_ratio))
 
     # Handle edge case where counts=0. TODO: more accurate error estimation.
     summed_err[summed_err==0.0] = 1.0
 
     # New Lightcurve
-    summed_lc = lc.Lightcurve(lc_1.time, lc_1.counts + lc_2.counts, err=summed_err, gti=common_gti, mjdref=lc_1.mjdref, dt = lc_1.dt, input_counts=True, skip_checks=True)
+    summed_lc = Lightcurve_ext(lc_1.time, lc_1.counts + (lc_2.counts*area_ratio), err=summed_err, gti=common_gti, mjdref=lc_1.mjdref, dt = lc_1.dt, input_counts=True, skip_checks=True, centroid=None, radius=lc_1.radius)
     return summed_lc
 
 def bkg_subtract(src_lc, bkg_lc, bkg_bin=5):
@@ -427,15 +476,19 @@ def bkg_subtract(src_lc, bkg_lc, bkg_bin=5):
 
     bkg_counts = []
     bkg_err = []
-    for x in bkg_lc.time:
-        tmp_mask = np.abs(bkg_lc.time - x) <= bkg_bin/2
+    outlier_mask = np.abs(bkg_lc.counts - np.mean(bkg_lc.counts)) < 5*np.std(bkg_lc.counts)
+    for x in src_lc.time:
+        tmp_mask = (np.abs(bkg_lc.time - x) <= bkg_bin/2) * outlier_mask
         bkg_counts.append(np.mean(bkg_lc.counts[tmp_mask]))
         bkg_err.append(np.sqrt(np.sum(np.square(bkg_lc.counts_err[tmp_mask])))/np.sum(tmp_mask))
-    bkg_counts = np.array(bkg_counts)
-    bkg_err = np.array(bkg_err)
-    return lc.Lightcurve(src_lc.time, src_lc.counts - bkg_counts, err=np.sqrt(np.square(src_lc.counts_err) + np.square(bkg_err)), gti=src_lc.gti, mjdref=src_lc.mjdref, input_counts=True, skip_checks=True)
+
+    area_ratio = src_lc.calc_area()/bkg_lc.calc_area()
+    bkg_counts = np.array(bkg_counts) * area_ratio
+    bkg_err = np.array(bkg_err) * area_ratio
+
+    return Lightcurve_ext(src_lc.time, src_lc.counts - bkg_counts, err=np.sqrt(np.square(src_lc.counts_err) + np.square(bkg_err)), gti=src_lc.gti, mjdref=src_lc.mjdref, input_counts=True, skip_checks=True, centroid=src_lc.centroid, radius=src_lc.radius)
     
-def efold_search(events, f_min, f_max, f_steps, time_intervals, nbin = 32, pi_min = 35, pi_max = 260):
+def efold_search_ltcorr(events, f_min, f_max, f_steps, time_intervals=None, nbin = 32, pi_min = 35, pi_max = 260, region_filter=True, weight_pos=False):
     # Scan over frequency and do livetime corrected epoch folding.
 
     f_arr = np.linspace(f_min, f_max, num = f_steps)
@@ -443,20 +496,71 @@ def efold_search(events, f_min, f_max, f_steps, time_intervals, nbin = 32, pi_mi
     for f in tqdm(f_arr):
         phase_bins, profile, profile_err, livetime_profile, z_stat = \
             events.fold_events_ltcorr(f, time_intervals = time_intervals, \
-                                    nbin = nbin, ref_time = events.time[0], region_filter=False, pi_min=pi_min, pi_max=pi_max, weight_pos=True)
-    #     phase_bins_B, profile_B, profile_err_B, livetime_profile_B, z_stat_B = \
-    #         events[1].fold_events_ltcorr(f, time_intervals = [[(np.min(events[0].time) + 24150), (np.min(events[0].time) + 24180)], [(np.min(events[0].time) + 37890), (np.min(events[0].time) + 37900)]], \
-    #                                 nbin = nbin, ref_time = events[0].time[0], region_filter=False, pi_min=35, pi_max=260)
+                                    nbin = nbin, ref_time = events.time[0], region_filter=region_filter, pi_min=pi_min, pi_max=pi_max, weight_pos=weight_pos)
+        #     phase_bins_B, profile_B, profile_err_B, livetime_profile_B, z_stat_B = \
+        #         events[1].fold_events_ltcorr(f, time_intervals = [[(np.min(events[0].time) + 24150), (np.min(events[0].time) + 24180)], [(np.min(events[0].time) + 37890), (np.min(events[0].time) + 37900)]], \
+        #                                 nbin = nbin, ref_time = events[0].time[0], region_filter=False, pi_min=35, pi_max=260)
 
-    #     summed_profile = np.mean(livetime_profile_A + livetime_profile_B) * (profile_A + profile_B)/(livetime_profile_A + livetime_profile_B)
-    #     summed_err = np.mean(livetime_profile_A + livetime_profile_B) * np.sqrt(np.square(profile_err_A) + np.square(profile_err_B))/(livetime_profile_A + livetime_profile_B)
-    #     summed_stat = stat.z2_n_probability(z_stat_A, err=summed_err)
-    #     summed_real = 1.0 - plsr.fold_profile_probability(summed_stat, nbin)
+        #     summed_profile = np.mean(livetime_profile_A + livetime_profile_B) * (profile_A + profile_B)/(livetime_profile_A + livetime_profile_B)
+        #     summed_err = np.mean(livetime_profile_A + livetime_profile_B) * np.sqrt(np.square(profile_err_A) + np.square(profile_err_B))/(livetime_profile_A + livetime_profile_B)
+        #     summed_stat = stat.z2_n_probability(z_stat_A, err=summed_err)
+        #     summed_real = 1.0 - plsr.fold_profile_probability(summed_stat, nbin)
+
         eps = stats.z2_n_probability(float(z_stat), ntrial=len(f_arr))
         z_prob.append(1.0-eps)
 
     z_prob = np.array(z_prob)
     return f_arr, z_prob
+
+def efold_search(events, f_min, f_max, f_steps, time_intervals=None, nbin = 32, pi_min = 35, pi_max = 260, region_filter=False):
+    # Scan over frequency and do livetime corrected epoch folding.
+
+    f_arr = np.linspace(f_min, f_max, num = f_steps)
+    z_prob = []
+    for f in tqdm(f_arr):
+        phase_bins, profile, profile_err, z_stat = \
+            events.fold_events(f, time_intervals = time_intervals, \
+                                    nbin = nbin, ref_time = events.time[0], region_filter=region_filter, pi_min=pi_min, pi_max=pi_max, weight_pos=True)
+
+        eps = stats.z2_n_probability(float(z_stat), ntrial=len(f_arr))
+        z_prob.append(1.0-eps)
+
+    z_prob = np.array(z_prob)
+    return f_arr, z_prob
+
+
+def PI_to_eV(PI):
+    return (PI*40) + 1600
+
+def eV_to_PI(eV):
+    return (eV-1600)/40
+
+def efold_search_AandB(events_A, events_B, f_min, f_max, f_steps, time_intervals=None, nbin = 32, pi_min = 35, pi_max = 260):
+    # Scan over frequency and do livetime corrected epoch folding.
+
+    A_mask = np.sqrt(np.square(events_A.x - events_A.centroid[0]) + np.square(events_A.y - events_A.centroid[1])) <= events_A.radius
+    B_mask = np.sqrt(np.square(events_B.x - events_B.centroid[0]) + np.square(events_B.y - events_B.centroid[1])) <= events_B.radius
+
+    temp_time = np.concatenate([events_A.time[A_mask], events_B.time[B_mask]])
+    sorted_arg = np.argsort(temp_time)
+    temp_time = temp_time[sorted_arg]
+    temp_pi = np.concatenate([events_A.pi[A_mask], events_B.pi[B_mask]])[sorted_arg]
+
+    joined_ev = EventList_ext(time=temp_time, gti=sting_gti.cross_two_gtis(events_A.gti, events_B.gti) , pi=temp_pi)
+    f_arr = np.linspace(f_min, f_max, num = f_steps)
+    z_prob = []
+    z_stat_arr =[]
+    for f in tqdm(f_arr):
+        phase_bins, profile, profile_err, z_stat = \
+            joined_ev.fold_events(f, time_intervals = time_intervals, \
+                                    nbin = nbin, ref_time = joined_ev.time[0], region_filter=False, pi_min=pi_min, pi_max=pi_max, weight_pos=False)
+        z_stat_arr.append(z_stat)
+        eps = stats.z2_n_probability(float(z_stat), ntrial=len(f_arr))
+        z_prob.append(1.0-eps)
+
+    z_prob = np.array(z_prob)
+    return f_arr, z_prob, z_stat_arr
+
 
 def PI_to_eV(PI):
     return (PI*40) + 1600

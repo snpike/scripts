@@ -1,0 +1,1442 @@
+** Generated for: hspiceD
+** Generated on: Mar  1 09:13:36 2021
+** Design library name: nuplus_check
+** Design cell name: np8-chip
+** Design view name: schematic
+
+
+.TEMP 25.0
+.OPTION
++    ARTIST=2
++    INGOLD=2
++    PARHIER=LOCAL
++    PSF=2
+
+** Library name: nuplus_check
+** Cell name: nor
+** View name: schematic
+.subckt nor a agnd b d1p5v dgnd out
+xmn1 out a dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xmn2 out b dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm0 out b net23 d1p5v pe w=840e-9 l=180e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=321.429e-3 nrd=321.429e-3 m=1 par1=1
+xmp2 net23 a d1p5v d1p5v pe w=840e-9 l=180e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=321.429e-3 nrd=321.429e-3 m=1 par1=1
+.ends nor
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: inv
+** View name: schematic
+.subckt inv agnd d1p5v dgnd in out
+xm0 out in dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm1 out in d1p5v d1p5v pe w=1e-6 l=180e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+.ends inv
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: lvto5Vpn
+** View name: schematic
+.subckt lvto5Vpn agnd d1p5v d5v dgnd in out _net0
+xm0 _net0 net57 dgnd agnd ne5 w=320e-9 l=500e-9 as=153.6e-15 ad=153.6e-15 ps=1.6e-6 pd=1.6e-6 nrs=1.6875 nrd=1.6875 m=1 par1=1
+xm6 net65 in dgnd agnd ne5 w=840e-9 l=500e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm8 out net65 dgnd agnd ne5 w=320e-9 l=500e-9 as=153.6e-15 ad=153.6e-15 ps=1.6e-6 pd=1.6e-6 nrs=1.6875 nrd=1.6875 m=1 par1=1
+xm4 net57 net56 dgnd agnd ne5 w=840e-9 l=500e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=321.429e-3 nrd=321.429e-3 m=1 par1=1
+xm2 net56 in dgnd agnd ne w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm1 net56 in d1p5v d1p5v pe w=1e-6 l=180e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm9 _net0 net57 d5v d5v pe5 w=510e-9 l=500e-9 as=244.8e-15 ad=244.8e-15 ps=1.98e-6 pd=1.98e-6 nrs=1.05882 nrd=1.05882 m=1 par1=1
+xm7 out net65 d5v d5v pe5 w=510e-9 l=500e-9 as=244.8e-15 ad=244.8e-15 ps=1.98e-6 pd=1.98e-6 nrs=1.05882 nrd=1.05882 m=1 par1=1
+xm3 net57 net65 d5v d5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=2.45455 nrd=2.45455 m=1 par1=1
+xm5 net65 net57 d5v d5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=2.45455 nrd=2.45455 m=1 par1=1
+.ends lvto5Vpn
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: dffc
+** View name: schematic
+.subckt dffc d q _net0 agnd clk _net1 d1p5v dgnd
+xm6 _net0 sqi dgnd agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xm2 ci cib dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm0 cib clk dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm46 sqib ci net82 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm51 sqib cib net79 agnd ne w=260e-9 l=180e-9 as=124.8e-15 ad=124.8e-15 ps=1.48e-6 pd=1.48e-6 nrs=1.03846 nrd=1.03846 m=1 par1=1
+xm18 mqib cib net86 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm19 mqib ci net83 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm50 net79 sqi net75 agnd ne w=260e-9 l=180e-9 as=124.8e-15 ad=124.8e-15 ps=1.48e-6 pd=1.48e-6 nrs=1.03846 nrd=1.03846 m=1 par1=1
+xm17 mqi mqib dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm49 sqi sqib dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm47 net82 mqi net75 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm15 net86 d net70 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm61 net83 mqi net70 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm48 net75 _net1 dgnd agnd ne w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm44 net70 _net1 dgnd agnd ne w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm4 q sqib dgnd agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xm7 _net0 sqi d1p5v d1p5v pe w=840e-9 l=180e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=321.429e-3 nrd=321.429e-3 m=1 par1=1
+xm3 ci cib d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm1 cib clk d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm25 mqib _net1 d1p5v d1p5v pe w=380e-9 l=180e-9 as=182.4e-15 ad=182.4e-15 ps=1.72e-6 pd=1.72e-6 nrs=710.526e-3 nrd=710.526e-3 m=1 par1=1
+xm58 sqib _net1 d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm56 mqi mqib d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm30 net81 mqi d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm59 sqi sqib d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm36 net80 sqi d1p5v d1p5v pe w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm28 net84 mqi d1p5v d1p5v pe w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm23 net85 d d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm35 sqib ci net80 d1p5v pe w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm34 mqib cib net84 d1p5v pe w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm33 sqib cib net81 d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm24 mqib ci net85 d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm5 q sqib d1p5v d1p5v pe w=840e-9 l=180e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=321.429e-3 nrd=321.429e-3 m=1 par1=1
+.ends dffc
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: mux2n
+** View name: schematic
+.subckt mux2n a agnd b d1p5v dgnd out sel
+xmn2 out _net0 net27 agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xm1 out sel net25 agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xmn1 net27 a dgnd agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xm0 net25 b dgnd agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xmp1 net26 a d1p5v d1p5v pe w=2e-6 l=180e-9 as=960e-15 ad=960e-15 ps=4.96e-6 pd=4.96e-6 nrs=135e-3 nrd=135e-3 m=1 par1=1
+xmp2 out sel net26 d1p5v pe w=2e-6 l=180e-9 as=960e-15 ad=960e-15 ps=4.96e-6 pd=4.96e-6 nrs=135e-3 nrd=135e-3 m=1 par1=1
+xm3 net24 b d1p5v d1p5v pe w=2e-6 l=180e-9 as=960e-15 ad=960e-15 ps=4.96e-6 pd=4.96e-6 nrs=135e-3 nrd=135e-3 m=1 par1=1
+xm2 out _net0 net24 d1p5v pe w=2e-6 l=180e-9 as=960e-15 ad=960e-15 ps=4.96e-6 pd=4.96e-6 nrs=135e-3 nrd=135e-3 m=1 par1=1
+xi0 agnd d1p5v dgnd sel _net0 inv
+.ends mux2n
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: invb
+** View name: schematic
+.subckt invb agnd d1p5v dgnd in out
+xm0 out in dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xm1 out in d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+.ends invb
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: token-reg
+** View name: schematic
+.subckt _sub7 agnd _net1 _net2 _net4 _net7 d1p5v dgnd _net6 _net5 _net0 _net3
+xi26 _net0 agnd _net1 d1p5v dgnd net20 nor
+xi19 agnd d1p5v dgnd _net2 net16 inv
+xi18 agnd d1p5v dgnd net17 _net3 invb
+xi20 agnd d1p5v dgnd net16 _net4 invb
+xi22 _net5 agnd _net0 d1p5v dgnd net17 _net1 mux2n
+xi25 net20 _net6 _net5 agnd net16 _net7 d1p5v dgnd dffc
+.ends _sub7
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: lvto5Vn
+** View name: schematic
+.subckt lvto5Vn agnd d1p5v d5v dgnd in out
+xm6 net59 in dgnd agnd ne5 w=840e-9 l=500e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm8 out net53 dgnd agnd ne5 w=320e-9 l=500e-9 as=153.6e-15 ad=153.6e-15 ps=1.6e-6 pd=1.6e-6 nrs=1.6875 nrd=1.6875 m=1 par1=1
+xm4 net53 net52 dgnd agnd ne5 w=840e-9 l=500e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=321.429e-3 nrd=321.429e-3 m=1 par1=1
+xm2 net52 in dgnd agnd ne w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm1 net52 in d1p5v d1p5v pe w=1e-6 l=180e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm7 out net53 d5v d5v pe5 w=510e-9 l=500e-9 as=244.8e-15 ad=244.8e-15 ps=1.98e-6 pd=1.98e-6 nrs=1.05882 nrd=1.05882 m=1 par1=1
+xm3 net53 net59 d5v d5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=2.45455 nrd=2.45455 m=1 par1=1
+xm5 net59 net53 d5v d5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=2.45455 nrd=2.45455 m=1 par1=1
+.ends lvto5Vn
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: dff
+** View name: schematic
+.subckt dff d q _net0 agnd clk d1p5v dgnd
+xm2 ci cib dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm51 sqib cib net53 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm46 sqib ci net56 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm18 mqib cib net60 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm19 mqib ci net57 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm50 net53 net40 dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm47 net56 mqi dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm49 net40 sqib dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm17 mqi mqib dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm61 net57 mqi dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm15 net60 d dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm7 _net0 net40 dgnd agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xm4 q sqib dgnd agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xm0 cib clk dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm5 q sqib d1p5v d1p5v pe w=840e-9 l=180e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=321.429e-3 nrd=321.429e-3 m=1 par1=1
+xm3 ci cib d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm36 net54 net40 d1p5v d1p5v pe w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm30 net55 mqi d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm59 net40 sqib d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm28 net58 mqi d1p5v d1p5v pe w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm56 mqi mqib d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm23 net59 d d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm35 sqib ci net54 d1p5v pe w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm34 mqib cib net58 d1p5v pe w=290e-9 l=180e-9 as=139.2e-15 ad=139.2e-15 ps=1.54e-6 pd=1.54e-6 nrs=931.034e-3 nrd=931.034e-3 m=1 par1=1
+xm33 sqib cib net55 d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm24 mqib ci net59 d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm6 _net0 net40 d1p5v d1p5v pe w=840e-9 l=180e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=321.429e-3 nrd=321.429e-3 m=1 par1=1
+xm1 cib clk d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+.ends dff
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: nand3
+** View name: schematic
+.subckt nand3 a agnd b c d1p5v dgnd out
+xm0 net21 b net22 agnd ne w=870e-9 l=180e-9 as=417.6e-15 ad=417.6e-15 ps=2.7e-6 pd=2.7e-6 nrs=310.345e-3 nrd=310.345e-3 m=1 par1=1
+xmn1 out a net21 agnd ne w=870e-9 l=180e-9 as=417.6e-15 ad=417.6e-15 ps=2.7e-6 pd=2.7e-6 nrs=310.345e-3 nrd=310.345e-3 m=1 par1=1
+xmn2 net22 c dgnd agnd ne w=870e-9 l=180e-9 as=417.6e-15 ad=417.6e-15 ps=2.7e-6 pd=2.7e-6 nrs=310.345e-3 nrd=310.345e-3 m=1 par1=1
+xm1 out a d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xmp1 out b d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xmp2 out c d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+.ends nand3
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: nand
+** View name: schematic
+.subckt nand a agnd b d1p5v dgnd out
+xmn1 out a net15 agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xmn2 net15 b dgnd agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xmp1 out a d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xmp2 out b d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+.ends nand
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: scope-decode
+** View name: schematic
+.subckt _sub8 agnd d1p5v d5v dgnd enable0 enable1 out0 out1 out2 out3 sel0 sel1
+xi6 net20 agnd sel0 sel1 d1p5v dgnd net21 nand3
+xi5 net20 agnd _net0 sel1 d1p5v dgnd net22 nand3
+xi4 net20 agnd sel0 _net1 d1p5v dgnd net23 nand3
+xi1 net20 agnd _net0 _net1 d1p5v dgnd net24 nand3
+xi2 enable0 agnd enable1 d1p5v dgnd net25 nand
+xi12 agnd d1p5v dgnd sel1 _net1 inv
+xi11 agnd d1p5v dgnd sel0 _net0 inv
+xi3 agnd d1p5v dgnd net25 net20 inv
+xi9 agnd d1p5v d5v dgnd net21 out3 lvto5Vn
+xi8 agnd d1p5v d5v dgnd net22 out2 lvto5Vn
+xi7 agnd d1p5v d5v dgnd net23 out1 lvto5Vn
+xi0 agnd d1p5v d5v dgnd net24 out0 lvto5Vn
+.ends _sub8
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: pixel-logic
+** View name: schematic
+.subckt _sub9 agnd capen _net6 _net5 _net22 _net8 colen d1p5v d5v dgnd _net0 _net36 _net11 _net25 _net37 _net14 pixen _net7 _net26 rdpixclk rdpixsel0 rdpixsel1 _net1 _net31 _net10 _net30 _net9 _net20 _net13 _net33 _net34 _net35 _net32 rowen _net23 _net24 scopsel0 scopsel1 _net27 _net28 _net21 _net29 _net16 _net17 _net18 _net19 tpul _net12 _net4 _net3
+xm0 net18 _net0 dgnd agnd ne5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=1.22727 nrd=1.22727 m=1 par1=1
+xm1 net18 _net0 d1p5v d1p5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=1.22727 nrd=1.22727 m=1 par1=1
+xi31 net0140 agnd _net1 d1p5v dgnd net0145 nor
+xi23 readpix agnd net0149 d1p5v dgnd net0150 nor
+xi18 net0115 agnd net0114 d1p5v dgnd net0151 nor
+xi12 net0153 agnd trigger d1p5v dgnd net0152 nor
+xi11 _net2 agnd _net3 d1p5v dgnd net0153 nor
+xi8 _net2 agnd _net4 d1p5v dgnd net0154 nor
+xi38 agnd d1p5v dgnd net0113 _net5 inv
+xi37 agnd d1p5v dgnd _net6 net0113 inv
+xi36 agnd d1p5v dgnd _net7 _net8 inv
+xi32 agnd d1p5v dgnd net0145 capen inv
+xi30 agnd d1p5v dgnd net0146 _net9 inv
+xi29 agnd d1p5v dgnd net0147 _net10 inv
+xi24 agnd d1p5v dgnd net0150 net0148 inv
+xi19 agnd d1p5v dgnd net0151 net0129 inv
+xi15 agnd d1p5v dgnd net0152 net0130 inv
+xi6 agnd d1p5v dgnd net23 _net11 inv
+xi13 agnd d1p5v d5v dgnd net0154 tpul _net12 lvto5Vpn
+xi14 net0148 readpix _net13 agnd rdpixclk _net14 d1p5v dgnd dffc
+xi22 net0134 agnd net0133 d1p5v dgnd net0149 rdpixsel1 mux2n
+xi21 net0114 agnd net0129 d1p5v dgnd net0133 rdpixsel0 mux2n
+xi20 net0130 agnd net0115 d1p5v dgnd net0134 rdpixsel0 mux2n
+xi26 agnd _net15 _net16 _net17 _net14 d1p5v dgnd net0140 net0119 _net18 _net19 _sub7
+xi40 agnd d1p5v d5v dgnd net0140 _net20 lvto5Vn
+xi34 agnd d1p5v d5v dgnd net0144 _net21 lvto5Vn
+xi35 _net22 pixen _net7 agnd net0113 d1p5v dgnd dff
+xi39 agnd d1p5v d5v dgnd _net23 _net24 _net25 _net26 _net27 _net28 scopsel0 scopsel1 _sub8
+xi33 _net1 agnd _net29 d1p5v dgnd net0144 nand
+xi28 net0119 agnd _net30 d1p5v dgnd net0146 nand
+xi27 _net31 agnd net0119 d1p5v dgnd net0147 nand
+xi25 readpix agnd pixen d1p5v dgnd _net15 nand
+xi17 _net32 agnd _net33 d1p5v dgnd net0114 nand
+xi16 _net34 agnd _net35 d1p5v dgnd net0115 nand
+xi7 colen agnd rowen d1p5v dgnd _net2 nand
+xi5 net21 agnd _net36 d1p5v dgnd net23 nand
+xi2 trigger agnd _net14 d1p5v dgnd net21 nand
+xi1 net24 agnd net21 d1p5v dgnd trigger nand
+xi0 net18 agnd _net37 d1p5v dgnd net24 nand
+.ends _sub9
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: analog-sw
+** View name: schematic
+.subckt _sub10 a0 a1 a5v agnd in
+xm2 a0 net21 a1 a5v pe5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm0 net21 in a5v a5v pe5 w=1e-6 l=500e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm3 a0 in a1 agnd ne5 w=1e-6 l=500e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm4 net21 in agnd agnd ne5 w=500e-9 l=500e-9 as=240e-15 ad=240e-15 ps=1.96e-6 pd=1.96e-6 nrs=540e-3 nrd=540e-3 m=1 par1=1
+.ends _sub10
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: preamp
+** View name: schematic
+.subckt preamp a5v agnd b5v compsel0 compsel1 gainsel0 gainsel1 in iout1 iout2 pixen _net0 pre5v prebias _net1 vn1 vn1a vn2 vn3 vout1 vout2
+xm9 net030 pixen pre5v pre5v pe5 w=1.8e-6 l=600e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm8 net019 _net0 net25 pre5v pe5 w=1.8e-6 l=600e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm6 net030 net019 pre5v pre5v pe5 w=3.6e-6 l=1.2e-6 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm1 net32 net030 net019 net019 pe5 w=15e-6 l=1.2e-6 as=7.2e-12 ad=7.2e-12 ps=30.96e-6 pd=30.96e-6 nrs=18e-3 nrd=18e-3 m=1 par1=1
+xm0 net019 in pre5v pre5v pe5 w=41e-6 l=600e-9 as=19.68e-12 ad=19.68e-12 ps=82.96e-6 pd=82.96e-6 nrs=6.58537e-3 nrd=6.58537e-3 m=1 par1=1
+xm26 b5v _net1 net46 agnd ne5 w=1e-6 l=500e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm23 vout2 gainsel0 net060 agnd ne5 w=12e-6 l=1.2e-6 as=5.76e-12 ad=5.76e-12 ps=24.96e-6 pd=24.96e-6 nrs=22.5e-3 nrd=22.5e-3 m=1 par1=1
+xm22 vout2 gainsel1 net061 agnd ne5 w=12e-6 l=1.2e-6 as=5.76e-12 ad=5.76e-12 ps=24.96e-6 pd=24.96e-6 nrs=22.5e-3 nrd=22.5e-3 m=1 par1=1
+xm19 vout1 gainsel1 net040 agnd ne5 w=12e-6 l=1.2e-6 as=5.76e-12 ad=5.76e-12 ps=24.96e-6 pd=24.96e-6 nrs=22.5e-3 nrd=22.5e-3 m=1 par1=1
+xm17 net45 net32 vout2 agnd ne5 w=3e-6 l=1.2e-6 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm16 net46 net32 vout1 agnd ne5 w=3e-6 l=1.2e-6 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm15 iout2 vn3 net45 agnd ne5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm14 iout1 vn3 net46 agnd ne5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm13 net030 vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm12 net030 vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm11 net030 vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm10 net030 vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm18 net32 vn2 net059 agnd ne5 w=15e-6 l=3e-6 as=7.2e-12 ad=7.2e-12 ps=30.96e-6 pd=30.96e-6 nrs=18e-3 nrd=18e-3 m=1 par1=1
+xm7 net059 vn1a agnd agnd ne5 w=6e-6 l=24e-6 as=2.88e-12 ad=2.88e-12 ps=12.96e-6 pd=12.96e-6 nrs=45e-3 nrd=45e-3 m=1 par1=1
+xm20 vout1 gainsel0 net026 agnd ne5 w=12e-6 l=1.2e-6 as=5.76e-12 ad=5.76e-12 ps=24.96e-6 pd=24.96e-6 nrs=22.5e-3 nrd=22.5e-3 m=1 par1=1
+xr7 net061 agnd agnd rnp1h_3 l=27.61e-6 w=440e-9 m=1 par1=1
+xr6 net060 agnd agnd rnp1h_3 l=55.23e-6 w=440e-9 m=1 par1=1
+xr2 net25 prebias prebias rnp1h_3 l=144.03e-6 w=2e-6 m=1 par1=1
+xr5 vout2 agnd agnd rnp1h_3 l=55.23e-6 w=440e-9 m=1 par1=1
+xr0 net040 agnd agnd rnp1h_3 l=23.63e-6 w=440e-9 m=1 par1=1
+xr4 vout1 agnd agnd rnp1h_3 l=47.25e-6 w=440e-9 m=1 par1=1
+xr3 net026 agnd agnd rnp1h_3 l=47.25e-6 w=440e-9 m=1 par1=1
+xi1 net051 net32 a5v agnd compsel0 _sub10
+xi0 net050 net32 a5v agnd compsel1 _sub10
+xc0 net32 agnd csandwt3 area=295.4e-12 perimeter=77.1e-6 m=1 par1=1
+xc2 net051 agnd csandwt3 area=297.96e-12 perimeter=69.4e-6 m=1 par1=1
+xc3 net050 agnd csandwt3 area=610.088e-12 perimeter=99.23e-6 m=1 par1=1
+xc1x vout1 agnd csandwt3 area=113.76e-12 perimeter=42.96e-6 m=1 par1=1
+xc4x vout2 agnd csandwt3 area=111.87e-12 perimeter=48.43e-6 m=1 par1=1
+.ends preamp
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: amp2
+** View name: schematic
+.subckt amp2 a5v agnd in out vn1 vn2 vp1 vp2
+xm9 a5v net21 out agnd ne5 w=3.6e-6 l=1.2e-6 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm8 out vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm7 out vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm5 out vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm4 out vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm1 net21 vn2 net29 agnd ne5 w=3.6e-6 l=1.2e-6 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm0 net29 in agnd agnd ne5 w=3.6e-6 l=1.2e-6 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm3 net27 vp1 a5v a5v pe5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm2 net27 vp1 a5v a5v pe5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm6 net21 vp2 net27 a5v pe5 w=3.6e-6 l=1.2e-6 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+.ends amp2
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: amp1
+** View name: schematic
+.subckt amp1 a5v agnd in out vn2 vp1 vp2
+xm1 net21 vn2 net26 agnd ne5 w=3.6e-6 l=1.2e-6 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm0 net26 in agnd agnd ne5 w=3.6e-6 l=1.2e-6 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm7 agnd net21 out a5v pe5 w=2.4e-6 l=600e-9 as=1.152e-12 ad=1.152e-12 ps=5.76e-6 pd=5.76e-6 nrs=112.5e-3 nrd=112.5e-3 m=1 par1=1
+xm6 net21 vp2 net016 a5v pe5 w=3.6e-6 l=1.2e-6 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm5 out vp1 a5v a5v pe5 w=1.8e-6 l=2.4e-6 as=675e-15 ad=486e-15 ps=3.45e-6 pd=2.34e-6 nrs=150e-3 nrd=150e-3 m=4 par1=4
+xm2 net016 vp1 a5v a5v pe5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=486e-15 ps=4.56e-6 pd=2.34e-6 nrs=150e-3 nrd=150e-3 m=2 par1=2
+.ends amp1
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: shaper
+** View name: schematic
+.subckt shaper a5v agnd in out vn1 vn2 vp1 vp2
+xi2 a5v agnd net20 out vn1 vn2 vp1 vp2 amp2
+xr3 out net20 agnd rnp1h_3 l=394.29e-6 w=440e-9 m=1 par1=1
+xr2 net25 in agnd rnp1h_3 l=27.61e-6 w=440e-9 m=1 par1=1
+xr0 net18 agnd agnd rnp1h_3 l=138.07e-6 w=440e-9 m=1 par1=1
+xr1 net19 net18 agnd rnp1h_3 l=394.29e-6 w=440e-9 m=1 par1=1
+xi0 a5v agnd net18 net19 vn2 vp1 vp2 amp1
+xc2 net20 net19 ctmmh5 area=147.78e-12 perimeter=48.63e-6 m=1 par1=1
+xc1 net18 net25 ctmmh5 area=147.78e-12 perimeter=48.63e-6 m=1 par1=1
+xc3x net25 agnd ctmmh5 area=27.475e-12 perimeter=20.99e-6 m=1 par1=1
+xc0x net18 net19 csandwt3 area=420.35e-12 perimeter=88.05e-6 m=1 par1=1
+xc4x net20 out csandwt3 area=421.74e-12 perimeter=84.12e-6 m=1 par1=1
+.ends shaper
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: disc
+** View name: schematic
+.subckt disc a5v agnd _net0 _net2 _net1 pixen vn1 vp1
+xm11 _net0 vp1 a5v a5v pe5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm2 net24 _net1 net20 a5v pe5 w=2.4e-6 l=1.2e-6 as=1.152e-12 ad=1.152e-12 ps=5.76e-6 pd=5.76e-6 nrs=112.5e-3 nrd=112.5e-3 m=1 par1=1
+xm1 net19 _net2 net20 a5v pe5 w=2.4e-6 l=1.2e-6 as=1.152e-12 ad=1.152e-12 ps=5.76e-6 pd=5.76e-6 nrs=112.5e-3 nrd=112.5e-3 m=1 par1=1
+xm0 net20 vp1 a5v a5v pe5 w=1.8e-6 l=2.4e-6 as=612e-15 ad=486e-15 ps=3.08e-6 pd=2.34e-6 nrs=150e-3 nrd=150e-3 m=6 par1=6
+xm10 _net0 net26 net34 agnd ne5 w=1.8e-6 l=600e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm9 net34 pixen agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm8 net26 vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm7 a5v net24 net26 agnd ne5 w=1.8e-6 l=600e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm6 net33 net18 agnd agnd ne5 w=2.4e-6 l=1.2e-6 as=1.152e-12 ad=1.152e-12 ps=5.76e-6 pd=5.76e-6 nrs=112.5e-3 nrd=112.5e-3 m=1 par1=1
+xm5 net18 net18 agnd agnd ne5 w=2.4e-6 l=1.2e-6 as=1.152e-12 ad=1.152e-12 ps=5.76e-6 pd=5.76e-6 nrs=112.5e-3 nrd=112.5e-3 m=1 par1=1
+xm4 net19 net19 net18 agnd ne5 w=2.4e-6 l=600e-9 as=1.152e-12 ad=1.152e-12 ps=5.76e-6 pd=5.76e-6 nrs=112.5e-3 nrd=112.5e-3 m=1 par1=1
+xm3 net24 net19 net33 agnd ne5 w=2.4e-6 l=600e-9 as=1.152e-12 ad=1.152e-12 ps=5.76e-6 pd=5.76e-6 nrs=112.5e-3 nrd=112.5e-3 m=1 par1=1
+xc0x net33 net26 csandwt3 area=83.742e-12 perimeter=36.82e-6 m=1 par1=1
+.ends disc
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: lvto5V
+** View name: schematic
+.subckt lvto5V agnd d1p5v d5v dgnd in out
+xm6 net21 in dgnd agnd ne5 w=840e-9 l=500e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm8 out net21 dgnd agnd ne5 w=320e-9 l=500e-9 as=153.6e-15 ad=153.6e-15 ps=1.6e-6 pd=1.6e-6 nrs=1.6875 nrd=1.6875 m=1 par1=1
+xm4 net15 net14 dgnd agnd ne5 w=840e-9 l=500e-9 as=403.2e-15 ad=403.2e-15 ps=2.64e-6 pd=2.64e-6 nrs=321.429e-3 nrd=321.429e-3 m=1 par1=1
+xm2 net14 in dgnd agnd ne w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm1 net14 in d1p5v d1p5v pe w=1e-6 l=180e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm7 out net21 d5v d5v pe5 w=510e-9 l=500e-9 as=244.8e-15 ad=244.8e-15 ps=1.98e-6 pd=1.98e-6 nrs=1.05882 nrd=1.05882 m=1 par1=1
+xm3 net15 net21 d5v d5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=2.45455 nrd=2.45455 m=1 par1=1
+xm5 net21 net15 d5v d5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=2.45455 nrd=2.45455 m=1 par1=1
+.ends lvto5V
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: delay
+** View name: schematic
+.subckt delay agnd d1p5v dgnd in out
+xm2 out net12 dgnd agnd ne w=580e-9 l=180e-9 as=278.4e-15 ad=278.4e-15 ps=2.12e-6 pd=2.12e-6 nrs=465.517e-3 nrd=465.517e-3 m=1 par1=1
+xm0 net12 in dgnd agnd ne w=220e-9 l=3e-6 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=1.22727 nrd=1.22727 m=1 par1=1
+xm3 out net12 d1p5v d1p5v pe w=2e-6 l=180e-9 as=960e-15 ad=960e-15 ps=4.96e-6 pd=4.96e-6 nrs=135e-3 nrd=135e-3 m=1 par1=1
+xm1 net12 in d1p5v d1p5v pe w=220e-9 l=450e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=1.22727 nrd=1.22727 m=1 par1=1
+.ends delay
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: precp
+** View name: schematic
+.subckt precp n1vref n4vref a5v agnd cpmode _net0 d1p5v dgnd in output
+xi1 net28 agnd _net0 d1p5v dgnd net38 nand
+xi9 net30 agnd net39 d1p5v dgnd net18 nor
+xi8 net29 agnd net18 d1p5v dgnd net30 nor
+xi2 net28 agnd _net0 d1p5v dgnd net29 nor
+xi12 agnd d1p5v a5v dgnd cpmode net19 lvto5V
+xi11 agnd d1p5v a5v dgnd net30 net35 lvto5V
+xi10 agnd d1p5v a5v dgnd net18 net32 lvto5V
+xi16 agnd d1p5v a5v dgnd net38 net31 lvto5V
+xi13 agnd d1p5v a5v dgnd cpmode net34 lvto5Vn
+xm6 in net34 net22 a5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=1.22727 nrd=1.22727 m=1 par1=1
+xm4 in net19 output a5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=1.22727 nrd=1.22727 m=1 par1=1
+xm3 net24 net31 output a5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=1.22727 nrd=1.22727 m=1 par1=1
+xm2 n4vref net35 net24 a5v pe5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=1.22727 nrd=1.22727 m=1 par1=1
+xm5 in net19 net22 agnd ne5 w=220e-9 l=500e-9 as=105.6e-15 ad=105.6e-15 ps=1.4e-6 pd=1.4e-6 nrs=1.22727 nrd=1.22727 m=1 par1=1
+xm1 net22 net32 n1vref agnd ne5 w=2e-6 l=500e-9 as=960e-15 ad=960e-15 ps=4.96e-6 pd=4.96e-6 nrs=135e-3 nrd=135e-3 m=1 par1=1
+xc0 net22 n1vref ctmmh5 area=53.9325e-12 perimeter=32.97e-6 m=1 par1=1
+xi7 agnd d1p5v dgnd net29 net39 inv
+xi15 agnd d1p5v dgnd _net0 net031 delay
+xi14 agnd d1p5v dgnd net031 net28 delay
+xc1x net22 net24 csandwt3 area=53.6e-12 perimeter=30.72e-6 m=1 par1=1
+.ends precp
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: pdiff
+** View name: schematic
+.subckt pdiff a5v agnd _net0 _net1 out vpl1
+xm15 net044 net044 net08 a5v pe5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm10 out net044 net028 a5v pe5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm4 net08 net08 a5v a5v pe5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm3 net028 net08 a5v a5v pe5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm2 net15 vpl1 a5v a5v pe5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm1 net043 _net0 net15 a5v pe5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm0 net14 _net1 net15 a5v pe5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm14 net043 net043 net013 agnd ne5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm13 net14 net14 net041 agnd ne5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm11 out net043 net029 agnd ne5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm12 net044 net14 net027 agnd ne5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm6 net041 net041 agnd agnd ne5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm5 net013 net013 agnd agnd ne5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm7 net029 net013 agnd agnd ne5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm8 net027 net041 agnd agnd ne5 w=1e-6 l=2e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+.ends pdiff
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: idiv
+** View name: schematic
+.subckt idiv a5v agnd in _net0 _net1 leakout out vn1 vn2 vnl1 vp1 vpl1
+xm43 out net021 a5v a5v pe5 w=1e-6 l=2.4e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm42 net70 net021 a5v a5v pe5 w=1e-6 l=2.4e-6 as=312e-15 ad=312e-15 ps=1.824e-6 pd=1.824e-6 nrs=270e-3 nrd=270e-3 m=5 par1=5
+xm38 net43 vp1 a5v a5v pe5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm35 net36 vp1 a5v a5v pe5 w=1.8e-6 l=2.4e-6 as=675e-15 ad=486e-15 ps=3.45e-6 pd=2.34e-6 nrs=150e-3 nrd=150e-3 m=4 par1=4
+xm33 net37 net37 a5v a5v pe5 w=3.6e-6 l=900e-9 as=1.1232e-12 ad=972e-15 ps=4.944e-6 pd=4.14e-6 nrs=75e-3 nrd=75e-3 m=10 par1=10
+xm30 net21 net21 a5v a5v pe5 w=1.8e-6 l=1.8e-6 as=580.5e-15 ad=486e-15 ps=2.895e-6 pd=2.34e-6 nrs=150e-3 nrd=150e-3 m=8 par1=8
+xm27 out net21 a5v a5v pe5 w=1.8e-6 l=1.8e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm26 net28 net36 net68 a5v pe5 w=3.6e-6 l=600e-9 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm25 net36 net36 net37 a5v pe5 w=3.6e-6 l=600e-9 as=1.1232e-12 ad=972e-15 ps=4.944e-6 pd=4.14e-6 nrs=75e-3 nrd=75e-3 m=10 par1=10
+xm24 net68 net37 a5v a5v pe5 w=3.6e-6 l=900e-9 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm41 agnd net70 net021 a5v pe5 w=1e-6 l=500e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm40 net021 vp1 a5v a5v pe5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm11 net42 net43 a5v a5v pe5 w=1e-6 l=2.4e-6 as=312e-15 ad=312e-15 ps=1.824e-6 pd=1.824e-6 nrs=270e-3 nrd=270e-3 m=5 par1=5
+xm36 agnd net42 net43 a5v pe5 w=1e-6 l=500e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm8 net35 net43 a5v a5v pe5 w=1e-6 l=2.4e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm3 net47 in net73 a5v pe5 w=3.6e-6 l=600e-9 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm2 in in net52 a5v pe5 w=3.6e-6 l=600e-9 as=1.04073e-12 ad=1.04073e-12 ps=4.50545e-6 pd=4.50545e-6 nrs=75e-3 nrd=75e-3 m=11 par1=11
+xm1 net73 net52 a5v a5v pe5 w=3.6e-6 l=900e-9 as=1.728e-12 ad=1.728e-12 ps=8.16e-6 pd=8.16e-6 nrs=75e-3 nrd=75e-3 m=1 par1=1
+xm0 net52 net52 a5v a5v pe5 w=3.6e-6 l=900e-9 as=1.04073e-12 ad=1.04073e-12 ps=4.50545e-6 pd=4.50545e-6 nrs=75e-3 nrd=75e-3 m=11 par1=11
+xm34x net36 net50 leakout agnd ne5 w=6e-6 l=1.2e-6 as=2.88e-12 ad=2.88e-12 ps=12.96e-6 pd=12.96e-6 nrs=45e-3 nrd=45e-3 m=1 par1=1
+xm22 net21 net28 net66 agnd ne5 w=1.8e-6 l=600e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm21 net66 net27 agnd agnd ne5 w=1.8e-6 l=900e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm19 net28 net28 net27 agnd ne5 w=1.8e-6 l=600e-9 as=561.6e-15 ad=486e-15 ps=2.784e-6 pd=2.34e-6 nrs=150e-3 nrd=150e-3 m=10 par1=10
+xm18 net27 net27 agnd agnd ne5 w=1.8e-6 l=900e-9 as=561.6e-15 ad=486e-15 ps=2.784e-6 pd=2.34e-6 nrs=150e-3 nrd=150e-3 m=10 par1=10
+xm17 out vn2 net69 agnd ne5 w=1.8e-6 l=600e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm16 net69 vnl1 agnd agnd ne5 w=1.8e-6 l=900e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm37 a5v net35 net34 agnd ne5 w=500e-9 l=500e-9 as=240e-15 ad=240e-15 ps=1.96e-6 pd=1.96e-6 nrs=540e-3 nrd=540e-3 m=1 par1=1
+xm14 net70 net34 agnd agnd ne5 w=1e-6 l=2.4e-6 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm39 net34 vn1 agnd agnd ne5 w=1.8e-6 l=2.4e-6 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm12 net35 net34 agnd agnd ne5 w=1e-6 l=2.4e-6 as=312e-15 ad=312e-15 ps=1.824e-6 pd=1.824e-6 nrs=270e-3 nrd=270e-3 m=5 par1=5
+xm7 net42 net47 net72 agnd ne5 w=1.8e-6 l=600e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm6 net72 net46 agnd agnd ne5 w=1.8e-6 l=900e-9 as=864e-15 ad=864e-15 ps=4.56e-6 pd=4.56e-6 nrs=150e-3 nrd=150e-3 m=1 par1=1
+xm5 net47 net47 net46 agnd ne5 w=1.8e-6 l=600e-9 as=561.6e-15 ad=486e-15 ps=2.784e-6 pd=2.34e-6 nrs=150e-3 nrd=150e-3 m=10 par1=10
+xm4 net46 net46 agnd agnd ne5 w=1.8e-6 l=900e-9 as=561.6e-15 ad=486e-15 ps=2.784e-6 pd=2.34e-6 nrs=150e-3 nrd=150e-3 m=10 par1=10
+xr4 leakout agnd agnd rnp1h_3 l=118.15e-6 w=440e-9 m=1 par1=1
+xi0 a5v agnd _net0 _net1 net50 vpl1 pdiff
+xc0x net50 agnd ctmmh5 area=704.657e-12 perimeter=106.63e-6 m=1 par1=1
+.ends idiv
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: pfollow
+** View name: schematic
+.subckt pfollow a5v agnd enable in out
+xm1 agnd net11 out out pe5 w=10e-6 l=500e-9 as=4.8e-12 ad=4.8e-12 ps=20.96e-6 pd=20.96e-6 nrs=27e-3 nrd=27e-3 m=1 par1=1
+xm0 net11 enable a5v a5v pe5 w=1.5e-6 l=500e-9 as=720e-15 ad=720e-15 ps=3.96e-6 pd=3.96e-6 nrs=180e-3 nrd=180e-3 m=1 par1=1
+xm2 net11 enable in agnd ne5 w=1.5e-6 l=500e-9 as=720e-15 ad=720e-15 ps=3.96e-6 pd=3.96e-6 nrs=180e-3 nrd=180e-3 m=1 par1=1
+.ends pfollow
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: sample-cap
+** View name: schematic
+.subckt _sub11 agnd b5v capen charge chargein d1p5v d5v dgnd _net1 _net0
+xc0 b5v net06 ctmmh5 area=280.72e-12 perimeter=69.52e-6 m=1 par1=1
+xm1 chargein net21 net06 b5v pe5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm0 net06 net22 b5v b5v pe5 w=500e-9 l=500e-9 as=240e-15 ad=240e-15 ps=1.96e-6 pd=1.96e-6 nrs=540e-3 nrd=540e-3 m=1 par1=1
+xi3 charge agnd capen _net0 d1p5v dgnd net20 nand3
+xi1 agnd d1p5v d5v dgnd net20 net21 lvto5V
+xi0 agnd d1p5v d5v dgnd _net1 net22 lvto5V
+.ends _sub11
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: cap-array
+** View name: schematic
+.subckt _sub12 agnd b5v capen chareg0 charge1 charge10 charge11 charge12 charge13 charge14 charge15 charge2 charge3 charge4 charge5 charge6 charge7 charge8 charge9 chargein _net0 d1p5v d5v dgnd readbus _net1 _net19 _net18 _net9 _net10 _net5 _net8 _net6 _net7 _net16 _net17 _net12 _net15 _net13 _net14 _net4 _net11 _net2
+xi16 agnd d1p5v d5v dgnd _net0 net046 lvto5V
+xm1 chargein net046 b5v b5v pe5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm0 readbus _net1 chargein b5v pe5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xi17 agnd d1p5v dgnd _net2 net065 inv
+xi18 agnd d1p5v dgnd net065 _net3 invb
+xi15 agnd b5v capen charge8 chargein d1p5v d5v dgnd _net4 _net3 _sub11
+xi14 agnd b5v capen charge12 chargein d1p5v d5v dgnd _net5 _net3 _sub11
+xi13 agnd b5v capen charge14 chargein d1p5v d5v dgnd _net6 _net3 _sub11
+xi12 agnd b5v capen charge15 chargein d1p5v d5v dgnd _net7 _net3 _sub11
+xi11 agnd b5v capen charge13 chargein d1p5v d5v dgnd _net8 _net3 _sub11
+xi10 agnd b5v capen charge10 chargein d1p5v d5v dgnd _net9 _net3 _sub11
+xi9 agnd b5v capen charge11 chargein d1p5v d5v dgnd _net10 _net3 _sub11
+xi8 agnd b5v capen charge9 chargein d1p5v d5v dgnd _net11 _net3 _sub11
+xi7 agnd b5v capen charge4 chargein d1p5v d5v dgnd _net12 _net3 _sub11
+xi6 agnd b5v capen charge6 chargein d1p5v d5v dgnd _net13 _net3 _sub11
+xi5 agnd b5v capen charge7 chargein d1p5v d5v dgnd _net14 _net3 _sub11
+xi4 agnd b5v capen charge5 chargein d1p5v d5v dgnd _net15 _net3 _sub11
+xi3 agnd b5v capen charge2 chargein d1p5v d5v dgnd _net16 _net3 _sub11
+xi2 agnd b5v capen charge3 chargein d1p5v d5v dgnd _net17 _net3 _sub11
+xi1 agnd b5v capen charge1 chargein d1p5v d5v dgnd _net18 _net3 _sub11
+xi0 agnd b5v capen chareg0 chargein d1p5v d5v dgnd _net19 _net3 _sub11
+.ends _sub12
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: pixel
+** View name: schematic
+.subckt pixel n1vref n4vref a5v agnd b5v basev charge0 charge1 charge10 charge11 charge12 charge13 charge14 charge15 charge2 charge3 charge4 charge5 charge6 charge7 charge8 charge9 _net36 _net0 _net1 _net2 _net3 colen compsel0 compsel1 cpmode _net35 d1p5v d5v dgnd _net4 _net5 discref disctresh gainsel0 gainsel1 _net7 _net8 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net11 _net12 _net13 _net14 _net15 readbus _net17 _net18 _net19 _net20 _net21 _net37 _net38 _net39 _net40 _net41 _net42 _net43 _net44 _net45 _net46 _net47 _net48 _net49 _net50 _net51 _net52 rowen _net22 _net23 scopebus scopsel0 scopsel1 _net27 testgnd testref _net28 _net29 _net30 _net31 _net33 _net34 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1
+xi1 agnd capen _net0 _net1 _net2 _net3 colen d1p5v d5v dgnd net172 _net4 _net5 _net6 _net7 _net8 pixen _net9 _net10 rdpixclk rdpixsel0 rdpixsel1 _net11 _net12 _net13 _net14 _net15 _net16 _net17 _net18 _net19 _net20 _net21 rowen _net22 _net23 scopsel0 scopsel1 _net24 _net25 _net26 _net27 _net28 _net29 _net30 _net31 tpul _net32 _net33 _net34 _sub9
+xi2 a5v agnd b5v compsel0 compsel1 gainsel0 gainsel1 prein net167 net166 pixen _net9 pre5v prebias _net26 vn1 vn1a vn2 vn3 net160 preout preamp
+xi3 a5v agnd preout net174 vn1 vn2 vp1 vp2 shaper
+xi4 a5v agnd net172 shape2out disctresh pixen vn1 vp1 disc
+xi5 n1vref n4vref a5v agnd cpmode _net35 d1p5v dgnd net175 prein precp
+xi6 a5v agnd net166 net160 basev leakout net175 vn1 vn2 vnl1 vp1 vpl1 idiv
+xi11 a5v agnd _net25 shape2out scopebus pfollow
+xi10 a5v agnd _net24 shape1out scopebus pfollow
+xi9 a5v agnd _net10 preout scopebus pfollow
+xi8 a5v agnd _net6 leakout scopebus pfollow
+xi0 agnd b5v capen charge0 charge1 charge10 charge11 charge12 charge13 charge14 charge15 charge2 charge3 charge4 charge5 charge6 charge7 charge8 charge9 net167 _net36 d1p5v d5v dgnd readbus _net16 _net37 _net38 _net39 _net40 _net41 _net42 _net43 _net44 _net45 _net46 _net47 _net48 _net49 _net50 _net51 _net52 _net27 _sub12
+xr1 discref shape2out agnd rnp1h_3 l=104.47e-6 w=420e-9 m=1 par1=1
+xr0 shape1out net174 agnd rnp1h_3 l=5.22e-6 w=420e-9 m=1 par1=1
+xc0 shape1out shape2out ctmmh5 area=168e-12 perimeter=52e-6 m=1 par1=1
+xm0 testref tpul net158 a5v pe5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm2 net158 tpul testgnd agnd ne5 w=1e-6 l=500e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+xm1 testref _net32 net158 agnd ne5 w=1e-6 l=500e-9 as=480e-15 ad=480e-15 ps=2.96e-6 pd=2.96e-6 nrs=270e-3 nrd=270e-3 m=1 par1=1
+.ends pixel
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: invbb
+** View name: schematic
+.subckt invbb agnd d1p5v dgnd in out
+xm0 out in dgnd agnd ne w=1.16e-6 l=180e-9 as=435e-15 ad=313.2e-15 ps=2.49e-6 pd=1.7e-6 nrs=232.759e-3 nrd=232.759e-3 m=4 par1=4
+xm1 out in d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.5e-12 ad=1.08e-12 ps=6.75e-6 pd=4.54e-6 nrs=67.5e-3 nrd=67.5e-3 m=4 par1=4
+.ends invbb
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: capbuffs
+** View name: schematic
+.subckt capbuffs agnd d1p5v dgnd in0 in1 in2 in3 in4 in5 in6 in7 out0 out1 out2 out3 out4 out5 out6 out7
+xi12 agnd d1p5v dgnd net39 out7 invbb
+xi11 agnd d1p5v dgnd net40 out6 invbb
+xi9 agnd d1p5v dgnd net41 out5 invbb
+xi8 agnd d1p5v dgnd net42 out4 invbb
+xi5 agnd d1p5v dgnd net43 out3 invbb
+xi4 agnd d1p5v dgnd net44 out2 invbb
+xi2 agnd d1p5v dgnd net45 out1 invbb
+xi1 agnd d1p5v dgnd net46 out0 invbb
+xi15 agnd d1p5v dgnd in4 net42 invb
+xi14 agnd d1p5v dgnd in6 net40 invb
+xi13 agnd d1p5v dgnd in7 net39 invb
+xi10 agnd d1p5v dgnd in5 net41 invb
+xi7 agnd d1p5v dgnd in2 net44 invb
+xi6 agnd d1p5v dgnd in3 net43 invb
+xi3 agnd d1p5v dgnd in1 net45 invb
+xi0 agnd d1p5v dgnd in0 net46 invb
+.ends capbuffs
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: row1
+** View name: schematic
+.subckt row1 n1vref n4vref a5v agnd b5v basev charge0 _net83 charge1 _net84 charge10 _net97 charge11 _net98 charge12 _net91 charge13 _net92 charge14 _net93 charge15 _net94 charge2 _net85 charge3 _net86 charge4 _net87 charge5 _net88 charge6 _net89 charge7 _net90 charge8 _net95 charge9 _net96 clamp _net122 _net74 _net47 _net48 _net75 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net115 d1p5v d5v _net49 discref discthresh gainsel0 gainsel1 lockout _net119 lreset _net120 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net121 _net76 _net68 _net5 _net63 _net33 _net58 _net40 _net50 _net77 _net69 _net6 _net64 _net34 _net59 _net41 _net51 _net52 readbusrow _net78 _net70 _net8 _net65 _net36 _net60 _net43 _net53 _net79 _net72 _net11 _net66 _net38 _net61 _net45 _net54 _net71 _net9 _net7 _net10 _net35 _net37 _net42 _net44 reset0 _net103 reset1 _net104 reset10 _net113 reset11 _net114 reset12 _net107 reset13 _net108 reset14 _net109 reset15 _net110 reset2 _net105 reset3 _net106
++reset4 _net99 reset5 _net100 reset6 _net101 reset7 _net102 reset8 _net111 reset9 _net112 rowen _net80 _net73 _net28 _net67 _net39 _net62 _net46 _net55 _net29 scopebusrow scopsel0 scopsel1 shwin _net116 testgnd testref _net81 _net56 _net57 _net82 tpulse _net117 uptrig _net118 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1
+xi16 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net0 net423 net431 net432 net424 colen2 compsel0 compsel1 cpmode _net1 d1p5v d5v net0255 net492 net491 discref discthresh gainsel0 gainsel1 _net2 _net3 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net4 _net5 _net6 net495 net494 readbus _net7 _net8 _net9 _net10 _net11 _net12 _net13 _net14 _net15 _net16 _net17 _net18 _net19 _net20 _net21 _net22 _net23 _net24 _net25 _net26 _net27 rowen _net28 _net29 scopebus scopsel0 scopsel1 _net30 testgnd testref net421 net429 net430 net422 _net31 _net32 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi7 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net0 net439 net447 net448 net440 colen4 compsel0 compsel1 cpmode _net1 d1p5v d5v net0256 net493 net485 discref discthresh gainsel0 gainsel1 _net2 _net3 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net4 _net33 _net34 net496 net488 readbus _net35 _net36 _net10 _net37 _net38 _net12 _net13 _net14 _net15 _net16 _net17 _net18 _net19 _net20 _net21 _net22 _net23 _net24 _net25 _net26 _net27 rowen _net39 _net29 scopebus scopsel0 scopsel1 _net30 testgnd testref net437 net445 net446 net438 _net31 _net32 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi6 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net0 net455 net463 net464 net456 colen6 compsel0 compsel1 cpmode _net1 d1p5v d5v net0257 net487 net489 discref discthresh gainsel0 gainsel1 _net2 _net3 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net4 _net40 _net41 net490 net486 readbus _net42 _net43 _net37 _net44 _net45 _net12 _net13 _net14 _net15 _net16 _net17 _net18 _net19 _net20 _net21 _net22 _net23 _net24 _net25 _net26 _net27 rowen _net46 _net29 scopebus scopsel0 scopsel1 _net30 testgnd testref net453 net461 net462 net454 _net31 _net32 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi5 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net0 net463 _net47 _net48 net464 colen7 compsel0 compsel1 cpmode _net1 d1p5v d5v net0258 net489 _net49 discref discthresh gainsel0 gainsel1 _net2 _net3 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net4 _net50 _net51 net486 _net52 readbus _net44 _net53 _net42 d1p5v _net54 _net12 _net13 _net14 _net15 _net16 _net17 _net18 _net19 _net20 _net21 _net22 _net23 _net24 _net25 _net26 _net27 rowen _net55 _net29 scopebus scopsel0 scopsel1 _net30 testgnd testref net461 _net56 _net57 net462 _net31 _net32 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi4 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net0 net447 net455 net456 net448 colen5 compsel0 compsel1 cpmode _net1 d1p5v d5v net0259 net485 net487 discref discthresh gainsel0 gainsel1 _net2 _net3 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net4 _net58 _net59 net488 net490 readbus _net37 _net60 _net35 _net42 _net61 _net12 _net13 _net14 _net15 _net16 _net17 _net18 _net19 _net20 _net21 _net22 _net23 _net24 _net25 _net26 _net27 rowen _net62 _net29 scopebus scopsel0 scopsel1 _net30 testgnd testref net445 net453 net454 net446 _net31 _net32 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi2 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net0 net431 net439 net440 net432 colen3 compsel0 compsel1 cpmode _net1 d1p5v d5v net0260 net491 net493 discref discthresh gainsel0 gainsel1 _net2 _net3 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net4 _net63 _net64 net494 net496 readbus _net10 _net65 _net7 _net35 _net66 _net12 _net13 _net14 _net15 _net16 _net17 _net18 _net19 _net20 _net21 _net22 _net23 _net24 _net25 _net26 _net27 rowen _net67 _net29 scopebus scopsel0 scopsel1 _net30 testgnd testref net429 net437 net438 net430 _net31 _net32 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi1 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net0 net414 net423 net424 net416 colen1 compsel0 compsel1 cpmode _net1 d1p5v d5v net0261 net497 net492 discref discthresh gainsel0 gainsel1 _net2 _net3 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net4 _net68 _net69 net498 net495 readbus _net9 _net70 _net71 _net7 _net72 _net12 _net13 _net14 _net15 _net16 _net17 _net18 _net19 _net20 _net21 _net22 _net23 _net24 _net25 _net26 _net27 rowen _net73 _net29 scopebus scopsel0 scopsel1 _net30 testgnd testref net412 net421 net422 net413 _net31 _net32 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi0 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net0 _net74 net414 net416 _net75 colen0 compsel0 compsel1 cpmode _net1 d1p5v d5v net0262 d1p5v net497 discref discthresh gainsel0 gainsel1 _net2 _net3 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net4 _net76 _net77 d1p5v net498 readbus _net71 _net78 d1p5v _net9 _net79 _net12 _net13 _net14 _net15 _net16 _net17 _net18 _net19 _net20 _net21 _net22 _net23 _net24 _net25 _net26 _net27 rowen _net80 _net29 scopebus scopsel0 scopsel1 _net30 testgnd testref _net81 net412 net413 _net82 _net31 _net32 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xm0 scopebus net475 scopebusrow a5v pe5 w=6e-6 l=500e-9 as=2.88e-12 ad=2.88e-12 ps=12.96e-6 pd=12.96e-6 nrs=45e-3 nrd=45e-3 m=1 par1=1
+xm3 readbus net473 readbusrow a5v pe5 w=6e-6 l=500e-9 as=2.88e-12 ad=2.88e-12 ps=12.96e-6 pd=12.96e-6 nrs=45e-3 nrd=45e-3 m=1 par1=1
+xm1 scopebus net474 scopebusrow agnd ne5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm2 readbus net472 readbusrow agnd ne5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xi8 agnd d1p5v dgnd charge0 _net83 charge1 _net84 charge2 _net85 charge3 _net86 c0 net499 c1 net500 c2 net501 c3 net502 capbuffs
+xi9 agnd d1p5v dgnd charge4 _net87 charge5 _net88 charge6 _net89 charge7 _net90 c4 net503 c5 net504 c6 net505 c7 net506 capbuffs
+xi11 agnd d1p5v dgnd charge12 _net91 charge13 _net92 charge14 _net93 charge15 _net94 c12 net507 c13 net508 c14 net509 c15 net510 capbuffs
+xi10 agnd d1p5v dgnd charge8 _net95 charge9 _net96 charge10 _net97 charge11 _net98 c8 net511 c9 net512 c10 net513 c11 net514 capbuffs
+xi13 agnd d1p5v dgnd reset4 _net99 reset5 _net100 reset6 _net101 reset7 _net102 net515 _net22 net516 _net23 net517 _net24 net518 _net25 capbuffs
+xi12 agnd d1p5v dgnd reset0 _net103 reset1 _net104 reset2 _net105 reset3 _net106 net519 _net12 net520 _net13 net521 _net20 net522 _net21 capbuffs
+xi15 agnd d1p5v dgnd reset12 _net107 reset13 _net108 reset14 _net109 reset15 _net110 net523 _net16 net524 _net17 net525 _net18 net526 _net19 capbuffs
+xi14 agnd d1p5v dgnd reset8 _net111 reset9 _net112 reset10 _net113 reset11 _net114 net527 _net26 net528 _net27 net529 _net14 net530 _net15 capbuffs
+xi18 agnd d1p5v dgnd cpreset _net115 shwin _net116 tpulse _net117 uptrig _net118 net531 _net1 net532 _net30 net533 _net31 net534 _net32 capbuffs
+xi17 agnd d1p5v dgnd lockout _net119 lreset _net120 read _net121 clamp _net122 net535 _net2 net536 _net3 net537 _net4 net538 _net0 capbuffs
+xi20 agnd d1p5v d5v dgnd _net29 net474 net475 lvto5Vpn
+xi21 agnd d1p5v d5v dgnd _net52 net473 net472 lvto5Vpn
+.ends row1
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: nand4
+** View name: schematic
+.subckt nand4 a agnd b c d d1p5v dgnd out
+xm2 net27 d dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xmn1 out a net29 agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xm0 net29 b net28 agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xmn2 net28 c net27 agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xm3 out c d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xm1 out a d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xmp1 out b d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+xmp2 out d d1p5v d1p5v pe w=420e-9 l=180e-9 as=201.6e-15 ad=201.6e-15 ps=1.8e-6 pd=1.8e-6 nrs=642.857e-3 nrd=642.857e-3 m=1 par1=1
+.ends nand4
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: nand8
+** View name: schematic
+.subckt nand8 a agnd b c d d1p5v dgnd e f g h out
+xi2 agnd d1p5v dgnd net24 net22 inv
+xi1 agnd d1p5v dgnd net25 net23 inv
+xi4 net23 agnd net22 d1p5v dgnd out nand
+xi3 e agnd f g h d1p5v dgnd net24 nand4
+xi0 a agnd b c d d1p5v dgnd net25 nand4
+.ends nand8
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: tri0
+** View name: schematic
+.subckt tri0 agnd d1p5v dgnd _net0 _net1 out0 out1 out2
+xm2 out2 net17 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xm1 out1 net17 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xm0 out0 net17 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xi1 _net0 agnd _net1 d1p5v dgnd net17 nor
+.ends tri0
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: tri1
+** View name: schematic
+.subckt tri1 agnd d1p5v dgnd _net0 _net1 out0 out1 out2
+xm0 out0 net034 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xi2 agnd d1p5v dgnd net35 net034 inv
+xm2 out2 net35 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xm3 out1 net35 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xi1 _net0 agnd _net1 d1p5v dgnd net35 nor
+.ends tri1
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: tri2
+** View name: schematic
+.subckt tri2 agnd d1p5v dgnd _net0 _net1 out0 out1 out2
+xm0 out1 net29 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xm3 out0 net19 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xm2 out2 net19 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xi1 _net0 agnd _net1 d1p5v dgnd net19 nor
+xi2 agnd d1p5v dgnd net19 net29 inv
+.ends tri2
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: tri3
+** View name: schematic
+.subckt tri3 agnd d1p5v dgnd _net0 _net1 out0 out1 out2
+xm2 out2 net45 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xi2 agnd d1p5v dgnd net45 net44 inv
+xm0 out0 net44 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xm1 out1 net44 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xi1 _net0 agnd _net1 d1p5v dgnd net45 nor
+.ends tri3
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: tri4
+** View name: schematic
+.subckt tri4 agnd d1p5v dgnd _net0 _net1 out0 out1 out2
+xm3 out0 net69 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xm2 out1 net69 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xi2 agnd d1p5v dgnd net69 net68 inv
+xm0 out2 net68 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xi1 _net0 agnd _net1 d1p5v dgnd net69 nor
+.ends tri4
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: tri5
+** View name: schematic
+.subckt tri5 agnd d1p5v dgnd _net0 _net1 out0 out1 out2
+xm2 out1 net50 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xi2 agnd d1p5v dgnd net50 net49 inv
+xm0 out2 net49 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xm1 out0 net49 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xi1 _net0 agnd _net1 d1p5v dgnd net50 nor
+.ends tri5
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: tri6
+** View name: schematic
+.subckt tri6 agnd d1p5v dgnd _net0 _net1 out0 out1 out2
+xm2 out0 net50 dgnd agnd ne w=1.16e-6 l=180e-9 as=556.8e-15 ad=556.8e-15 ps=3.28e-6 pd=3.28e-6 nrs=232.759e-3 nrd=232.759e-3 m=1 par1=1
+xi2 agnd d1p5v dgnd net50 net49 inv
+xm0 out2 net49 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xm1 out1 net49 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xi1 _net0 agnd _net1 d1p5v dgnd net50 nor
+.ends tri6
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: tri7
+** View name: schematic
+.subckt tri7 agnd d1p5v dgnd _net0 _net1 out0 out1 out2
+xi1 _net0 agnd _net1 d1p5v dgnd net38 nor
+xi2 agnd d1p5v dgnd net38 net33 inv
+xm0 out2 net33 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xm1 out1 net33 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+xm2 out0 net33 d1p5v d1p5v pe w=4e-6 l=180e-9 as=1.92e-12 ad=1.92e-12 ps=8.96e-6 pd=8.96e-6 nrs=67.5e-3 nrd=67.5e-3 m=1 par1=1
+.ends tri7
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: buf16
+** View name: schematic
+.subckt buf16 agnd d1p5v dgnd _net32 _net31 _net30 _net21 _net20 _net19 _net18 _net17 _net16 _net29 _net28 _net27 _net26 _net25 _net24 _net23 _net22 out0 _net15 out1 _net14 out10 _net5 out11 _net4 out12 _net3 out13 _net2 out14 _net1 out15 _net0 out2 _net13 out3 _net12 out4 _net11 out5 _net10 out6 _net9 out7 _net8 out8 _net7 out9 _net6
+xi110 agnd d1p5v dgnd net596 out15 invbb
+xi106 agnd d1p5v dgnd net597 _net0 invbb
+xi103 agnd d1p5v dgnd net593 out14 invbb
+xi99 agnd d1p5v dgnd net594 _net1 invbb
+xi96 agnd d1p5v dgnd net601 out13 invbb
+xi92 agnd d1p5v dgnd net602 _net2 invbb
+xi89 agnd d1p5v dgnd net590 out12 invbb
+xi85 agnd d1p5v dgnd net591 _net3 invbb
+xi82 agnd d1p5v dgnd net609 out11 invbb
+xi78 agnd d1p5v dgnd net610 _net4 invbb
+xi75 agnd d1p5v dgnd net606 out10 invbb
+xi71 agnd d1p5v dgnd net607 _net5 invbb
+xi68 agnd d1p5v dgnd net614 out9 invbb
+xi64 agnd d1p5v dgnd net615 _net6 invbb
+xi61 agnd d1p5v dgnd net587 out8 invbb
+xi57 agnd d1p5v dgnd net588 _net7 invbb
+xi54 agnd d1p5v dgnd net625 out7 invbb
+xi50 agnd d1p5v dgnd net626 _net8 invbb
+xi47 agnd d1p5v dgnd net622 out6 invbb
+xi43 agnd d1p5v dgnd net623 _net9 invbb
+xi40 agnd d1p5v dgnd net630 out5 invbb
+xi36 agnd d1p5v dgnd net631 _net10 invbb
+xi33 agnd d1p5v dgnd net619 out4 invbb
+xi29 agnd d1p5v dgnd net620 _net11 invbb
+xi26 agnd d1p5v dgnd net638 out3 invbb
+xi22 agnd d1p5v dgnd net639 _net12 invbb
+xi19 agnd d1p5v dgnd net635 out2 invbb
+xi15 agnd d1p5v dgnd net636 _net13 invbb
+xi12 agnd d1p5v dgnd net643 out1 invbb
+xi2 agnd d1p5v dgnd net644 _net14 invbb
+xi6 agnd d1p5v dgnd net648 out0 invbb
+xi8 agnd d1p5v dgnd net649 _net15 invbb
+xi107 net651 agnd en d1p5v dgnd net554 nand
+xi100 net652 agnd en d1p5v dgnd net555 nand
+xi93 net604 agnd en d1p5v dgnd net556 nand
+xi86 net654 agnd en d1p5v dgnd net557 nand
+xi79 net612 agnd en d1p5v dgnd net558 nand
+xi72 net656 agnd en d1p5v dgnd net559 nand
+xi65 net617 agnd en d1p5v dgnd net560 nand
+xi58 net658 agnd en d1p5v dgnd net561 nand
+xi51 net659 agnd en d1p5v dgnd net562 nand
+xi44 net629 agnd en d1p5v dgnd net563 nand
+xi37 net633 agnd en d1p5v dgnd net564 nand
+xi30 net634 agnd en d1p5v dgnd net565 nand
+xi23 net663 agnd en d1p5v dgnd net566 nand
+xi16 net664 agnd en d1p5v dgnd net567 nand
+xi9 net646 agnd en d1p5v dgnd net568 nand
+xi3 net666 agnd en d1p5v dgnd net569 nand
+xi111 agnd d1p5v dgnd _net16 net651 inv
+xi108 agnd d1p5v dgnd net554 net598 inv
+xi104 agnd d1p5v dgnd _net17 net652 inv
+xi101 agnd d1p5v dgnd net555 net595 inv
+xi97 agnd d1p5v dgnd _net18 net604 inv
+xi94 agnd d1p5v dgnd net556 net603 inv
+xi90 agnd d1p5v dgnd _net19 net654 inv
+xi87 agnd d1p5v dgnd net557 net592 inv
+xi83 agnd d1p5v dgnd _net20 net612 inv
+xi80 agnd d1p5v dgnd net558 net611 inv
+xi76 agnd d1p5v dgnd _net21 net656 inv
+xi73 agnd d1p5v dgnd net559 net608 inv
+xi69 agnd d1p5v dgnd _net22 net617 inv
+xi66 agnd d1p5v dgnd net560 net616 inv
+xi62 agnd d1p5v dgnd _net23 net658 inv
+xi59 agnd d1p5v dgnd net561 net589 inv
+xi55 agnd d1p5v dgnd _net24 net659 inv
+xi52 agnd d1p5v dgnd net562 net627 inv
+xi48 agnd d1p5v dgnd _net25 net629 inv
+xi45 agnd d1p5v dgnd net563 net624 inv
+xi41 agnd d1p5v dgnd _net26 net633 inv
+xi38 agnd d1p5v dgnd net564 net632 inv
+xi34 agnd d1p5v dgnd _net27 net634 inv
+xi31 agnd d1p5v dgnd net565 net621 inv
+xi27 agnd d1p5v dgnd _net28 net663 inv
+xi24 agnd d1p5v dgnd net566 net640 inv
+xi20 agnd d1p5v dgnd _net29 net664 inv
+xi17 agnd d1p5v dgnd net567 net637 inv
+xi13 agnd d1p5v dgnd _net30 net646 inv
+xi10 agnd d1p5v dgnd net568 net645 inv
+xi0 agnd d1p5v dgnd _net31 net666 inv
+xi4 agnd d1p5v dgnd net569 net650 inv
+xi112 agnd d1p5v dgnd _net32 en invb
+xi109 agnd d1p5v dgnd net598 net596 invb
+xi105 agnd d1p5v dgnd net554 net597 invb
+xi102 agnd d1p5v dgnd net595 net593 invb
+xi98 agnd d1p5v dgnd net555 net594 invb
+xi95 agnd d1p5v dgnd net603 net601 invb
+xi91 agnd d1p5v dgnd net556 net602 invb
+xi88 agnd d1p5v dgnd net592 net590 invb
+xi84 agnd d1p5v dgnd net557 net591 invb
+xi81 agnd d1p5v dgnd net611 net609 invb
+xi77 agnd d1p5v dgnd net558 net610 invb
+xi74 agnd d1p5v dgnd net608 net606 invb
+xi70 agnd d1p5v dgnd net559 net607 invb
+xi67 agnd d1p5v dgnd net616 net614 invb
+xi63 agnd d1p5v dgnd net560 net615 invb
+xi60 agnd d1p5v dgnd net589 net587 invb
+xi56 agnd d1p5v dgnd net561 net588 invb
+xi53 agnd d1p5v dgnd net627 net625 invb
+xi49 agnd d1p5v dgnd net562 net626 invb
+xi46 agnd d1p5v dgnd net624 net622 invb
+xi42 agnd d1p5v dgnd net563 net623 invb
+xi39 agnd d1p5v dgnd net632 net630 invb
+xi35 agnd d1p5v dgnd net564 net631 invb
+xi32 agnd d1p5v dgnd net621 net619 invb
+xi28 agnd d1p5v dgnd net565 net620 invb
+xi25 agnd d1p5v dgnd net640 net638 invb
+xi21 agnd d1p5v dgnd net566 net639 invb
+xi18 agnd d1p5v dgnd net637 net635 invb
+xi14 agnd d1p5v dgnd net567 net636 invb
+xi11 agnd d1p5v dgnd net645 net643 invb
+xi1 agnd d1p5v dgnd net568 net644 invb
+xi5 agnd d1p5v dgnd net650 net648 invb
+xi7 agnd d1p5v dgnd net569 net649 invb
+.ends buf16
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: decode4to16
+** View name: schematic
+.subckt decode4to16 agnd d1p5v dgnd _net7 _net11 _net13 _net17 _net2 _net8 _net12 _net16 _net15 _net19 _net6 _net10 _net14 _net18 _net4 _net9 sel0 sel1 sel2 sel3
+xi28 _net0 agnd _net1 sel2 sel3 d1p5v dgnd _net2 nand4
+xi17 _net0 agnd _net1 _net3 sel3 d1p5v dgnd _net4 nand4
+xi8 _net0 agnd _net1 sel2 _net5 d1p5v dgnd _net6 nand4
+xi0 _net0 agnd _net1 _net3 _net5 d1p5v dgnd _net7 nand4
+xi30 sel0 agnd _net1 sel2 sel3 d1p5v dgnd _net8 nand4
+xi22 sel0 agnd _net1 _net3 sel3 d1p5v dgnd _net9 nand4
+xi10 sel0 agnd _net1 sel2 _net5 d1p5v dgnd _net10 nand4
+xi2 sel0 agnd _net1 _net3 _net5 d1p5v dgnd _net11 nand4
+xi33 _net0 agnd sel1 sel2 sel3 d1p5v dgnd _net12 nand4
+xi25 _net0 agnd sel1 _net3 sel3 d1p5v dgnd _net13 nand4
+xi13 _net0 agnd sel1 sel2 _net5 d1p5v dgnd _net14 nand4
+xi5 _net0 agnd sel1 _net3 _net5 d1p5v dgnd _net15 nand4
+xi34 sel0 agnd sel1 sel2 sel3 d1p5v dgnd _net16 nand4
+xi26 sel0 agnd sel1 _net3 sel3 d1p5v dgnd _net17 nand4
+xi14 sel0 agnd sel1 sel2 _net5 d1p5v dgnd _net18 nand4
+xi6 sel0 agnd sel1 _net3 _net5 d1p5v dgnd _net19 nand4
+xi20 agnd d1p5v dgnd sel3 _net5 inv
+xi19 agnd d1p5v dgnd sel2 _net3 inv
+xi18 agnd d1p5v dgnd sel1 _net1 inv
+xi16 agnd d1p5v dgnd sel0 _net0 inv
+.ends decode4to16
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: tribuf
+** View name: schematic
+.subckt tribuf agnd d1p5v dgnd enable _net0 in out
+xm3 net21 enable dgnd agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=78.3e-15 ps=1.54e-6 pd=830e-9 nrs=931.034e-3 nrd=931.034e-3 m=2 par1=2
+xm0 out in net21 agnd ne w=290e-9 l=180e-9 as=139.2e-15 ad=78.3e-15 ps=1.54e-6 pd=830e-9 nrs=931.034e-3 nrd=931.034e-3 m=2 par1=2
+xm2 out in net20 d1p5v pe w=1e-6 l=180e-9 as=480e-15 ad=270e-15 ps=2.96e-6 pd=1.54e-6 nrs=270e-3 nrd=270e-3 m=2 par1=2
+xm1 net20 _net0 d1p5v d1p5v pe w=1e-6 l=180e-9 as=480e-15 ad=270e-15 ps=2.96e-6 pd=1.54e-6 nrs=270e-3 nrd=270e-3 m=2 par1=2
+.ends tribuf
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: barrel-shift16
+** View name: schematic
+.subckt _sub13 agnd d1p5v dgnd in0 in1 in10 in11 in12 in13 in14 in15 in2 in3 in4 in5 in6 in7 in8 in9 _net35 _net34 _net25 _net24 _net23 _net22 _net21 _net20 _net33 _net32 _net31 _net30 _net29 _net28 _net27 _net26 sel0 sel1 sel2 sel3
+xi34 sel0 agnd sel1 sel2 sel3 d1p5v dgnd _net0 nand4
+xi33 _net1 agnd sel1 sel2 sel3 d1p5v dgnd _net2 nand4
+xi30 sel0 agnd _net3 sel2 sel3 d1p5v dgnd _net4 nand4
+xi28 _net1 agnd _net3 sel2 sel3 d1p5v dgnd _net5 nand4
+xi26 sel0 agnd sel1 _net6 sel3 d1p5v dgnd _net7 nand4
+xi25 _net1 agnd sel1 _net6 sel3 d1p5v dgnd _net8 nand4
+xi22 sel0 agnd _net3 _net6 sel3 d1p5v dgnd _net9 nand4
+xi17 _net1 agnd _net3 _net6 sel3 d1p5v dgnd _net10 nand4
+xi14 sel0 agnd sel1 sel2 _net11 d1p5v dgnd _net12 nand4
+xi13 _net1 agnd sel1 sel2 _net11 d1p5v dgnd _net13 nand4
+xi10 sel0 agnd _net3 sel2 _net11 d1p5v dgnd _net14 nand4
+xi8 _net1 agnd _net3 sel2 _net11 d1p5v dgnd _net15 nand4
+xi6 sel0 agnd sel1 _net6 _net11 d1p5v dgnd _net16 nand4
+xi5 _net1 agnd sel1 _net6 _net11 d1p5v dgnd _net17 nand4
+xi2 sel0 agnd _net3 _net6 _net11 d1p5v dgnd _net18 nand4
+xi0 _net1 agnd _net3 _net6 _net11 d1p5v dgnd _net19 nand4
+xi291 agnd d1p5v dgnd en15 _net0 in0 _net20 tribuf
+xi290 agnd d1p5v dgnd en14 _net2 in15 _net20 tribuf
+xi289 agnd d1p5v dgnd en13 _net4 in14 _net20 tribuf
+xi288 agnd d1p5v dgnd en12 _net5 in13 _net20 tribuf
+xi287 agnd d1p5v dgnd en11 _net7 in12 _net20 tribuf
+xi286 agnd d1p5v dgnd en10 _net8 in11 _net20 tribuf
+xi285 agnd d1p5v dgnd en9 _net9 in10 _net20 tribuf
+xi284 agnd d1p5v dgnd en8 _net10 in9 _net20 tribuf
+xi283 agnd d1p5v dgnd en7 _net12 in8 _net20 tribuf
+xi282 agnd d1p5v dgnd en6 _net13 in7 _net20 tribuf
+xi281 agnd d1p5v dgnd en5 _net14 in6 _net20 tribuf
+xi280 agnd d1p5v dgnd en4 _net15 in5 _net20 tribuf
+xi279 agnd d1p5v dgnd en3 _net16 in4 _net20 tribuf
+xi278 agnd d1p5v dgnd en2 _net17 in3 _net20 tribuf
+xi277 agnd d1p5v dgnd en1 _net18 in14 _net20 tribuf
+xi276 agnd d1p5v dgnd en0 _net19 in15 _net20 tribuf
+xi275 agnd d1p5v dgnd en15 _net0 in1 _net21 tribuf
+xi274 agnd d1p5v dgnd en14 _net2 in0 _net21 tribuf
+xi273 agnd d1p5v dgnd en13 _net4 in15 _net21 tribuf
+xi272 agnd d1p5v dgnd en12 _net5 in14 _net21 tribuf
+xi271 agnd d1p5v dgnd en11 _net7 in13 _net21 tribuf
+xi270 agnd d1p5v dgnd en10 _net8 in12 _net21 tribuf
+xi269 agnd d1p5v dgnd en9 _net9 in11 _net21 tribuf
+xi268 agnd d1p5v dgnd en8 _net10 in10 _net21 tribuf
+xi267 agnd d1p5v dgnd en7 _net12 in9 _net21 tribuf
+xi266 agnd d1p5v dgnd en6 _net13 in8 _net21 tribuf
+xi265 agnd d1p5v dgnd en5 _net14 in7 _net21 tribuf
+xi264 agnd d1p5v dgnd en4 _net15 in6 _net21 tribuf
+xi263 agnd d1p5v dgnd en3 _net16 in5 _net21 tribuf
+xi262 agnd d1p5v dgnd en2 _net17 in4 _net21 tribuf
+xi261 agnd d1p5v dgnd en1 _net18 in13 _net21 tribuf
+xi260 agnd d1p5v dgnd en0 _net19 in14 _net21 tribuf
+xi259 agnd d1p5v dgnd en15 _net0 in2 _net22 tribuf
+xi258 agnd d1p5v dgnd en14 _net2 in1 _net22 tribuf
+xi257 agnd d1p5v dgnd en13 _net4 in0 _net22 tribuf
+xi256 agnd d1p5v dgnd en12 _net5 in15 _net22 tribuf
+xi255 agnd d1p5v dgnd en11 _net7 in14 _net22 tribuf
+xi254 agnd d1p5v dgnd en10 _net8 in13 _net22 tribuf
+xi253 agnd d1p5v dgnd en9 _net9 in12 _net22 tribuf
+xi252 agnd d1p5v dgnd en8 _net10 in11 _net22 tribuf
+xi251 agnd d1p5v dgnd en7 _net12 in10 _net22 tribuf
+xi250 agnd d1p5v dgnd en6 _net13 in9 _net22 tribuf
+xi249 agnd d1p5v dgnd en5 _net14 in8 _net22 tribuf
+xi248 agnd d1p5v dgnd en4 _net15 in7 _net22 tribuf
+xi247 agnd d1p5v dgnd en3 _net16 in6 _net22 tribuf
+xi246 agnd d1p5v dgnd en2 _net17 in5 _net22 tribuf
+xi245 agnd d1p5v dgnd en1 _net18 in12 _net22 tribuf
+xi244 agnd d1p5v dgnd en0 _net19 in13 _net22 tribuf
+xi243 agnd d1p5v dgnd en15 _net0 in3 _net23 tribuf
+xi242 agnd d1p5v dgnd en14 _net2 in2 _net23 tribuf
+xi241 agnd d1p5v dgnd en13 _net4 in1 _net23 tribuf
+xi240 agnd d1p5v dgnd en12 _net5 in0 _net23 tribuf
+xi239 agnd d1p5v dgnd en11 _net7 in15 _net23 tribuf
+xi238 agnd d1p5v dgnd en10 _net8 in14 _net23 tribuf
+xi237 agnd d1p5v dgnd en9 _net9 in13 _net23 tribuf
+xi236 agnd d1p5v dgnd en8 _net10 in12 _net23 tribuf
+xi235 agnd d1p5v dgnd en7 _net12 in11 _net23 tribuf
+xi234 agnd d1p5v dgnd en6 _net13 in10 _net23 tribuf
+xi233 agnd d1p5v dgnd en5 _net14 in9 _net23 tribuf
+xi232 agnd d1p5v dgnd en4 _net15 in8 _net23 tribuf
+xi231 agnd d1p5v dgnd en3 _net16 in7 _net23 tribuf
+xi230 agnd d1p5v dgnd en2 _net17 in6 _net23 tribuf
+xi229 agnd d1p5v dgnd en1 _net18 in11 _net23 tribuf
+xi228 agnd d1p5v dgnd en0 _net19 in12 _net23 tribuf
+xi227 agnd d1p5v dgnd en15 _net0 in4 _net24 tribuf
+xi226 agnd d1p5v dgnd en14 _net2 in3 _net24 tribuf
+xi225 agnd d1p5v dgnd en13 _net4 in2 _net24 tribuf
+xi224 agnd d1p5v dgnd en12 _net5 in1 _net24 tribuf
+xi223 agnd d1p5v dgnd en11 _net7 in0 _net24 tribuf
+xi222 agnd d1p5v dgnd en10 _net8 in15 _net24 tribuf
+xi221 agnd d1p5v dgnd en9 _net9 in14 _net24 tribuf
+xi220 agnd d1p5v dgnd en8 _net10 in13 _net24 tribuf
+xi219 agnd d1p5v dgnd en7 _net12 in12 _net24 tribuf
+xi218 agnd d1p5v dgnd en6 _net13 in11 _net24 tribuf
+xi217 agnd d1p5v dgnd en5 _net14 in10 _net24 tribuf
+xi216 agnd d1p5v dgnd en4 _net15 in9 _net24 tribuf
+xi215 agnd d1p5v dgnd en3 _net16 in8 _net24 tribuf
+xi214 agnd d1p5v dgnd en2 _net17 in7 _net24 tribuf
+xi213 agnd d1p5v dgnd en1 _net18 in10 _net24 tribuf
+xi212 agnd d1p5v dgnd en0 _net19 in11 _net24 tribuf
+xi211 agnd d1p5v dgnd en15 _net0 in5 _net25 tribuf
+xi210 agnd d1p5v dgnd en14 _net2 in4 _net25 tribuf
+xi209 agnd d1p5v dgnd en13 _net4 in3 _net25 tribuf
+xi208 agnd d1p5v dgnd en12 _net5 in2 _net25 tribuf
+xi207 agnd d1p5v dgnd en11 _net7 in1 _net25 tribuf
+xi206 agnd d1p5v dgnd en10 _net8 in0 _net25 tribuf
+xi205 agnd d1p5v dgnd en9 _net9 in15 _net25 tribuf
+xi204 agnd d1p5v dgnd en8 _net10 in14 _net25 tribuf
+xi203 agnd d1p5v dgnd en7 _net12 in13 _net25 tribuf
+xi202 agnd d1p5v dgnd en6 _net13 in12 _net25 tribuf
+xi201 agnd d1p5v dgnd en5 _net14 in11 _net25 tribuf
+xi200 agnd d1p5v dgnd en4 _net15 in10 _net25 tribuf
+xi199 agnd d1p5v dgnd en3 _net16 in9 _net25 tribuf
+xi198 agnd d1p5v dgnd en2 _net17 in8 _net25 tribuf
+xi197 agnd d1p5v dgnd en1 _net18 in9 _net25 tribuf
+xi196 agnd d1p5v dgnd en0 _net19 in10 _net25 tribuf
+xi195 agnd d1p5v dgnd en15 _net0 in6 _net26 tribuf
+xi194 agnd d1p5v dgnd en14 _net2 in5 _net26 tribuf
+xi193 agnd d1p5v dgnd en13 _net4 in4 _net26 tribuf
+xi192 agnd d1p5v dgnd en12 _net5 in3 _net26 tribuf
+xi191 agnd d1p5v dgnd en11 _net7 in2 _net26 tribuf
+xi190 agnd d1p5v dgnd en10 _net8 in1 _net26 tribuf
+xi189 agnd d1p5v dgnd en9 _net9 in0 _net26 tribuf
+xi188 agnd d1p5v dgnd en8 _net10 in15 _net26 tribuf
+xi187 agnd d1p5v dgnd en7 _net12 in14 _net26 tribuf
+xi186 agnd d1p5v dgnd en6 _net13 in13 _net26 tribuf
+xi185 agnd d1p5v dgnd en5 _net14 in12 _net26 tribuf
+xi184 agnd d1p5v dgnd en4 _net15 in11 _net26 tribuf
+xi183 agnd d1p5v dgnd en3 _net16 in10 _net26 tribuf
+xi182 agnd d1p5v dgnd en2 _net17 in9 _net26 tribuf
+xi181 agnd d1p5v dgnd en1 _net18 in8 _net26 tribuf
+xi180 agnd d1p5v dgnd en0 _net19 in9 _net26 tribuf
+xi179 agnd d1p5v dgnd en15 _net0 in7 _net27 tribuf
+xi178 agnd d1p5v dgnd en14 _net2 in6 _net27 tribuf
+xi177 agnd d1p5v dgnd en13 _net4 in5 _net27 tribuf
+xi176 agnd d1p5v dgnd en12 _net5 in4 _net27 tribuf
+xi175 agnd d1p5v dgnd en11 _net7 in3 _net27 tribuf
+xi174 agnd d1p5v dgnd en10 _net8 in2 _net27 tribuf
+xi173 agnd d1p5v dgnd en9 _net9 in1 _net27 tribuf
+xi172 agnd d1p5v dgnd en8 _net10 in0 _net27 tribuf
+xi171 agnd d1p5v dgnd en7 _net12 in15 _net27 tribuf
+xi170 agnd d1p5v dgnd en6 _net13 in14 _net27 tribuf
+xi169 agnd d1p5v dgnd en5 _net14 in13 _net27 tribuf
+xi168 agnd d1p5v dgnd en4 _net15 in12 _net27 tribuf
+xi167 agnd d1p5v dgnd en3 _net16 in11 _net27 tribuf
+xi166 agnd d1p5v dgnd en2 _net17 in10 _net27 tribuf
+xi165 agnd d1p5v dgnd en1 _net18 in7 _net27 tribuf
+xi164 agnd d1p5v dgnd en0 _net19 in8 _net27 tribuf
+xi163 agnd d1p5v dgnd en15 _net0 in8 _net28 tribuf
+xi162 agnd d1p5v dgnd en14 _net2 in7 _net28 tribuf
+xi161 agnd d1p5v dgnd en13 _net4 in6 _net28 tribuf
+xi160 agnd d1p5v dgnd en12 _net5 in5 _net28 tribuf
+xi159 agnd d1p5v dgnd en11 _net7 in4 _net28 tribuf
+xi158 agnd d1p5v dgnd en10 _net8 in3 _net28 tribuf
+xi157 agnd d1p5v dgnd en9 _net9 in2 _net28 tribuf
+xi156 agnd d1p5v dgnd en8 _net10 in1 _net28 tribuf
+xi155 agnd d1p5v dgnd en7 _net12 in0 _net28 tribuf
+xi154 agnd d1p5v dgnd en6 _net13 in15 _net28 tribuf
+xi153 agnd d1p5v dgnd en5 _net14 in14 _net28 tribuf
+xi152 agnd d1p5v dgnd en4 _net15 in13 _net28 tribuf
+xi151 agnd d1p5v dgnd en3 _net16 in12 _net28 tribuf
+xi150 agnd d1p5v dgnd en2 _net17 in11 _net28 tribuf
+xi149 agnd d1p5v dgnd en1 _net18 in6 _net28 tribuf
+xi148 agnd d1p5v dgnd en0 _net19 in7 _net28 tribuf
+xi147 agnd d1p5v dgnd en15 _net0 in9 _net29 tribuf
+xi146 agnd d1p5v dgnd en14 _net2 in8 _net29 tribuf
+xi145 agnd d1p5v dgnd en13 _net4 in7 _net29 tribuf
+xi144 agnd d1p5v dgnd en12 _net5 in6 _net29 tribuf
+xi143 agnd d1p5v dgnd en11 _net7 in5 _net29 tribuf
+xi142 agnd d1p5v dgnd en10 _net8 in4 _net29 tribuf
+xi141 agnd d1p5v dgnd en9 _net9 in3 _net29 tribuf
+xi140 agnd d1p5v dgnd en8 _net10 in2 _net29 tribuf
+xi139 agnd d1p5v dgnd en7 _net12 in1 _net29 tribuf
+xi138 agnd d1p5v dgnd en6 _net13 in0 _net29 tribuf
+xi137 agnd d1p5v dgnd en5 _net14 in15 _net29 tribuf
+xi136 agnd d1p5v dgnd en4 _net15 in14 _net29 tribuf
+xi135 agnd d1p5v dgnd en3 _net16 in13 _net29 tribuf
+xi134 agnd d1p5v dgnd en2 _net17 in12 _net29 tribuf
+xi133 agnd d1p5v dgnd en1 _net18 in5 _net29 tribuf
+xi132 agnd d1p5v dgnd en0 _net19 in6 _net29 tribuf
+xi131 agnd d1p5v dgnd en15 _net0 in10 _net30 tribuf
+xi130 agnd d1p5v dgnd en14 _net2 in9 _net30 tribuf
+xi129 agnd d1p5v dgnd en13 _net4 in8 _net30 tribuf
+xi128 agnd d1p5v dgnd en12 _net5 in7 _net30 tribuf
+xi127 agnd d1p5v dgnd en11 _net7 in6 _net30 tribuf
+xi126 agnd d1p5v dgnd en10 _net8 in5 _net30 tribuf
+xi125 agnd d1p5v dgnd en9 _net9 in4 _net30 tribuf
+xi124 agnd d1p5v dgnd en8 _net10 in3 _net30 tribuf
+xi123 agnd d1p5v dgnd en7 _net12 in2 _net30 tribuf
+xi122 agnd d1p5v dgnd en6 _net13 in1 _net30 tribuf
+xi121 agnd d1p5v dgnd en5 _net14 in0 _net30 tribuf
+xi120 agnd d1p5v dgnd en4 _net15 in15 _net30 tribuf
+xi119 agnd d1p5v dgnd en3 _net16 in14 _net30 tribuf
+xi118 agnd d1p5v dgnd en2 _net17 in13 _net30 tribuf
+xi117 agnd d1p5v dgnd en1 _net18 in4 _net30 tribuf
+xi116 agnd d1p5v dgnd en0 _net19 in5 _net30 tribuf
+xi115 agnd d1p5v dgnd en15 _net0 in11 _net31 tribuf
+xi114 agnd d1p5v dgnd en14 _net2 in10 _net31 tribuf
+xi113 agnd d1p5v dgnd en13 _net4 in9 _net31 tribuf
+xi112 agnd d1p5v dgnd en12 _net5 in8 _net31 tribuf
+xi111 agnd d1p5v dgnd en11 _net7 in7 _net31 tribuf
+xi110 agnd d1p5v dgnd en10 _net8 in6 _net31 tribuf
+xi109 agnd d1p5v dgnd en9 _net9 in5 _net31 tribuf
+xi108 agnd d1p5v dgnd en8 _net10 in4 _net31 tribuf
+xi107 agnd d1p5v dgnd en7 _net12 in3 _net31 tribuf
+xi106 agnd d1p5v dgnd en6 _net13 in2 _net31 tribuf
+xi105 agnd d1p5v dgnd en5 _net14 in1 _net31 tribuf
+xi104 agnd d1p5v dgnd en4 _net15 in0 _net31 tribuf
+xi103 agnd d1p5v dgnd en3 _net16 in15 _net31 tribuf
+xi102 agnd d1p5v dgnd en2 _net17 in14 _net31 tribuf
+xi101 agnd d1p5v dgnd en1 _net18 in3 _net31 tribuf
+xi100 agnd d1p5v dgnd en0 _net19 in4 _net31 tribuf
+xi99 agnd d1p5v dgnd en15 _net0 in12 _net32 tribuf
+xi98 agnd d1p5v dgnd en14 _net2 in11 _net32 tribuf
+xi97 agnd d1p5v dgnd en13 _net4 in10 _net32 tribuf
+xi96 agnd d1p5v dgnd en12 _net5 in9 _net32 tribuf
+xi95 agnd d1p5v dgnd en11 _net7 in8 _net32 tribuf
+xi94 agnd d1p5v dgnd en10 _net8 in7 _net32 tribuf
+xi93 agnd d1p5v dgnd en9 _net9 in6 _net32 tribuf
+xi92 agnd d1p5v dgnd en8 _net10 in5 _net32 tribuf
+xi91 agnd d1p5v dgnd en7 _net12 in4 _net32 tribuf
+xi90 agnd d1p5v dgnd en6 _net13 in3 _net32 tribuf
+xi89 agnd d1p5v dgnd en5 _net14 in2 _net32 tribuf
+xi88 agnd d1p5v dgnd en4 _net15 in1 _net32 tribuf
+xi87 agnd d1p5v dgnd en3 _net16 in0 _net32 tribuf
+xi86 agnd d1p5v dgnd en2 _net17 in15 _net32 tribuf
+xi85 agnd d1p5v dgnd en1 _net18 in2 _net32 tribuf
+xi84 agnd d1p5v dgnd en0 _net19 in3 _net32 tribuf
+xi83 agnd d1p5v dgnd en15 _net0 in13 _net33 tribuf
+xi82 agnd d1p5v dgnd en14 _net2 in12 _net33 tribuf
+xi81 agnd d1p5v dgnd en13 _net4 in11 _net33 tribuf
+xi80 agnd d1p5v dgnd en12 _net5 in10 _net33 tribuf
+xi79 agnd d1p5v dgnd en11 _net7 in9 _net33 tribuf
+xi78 agnd d1p5v dgnd en10 _net8 in8 _net33 tribuf
+xi77 agnd d1p5v dgnd en9 _net9 in7 _net33 tribuf
+xi76 agnd d1p5v dgnd en8 _net10 in6 _net33 tribuf
+xi75 agnd d1p5v dgnd en7 _net12 in5 _net33 tribuf
+xi74 agnd d1p5v dgnd en6 _net13 in4 _net33 tribuf
+xi73 agnd d1p5v dgnd en5 _net14 in3 _net33 tribuf
+xi72 agnd d1p5v dgnd en4 _net15 in2 _net33 tribuf
+xi71 agnd d1p5v dgnd en3 _net16 in1 _net33 tribuf
+xi70 agnd d1p5v dgnd en2 _net17 in0 _net33 tribuf
+xi69 agnd d1p5v dgnd en1 _net18 in1 _net33 tribuf
+xi68 agnd d1p5v dgnd en0 _net19 in2 _net33 tribuf
+xi67 agnd d1p5v dgnd en15 _net0 in14 _net34 tribuf
+xi66 agnd d1p5v dgnd en14 _net2 in13 _net34 tribuf
+xi65 agnd d1p5v dgnd en13 _net4 in12 _net34 tribuf
+xi64 agnd d1p5v dgnd en12 _net5 in11 _net34 tribuf
+xi63 agnd d1p5v dgnd en11 _net7 in10 _net34 tribuf
+xi62 agnd d1p5v dgnd en10 _net8 in9 _net34 tribuf
+xi61 agnd d1p5v dgnd en9 _net9 in8 _net34 tribuf
+xi60 agnd d1p5v dgnd en8 _net10 in7 _net34 tribuf
+xi59 agnd d1p5v dgnd en7 _net12 in6 _net34 tribuf
+xi58 agnd d1p5v dgnd en6 _net13 in5 _net34 tribuf
+xi57 agnd d1p5v dgnd en5 _net14 in4 _net34 tribuf
+xi56 agnd d1p5v dgnd en4 _net15 in3 _net34 tribuf
+xi55 agnd d1p5v dgnd en3 _net16 in2 _net34 tribuf
+xi54 agnd d1p5v dgnd en2 _net17 in1 _net34 tribuf
+xi53 agnd d1p5v dgnd en1 _net18 in0 _net34 tribuf
+xi52 agnd d1p5v dgnd en0 _net19 in1 _net34 tribuf
+xi51 agnd d1p5v dgnd en15 _net0 in15 _net35 tribuf
+xi50 agnd d1p5v dgnd en14 _net2 in14 _net35 tribuf
+xi49 agnd d1p5v dgnd en13 _net4 in13 _net35 tribuf
+xi48 agnd d1p5v dgnd en12 _net5 in12 _net35 tribuf
+xi47 agnd d1p5v dgnd en11 _net7 in11 _net35 tribuf
+xi46 agnd d1p5v dgnd en10 _net8 in10 _net35 tribuf
+xi45 agnd d1p5v dgnd en9 _net9 in9 _net35 tribuf
+xi44 agnd d1p5v dgnd en8 _net10 in8 _net35 tribuf
+xi43 agnd d1p5v dgnd en7 _net12 in7 _net35 tribuf
+xi42 agnd d1p5v dgnd en6 _net13 in6 _net35 tribuf
+xi41 agnd d1p5v dgnd en5 _net14 in5 _net35 tribuf
+xi40 agnd d1p5v dgnd en4 _net15 in4 _net35 tribuf
+xi39 agnd d1p5v dgnd en3 _net16 in3 _net35 tribuf
+xi38 agnd d1p5v dgnd en2 _net17 in2 _net35 tribuf
+xi37 agnd d1p5v dgnd en1 _net18 in1 _net35 tribuf
+xi36 agnd d1p5v dgnd en0 _net19 in0 _net35 tribuf
+xi35 agnd d1p5v dgnd _net0 en15 inv
+xi32 agnd d1p5v dgnd _net2 en14 inv
+xi31 agnd d1p5v dgnd _net4 en13 inv
+xi29 agnd d1p5v dgnd _net5 en12 inv
+xi27 agnd d1p5v dgnd _net7 en11 inv
+xi24 agnd d1p5v dgnd _net8 en10 inv
+xi23 agnd d1p5v dgnd _net9 en9 inv
+xi21 agnd d1p5v dgnd _net10 en8 inv
+xi15 agnd d1p5v dgnd _net12 en7 inv
+xi12 agnd d1p5v dgnd _net13 en6 inv
+xi11 agnd d1p5v dgnd _net14 en5 inv
+xi9 agnd d1p5v dgnd _net15 en4 inv
+xi7 agnd d1p5v dgnd _net16 en3 inv
+xi4 agnd d1p5v dgnd _net17 en2 inv
+xi3 agnd d1p5v dgnd _net18 en1 inv
+xi1 agnd d1p5v dgnd _net19 en0 inv
+xi20 agnd d1p5v dgnd sel3 _net11 inv
+xi19 agnd d1p5v dgnd sel2 _net6 inv
+xi18 agnd d1p5v dgnd sel1 _net3 inv
+xi16 agnd d1p5v dgnd sel0 _net1 inv
+.ends _sub13
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: decode3to8
+** View name: schematic
+.subckt decode3to8 agnd d1p5v dgnd out0 out1 out2 out3 out4 out5 out6 out7 sel0 sel1 sel2
+xi7 sel0 agnd sel1 sel2 d1p5v dgnd net029 nand3
+xi6 _net0 agnd sel1 sel2 d1p5v dgnd net030 nand3
+xi5 sel0 agnd _net1 sel2 d1p5v dgnd net031 nand3
+xi4 _net0 agnd _net1 sel2 d1p5v dgnd net028 nand3
+xi3 sel0 agnd sel1 _net2 d1p5v dgnd net035 nand3
+xi2 _net0 agnd sel1 _net2 d1p5v dgnd net034 nand3
+xi1 sel0 agnd _net1 _net2 d1p5v dgnd net033 nand3
+xi0 _net0 agnd _net1 _net2 d1p5v dgnd net032 nand3
+xi11 agnd d1p5v dgnd net035 out3 inv
+xi10 agnd d1p5v dgnd net034 out2 inv
+xi9 agnd d1p5v dgnd net033 out1 inv
+xi8 agnd d1p5v dgnd net032 out0 inv
+xi15 agnd d1p5v dgnd net029 out7 inv
+xi14 agnd d1p5v dgnd net030 out6 inv
+xi13 agnd d1p5v dgnd net031 out5 inv
+xi12 agnd d1p5v dgnd net028 out4 inv
+xi19 agnd d1p5v dgnd sel2 _net2 inv
+xi18 agnd d1p5v dgnd sel1 _net1 inv
+xi16 agnd d1p5v dgnd sel0 _net0 inv
+.ends decode3to8
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: ctr4
+** View name: schematic
+.subckt ctr4 q0 q1 q2 q3 agnd clk _net1 d1p5v dgnd _net0
+xi1 q0 agnd net19 d1p5v dgnd net24 _net0 mux2n
+xi5 net21 q3 net21 agnd net22 _net1 d1p5v dgnd dffc
+xi4 net22 q2 net22 agnd net23 _net1 d1p5v dgnd dffc
+xi3 net23 q1 net23 agnd net19 _net1 d1p5v dgnd dffc
+xi2 net24 q0 net19 agnd clk _net1 d1p5v dgnd dffc
+.ends ctr4
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: cmd16tri
+** View name: schematic
+.subckt cmd16tri agnd _net1 _net2 _net5 _net4 d1p5v dgnd _net3 out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9
+xi61 agnd d1p5v dgnd en _net0 net104 out15 tribuf
+xi57 agnd d1p5v dgnd en _net0 net101 out14 tribuf
+xi53 agnd d1p5v dgnd en _net0 net98 out13 tribuf
+xi49 agnd d1p5v dgnd en _net0 net95 out12 tribuf
+xi45 agnd d1p5v dgnd en _net0 net92 out11 tribuf
+xi41 agnd d1p5v dgnd en _net0 net89 out10 tribuf
+xi37 agnd d1p5v dgnd en _net0 net86 out9 tribuf
+xi33 agnd d1p5v dgnd en _net0 net83 out8 tribuf
+xi29 agnd d1p5v dgnd en _net0 net80 out7 tribuf
+xi25 agnd d1p5v dgnd en _net0 net77 out6 tribuf
+xi21 agnd d1p5v dgnd en _net0 net74 out5 tribuf
+xi17 agnd d1p5v dgnd en _net0 net71 out4 tribuf
+xi13 agnd d1p5v dgnd en _net0 net68 out3 tribuf
+xi9 agnd d1p5v dgnd en _net0 net65 out2 tribuf
+xi5 agnd d1p5v dgnd en _net0 net62 out1 tribuf
+xi1 agnd d1p5v dgnd en _net0 net59 out0 tribuf
+xi63 agnd d1p5v dgnd net58 net103 inv
+xi62 agnd d1p5v dgnd _net1 net58 inv
+xi59 agnd d1p5v dgnd net57 net100 inv
+xi58 agnd d1p5v dgnd net103 net57 inv
+xi55 agnd d1p5v dgnd net56 net97 inv
+xi54 agnd d1p5v dgnd net100 net56 inv
+xi51 agnd d1p5v dgnd net55 net94 inv
+xi50 agnd d1p5v dgnd net97 net55 inv
+xi47 agnd d1p5v dgnd net54 net91 inv
+xi46 agnd d1p5v dgnd net94 net54 inv
+xi43 agnd d1p5v dgnd net53 net88 inv
+xi42 agnd d1p5v dgnd net91 net53 inv
+xi39 agnd d1p5v dgnd net52 net85 inv
+xi38 agnd d1p5v dgnd net88 net52 inv
+xi35 agnd d1p5v dgnd net51 net82 inv
+xi34 agnd d1p5v dgnd net85 net51 inv
+xi31 agnd d1p5v dgnd net50 net79 inv
+xi30 agnd d1p5v dgnd net82 net50 inv
+xi27 agnd d1p5v dgnd net49 net76 inv
+xi26 agnd d1p5v dgnd net79 net49 inv
+xi23 agnd d1p5v dgnd net48 net73 inv
+xi22 agnd d1p5v dgnd net76 net48 inv
+xi19 agnd d1p5v dgnd net47 net70 inv
+xi18 agnd d1p5v dgnd net73 net47 inv
+xi15 agnd d1p5v dgnd net46 net67 inv
+xi14 agnd d1p5v dgnd net70 net46 inv
+xi11 agnd d1p5v dgnd net45 net64 inv
+xi10 agnd d1p5v dgnd net67 net45 inv
+xi7 agnd d1p5v dgnd net44 net61 inv
+xi6 agnd d1p5v dgnd net64 net44 inv
+xi3 agnd d1p5v dgnd net43 _net2 inv
+xi2 agnd d1p5v dgnd net61 net43 inv
+xi65 agnd d1p5v dgnd en _net0 invb
+xi64 agnd d1p5v dgnd _net3 en invb
+xi60 net109 _net4 net104 agnd net58 d1p5v dgnd dff
+xi56 net108 net109 net101 agnd net57 d1p5v dgnd dff
+xi52 net110 net108 net98 agnd net56 d1p5v dgnd dff
+xi48 net107 net110 net95 agnd net55 d1p5v dgnd dff
+xi44 net112 net107 net92 agnd net54 d1p5v dgnd dff
+xi40 net111 net112 net89 agnd net53 d1p5v dgnd dff
+xi36 net113 net111 net86 agnd net52 d1p5v dgnd dff
+xi32 net106 net113 net83 agnd net51 d1p5v dgnd dff
+xi28 net116 net106 net80 agnd net50 d1p5v dgnd dff
+xi24 net115 net116 net77 agnd net49 d1p5v dgnd dff
+xi20 net117 net115 net74 agnd net48 d1p5v dgnd dff
+xi16 net114 net117 net71 agnd net47 d1p5v dgnd dff
+xi12 net119 net114 net68 agnd net46 d1p5v dgnd dff
+xi8 net118 net119 net65 agnd net45 d1p5v dgnd dff
+xi4 net120 net118 net62 agnd net44 d1p5v dgnd dff
+xi0 _net5 net120 net59 agnd net43 d1p5v dgnd dff
+.ends cmd16tri
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: pattern-mem
+** View name: schematic
+.subckt _sub14 agnd _net11 _net13 _net12 _net14 d1p5v dgnd out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9 sel0 sel1 sel2
+xi19 agnd d1p5v dgnd sel2 _net0 inv
+xi18 agnd d1p5v dgnd sel1 _net1 inv
+xi16 agnd d1p5v dgnd sel0 _net2 inv
+xi24 _net2 agnd _net1 sel2 d1p5v dgnd _net3 nand3
+xi23 _net2 agnd _net1 _net0 d1p5v dgnd _net4 nand3
+xi20 sel0 agnd _net1 sel2 d1p5v dgnd _net5 nand3
+xi17 sel0 agnd _net1 _net0 d1p5v dgnd _net6 nand3
+xi12 _net2 agnd sel1 sel2 d1p5v dgnd _net7 nand3
+xi10 _net2 agnd sel1 _net0 d1p5v dgnd _net8 nand3
+xi9 sel0 agnd sel1 sel2 d1p5v dgnd _net9 nand3
+xi8 sel0 agnd sel1 _net0 d1p5v dgnd _net10 nand3
+xi7 agnd _net11 net78 _net12 net79 d1p5v dgnd _net9 out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9 cmd16tri
+xi6 agnd net78 net80 net79 net81 d1p5v dgnd _net7 out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9 cmd16tri
+xi5 agnd net80 net82 net81 net83 d1p5v dgnd _net5 out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9 cmd16tri
+xi4 agnd net82 net84 net83 net85 d1p5v dgnd _net3 out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9 cmd16tri
+xi3 agnd net84 net86 net85 net87 d1p5v dgnd _net10 out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9 cmd16tri
+xi2 agnd net86 net88 net87 net89 d1p5v dgnd _net8 out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9 cmd16tri
+xi1 agnd net88 net90 net89 net91 d1p5v dgnd _net6 out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9 cmd16tri
+xi0 agnd net90 _net13 net91 _net14 d1p5v dgnd _net4 out0 out1 out10 out11 out12 out13 out14 out15 out2 out3 out4 out5 out6 out7 out8 out9 cmd16tri
+.ends _sub14
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: row0
+** View name: schematic
+.subckt row0 n1vref n4vref a5v agnd b5v basev charge0 _net60 charge1 _net61 charge10 _net54 charge11 _net55 charge12 _net48 charge13 _net49 charge14 _net50 charge15 _net51 charge2 _net62 charge3 _net63 charge4 _net56 charge5 _net57 charge6 _net58 charge7 _net59 charge8 _net52 charge9 _net53 clamp _net11 _net81 _net114 _net115 _net82 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net0 d1p5v d5v _net83 discref discthresh gainsel0 gainsel1 lockout _net8 lreset _net9 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net10 _net116 _net108 _net96 _net103 _net66 _net91 _net74 _net84 _net117 _net109 _net97 _net104 _net67 _net92 _net75 _net85 _net65 readbusrow _net118 _net110 _net99 _net105 _net69 _net93 _net77 _net86 _net119 _net112 _net101 _net106 _net72 _net94 _net79 _net87 _net111 _net100 _net98 _net70 _net68 _net71 _net76 _net78 reset0 _net40 reset1 _net41 reset10 _net26 reset11 _net27 reset12 _net16 reset13 _net17 reset14 _net18 reset15 _net19 reset2 _net42 reset3
++_net43 reset4 _net32 reset5 _net33 reset6 _net34 reset7 _net35 reset8 _net24 reset9 _net25 rowen _net120 _net113 _net102 _net107 _net73 _net95 _net80 _net88 _net64 scopebusrow scopsel0 scopsel1 shwin _net1 testgnd testref _net89 _net121 _net122 _net90 tpulse _net2 uptrig _net3 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1
+xi18 agnd d1p5v dgnd cpreset _net0 shwin _net1 tpulse _net2 uptrig _net3 net0195 _net4 net0196 _net5 net0197 _net6 net0198 _net7 capbuffs
+xi17 agnd d1p5v dgnd lockout _net8 lreset _net9 read _net10 clamp _net11 net0199 _net12 net0200 _net13 net0201 _net14 net0202 _net15 capbuffs
+xi15 agnd d1p5v dgnd reset12 _net16 reset13 _net17 reset14 _net18 reset15 _net19 net303 _net20 net304 _net21 net305 _net22 net306 _net23 capbuffs
+xi14 agnd d1p5v dgnd reset8 _net24 reset9 _net25 reset10 _net26 reset11 _net27 net307 _net28 net308 _net29 net309 _net30 net310 _net31 capbuffs
+xi13 agnd d1p5v dgnd reset4 _net32 reset5 _net33 reset6 _net34 reset7 _net35 net311 _net36 net312 _net37 net313 _net38 net314 _net39 capbuffs
+xi12 agnd d1p5v dgnd reset0 _net40 reset1 _net41 reset2 _net42 reset3 _net43 net315 _net44 net316 _net45 net317 _net46 net318 _net47 capbuffs
+xi11 agnd d1p5v dgnd charge12 _net48 charge13 _net49 charge14 _net50 charge15 _net51 c12 net319 c13 net320 c14 net321 c15 net322 capbuffs
+xi10 agnd d1p5v dgnd charge8 _net52 charge9 _net53 charge10 _net54 charge11 _net55 c8 net323 c9 net324 c10 net325 c11 net326 capbuffs
+xi9 agnd d1p5v dgnd charge4 _net56 charge5 _net57 charge6 _net58 charge7 _net59 c4 net327 c5 net328 c6 net329 c7 net330 capbuffs
+xi8 agnd d1p5v dgnd charge0 _net60 charge1 _net61 charge2 _net62 charge3 _net63 c0 net331 c1 net332 c2 net333 c3 net334 capbuffs
+xi20 agnd d1p5v d5v dgnd _net64 net0158 net0159 lvto5Vpn
+xi21 agnd d1p5v d5v dgnd _net65 net0157 net0156 lvto5Vpn
+xm0 scopebus net0159 scopebusrow a5v pe5 w=6e-6 l=500e-9 as=2.88e-12 ad=2.88e-12 ps=12.96e-6 pd=12.96e-6 nrs=45e-3 nrd=45e-3 m=1 par1=1
+xm3 readbus net0157 readbusrow a5v pe5 w=6e-6 l=500e-9 as=2.88e-12 ad=2.88e-12 ps=12.96e-6 pd=12.96e-6 nrs=45e-3 nrd=45e-3 m=1 par1=1
+xm1 scopebus net0158 scopebusrow agnd ne5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xm2 readbus net0156 readbusrow agnd ne5 w=3e-6 l=500e-9 as=1.44e-12 ad=1.44e-12 ps=6.96e-6 pd=6.96e-6 nrs=90e-3 nrd=90e-3 m=1 par1=1
+xi7 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net15 net284 net265 net266 net267 colen4 compsel0 compsel1 cpmode _net4 d1p5v d5v net0261 net262 net281 discref discthresh gainsel0 gainsel1 _net12 _net13 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net14 _net66 _net67 net261 net280 readbus _net68 _net69 _net70 _net71 _net72 _net44 _net45 _net30 _net31 _net20 _net21 _net22 _net23 _net46 _net47 _net36 _net37 _net38 _net39 _net28 _net29 rowen _net73 _net64 scopebus scopsel0 scopsel1 _net5 testgnd testref net282 net263 net264 net283 _net6 _net7 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi6 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net15 net279 net272 net273 net274 colen6 compsel0 compsel1 cpmode _net4 d1p5v d5v net0262 net269 net276 discref discthresh gainsel0 gainsel1 _net12 _net13 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net14 _net74 _net75 net268 net275 readbus _net76 _net77 _net71 _net78 _net79 _net44 _net45 _net30 _net31 _net20 _net21 _net22 _net23 _net46 _net47 _net36 _net37 _net38 _net39 _net28 _net29 rowen _net80 _net64 scopebus scopsel0 scopsel1 _net5 testgnd testref net277 net270 net271 net278 _net6 _net7 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi5 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net15 _net81 net279 net274 _net82 colen7 compsel0 compsel1 cpmode _net4 d1p5v d5v net0263 net276 _net83 discref discthresh gainsel0 gainsel1 _net12 _net13 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net14 _net84 _net85 net275 _net65 readbus _net78 _net86 _net76 d1p5v _net87 _net44 _net45 _net30 _net31 _net20 _net21 _net22 _net23 _net46 _net47 _net36 _net37 _net38 _net39 _net28 _net29 rowen _net88 _net64 scopebus scopsel0 scopsel1 _net5 testgnd testref _net89 net277 net278 _net90 _net6 _net7 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi4 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net15 net272 net284 net267 net273 colen5 compsel0 compsel1 cpmode _net4 d1p5v d5v net0264 net281 net269 discref discthresh gainsel0 gainsel1 _net12 _net13 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net14 _net91 _net92 net280 net268 readbus _net71 _net93 _net68 _net76 _net94 _net44 _net45 _net30 _net31 _net20 _net21 _net22 _net23 _net46 _net47 _net36 _net37 _net38 _net39 _net28 _net29 rowen _net95 _net64 scopebus scopsel0 scopsel1 _net5 testgnd testref net270 net282 net283 net271 _net6 _net7 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi16 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net15 net296 net289 net290 net291 colen2 compsel0 compsel1 cpmode _net4 d1p5v d5v net0265 net286 net293 discref discthresh gainsel0 gainsel1 _net12 _net13 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net14 _net96 _net97 net285 net292 readbus _net98 _net99 _net100 _net70 _net101 _net44 _net45 _net30 _net31 _net20 _net21 _net22 _net23 _net46 _net47 _net36 _net37 _net38 _net39 _net28 _net29 rowen _net102 _net64 scopebus scopsel0 scopsel1 _net5 testgnd testref net294 net287 net288 net295 _net6 _net7 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi2 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net15 net265 net296 net291 net266 colen3 compsel0 compsel1 cpmode _net4 d1p5v d5v net0266 net293 net262 discref discthresh gainsel0 gainsel1 _net12 _net13 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net14 _net103 _net104 net292 net261 readbus _net70 _net105 _net98 _net68 _net106 _net44 _net45 _net30 _net31 _net20 _net21 _net22 _net23 _net46 _net47 _net36 _net37 _net38 _net39 _net28 _net29 rowen _net107 _net64 scopebus scopsel0 scopsel1 _net5 testgnd testref net263 net294 net295 net264 _net6 _net7 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi1 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net15 net289 net301 net302 net290 colen1 compsel0 compsel1 cpmode _net4 d1p5v d5v net0267 net298 net286 discref discthresh gainsel0 gainsel1 _net12 _net13 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net14 _net108 _net109 net297 net285 readbus _net100 _net110 _net111 _net98 _net112 _net44 _net45 _net30 _net31 _net20 _net21 _net22 _net23 _net46 _net47 _net36 _net37 _net38 _net39 _net28 _net29 rowen _net113 _net64 scopebus scopsel0 scopsel1 _net5 testgnd testref net287 net299 net300 net288 _net6 _net7 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+xi0 n1vref n4vref a5v agnd b5v basev c0 c1 c10 c11 c12 c13 c14 c15 c2 c3 c4 c5 c6 c7 c8 c9 _net15 net301 _net114 _net115 net302 colen0 compsel0 compsel1 cpmode _net4 d1p5v d5v net0268 d1p5v net298 discref discthresh gainsel0 gainsel1 _net12 _net13 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 _net14 _net116 _net117 d1p5v net297 readbus _net111 _net118 d1p5v _net100 _net119 _net44 _net45 _net30 _net31 _net20 _net21 _net22 _net23 _net46 _net47 _net36 _net37 _net38 _net39 _net28 _net29 rowen _net120 _net64 scopebus scopsel0 scopsel1 _net5 testgnd testref net299 _net121 _net122 net300 _net6 _net7 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 pixel
+.ends row0
+** End of subcircuit definition.
+
+** Library name: nuplus_check
+** Cell name: np8-chip
+** View name: schematic
+xi5 n1vref n4vref a5v agnd b5v basev ch0 _net24 ch1 _net22 ch10 _net13 ch11 _net12 ch12 _net11 ch13 _net10 ch14 _net9 ch15 _net8 ch2 _net21 ch3 _net20 ch4 _net19 ch5 _net18 ch6 _net17 ch7 _net16 ch8 _net15 ch9 _net14 clamp _net7 _net30 net082 net081 _net29 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net6 d1p5v d5v _net23 discref discthresh gainsel0 gainsel1 lockout _net5 lreset _net4 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net3 d1p5v d1p5v d1p5v d1p5v d1p5v d1p5v d1p5v d1p5v net092 net091 net090 net089 net088 net087 net086 net085 _net51 readbusrow net045 net046 net047 net048 net049 net050 net051 net052 d1p5v d1p5v d1p5v d1p5v d1p5v d1p5v d1p5v d1p5v net061 net062 net063 net064 net065 net066 net067 net068 rs0 _net74 rs1 _net73 rs10 _net64 rs11 _net63 rs12 _net62 rs13 _net61 rs14 _net60 rs15 _net59 rs2 _net72 rs3 _net71 rs4 _net70 rs5 _net69 rs6 _net68 rs7 _net67 rs8 _net66 rs9 _net65 rowen7 _net84 _net83 _net82 _net81 _net80 _net79 _net78 _net77 _net92
++scopebusrow scopsel0 scopsel1 shwin _net2 testgnd testref _net32 net084 net083 _net31 tpulse _net1 uptrig _net0 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 row1
+xi4 n1vref n4vref a5v agnd b5v basev ch0 _net24 ch1 _net22 ch10 _net13 ch11 _net12 ch12 _net11 ch13 _net10 ch14 _net9 ch15 _net8 ch2 _net21 ch3 _net20 ch4 _net19 ch5 _net18 ch6 _net17 ch7 _net16 ch8 _net15 ch9 _net14 clamp _net7 net094 net0106 net0105 net093 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net6 d1p5v d5v _net38 discref discthresh gainsel0 gainsel1 lockout _net5 lreset _net4 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net3 net0104 net0103 net0102 net0101 net0100 net099 net098 net097 net0116 net0115 net0114 net0113 net0112 net0111 net0110 net0109 _net53 readbusrow net028 net029 net030 net031 net032 net033 net034 net035 net045 net046 net047 net048 net049 net050 net051 net052 net036 net037 net038 net039 net040 net041 net042 net043 rs0 _net74 rs1 _net73 rs10 _net64 rs11 _net63 rs12 _net62 rs13 _net61 rs14 _net60 rs15 _net59 rs2 _net72 rs3 _net71 rs4 _net70 rs5 _net69 rs6 _net68 rs7 _net67 rs8 _net66 rs9 _net65 rowen5 _net84 _net83 _net82 _net81 _net80 
++_net79 _net78 _net77 _net86 scopebusrow scopsel0 scopsel1 shwin _net2 testgnd testref net096 net0108 net0107 net095 tpulse _net1 uptrig _net0 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 row1
+xi2 n1vref n4vref a5v agnd b5v basev ch0 _net24 ch1 _net22 ch10 _net13 ch11 _net12 ch12 _net11 ch13 _net10 ch14 _net9 ch15 _net8 ch2 _net21 ch3 _net20 ch4 _net19 ch5 _net18 ch6 _net17 ch7 _net16 ch8 _net15 ch9 _net14 clamp _net7 net079 net0140 net0129 net080 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net6 d1p5v d5v _net35 discref discthresh gainsel0 gainsel1 lockout _net5 lreset _net4 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net3 net069 net070 net072 net071 net073 net074 net076 net075 net0130 net0131 net0132 net0133 net0134 net0135 net0136 net0137 _net55 readbusrow net157 net155 net153 net151 net176 net178 net180 net182 net028 net029 net030 net031 net032 net033 net034 net035 net019 net020 net021 net022 net023 net024 net025 net026 rs0 _net74 rs1 _net73 rs10 _net64 rs11 _net63 rs12 _net62 rs13 _net61 rs14 _net60 rs15 _net59 rs2 _net72 rs3 _net71 rs4 _net70 rs5 _net69 rs6 _net68 rs7 _net67 rs8 _net66 rs9 _net65 rowen3 _net84 _net83 _net82 _net81 _net80
++_net79 _net78 _net77 _net88 scopebusrow scopsel0 scopsel1 shwin _net2 testgnd testref net077 net0138 net0139 net078 tpulse _net1 uptrig _net0 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 row1
+xi1 n1vref n4vref a5v agnd b5v basev ch0 _net24 ch1 _net22 ch10 _net13 ch11 _net12 ch12 _net11 ch13 _net10 ch14 _net9 ch15 _net8 ch2 _net21 ch3 _net20 ch4 _net19 ch5 _net18 ch6 _net17 ch7 _net16 ch8 _net15 ch9 _net14 clamp _net7 net187 net11 net12 net183 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net6 d1p5v d5v _net33 discref discthresh gainsel0 gainsel1 lockout _net5 lreset _net4 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net3 net188 net189 net190 net191 net192 net193 net194 net195 net1 net2 net3 net4 net5 net6 net7 net8 _net58 readbusrow net305 net14 net309 net16 net313 net315 net19 net319 net157 net155 net153 net151 net176 net178 net180 net182 net174 net172 net94 net168 net96 net164 net98 net160 rs0 _net74 rs1 _net73 rs10 _net64 rs11 _net63 rs12 _net62 rs13 _net61 rs14 _net60 rs15 _net59 rs2 _net72 rs3 _net71 rs4 _net70 rs5 _net69 rs6 _net68 rs7 _net67 rs8 _net66 rs9 _net65 rowen1 _net84 _net83 _net82 _net81 _net80 _net79 _net78 _net77 _net90
++scopebusrow scopsel0 scopsel1 shwin _net2 testgnd testref net196 net9 net10 net186 tpulse _net1 uptrig _net0 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 row1
+xi8 _net36 agnd _net33 _net34 _net35 d1p5v dgnd _net37 _net38 _net39 _net23 trig nand8
+xi18 agnd d1p5v dgnd _net41 _net32 inv
+xi9 agnd d1p5v dgnd trig _net40 inv
+xi26 agnd d1p5v dgnd _net50 _net57 pixadr3 pixadr4 pixadr5 tri0
+xi10 agnd d1p5v dgnd _net42 _net57 pixadr0 pixadr1 pixadr2 tri0
+xi25 agnd d1p5v dgnd _net58 _net57 pixadr3 pixadr4 pixadr5 tri1
+xi11 agnd d1p5v dgnd _net43 _net57 pixadr0 pixadr1 pixadr2 tri1
+xi20 agnd d1p5v dgnd _net56 _net57 pixadr3 pixadr4 pixadr5 tri2
+xi12 agnd d1p5v dgnd _net45 _net57 pixadr0 pixadr1 pixadr2 tri2
+xi24 agnd d1p5v dgnd _net55 _net57 pixadr3 pixadr4 pixadr5 tri3
+xi13 agnd d1p5v dgnd _net44 _net57 pixadr0 pixadr1 pixadr2 tri3
+xi22 agnd d1p5v dgnd _net54 _net57 pixadr3 pixadr4 pixadr5 tri4
+xi14 agnd d1p5v dgnd _net46 _net57 pixadr0 pixadr1 pixadr2 tri4
+xi21 agnd d1p5v dgnd _net53 _net57 pixadr3 pixadr4 pixadr5 tri5
+xi15 agnd d1p5v dgnd _net47 _net57 pixadr0 pixadr1 pixadr2 tri5
+xi23 agnd d1p5v dgnd _net52 _net57 pixadr3 pixadr4 pixadr5 tri6
+xi16 agnd d1p5v dgnd _net48 _net57 pixadr0 pixadr1 pixadr2 tri6
+xi19 agnd d1p5v dgnd _net51 _net57 pixadr3 pixadr4 pixadr5 tri7
+xi17 agnd d1p5v dgnd _net49 _net57 pixadr0 pixadr1 pixadr2 tri7
+xi29 agnd d1p5v dgnd _net76 net0217 net0251 net0243 net0219 net0210 net0207 net0240 net0247 net0211 net0232 net0248 net0222 net0244 net0233 net0225 net0250 rs0 _net74 rs1 _net73 rs10 _net64 rs11 _net63 rs12 _net62 rs13 _net61 rs14 _net60 rs15 _net59 rs2 _net72 rs3 _net71 rs4 _net70 rs5 _net69 rs6 _net68 rs7 _net67 rs8 _net66 rs9 _net65 buf16
+xi28 agnd d1p5v dgnd _net75 net0236 net0242 net0253 net0245 net0214 net0228 net0237 net0208 net0216 net0212 net0224 net0246 net0221 net0203 net0252 net0234 ch0 _net24 ch1 _net22 ch10 _net13 ch11 _net12 ch12 _net11 ch13 _net10 ch14 _net9 ch15 _net8 ch2 _net21 ch3 _net20 ch4 _net19 ch5 _net18 ch6 _net17 ch7 _net16 ch8 _net15 ch9 _net14 buf16
+xi30 agnd d1p5v dgnd net0217 net0251 net0243 net0219 net0210 net0207 net0240 net0247 net0211 net0232 net0248 net0222 net0244 net0233 net0225 net0250 ctr0 ctr1 ctr2 ctr3 decode4to16
+xi31 agnd d1p5v dgnd net0187 net0188 net0197 net0198 net0199 net0200 net0201 net0202 net0189 net0190 net0191 net0192 net0193 net0194 net0195 net0196 net0236 net0242 net0253 net0245 net0214 net0228 net0237 net0208 net0216 net0212 net0224 net0246 net0221 net0203 net0252 net0234 ctr0 ctr1 ctr2 ctr3 _sub13
+xi35 agnd d1p5v dgnd _net91 _net90 _net89 _net88 _net85 _net86 _net87 _net92 scopsel5 scopsel6 scopsel7 decode3to8
+xi34 agnd d1p5v dgnd _net84 _net83 _net82 _net81 _net80 _net79 _net78 _net77 scopsel2 scopsel3 scopsel4 decode3to8
+xi33 agnd d1p5v dgnd rowen0 rowen1 rowen2 rowen3 rowen4 rowen5 rowen6 rowen7 pixsel3 pixsel4 pixsel5 decode3to8
+xi32 agnd d1p5v dgnd colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 pixsel0 pixsel1 pixsel2 decode3to8
+xi37 ctr0 ctr1 ctr2 ctr3 agnd ctrclk _net93 d1p5v dgnd _net94 ctr4
+xi38 agnd net0204 net0206 net0205 net0230 d1p5v dgnd net0187 net0188 net0197 net0198 net0199 net0200 net0201 net0202 net0189 net0190 net0191 net0192 net0193 net0194 net0195 net0196 patsel0 patsel1 patsel2 _sub14
+xi7 n1vref n4vref a5v agnd b5v basev ch0 _net24 ch1 _net22 ch10 _net13 ch11 _net12 ch12 _net11 ch13 _net10 ch14 _net9 ch15 _net8 ch2 _net21 ch3 _net20 ch4 _net19 ch5 _net18 ch6 _net17 ch7 _net16 ch8 _net15 ch9 _net14 clamp _net7 net0106 net079 net080 net0105 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net6 d1p5v d5v _net37 discref discthresh gainsel0 gainsel1 lockout _net5 lreset _net4 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net3 net0116 net0115 net0114 net0113 net0112 net0111 net0110 net0109 net069 net070 net072 net071 net073 net074 net076 net075 _net54 readbusrow net019 net020 net021 net022 net023 net024 net025 net026 net036 net037 net038 net039 net040 net041 net042 net043 net028 net029 net030 net031 net032 net033 net034 net035 rs0 _net74 rs1 _net73 rs10 _net64 rs11 _net63 rs12 _net62 rs13 _net61 rs14 _net60 rs15 _net59 rs2 _net72 rs3 _net71 rs4 _net70 rs5 _net69 rs6 _net68 rs7 _net67 rs8 _net66 rs9 _net65 rowen4 _net84 _net83 _net82 _net81 _net80
++_net79 _net78 _net77 _net85 scopebusrow scopsel0 scopsel1 shwin _net2 testgnd testref net0108 net077 net078 net0107 tpulse _net1 uptrig _net0 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 row0
+xi6 n1vref n4vref a5v agnd b5v basev ch0 _net24 ch1 _net22 ch10 _net13 ch11 _net12 ch12 _net11 ch13 _net10 ch14 _net9 ch15 _net8 ch2 _net21 ch3 _net20 ch4 _net19 ch5 _net18 ch6 _net17 ch7 _net16 ch8 _net15 ch9 _net14 clamp _net7 net082 net094 net093 net081 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net6 d1p5v d5v _net39 discref discthresh gainsel0 gainsel1 lockout _net5 lreset _net4 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net3 net092 net091 net090 net089 net088 net087 net086 net085 net0104 net0103 net0102 net0101 net0100 net099 net098 net097 _net52 readbusrow net036 net037 net038 net039 net040 net041 net042 net043 net061 net062 net063 net064 net065 net066 net067 net068 net045 net046 net047 net048 net049 net050 net051 net052 rs0 _net74 rs1 _net73 rs10 _net64 rs11 _net63 rs12 _net62 rs13 _net61 rs14 _net60 rs15 _net59 rs2 _net72 rs3 _net71 rs4 _net70 rs5 _net69 rs6 _net68 rs7 _net67 rs8 _net66 rs9 _net65 rowen6 _net84 _net83 _net82 _net81 _net80 _net79
++_net78 _net77 _net87 scopebusrow scopsel0 scopsel1 shwin _net2 testgnd testref net084 net096 net095 net083 tpulse _net1 uptrig _net0 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 row0
+xi3 n1vref n4vref a5v agnd b5v basev ch0 _net24 ch1 _net22 ch10 _net13 ch11 _net12 ch12 _net11 ch13 _net10 ch14 _net9 ch15 _net8 ch2 _net21 ch3 _net20 ch4 _net19 ch5 _net18 ch6 _net17 ch7 _net16 ch8 _net15 ch9 _net14 clamp _net7 net0140 net187 net183 net0129 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net6 d1p5v d5v _net34 discref discthresh gainsel0 gainsel1 lockout _net5 lreset _net4 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net3 net0130 net0131 net0132 net0133 net0134 net0135 net0136 net0137 net188 net189 net190 net191 net192 net193 net194 net195 _net56 readbusrow net174 net172 net94 net168 net96 net164 net98 net160 net019 net020 net021 net022 net023 net024 net025 net026 net157 net155 net153 net151 net176 net178 net180 net182 rs0 _net74 rs1 _net73 rs10 _net64 rs11 _net63 rs12 _net62 rs13 _net61 rs14 _net60 rs15 _net59 rs2 _net72 rs3 _net71 rs4 _net70 rs5 _net69 rs6 _net68 rs7 _net67 rs8 _net66 rs9 _net65 rowen2 _net84 _net83 _net82 _net81 _net80 _net79
++_net78 _net77 _net89 scopebusrow scopsel0 scopsel1 shwin _net2 testgnd testref net0138 net196 net186 net0139 tpulse _net1 uptrig _net0 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 row0
+xi0 n1vref n4vref a5v agnd b5v basev ch0 _net24 ch1 _net22 ch10 _net13 ch11 _net12 ch12 _net11 ch13 _net10 ch14 _net9 ch15 _net8 ch2 _net21 ch3 _net20 ch4 _net19 ch5 _net18 ch6 _net17 ch7 _net16 ch8 _net15 ch9 _net14 clamp _net7 net11 _net27 _net28 net12 colen0 colen1 colen2 colen3 colen4 colen5 colen6 colen7 compsel0 compsel1 cpmode cpreset _net6 d1p5v d5v _net36 discref discthresh gainsel0 gainsel1 lockout _net5 lreset _net4 pre5v prebias rdpixclk rdpixsel0 rdpixsel1 read _net3 net1 net2 net3 net4 net5 net6 net7 net8 _net42 _net43 _net45 _net44 _net46 _net47 _net48 _net49 _net50 readbusrow d1p5v d1p5v d1p5v d1p5v d1p5v d1p5v d1p5v d1p5v net174 net172 net94 net168 net96 net164 net98 net160 net305 net14 net309 net16 net313 net315 net19 net319 rs0 _net74 rs1 _net73 rs10 _net64 rs11 _net63 rs12 _net62 rs13 _net61 rs14 _net60 rs15 _net59 rs2 _net72 rs3 _net71 rs4 _net70 rs5 _net69 rs6 _net68 rs7 _net67 rs8 _net66 rs9 _net65 rowen0 _net84 _net83 _net82 _net81 _net80 _net79 _net78 _net77 _net91 scopebusrow
++scopsel0 scopsel1 shwin _net2 testgnd testref net9 _net25 _net26 net10 tpulse _net1 uptrig _net0 vn1 vn1a vn2 vn3 vnl1 vp1 vp2 vpl1 row0
+.END
