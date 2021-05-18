@@ -21,7 +21,7 @@ from stingray import stats
 class Lightcurve_ext(lc.Lightcurve):
     # Extend the stingray Lightcurve class to also hold onto an extraction region 
 
-    def __init__(self, time, counts, err=None, input_counts=True, gti=None, err_dist='poisson', mjdref=0, dt=None, skip_checks=True, low_memory=False, centroid=None, radius=None):
+    def __init__(self, time, counts, err=None, input_counts=True, gti=None, err_dist='poisson', mjdref=0, dt=None, skip_checks=False, low_memory=False, centroid=None, radius=None):
         
         super().__init__(time=time, counts=counts, err=err, input_counts=input_counts, gti=gti, err_dist=err_dist, mjdref=mjdref, dt=dt, skip_checks=skip_checks, low_memory=low_memory)
         self.centroid=centroid
@@ -30,7 +30,9 @@ class Lightcurve_ext(lc.Lightcurve):
     @staticmethod
     def make_lightcurve(toa, dt, tseg=None, tstart=None, gti=None, mjdref=0, use_hist=False, centroid=None, radius=None):
         temp_curve = lc.Lightcurve.make_lightcurve(toa, dt, tseg=tseg, tstart=tstart, gti=gti, mjdref=mjdref, use_hist=use_hist)
-        return Lightcurve_ext(temp_curve.time, temp_curve.counts, err=temp_curve.counts_err, input_counts=True, gti=gti, err_dist='poisson', mjdref=mjdref, dt=dt, centroid=centroid, radius=radius)
+        temp_curve.centroid=centroid
+        temp_curve.radius=radius
+        return temp_curve
 
     def calc_area(self):
         if self.radius:
@@ -38,15 +40,6 @@ class Lightcurve_ext(lc.Lightcurve):
         else:
             print('The radius has not been defined')
             return None
-
-    def rebin(self, dt_new=None, f=None, method='sum'):
-        # for x in self.time:
-        #     tmp_mask = (np.abs(self.time - x) <= dt_new/2) 
-        #     new_counts.append(np.mean(bkg_lc.counts[tmp_mask]))
-        #     bkg_err.append(np.sqrt(np.sum(np.square(bkg_lc.counts_err[tmp_mask])))/np.sum(tmp_mask))
-
-        rebinned_lc = super().rebin(dt_new=dt_new, f=f, method=method)
-        return Lightcurve_ext(rebinned_lc.time, rebinned_lc.counts, gti=self.gti, err_dist='poisson', mjdref=self.mjdref, dt=dt_new, centroid=self.centroid, radius=self.radius)
 
 class EventList_ext(ev.EventList):
     # Extend the stingray EventList class to also hold onto the PRIOR column, 
@@ -493,7 +486,7 @@ def bkg_subtract(src_lc, bkg_lc, bkg_bin=5):
     bkg_counts = np.array(bkg_counts) * area_ratio
     bkg_err = np.array(bkg_err) * area_ratio
 
-    return Lightcurve_ext(src_lc.time, src_lc.counts - bkg_counts, dt = src_lc.dt, err=np.sqrt(np.square(src_lc.counts_err) + np.square(bkg_err)), gti=src_lc.gti, mjdref=src_lc.mjdref, input_counts=True, skip_checks=True, centroid=src_lc.centroid, radius=src_lc.radius)
+    return Lightcurve_ext(src_lc.time, src_lc.counts - bkg_counts, err=np.sqrt(np.square(src_lc.counts_err) + np.square(bkg_err)), gti=src_lc.gti, mjdref=src_lc.mjdref, input_counts=True, skip_checks=True, centroid=src_lc.centroid, radius=src_lc.radius)
     
 def efold_search_ltcorr(events, f_min, f_max, f_steps, time_intervals=None, nbin = 32, pi_min = 35, pi_max = 260, region_filter=True, weight_pos=False):
     # Scan over frequency and do livetime corrected epoch folding.
@@ -536,6 +529,12 @@ def efold_search(events, f_min, f_max, f_steps, time_intervals=None, nbin = 32, 
     return f_arr, z_prob
 
 
+def PI_to_eV(PI):
+    return (PI*40) + 1600
+
+def eV_to_PI(eV):
+    return (eV-1600)/40
+
 def efold_search_AandB(events_A, events_B, f_min, f_max, f_steps, time_intervals=None, nbin = 32, pi_min = 35, pi_max = 260):
     # Scan over frequency and do livetime corrected epoch folding.
 
@@ -568,283 +567,4 @@ def PI_to_eV(PI):
 
 def eV_to_PI(eV):
     return (eV-1600)/40
-
-# def minimize_remainder(arr, min_div, max_div):
-#     divisors = np.linspace(min_div, max_div, num=100)
-#     remainders = []
-#     for div in divisors:
-#         remainders.append(np.sum(np.mod(arr, div)))
-        
-#     return divisors[np.argmin(remainders)]
-
-# def power_law(f, B, gamma):
-#     return B*np.power(f,gamma)
-
-# def Lorentzian(f, peakf, Q, A):
-#     # gamma = HWHM
-#     # peakf = centroid frequency
-#     gamma = peakf/(2.0 * Q)
-#     return (A * np.square(gamma)/(np.pi*gamma*(np.square(f-peakf) + np.square(gamma))))
-
-# def zero_center_Lorentzian(f, gamma, A):
-#     # gamma = HWHM
-#     # peakf = centroid frequency
-#     return (A * np.square(gamma)/(np.pi*gamma*(np.square(f) + np.square(gamma))))
-
-# def Lorentzian_C(f, peakf, Q, A, C):
-#     return Lorentzian(f, peakf, Q, A) + C
-
-# def Lorentzian_power(f, peakf, Q, A, B, gamma):
-#     return Lorentzian(f, peakf, Q, A) + power_law(f, B, gamma)
-
-# def N_Lorentzian(f, *args):
-#     N = int(len(args)/3)
-#     peak_nu = args[:N]
-#     Qs = args[N:N+N]
-#     As = args[N+N:N+N+N]
-#     model = np.zeros(np.shape(f))
-#     for i in range(N):
-#         model = model + Lorentzian(f, peak_nu[i], Qs[i], As[i])
-        
-#     return model
-
-# def N_Lorentzian_C(f, *args):
-#     N = int((len(args)-1)/3)
-#     peak_nu = args[:N]
-#     Qs = args[N:N+N]
-#     As = args[N+N:N+N+N]
-#     C = args[-1]
-#     model = C * np.ones(np.shape(f))
-#     for i in range(N):
-#         model = model + Lorentzian(f, peak_nu[i], Qs[i], As[i])
-        
-#     return model
-
-# def N_Lorentzian_power(f, *args):
-#     N = int((len(args)-2)/3)
-#     peak_nu = args[:N]
-#     Qs = args[N:N+N]
-#     As = args[N+N:N+N+N]
-#     B, alpha = args[-2:]
-#     model = power_law(f, B, alpha)
-#     for i in range(N):
-#         gamma = peak_nu[i]/(2.0 * Qs[i])
-#         model = model + (As[i] * np.square(gamma)/(np.pi*gamma*(np.square(f-peak_nu[i]) + np.square(gamma))))
-        
-#     return model
-
-# def QPO_scan(cross_spec, f_min=1e-4, f_max=2000., f_bin=1000, n_lorentz = 1):
-#     f_mask = (cross_spec.freq > f_min) * (cross_spec.freq < f_max)
-#     freq_steps = np.logspace(np.log10(cross_spec.freq[f_mask][0]), np.log10(cross_spec.freq[f_mask][-1]), f_bin + 2)
-#     xdata = cross_spec.freq[f_mask]
-#     ydata = cross_spec.power[f_mask]
-#     sigma = cross_spec.power_err[f_mask]
-    
-#     pl_popt, pl_pcov = scipy.optimize.curve_fit(power_law, xdata, ydata, sigma = sigma, p0 = [10., -1.0], \
-#                                                 bounds=np.array([(0.0, np.inf), (-np.inf, 0.0)]).T)
-#     print(pl_popt)
-#     chisq0 = np.sum(((ydata - power_law(xdata, *pl_popt)) / sigma) ** 2)
-#     chisq = []
-#     for i in tqdm(range(len(freq_steps[1:-1]))):
-#         f = freq_steps[i+1]
-#         popt, pcov = scipy.optimize.curve_fit(Lorentzian_power, xdata, ydata, sigma = sigma, p0 = [f, 2.0, 0.1, pl_popt[0], pl_popt[1]], \
-#                                               bounds=np.array([(f - (f-freq_steps[i])/2., f + (freq_steps[i+2] - f)/2.0), (1.0,np.inf), (0.0,np.inf), (0.0, np.inf), (-np.inf, 0.0)]).T)
-#         chisq.append(np.sum(((ydata - Lorentzian_power(xdata, *popt)) / sigma) ** 2))
-#     dof = len(xdata)-len(popt)
-#     return freq_steps[1:-1], chisq0, np.array(chisq), dof
-
-
-
-# def fit_peaks(xdata, ydata, sigma, nu_peak):
-    
-#     popt_arr = []
-#     pcov_arr = []
-
-#     for i, p in enumerate(nu_peak):
-#         f_bound = None
-#         if len(nu_peak)==1:
-#             f_bound = (np.min(xdata), np.max(xdata))
-#         else:
-#             if i == 0:
-#                 f_bound = (np.min(xdata), p + (nu_peak[i+1] - p)/2)
-#             elif i==len(nu_peak)-1:
-#                 f_bound = (p + (nu_peak[i-1] - p)/2, np.max(xdata))
-#             else:
-#                 f_bound = (p + (nu_peak[i-1] - p)/2, p + (nu_peak[i+1] - p)/2)
-
-#         par_bounds = np.array([f_bound, (1.0,np.inf), (0, np.inf), (0, np.inf), (-np.inf, 0.0)]).T
-#         p0 = [p, 5.0, 0.1, 0.02, -0.5]
-#         popt, pcov = scipy.optimize.curve_fit(Lorentzian_power, xdata, ydata, sigma = sigma, p0 = p0, bounds = par_bounds)
-#         popt_arr.append(popt)
-#         pcov_arr.append(pcov)
-
-#     popt_arr = np.array(popt_arr)
-#     pcov_arr = np.array(pcov_arr)
-
-#     return popt_arr, pcov_arr
-
-# def get_rms(events, centroids, radius, PI_min=35, PI_max=1210, nu_min=1e-4, nu_max=100., split_time=512, bin_time = 1/1024, plot = False):
-    
-#     curve_A = events[0].to_lc(dt = bin_time, pi_low=PI_min, pi_high=PI_max, centroid = centroids[0], radius = radius)
-#     curve_B = events[1].to_lc(dt = bin_time, pi_low=PI_min, pi_high=PI_max, centroid = centroids[1], radius = radius)
-    
-#     average_CPDS = crossspec.AveragedCrossspectrum(curve_A, curve_B, segment_size=split_time, norm = 'frac')
-    
-#     if plot:
-#         f_res = 0.1
-#         plt.figure(figsize=(9,6))
-#         averaged_cross_log = average_CPDS.rebin_log(f=f_res)
-#         averaged_cross_log_err = average_CPDS.df*np.power(1.+f_res, range(len(averaged_cross_log.freq)))/2.
-#         plt.errorbar(averaged_cross_log.freq, averaged_cross_log.power*averaged_cross_log.freq, xerr=averaged_cross_log_err, yerr=averaged_cross_log.power_err*averaged_cross_log.freq, fmt='none', lw=0.5)
-#         plt.xscale('log')
-#         plt.ylim((1e-4,5*np.max(averaged_cross_log.power.real)))
-#         plt.yscale('log')
-#         plt.xlabel('Frequency (Hz)')
-#         plt.ylabel('Leahy Power')
-#         plt.ylabel(r'$\mathrm{\nu P_{\nu}\ (rms/mean)^{2}}$')
-#         plt.tight_layout()
-#         plt.show()
-# #         plt.savefig(plot_dir + 'averaged_cross_spectrum_' + str(int(split_time)) + 's.pdf')
-#         plt.close()
-    
-#     rms_square = np.sum(average_CPDS.power[(average_CPDS.freq > nu_min) * (average_CPDS.freq < nu_max)])*average_CPDS.df
-#     rms_square_err = np.sqrt(np.sum(np.square(average_CPDS.power_err[(average_CPDS.freq > nu_min) * (average_CPDS.freq < nu_max)])))*average_CPDS.df
-    
-#     if rms_square < 0.0:
-#         uplim = True
-#         rms = np.sqrt(rms_square + 2.6*rms_square_err)
-#     else:
-#         uplim = False
-#         rms = np.sqrt(rms_square)
-        
-#     rms_err = np.sqrt(np.sum(np.square(average_CPDS.power_err[(average_CPDS.freq > nu_min) * (average_CPDS.freq < nu_max)])))*average_CPDS.df/(2*rms)
-
-#     return rms, rms_err, uplim
-
-# def model_continuum_noise_zero_center(cpds, plot=True, plot_dir='/Users/sean/Desktop/', f_res = 0.5):
-
-#     chisq0 = np.sum(((cpds.power-np.mean(cpds.power))/ cpds.power_err) ** 2)
-
-#     popt, pcov = scipy.optimize.curve_fit(zero_center_Lorentzian, cpds.freq, cpds.power, sigma = cpds.power_err, \
-#                                           p0 = [0.1, 10.], bounds= [[0.0,0.0], [np.inf, np.inf]])
-#     chisq = np.sum(((cpds.power - zero_center_Lorentzian(cpds.freq, *popt)) / cpds.power_err) ** 2)
-
-#     if plot:
-#         cpds_log = cpds.rebin_log(f=f_res)
-#         temp_err = cpds.df*np.power(1.+f_res, range(len(cpds_log.freq)))/2.
-
-#         plt.figure(figsize=(9,6))
-#         plt.errorbar(cpds_log.freq, cpds_log.power*cpds_log.freq, xerr=temp_err, \
-#                      yerr=cpds_log.power_err*cpds_log.freq, fmt='none', lw=0.5, color='black')
-#         plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
-#                  np.concatenate([cpds_log.power*cpds_log.freq, [(cpds_log.power*cpds_log.freq)[-1]]]), where='post', color='black', lw=0.5)
-        
-#         plt.plot(cpds.freq,zero_center_Lorentzian(cpds.freq, *popt)*cpds.freq, color='red', lw=1.0)
-#         plt.xscale('log')
-#         plt.ylim((1e-6,3*np.max(cpds_log.power.real*cpds_log.freq)))
-#         plt.yscale('log')
-#         plt.xlabel('Frequency (Hz)')
-#         plt.ylabel(r'$\mathrm{\nu P_{\nu}\ (rms/mean)^{2}}$')
-#         plt.tight_layout()
-#         plt.savefig(plot_dir + 'CPDS_nuPnu_continuum_zero_center.pdf')
-#         plt.close()
-
-#         plt.figure(figsize=(9,6))
-#         plt.errorbar(cpds_log.freq, cpds_log.power, xerr=temp_err, \
-#                      yerr=cpds_log.power_err, fmt='none', lw=0.5, color='black')
-#         plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
-#                  np.concatenate([cpds_log.power, [cpds_log.power[-1]]]), where='post', color='black', lw=0.5)
-        
-#         plt.plot(cpds.freq,zero_center_Lorentzian(cpds.freq, *popt), color='red', lw=1.0)
-#         plt.xscale('log')
-#         plt.ylim((1e-6,3*np.max(cpds_log.power.real)))
-#         plt.yscale('log')
-#         plt.xlabel('Frequency (Hz)')
-#         plt.ylabel(r'$\mathrm{Power\ (rms/mean)^{2}/Hz}$')
-#         plt.tight_layout()
-#         plt.savefig(plot_dir + 'CPDS_Pnu_continuum_zero_center.pdf')
-#         plt.close()
-    
-#     return popt, pcov, chisq0, chisq
-
-
-
-# def model_continuum_noise(cpds, plot=True, plot_dir='/Users/sean/Desktop/', f_res = 0.5):
-#     n_L = 0
-#     L_args = []
-#     L_bounds = []
-#     chisq0 = np.sum(((cpds.power-np.mean(cpds.power))/ cpds.power_err) ** 2)
-#     chisq = []
-#     popt_list = []
-#     pcov_list = []
-#     del_chisq = -100000
-#     while del_chisq < 0.0:
-#         n_L += 1
-#         if n_L ==1:
-#             L_args = np.array([1.0, 0.1, 10.])
-#             L_bounds = np.array([[[0.0, np.max(cpds.freq)], [0.0, 2.0], [0,np.inf]]])
-#         else:
-#             L_args = np.vstack((L_args, [1.0, 0.1, 10.]))
-#             L_bounds = np.concatenate((L_bounds, [[(0.0, np.max(cpds.freq)), (0.0, 10.0), (0,np.inf)]]))
-                
-#         temp_p0 = L_args.T.flatten()
-#         temp_bounds = [L_bounds.T.flatten()[:3*n_L], L_bounds.T.flatten()[3*n_L:]]
-        
-#         popt, pcov = scipy.optimize.curve_fit(N_Lorentzian, cpds.freq, cpds.power, sigma = cpds.power_err, \
-#                                               p0 = temp_p0, bounds= temp_bounds)
-#         temp_chisq = np.sum(((cpds.power - N_Lorentzian(cpds.freq, *popt)) / cpds.power_err) ** 2)
-        
-#         if n_L==1:
-#             del_chisq = temp_chisq-chisq0
-#         else:
-#             del_chisq = temp_chisq-chisq[-1]
-#         chisq.append(temp_chisq)
-#         popt_list.append(popt)
-#         pcov_list.append(pcov)
-        
-#         L_args = np.array([popt[:n_L], popt[n_L:n_L + n_L], popt[n_L+n_L:n_L+n_L+n_L]]).T
-
-#         if plot:
-#             cpds_log = cpds.rebin_log(f=f_res)
-#             temp_err = cpds.df*np.power(1.+f_res, range(len(cpds_log.freq)))/2.
-
-#             plt.figure(figsize=(9,6))
-#             plt.errorbar(cpds_log.freq, cpds_log.power*cpds_log.freq, xerr=temp_err, \
-#                          yerr=cpds_log.power_err*cpds_log.freq, fmt='none', lw=0.5, color='black')
-#             plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
-#                      np.concatenate([cpds_log.power*cpds_log.freq, [(cpds_log.power*cpds_log.freq)[-1]]]), where='post', color='black', lw=0.5)
-            
-#             for i in range(n_L):
-#                 plt.plot(cpds.freq, Lorentzian(cpds.freq, *((L_args[i])))*cpds.freq, color='red', ls='dotted', lw=1.0)
-#             plt.plot(cpds.freq,N_Lorentzian(cpds.freq, *popt)*cpds.freq, color='red', lw=1.0)
-#             plt.xscale('log')
-#             plt.ylim((1e-6,3*np.max(cpds_log.power.real*cpds_log.freq)))
-#             plt.yscale('log')
-#             plt.xlabel('Frequency (Hz)')
-#             plt.ylabel(r'$\mathrm{\nu P_{\nu}\ (rms/mean)^{2}}$')
-#             plt.tight_layout()
-#             plt.savefig(plot_dir + 'CPDS_nuPnu_continuum_' + str(int(n_L)) + '_comps.pdf')
-#             plt.close()
-            
-#             plt.figure(figsize=(9,6))
-#             plt.errorbar(cpds_log.freq, cpds_log.power, xerr=temp_err, \
-#                          yerr=cpds_log.power_err, fmt='none', lw=0.5, color='black')
-#             plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
-#                      np.concatenate([cpds_log.power, [cpds_log.power[-1]]]), where='post', color='black', lw=0.5)
-
-#             for i in range(n_L):
-#                 plt.plot(cpds.freq, Lorentzian(cpds.freq, *((L_args[i]))), color='red', ls='dotted', lw=1.0)
-#             plt.plot(cpds.freq,N_Lorentzian(cpds.freq, *popt), color='red', lw=1.0)
-#             plt.xscale('log')
-#             plt.ylim((1e-6,3*np.max(cpds_log.power.real)))
-#             plt.yscale('log')
-#             plt.xlabel('Frequency (Hz)')
-#             plt.ylabel(r'$\mathrm{Power\ (rms/mean)^{2}/Hz}$')
-#             plt.tight_layout()
-#             plt.savefig(plot_dir + 'CPDS_Pnu_continuum_' + str(int(n_L)) + '_comps.pdf')
-#             plt.close()
-    
-#     return n_L, popt_list, pcov_list, chisq0, chisq
-
-
 
