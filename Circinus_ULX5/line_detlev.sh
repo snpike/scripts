@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RESULTS="/Users/sean/Desktop/tbabs_diskpbb_gauss_chisq.csv"
+RESULTS="./tbabs_simpl_diskbb_gauss_chisq.csv"
 
 if [ -e $RESULTS ]
 then
@@ -14,7 +14,7 @@ numsteps=1000
 dirnum=1
 while [ $dirnum -le $numsims ]
 do
-	dir="/Volumes/LaCie/AstroData/Circinus_ULX5/xmm/0824450301/0824450301_products/time_filt/"
+	dir="/Volumes/Samsung_1TB/AstroData/Circinus_ULX5/nustar"
 
    	cd $dir
 	echo "query yes" > sim.xco
