@@ -17,6 +17,7 @@ import stingray.crossspectrum as crossspec
 import stingray.gti as sting_gti
 import stingray.pulse.pulsar as plsr
 from stingray import stats
+from stingray.pulse.search import z_n_search
 
 class Lightcurve_ext(lc.Lightcurve):
     # Extend the stingray Lightcurve class to also hold onto an extraction region 
@@ -225,7 +226,7 @@ class EventList_ext(ev.EventList):
         return phase_bins, profile, profile_err, livetime_profile, z_stat
     
     def fold_events(self, *frequency_derivatives, time_intervals= None, pi_min=35, pi_max=1909, 
-                    region_filter=False, centroid = None, radius=None, ref_time=None, nbin = 64, weights = 1, gtis = None, expocorr=False, weight_pos=False):
+                    region_filter=False, centroid = None, radius=None, ref_time=None, nbin = 64, weights = 1, gtis = None, expocorr=False, weight_pos=False, z_n=2):
         
         # Epoch folding without livetime correction.
         # Includes region and energy filtering, position weighting, and custom weighting.
@@ -278,7 +279,7 @@ class EventList_ext(ev.EventList):
                                                            nbin=nbin, weights=weights * p_weights, gtis=gtis, expocorr=expocorr)
         
         
-        z_stat = plsr.z_n(fold_phases, n=2, norm=weights * p_weights)
+        z_stat = plsr.z_n(fold_phases, n=z_n, norm=weights * p_weights)
         
         return phase_bins, profile, profile_err, z_stat
 
@@ -513,31 +514,36 @@ def efold_search_ltcorr(events, f_min, f_max, f_steps, time_intervals=None, nbin
         #     summed_stat = stat.z2_n_probability(z_stat_A, err=summed_err)
         #     summed_real = 1.0 - plsr.fold_profile_probability(summed_stat, nbin)
 
-        eps = stats.z2_n_probability(float(z_stat), ntrial=len(f_arr))
+        eps = stats.z2_n_probability(float(z_stat), n=2, ntrial=len(f_arr))
         z_prob.append(1.0-eps)
 
     z_prob = np.array(z_prob)
     return f_arr, z_prob
 
-def efold_search(events, f_min, f_max, f_steps, time_intervals=None, nbin = 32, pi_min = 35, pi_max = 260, region_filter=False):
+def efold_search(events, f_min, f_max, f_steps, ref_time=None, time_intervals=None, nbin = 32, pi_min = 35, pi_max = 260, region_filter=False, weight_pos=False, z_n=2):
     # Scan over frequency and do livetime corrected epoch folding.
+
+    if ref_time is None:
+        ref_time=events.time[0]
 
     f_arr = np.linspace(f_min, f_max, num = f_steps)
     z_prob = []
+    z_stat_arr =[]
     for f in tqdm(f_arr):
         phase_bins, profile, profile_err, z_stat = \
             events.fold_events(f, time_intervals = time_intervals, \
-                                    nbin = nbin, ref_time = events.time[0], region_filter=region_filter, pi_min=pi_min, pi_max=pi_max, weight_pos=True)
-
-        eps = stats.z2_n_probability(float(z_stat), ntrial=len(f_arr))
+                                    nbin = nbin, ref_time = ref_time, region_filter=region_filter, pi_min=pi_min, pi_max=pi_max, weight_pos=weight_pos, z_n=z_n)
+        z_stat_arr.append(z_stat)
+        eps = stats.z2_n_probability(float(z_stat), n=z_n, ntrial=len(f_arr))
         z_prob.append(1.0-eps)
 
+    z_stat_arr = np.array(z_stat_arr)
     z_prob = np.array(z_prob)
-    return f_arr, z_prob
+    return f_arr, z_prob, z_stat_arr
 
 
-def efold_search_AandB(events_A, events_B, f_min, f_max, f_steps, time_intervals=None, nbin = 32, pi_min = 35, pi_max = 260):
-    # Scan over frequency and do livetime corrected epoch folding.
+def efold_search_AandB(events_A, events_B, f_min, f_max, f_steps, fdots=None, time_intervals=None, nbin = 32, pi_min = 35, pi_max = 260, return_peak = False, z_n=2):
+    # Scan over frequency and do epoch folding.
 
     A_mask = np.sqrt(np.square(events_A.x - events_A.centroid[0]) + np.square(events_A.y - events_A.centroid[1])) <= events_A.radius
     B_mask = np.sqrt(np.square(events_B.x - events_B.centroid[0]) + np.square(events_B.y - events_B.centroid[1])) <= events_B.radius
@@ -548,19 +554,66 @@ def efold_search_AandB(events_A, events_B, f_min, f_max, f_steps, time_intervals
     temp_pi = np.concatenate([events_A.pi[A_mask], events_B.pi[B_mask]])[sorted_arg]
 
     joined_ev = EventList_ext(time=temp_time, gti=sting_gti.cross_two_gtis(events_A.gti, events_B.gti) , pi=temp_pi)
+    ref_time = joined_ev.time[0]
     f_arr = np.linspace(f_min, f_max, num = f_steps)
-    z_prob = []
-    z_stat_arr =[]
-    for f in tqdm(f_arr):
-        phase_bins, profile, profile_err, z_stat = \
-            joined_ev.fold_events(f, time_intervals = time_intervals, \
-                                    nbin = nbin, ref_time = joined_ev.time[0], region_filter=False, pi_min=pi_min, pi_max=pi_max, weight_pos=False)
-        z_stat_arr.append(z_stat)
-        eps = stats.z2_n_probability(float(z_stat), ntrial=len(f_arr))
-        z_prob.append(1.0-eps)
 
-    z_prob = np.array(z_prob)
-    return f_arr, z_prob, z_stat_arr
+    # if fdots:
+    #     fgrid, fdgrid, z_stats = z_n_search(joined_ev.time, f_arr, nharm=z_n, nbin=nbin, gti=joined_ev.gti, fdots=fdots, segment_size=1e6)
+    # else:
+    #     fgrid, z_stats = z_n_search(joined_ev.time, f_arr, nharm=z_n, nbin=nbin, gti=joined_ev.gti, fdots=fdots, segment_size=1e6)
+    
+    pi_mask = ((joined_ev.pi > pi_min) * (joined_ev.pi < pi_max)).astype(bool)
+    # The times to actually fold into a profile    
+    fold_times = joined_ev.time[pi_mask] - ref_time
+    z_stats=[]
+    if fdots is not None:
+        f_grid, fd_grid = np.meshgrid(f_arr, fdots)
+        z_stats = np.zeros(f_grid.shape)
+        for x in tqdm(range(f_steps)):
+            for y in range(len(fdots)):
+                # The phase of each folded event
+                fold_phases = plsr.pulse_phase(fold_times, *[f_grid[y,x], fd_grid[y,x]])
+                z_stats[y,x] = plsr.z_n(fold_phases, n=z_n)
+
+        z_prob = stats.z2_n_logprobability(z_stats, ntrial=(f_steps*len(fdots)), n=z_n)
+
+        if return_peak:
+            max_yx =  np.unravel_index(np.argmax(z_stats, axis=None), z_stats.shape)
+            phase_bins, profile, profile_err, _ = \
+                joined_ev.fold_events(*[f_grid[max_yx], fd_grid[max_yx]], time_intervals = time_intervals, \
+                                        nbin = nbin, ref_time = ref_time, region_filter=False, pi_min=pi_min, pi_max=pi_max, weight_pos=False, z_n=z_n)
+
+            return f_grid, fd_grid, z_prob, z_stats, phase_bins, profile, profile_err
+        
+        else:
+            return f_grid, fd_grid, z_prob, z_stats
+
+    else: 
+        for f in tqdm(f_arr):
+            # The phase of each folded event
+            fold_phases = plsr.pulse_phase(fold_times, f)
+            
+            z_stat = plsr.z_n(fold_phases, n=z_n)
+
+            # _, _, _, z_stat = \
+            #     joined_ev.fold_events(f, time_intervals = time_intervals, \
+            #                             nbin = nbin, ref_time = joined_ev.time[0], region_filter=False, pi_min=pi_min, pi_max=pi_max, weight_pos=False, z_n=z_n)
+
+            z_stats.append(z_stat)
+        
+        z_stats = np.array(z_stats)
+        z_prob = stats.z2_n_logprobability(z_stats, ntrial=len(f_arr), n=z_n)
+
+
+        if return_peak:
+            phase_bins, profile, profile_err, _ = \
+                joined_ev.fold_events(f_arr[np.argmax(z_stats)], time_intervals = time_intervals, \
+                                        nbin = nbin, ref_time = ref_time, region_filter=False, pi_min=pi_min, pi_max=pi_max, weight_pos=False, z_n=z_n)
+
+            return f_arr, z_prob, z_stats, phase_bins, profile, profile_err
+        
+        else:
+            return f_arr, z_prob, z_stats
 
 
 def PI_to_eV(PI):
@@ -577,25 +630,25 @@ def eV_to_PI(eV):
         
 #     return divisors[np.argmin(remainders)]
 
-# def power_law(f, B, gamma):
-#     return B*np.power(f,gamma)
+def power_law(f, B):
+    return B*np.power(f,-2.0)
 
-# def Lorentzian(f, peakf, Q, A):
-#     # gamma = HWHM
-#     # peakf = centroid frequency
-#     gamma = peakf/(2.0 * Q)
-#     return (A * np.square(gamma)/(np.pi*gamma*(np.square(f-peakf) + np.square(gamma))))
+def Lorentzian(f, peakf, Q, A):
+    # gamma = HWHM
+    # peakf = centroid frequency
+    gamma = peakf/(2.0 * Q)
+    return (A * np.square(gamma)/(np.pi*gamma*(np.square(f-peakf) + np.square(gamma))))
 
-# def zero_center_Lorentzian(f, gamma, A):
-#     # gamma = HWHM
-#     # peakf = centroid frequency
-#     return (A * np.square(gamma)/(np.pi*gamma*(np.square(f) + np.square(gamma))))
+def zero_center_Lorentzian(f, gamma, A):
+    # gamma = HWHM
+    # peakf = centroid frequency
+    return (A * np.square(gamma)/(np.pi*gamma*(np.square(f) + np.square(gamma))))
 
 # def Lorentzian_C(f, peakf, Q, A, C):
 #     return Lorentzian(f, peakf, Q, A) + C
 
-# def Lorentzian_power(f, peakf, Q, A, B, gamma):
-#     return Lorentzian(f, peakf, Q, A) + power_law(f, B, gamma)
+def Lorentzian_power(f, peakf, Q, A, B):
+    return Lorentzian(f, peakf, Q, A) + power_law(f, B)
 
 # def N_Lorentzian(f, *args):
 #     N = int(len(args)/3)
@@ -633,25 +686,25 @@ def eV_to_PI(eV):
         
 #     return model
 
-# def QPO_scan(cross_spec, f_min=1e-4, f_max=2000., f_bin=1000, n_lorentz = 1):
-#     f_mask = (cross_spec.freq > f_min) * (cross_spec.freq < f_max)
-#     freq_steps = np.logspace(np.log10(cross_spec.freq[f_mask][0]), np.log10(cross_spec.freq[f_mask][-1]), f_bin + 2)
-#     xdata = cross_spec.freq[f_mask]
-#     ydata = cross_spec.power[f_mask]
-#     sigma = cross_spec.power_err[f_mask]
+def QPO_scan(cross_spec, f_min=1e-4, f_max=2000., f_bin=1000, n_lorentz = 1):
+    f_mask = (cross_spec.freq > f_min) * (cross_spec.freq < f_max)
+    freq_steps = np.logspace(np.log10(cross_spec.freq[f_mask][0]), np.log10(cross_spec.freq[f_mask][-1]), f_bin + 2)
+    xdata = cross_spec.freq[f_mask]
+    ydata = cross_spec.power[f_mask]
+    sigma = cross_spec.power_err[f_mask]
     
-#     pl_popt, pl_pcov = scipy.optimize.curve_fit(power_law, xdata, ydata, sigma = sigma, p0 = [10., -1.0], \
-#                                                 bounds=np.array([(0.0, np.inf), (-np.inf, 0.0)]).T)
-#     print(pl_popt)
-#     chisq0 = np.sum(((ydata - power_law(xdata, *pl_popt)) / sigma) ** 2)
-#     chisq = []
-#     for i in tqdm(range(len(freq_steps[1:-1]))):
-#         f = freq_steps[i+1]
-#         popt, pcov = scipy.optimize.curve_fit(Lorentzian_power, xdata, ydata, sigma = sigma, p0 = [f, 2.0, 0.1, pl_popt[0], pl_popt[1]], \
-#                                               bounds=np.array([(f - (f-freq_steps[i])/2., f + (freq_steps[i+2] - f)/2.0), (1.0,np.inf), (0.0,np.inf), (0.0, np.inf), (-np.inf, 0.0)]).T)
-#         chisq.append(np.sum(((ydata - Lorentzian_power(xdata, *popt)) / sigma) ** 2))
-#     dof = len(xdata)-len(popt)
-#     return freq_steps[1:-1], chisq0, np.array(chisq), dof
+    pl_popt, pl_pcov = scipy.optimize.curve_fit(power_law, xdata, ydata, sigma = sigma, p0 = [1e-5], \
+                                                bounds=np.array([(0.0), (np.inf)]))
+    print(pl_popt)
+    chisq0 = np.sum(((ydata - power_law(xdata, *pl_popt)) / sigma) ** 2)
+    chisq = []
+    for i in tqdm(range(len(freq_steps[1:-1]))):
+        f = freq_steps[i+1]
+        popt, pcov = scipy.optimize.curve_fit(Lorentzian_power, xdata, ydata, sigma = sigma, p0 = [f, 2.0, 0.1, pl_popt[0]], \
+                                              bounds=np.array([(f - (f-freq_steps[i])/2., f + (freq_steps[i+2] - f)/2.0), (1.0,np.inf), (0.0,np.inf), (0.0, np.inf)]).T)
+        chisq.append(np.sum(((ydata - Lorentzian_power(xdata, *popt)) / sigma) ** 2))
+    dof = len(xdata)-len(popt)
+    return freq_steps[1:-1], chisq0, np.array(chisq), dof
 
 
 
@@ -721,51 +774,97 @@ def eV_to_PI(eV):
 
 #     return rms, rms_err, uplim
 
-# def model_continuum_noise_zero_center(cpds, plot=True, plot_dir='/Users/sean/Desktop/', f_res = 0.5):
+def model_continuum_noise_zero_center(cpds, plot=True, plot_dir='/Users/sean/Desktop/', plot_name='CPDS_Pnu_continuum_zero_center.pdf', nu_max = 1e5, f_res = 0.5):
+    nu_mask = cpds.freq < nu_max
+    chisq0 = np.sum(((cpds.power[nu_mask]-np.mean(cpds.power[nu_mask]))/ cpds.power_err[nu_mask]) ** 2)
 
-#     chisq0 = np.sum(((cpds.power-np.mean(cpds.power))/ cpds.power_err) ** 2)
+    popt, pcov = scipy.optimize.curve_fit(zero_center_Lorentzian, cpds.freq[nu_mask], cpds.power[nu_mask], sigma = cpds.power_err[nu_mask], \
+                                          p0 = [np.min(cpds.freq[nu_mask]), 10.], bounds= [[0.0,0.0], [np.inf, np.inf]])
+    chisq = np.sum(((cpds.power[nu_mask] - zero_center_Lorentzian(cpds.freq[nu_mask], *popt)) / cpds.power_err[nu_mask]) ** 2)
 
-#     popt, pcov = scipy.optimize.curve_fit(zero_center_Lorentzian, cpds.freq, cpds.power, sigma = cpds.power_err, \
-#                                           p0 = [0.1, 10.], bounds= [[0.0,0.0], [np.inf, np.inf]])
-#     chisq = np.sum(((cpds.power - zero_center_Lorentzian(cpds.freq, *popt)) / cpds.power_err) ** 2)
+    if plot:
+        cpds_log = cpds.rebin_log(f=f_res)
+        temp_err = cpds.df*np.power(1.+f_res, range(len(cpds_log.freq)))/2.
 
-#     if plot:
-#         cpds_log = cpds.rebin_log(f=f_res)
-#         temp_err = cpds.df*np.power(1.+f_res, range(len(cpds_log.freq)))/2.
-
-#         plt.figure(figsize=(9,6))
-#         plt.errorbar(cpds_log.freq, cpds_log.power*cpds_log.freq, xerr=temp_err, \
-#                      yerr=cpds_log.power_err*cpds_log.freq, fmt='none', lw=0.5, color='black')
-#         plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
-#                  np.concatenate([cpds_log.power*cpds_log.freq, [(cpds_log.power*cpds_log.freq)[-1]]]), where='post', color='black', lw=0.5)
+        # plt.figure(figsize=(9,6))
+        # plt.errorbar(cpds_log.freq, cpds_log.power*cpds_log.freq, xerr=temp_err, \
+        #              yerr=cpds_log.power_err*cpds_log.freq, fmt='none', lw=0.5, color='black')
+        # plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
+        #          np.concatenate([cpds_log.power*cpds_log.freq, [(cpds_log.power*cpds_log.freq)[-1]]]), where='post', color='black', lw=0.5)
         
-#         plt.plot(cpds.freq,zero_center_Lorentzian(cpds.freq, *popt)*cpds.freq, color='red', lw=1.0)
-#         plt.xscale('log')
-#         plt.ylim((1e-6,3*np.max(cpds_log.power.real*cpds_log.freq)))
-#         plt.yscale('log')
-#         plt.xlabel('Frequency (Hz)')
-#         plt.ylabel(r'$\mathrm{\nu P_{\nu}\ (rms/mean)^{2}}$')
-#         plt.tight_layout()
-#         plt.savefig(plot_dir + 'CPDS_nuPnu_continuum_zero_center.pdf')
-#         plt.close()
+        # plt.plot(cpds.freq,zero_center_Lorentzian(cpds.freq, *popt)*cpds.freq, color='red', lw=1.0)
+        # plt.xscale('log')
+        # plt.ylim((1e-6,3*np.max(cpds_log.power.real*cpds_log.freq)))
+        # plt.yscale('log')
+        # plt.xlabel('Frequency (Hz)')
+        # plt.ylabel(r'$\mathrm{\nu P_{\nu}\ (rms/mean)^{2}}$')
+        # plt.tight_layout()
+        # plt.savefig(plot_dir + plot_name)
+        # plt.close()
 
-#         plt.figure(figsize=(9,6))
-#         plt.errorbar(cpds_log.freq, cpds_log.power, xerr=temp_err, \
-#                      yerr=cpds_log.power_err, fmt='none', lw=0.5, color='black')
-#         plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
-#                  np.concatenate([cpds_log.power, [cpds_log.power[-1]]]), where='post', color='black', lw=0.5)
+        plt.figure(figsize=(9,6))
+        plt.errorbar(cpds_log.freq, cpds_log.power, xerr=temp_err, \
+                     yerr=cpds_log.power_err, fmt='none', lw=0.5, color='black')
+        plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
+                 np.concatenate([cpds_log.power, [cpds_log.power[-1]]]), where='post', color='black', lw=0.5)
         
-#         plt.plot(cpds.freq,zero_center_Lorentzian(cpds.freq, *popt), color='red', lw=1.0)
-#         plt.xscale('log')
-#         plt.ylim((1e-6,3*np.max(cpds_log.power.real)))
-#         plt.yscale('log')
-#         plt.xlabel('Frequency (Hz)')
-#         plt.ylabel(r'$\mathrm{Power\ (rms/mean)^{2}/Hz}$')
-#         plt.tight_layout()
-#         plt.savefig(plot_dir + 'CPDS_Pnu_continuum_zero_center.pdf')
-#         plt.close()
+        plt.plot(cpds.freq,zero_center_Lorentzian(cpds.freq, *popt), color='red', lw=1.0)
+        plt.xscale('log')
+        plt.ylim((1e-6,3*np.max(cpds_log.power.real)))
+        plt.yscale('log')
+        plt.xlabel('Frequency (Hz)')
+        plt.ylabel(r'$\mathrm{Power\ (rms/mean)^{2}/Hz}$')
+        plt.tight_layout()
+        plt.savefig(plot_dir + plot_name)
+        plt.close()
     
-#     return popt, pcov, chisq0, chisq
+    return popt, pcov, chisq0, chisq
+
+def model_continuum_noise_pl(cpds, plot=True, plot_dir='/Users/sean/Desktop/', plot_name='CPDS_Pnu_continuum_pl.pdf', nu_max = 1e5, f_res = 0.5):
+    nu_mask = cpds.freq < nu_max
+    chisq0 = np.sum(((cpds.power[nu_mask]-np.mean(cpds.power[nu_mask]))/ cpds.power_err[nu_mask]) ** 2)
+
+    popt, pcov = scipy.optimize.curve_fit(power_law, cpds.freq[nu_mask], cpds.power[nu_mask], sigma = cpds.power_err[nu_mask], \
+                                          p0 = [1e-5], bounds= [[0.0], [np.inf]])
+    chisq = np.sum(((cpds.power[nu_mask] - power_law(cpds.freq[nu_mask], *popt)) / cpds.power_err[nu_mask]) ** 2)
+
+    if plot:
+        cpds_log = cpds.rebin_log(f=f_res)
+        temp_err = cpds.df*np.power(1.+f_res, range(len(cpds_log.freq)))/2.
+
+        # plt.figure(figsize=(9,6))
+        # plt.errorbar(cpds_log.freq, cpds_log.power*cpds_log.freq, xerr=temp_err, \
+        #              yerr=cpds_log.power_err*cpds_log.freq, fmt='none', lw=0.5, color='black')
+        # plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
+        #          np.concatenate([cpds_log.power*cpds_log.freq, [(cpds_log.power*cpds_log.freq)[-1]]]), where='post', color='black', lw=0.5)
+        
+        # plt.plot(cpds.freq,zero_center_Lorentzian(cpds.freq, *popt)*cpds.freq, color='red', lw=1.0)
+        # plt.xscale('log')
+        # plt.ylim((1e-6,3*np.max(cpds_log.power.real*cpds_log.freq)))
+        # plt.yscale('log')
+        # plt.xlabel('Frequency (Hz)')
+        # plt.ylabel(r'$\mathrm{\nu P_{\nu}\ (rms/mean)^{2}}$')
+        # plt.tight_layout()
+        # plt.savefig(plot_dir + plot_name)
+        # plt.close()
+
+        plt.figure(figsize=(9,6))
+        plt.errorbar(cpds_log.freq, cpds_log.power, xerr=temp_err, \
+                     yerr=cpds_log.power_err, fmt='none', lw=0.5, color='black')
+        plt.step(np.concatenate([cpds_log.freq-temp_err, [cpds_log.freq[-1]+temp_err[-1]]]), \
+                 np.concatenate([cpds_log.power, [cpds_log.power[-1]]]), where='post', color='black', lw=0.5)
+        
+        plt.plot(cpds.freq,power_law(cpds.freq, *popt), color='red', lw=1.0)
+        plt.xscale('log')
+        plt.ylim((1e-6,3*np.max(cpds_log.power.real)))
+        plt.yscale('log')
+        plt.xlabel('Frequency (Hz)')
+        plt.ylabel(r'$\mathrm{Power\ (rms/mean)^{2}/Hz}$')
+        plt.tight_layout()
+        plt.savefig(plot_dir + plot_name)
+        plt.close()
+    
+    return popt, pcov, chisq0, chisq
 
 
 
