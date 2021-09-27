@@ -313,7 +313,7 @@ class EventList_ext(ev.EventList):
                                   x=self.x[g_mask], y=self.y[g_mask], xy_weights = self.xy_weights[g_mask]))
         return split_ev
     
-    def to_lc(self, dt, pi_low = 35, pi_high = 1909, centroid=None, radius = None, tstart=None, tseg=None, gti=None):
+    def to_lc(self, dt, pi_low = 35, pi_high = 1909, centroid=None, radius = None, tstart=None, tseg=None, gti=None, buff = False, buffersize = 100.0):
         # Bin this Events instance into a Lightcurve object.
         # Unlike the built-in version, this includes region and energy filtering, and you can introduce a new gti.
 
@@ -322,6 +322,13 @@ class EventList_ext(ev.EventList):
 
         else:
             gti = sting_gti.cross_two_gtis(self.gti, gti)
+
+        if buff:
+            buffered_gti = []
+            for x,y in gti:
+                if np.abs(y-x) > 2*buffersize:
+                    buffered_gti.append([x+buffersize, y-buffersize])
+            gti = buffered_gti
 
         if tstart is None and gti is not None:
             tstart = gti[0][0]
