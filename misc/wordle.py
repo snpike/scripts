@@ -1,6 +1,6 @@
 import numpy as np
 
-def best_word(dictionary):
+def best_word(dictionary, scoring='letter'):
     # Takes in a word bank and scores each word according to how often its letters show up.
     # Right now it scores based on frequency in the entire dictionary. It could be better to score based on remaining words?
 
@@ -10,12 +10,16 @@ def best_word(dictionary):
     letter_scores = {}
     word_scores = {}
 
+    if scoring not in ['letter', 'word']:
+        scoring = 'letter'
+
     for letter in letters:
         score = 0
         for word in start_words:
-            # if letter in word:
-            #     score+=1
-            score += word.count(letter)
+            if scoring =='letter':
+                score += word.count(letter)
+            elif scoring == 'word':
+                score += (letter in word)
         letter_scores[letter]=score
 
     for word in dictionary:
@@ -70,6 +74,8 @@ while tries < 6:
             grey_letter = guess[i]
             if grey_letter in correct_letters:
                 for j,word in enumerate(words):
+                    # This doesn't actually do anything right now, but I'm leaving it as a placeholder
+                    # for if I try to actually deal with doubles and triples.
                     if (word.count(grey_letter) > 3) and (j not in del_indices):
                         del_indices.append(j)
             else:
