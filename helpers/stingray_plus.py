@@ -637,8 +637,8 @@ def eV_to_PI(eV):
         
 #     return divisors[np.argmin(remainders)]
 
-def power_law(f, B):
-    return B*np.power(f,-2.0)
+def power_law(f, B, gamma):
+    return B*np.power(f,gamma)
 
 def Lorentzian(f, peakf, Q, A):
     # gamma = HWHM
@@ -832,7 +832,7 @@ def model_continuum_noise_pl(cpds, plot=True, plot_dir='/Users/sean/Desktop/', p
     chisq0 = np.sum(((cpds.power[nu_mask]-np.mean(cpds.power[nu_mask]))/ cpds.power_err[nu_mask]) ** 2)
 
     popt, pcov = scipy.optimize.curve_fit(power_law, cpds.freq[nu_mask], cpds.power[nu_mask], sigma = cpds.power_err[nu_mask], \
-                                          p0 = [1e-5], bounds= [[0.0], [np.inf]])
+                                          p0 = [1e-5, -2], bounds= [[0.0, -np.inf], [np.inf, 0.0]])
     chisq = np.sum(((cpds.power[nu_mask] - power_law(cpds.freq[nu_mask], *popt)) / cpds.power_err[nu_mask]) ** 2)
 
     if plot:
