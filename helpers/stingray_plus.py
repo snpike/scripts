@@ -63,6 +63,33 @@ class EventList_ext(ev.EventList):
         self.y = y
         self.xy_weights = np.ones(np.shape(self.time))
 
+    def extract_region(self, centroid=None, radius=None):
+        # Right now, region info has to be in detector coordinates
+        # Centroid must be of the form [float, float] and radius must be a float
+        extract_centroid = centroid
+        if (centroid == None):
+            if (self.centroid==None):
+                print('No centroid provided or saved. Exiting.')
+                return None
+            else:
+                extract_centroid = self.centroid
+
+        extract_radius = radius
+        if (radius == None):
+            if (self.radius==None):
+                print('No radius provided or saved. Exiting.')
+                return None
+            else:
+                extract_radius = self.radius
+
+        reg_mask = np.sqrt(np.square(self.x-extract_centroid[0]) + np.square(self.y-extract_centroid[1])) < extract_radius
+
+        extracted_ev = EventList_ext(time=self.time[reg_mask], ncounts=np.sum(reg_mask), mjdref=self.mjdref, dt=self.dt, notes=self.notes, gti=self.gti, pi=self.pi[reg_mask], \
+            prior=self.prior[reg_mask], x=self.x[reg_mask], y=self.y[reg_mask], xy_weights = self.xy_weights[reg_mask], centroid=extract_centroid, radius=extract_radius)
+
+        return(extracted_ev)
+
+
     def join(self, other):
         ev_temp = super().join(other)
 
