@@ -656,6 +656,19 @@ def PI_to_eV(PI):
 def eV_to_PI(eV):
     return (eV-1600)/40
 
+def PF(profile):
+    return (np.max(profile) - np.min(profile))/(np.max(profile) + np.min(profile))
+
+def PF_err(profile, profile_err):
+    temp_PF = PF(profile)
+    A = np.max(profile)
+    B = np.min(profile)
+    A_err = profile_err[np.argmax(profile)]
+    B_err = profile_err[np.argmin(profile)]
+    plus = (1./(A-B)) + (1./(A+B))
+    minus = (1./(A-B)) - (1./(A+B))
+    return temp_PF * np.sqrt(np.square(A_err*minus) + np.square(B_err*plus))
+
 # def minimize_remainder(arr, min_div, max_div):
 #     divisors = np.linspace(min_div, max_div, num=100)
 #     remainders = []
