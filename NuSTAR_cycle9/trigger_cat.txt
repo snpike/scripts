@@ -1,0 +1,991 @@
+9955641598	23/01/11	19:07:44.00	Unknown	320.19	-30.58	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9942575073	22/12/29	17:47:28.00	Known	70.11	+44.48	0.5	MAXI Known Source detection.
+9938723477	22/12/25	21:27:31.00	Known	302.90	+38.13	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9930725460	22/12/17	21:42:35.00	Known	256.45	-43.93	0.5	MAXI Known Source detection.
+9917891006	22/12/04	02:24:56.00	Known	51.65	+28.71	0.5	MAXI Known Source detection.
+9886339877	22/11/03	09:12:54.00	Known	352.38	+19.96	0.5	MAXI Known Source detection.
+9880665205	22/10/28	20:57:54.00	Unknown	215.10	-36.88	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9880665205	22/10/28	20:57:54.00	Unknown	214.91	-36.84	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9874022123	22/10/22	00:54:55.00	Known	236.43	-47.56	0.5	MAXI Known Source detection.
+9869163312	22/10/17	05:39:40.00	Unknown	116.86	+39.41	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9869163312	22/10/17	05:39:40.00	Unknown	116.75	+39.29	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9866373424	22/10/14	11:44:17.00	Known	264.43	-27.11	0.5	MAXI Known Source detection.
+9866124233	22/10/14	03:54:40.00	Known	294.16	+22.15	0.5	MAXI Known Source detection.
+9861522437	22/10/09	15:31:12.00	Unknown	287.78	+20.11	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9851726690	22/09/29	22:06:26.00	Known	136.17	-54.15	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9848740963	22/09/26	21:22:49.00	Known	54.16	+0.88	0.5	MAXI Known Source detection.
+9837471908	22/09/15	13:47:19.00	Known	275.67	-0.91	0.5	MAXI Known Source detection.
+9835435758	22/09/13	12:27:20.00	Known	322.93	+12.46	0.5	MAXI Known Source detection.
+9828225714	22/09/06	06:18:55.00	Known	255.33	-46.35	0.5	MAXI Known Source detection.
+9825892529	22/09/03	06:04:11.00	Known	358.77	+28.63	0.5	MAXI Known Source detection.
+9817735757	22/08/26	21:46:43.00	Known	321.88	+11.48	0.5	MAXI Known Source detection.
+9822569000	22/08/31	17:10:30.00	Known	141.00	-31.61	0.5	MAXI Known Source detection.
+9820426736	22/08/29	12:31:24.00	Known	255.57	-49.65	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9810128029	22/08/19	03:18:45.00	Known	271.94	-36.46	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9796473677	22/08/05	14:32:22.00	Known	261.47	-30.40	0.5	MAXI Known Source detection.
+9792124463	22/08/01	03:41:21.00	Known	277.73	-9.90	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9788849996	22/07/28	22:23:45.00	Known	248.50	-47.39	0.5	MAXI Known Source detection.
+9782079256	22/07/22	02:28:23.00	Known	138.43	-64.79	0.5	MAXI Known Source detection.
+9771896615	22/07/11	15:52:35.00	Known	243.18	-52.42	0.5	MAXI Known Source detection.
+9771022907	22/07/11	00:52:04.00	Known	257.83	-32.47	0.5	MAXI Known Source detection.
+9768719964	22/07/08	21:08:17.00	Unknown	96.00	+38.90	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9766598157	22/07/06	17:33:25.00	Unknown	0.22	-16.47	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9761384289	22/07/01	10:36:18.00	Known	51.42	+28.36	0.5	MAXI Known Source detection.
+9748324600	22/06/18	10:23:28.00	Unknown	103.86	-1.40	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9748324600	22/06/18	10:23:28.00	Unknown	103.55	-1.35	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9748729855	22/06/18	22:05:14.00	Unknown	299.23	+3.47	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9748729855	22/06/18	22:05:14.00	Known	298.97	+3.49	0.5	MAXI Known Source detection.
+9737849997	22/06/07	13:38:34.00	Known	236.79	-47.67	0.5	MAXI Known Source detection.
+9737571375	22/06/07	17:33:06.00	Known	257.91	-25.89	0.5	MAXI Known Source detection.
+9737849998	22/06/07	09:50:00.00	Unknown	274.22	-19.51	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9737849999	22/06/07	07:32:38.00	Known	274.60	-19.90	0.5	MAXI Known Source detection.
+9729526492	22/05/30	16:24:18.00	Known	267.20	-35.91	0.5	MAXI Known Source detection.
+9722624233	22/05/23	18:36:29.00	Known	294.16	+22.15	0.5	MAXI Known Source detection.
+9713758386	22/05/14	23:24:27.00	Unknown	246.86	+61.44	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9713758386	22/05/14	23:24:27.00	Unknown	245.75	+61.66	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9705216502	22/05/06	06:28:24.00	Unknown	239.70	-26.67	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9705216502	22/05/06	06:28:24.00	Unknown	239.52	-27.03	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9697324725	22/04/28	09:49:56.00	Known	281.84	-3.30	0.5	MAXI Known Source detection.
+9694849999	22/04/25	10:18:49.00	Known	273.40	-11.90	0.5	MAXI Known Source detection.
+9683541215	22/04/14	16:17:06.00	Unknown	51.28	-0.35	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9672184033	22/04/03	04:33:24.00	Known	51.27	+29.27	0.5	MAXI Known Source detection.
+9661224326	22/03/23	07:16:55.00	Known	91.68	+21.95	0.5	MAXI Known Source detection.
+9648001812	22/03/10	00:28:22.00	Unknown	168.61	+23.45	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9623521891	22/02/13	15:11:35.00	Known	263.71	-21.89	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9623521891	22/02/13	15:11:35.00	Known	263.71	-21.89	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9618722650	22/02/08	22:06:19.00	Known	256.76	-32.68	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9614527285	22/02/04	16:05:19.00	Known	287.19	-6.01	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9604376146	22/01/25	10:42:40.00	Unknown	107.28	-15.92	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9604376146	22/01/25	10:42:40.00	Unknown	106.82	-15.49	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9594210839	22/01/15	06:18:17.00	Known	192.97	-28.64	0.5	MAXI Known Source detection.
+9578758877	21/12/30	23:16:02.00	Known	252.67	+39.57	0.5	MAXI Known Source detection.
+9575764628	21/12/27	23:32:07.00	Unknown	131.68	-3.50	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9575764628	21/12/27	23:32:07.00	Unknown	131.93	-3.50	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9573117444	21/12/25	03:22:38.00	Unknown	126.92	-7.18	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9573117444	21/12/25	03:22:38.00	Unknown	126.93	-7.18	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9573117444	21/12/25	03:22:38.00	Unknown	126.59	-7.33	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9566013095	21/12/18	01:01:34.00	Unknown	137.28	-4.11	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9566013095	21/12/18	01:01:34.00	Unknown	137.28	-4.11	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9563789049	21/12/15	22:48:57.00	Known	311.13	-31.15	0.5	MAXI Known Source detection.
+9561224463	21/12/13	06:37:17.00	Known	277.73	-9.90	0.5	MAXI Known Source detection.
+9551214600	21/12/03	07:24:55.00	Known	116.60	+29.06	0.5	MAXI Known Source detection.
+9544849997	21/11/26	14:58:38.00	Known	115.80	+29.10	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9545423966	21/11/27	12:46:39.00	Known	286.36	+9.40	0.5	MAXI Known Source detection.
+9543899764	21/11/25	23:26:05.00	Known	275.92	-30.36	0.5	MAXI Known Source detection.
+9535226521	21/11/17	06:22:17.00	Known	288.45	+0.42	0.5	MAXI Known Source detection.
+9535847777	21/11/17	02:19:50.00	Known	342.80	+16.20	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9533572830	21/11/15	16:31:28.00	Unknown	122.98	-25.71	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9533572830	21/11/15	16:31:28.00	Unknown	122.87	-25.67	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9531672917	21/11/13	19:43:51.00	Known	267.42	-20.47	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9504223168	21/10/17	06:22:31.00	Unknown	263.77	-27.23	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9504223168	21/10/17	06:22:31.00	Unknown	263.54	-27.35	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+9498275857	21/10/11	08:37:13.00	Known	84.38	+26.17	0.5	MAXI Known Source detection.
+9499476245	21/10/12	14:49:08.00	Known	274.38	-24.90	0.5	MAXI Known Source detection.
+9494373721	21/10/07	11:57:12.00	Known	292.79	+22.32	0.5	MAXI Known Source detection.
+9480023980	21/09/23	00:49:31.00	Known	296.26	+26.72	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9480023980	21/09/23	00:49:31.00	Known	296.26	+26.72	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9471239049	21/09/14	06:10:12.00	Known	311.18	-31.58	0.5	MAXI Known Source detection.
+9469674478	21/09/12	20:11:42.00	Known	287.44	+8.85	0.5	MAXI Known Source detection.
+9449894776	21/08/23	11:27:46.00	Known	275.92	-30.36	0.5	MAXI Known Source detection.
+9439893223	21/08/13	07:44:13.00	Known	116.17	+3.55	0.5	MAXI Known Source detection.
+9417450876	21/07/22	13:56:23.00	Known	181.91	+39.54	0.5	MAXI Known Source detection.
+9416424939	21/07/21	12:22:14.00	Known	242.96	-52.56	0.5	MAXI Known Source detection.
+9416424939	21/07/21	12:22:14.00	Known	242.96	-52.56	0.5	MAXI Known Source detection.
+9404728808	21/07/09	22:12:43.00	Unknown	282.40	-23.79	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9404728808	21/07/09	22:12:43.00	Unknown	282.55	-23.77	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+9402849999	21/07/07	23:59:59.00	Known	288.80	+10.95	0.5	MAXI Known Source detection.
+9396421890	21/07/01	12:48:02.00	Known	262.85	-22.78	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9387425417	21/06/22	12:45:08.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+9387326178	21/06/22	09:36:50.00	Known	137.67	-53.34	0.5	MAXI Known Source detection.
+9384849999	21/06/19	22:12:45.00	Known	84.75	+26.32	0.5	MAXI Known Source detection.
+9376422379	21/06/11	12:00:28.00	Known	236.30	-47.98	0.5	MAXI Known Source detection.
+9376688702	21/06/11	20:30:26.00	Known	78.86	-39.85	0.5	MAXI Known Source detection.
+9375367466	21/06/10	11:18:10.00	Known	146.31	-30.84	0.5	MAXI Known Source detection.
+9372671890	21/06/07	19:43:08.00	Unknown	263.37	-22.28	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9372671890	21/06/07	19:43:08.00	Unknown	263.43	-22.62	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9372849999	21/06/07	02:42:33.00	Known	256.60	-43.00	0.5	MAXI Known Source detection.
+9370890218	21/06/05	00:31:27.00	Known	54.20	+0.59	0.5	MAXI Known Source detection.
+9367443743	21/06/02	12:04:08.00	Unknown	44.63	-2.67	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9364899222	21/05/30	22:08:01.00	Known	54.20	+0.59	0.5	MAXI Known Source detection.
+9363772139	21/05/29	23:49:38.00	Known	256.65	-31.30	0.5	MAXI Known Source detection.
+9362758075	21/05/28	22:51:55.00	Unknown	239.54	+5.98	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9355431084	21/05/21	13:04:18.00	Unknown	264.67	-61.75	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9355431084	21/05/21	13:04:18.00	Unknown	264.72	-61.38	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9349620869	21/05/15	18:54:03.00	Known	263.51	-17.84	0.5	MAXI Known Source detection.
+9349620869	21/05/15	18:54:03.00	Known	263.51	-17.84	0.5	MAXI Known Source detection.
+9347849998	21/05/13	17:24:35.00	Known	273.10	-26.70	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9335675984	21/05/01	19:50:25.00	Unknown	270.92	-29.80	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9335675984	21/05/01	19:50:25.00	Unknown	270.37	-30.15	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+9318576434	21/04/14	16:35:35.00	Known	136.14	-53.23	0.5	MAXI Known Source detection.
+9316574207	21/04/12	17:23:20.00	Known	276.86	-10.24	0.5	MAXI Known Source detection.
+9306275214	21/04/02	09:00:01.00	Known	266.22	-30.88	0.5	MAXI Known Source detection.
+9296124410	21/03/23	04:11:39.00	Known	200.62	-62.06	0.5	MAXI Known Source detection.
+9293849998	21/03/20	21:21:01.00	Unknown	4.73	-47.48	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9293849998	21/03/20	21:21:01.00	Unknown	4.60	-47.80	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+9290723422	21/03/17	21:27:59.00	Known	261.78	-29.70	0.5	MAXI Known Source detection.
+9290276009	21/03/17	07:30:14.00	Known	287.16	+0.94	0.5	MAXI Known Source detection.
+9290276009	21/03/17	07:30:14.00	Known	287.16	+0.94	0.5	MAXI Known Source detection.
+9284025708	21/03/11	01:01:05.00	Known	246.90	-52.08	0.5	MAXI Known Source detection.
+9279849999	21/03/06	03:39:59.00	Known	287.82	+0.58	0.5	MAXI Known Source detection.
+9277426009	21/03/04	12:44:01.00	Known	287.38	+0.97	0.5	MAXI Known Source detection.
+9267547957	21/02/22	15:59:29.00	Unknown	353.13	-29.46	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9267547957	21/02/22	15:59:29.00	Unknown	352.69	-28.81	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9252127584	21/02/07	03:28:53.00	Known	325.89	+43.63	0.5	MAXI Known Source detection.
+9256773169	21/02/11	23:36:39.00	Known	265.17	-26.80	0.5	MAXI Known Source detection.
+9255330954	21/02/10	09:33:54.00	Known	47.00	+40.75	0.5	MAXI Known Source detection.
+9253776747	21/02/08	22:47:02.00	Known	267.23	-37.01	0.5	MAXI Known Source detection.
+9252850005	21/02/07	20:32:03.00	Known	289.79	-5.24	0.5	MAXI Known Source detection.
+9245185306	21/01/31	05:56:22.00	Known	41.55	+31.09	0.5	MAXI Known Source detection.
+9237526736	21/01/23	15:58:04.00	Known	255.57	-49.65	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9224516204	21/01/10	15:14:44.00	Unknown	172.73	-41.31	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9224516204	21/01/10	15:14:44.00	Unknown	172.66	-41.51	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9223337892	21/01/09	09:03:30.00	Unknown	62.00	+4.68	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9223337892	21/01/09	09:03:30.00	Unknown	62.25	+5.03	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9216347865	21/01/02	09:04:10.00	Unknown	353.48	-21.25	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9216347865	21/01/02	09:04:10.00	Unknown	353.32	-21.09	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9215024937	21/01/01	00:20:41.00	Known	239.37	-54.15	0.5	MAXI Known Source detection.
+9203274470	20/12/20	08:09:54.00	Unknown	282.17	-1.50	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9203274470	20/12/20	08:09:54.00	Unknown	282.27	-1.15	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+9203274470	20/12/20	08:09:54.00	Known	282.27	-1.15	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+9195638792	20/12/12	19:11:48.00	Known	310.33	-32.42	0.5	MAXI Known Source detection.
+9189895144	20/12/06	12:20:45.00	Known	341.71	+44.33	0.5	MAXI Known Source detection.
+9173724926	20/11/20	22:22:08.00	Known	213.85	-62.20	0.5	MAXI Known Source detection.
+9173424248	20/11/20	12:26:03.00	Known	307.95	+40.12	0.5	MAXI Known Source detection.
+9169071630	20/11/16	02:20:48.00	Known	257.71	-26.87	0.5	MAXI Known Source detection.
+9143544224	20/10/21	16:19:06.00	Unknown	3.57	-63.49	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9143544224	20/10/21	16:19:06.00	Unknown	3.48	-63.55	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+9142525161	20/10/20	15:38:51.00	Known	153.68	-57.98	0.5	MAXI Known Source detection.
+9130897078	20/10/08	16:59:16.00	Known	287.82	+0.58	0.5	MAXI Known Source detection.
+9128890016	20/10/06	00:02:20.00	Known	275.92	-30.36	0.5	MAXI Known Source detection.
+9120424230	20/09/28	13:16:48.00	Known	292.04	+18.20	0.5	MAXI Known Source detection.
+9118171374	20/09/26	05:29:12.00	Known	257.33	-27.16	0.5	MAXI Known Source detection.
+9105284289	20/09/13	07:59:49.00	Known	51.37	+28.68	0.5	MAXI Known Source detection.
+997174924	20/09/05	05:28:43.00	Known	207.05	-62.76	0.5	MAXI Known Source detection.
+998895139	20/09/06	12:20:16.00	Known	115.83	+28.88	0.5	MAXI Known Source detection.
+992426265	20/08/31	13:06:32.00	Known	287.59	+0.07	0.5	MAXI Known Source detection.
+982127003	20/08/21	03:08:25.00	Known	267.60	-37.73	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+979680954	20/08/18	20:25:20.00	Known	46.47	+40.66	0.5	MAXI Known Source detection.
+978384289	20/08/17	11:52:04.00	Known	51.97	+28.42	0.5	MAXI Known Source detection.
+977895166	20/08/16	12:24:08.00	Known	24.76	-17.95	0.5	MAXI Known Source detection.
+961389304	20/07/31	11:54:32.00	Known	311.64	-31.71	0.5	MAXI Known Source detection.
+933898498	20/07/03	20:23:51.00	Known	266.76	-28.88	0.5	MAXI Known Source detection.
+922280057	20/06/22	08:15:41.00	Known	256.46	-61.95	0.5	MAXI Known Source detection.
+15358751	20/06/15	10:30:25.00	Unknown	153.42	-5.16	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8995524480	20/05/26	15:20:51.00	Known	288.56	+11.16	0.5	MAXI Known Source detection.
+8994475487	20/05/25	14:36:53.00	Known	280.46	-11.28	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8994075195	20/05/25	01:59:00.00	Known	243.86	-52.50	0.5	MAXI Known Source detection.
+8991579256	20/05/22	17:04:33.00	Known	137.49	-64.81	0.5	MAXI Known Source detection.
+8989564856	20/05/20	17:47:58.00	Known	116.14	+28.24	0.5	MAXI Known Source detection.
+8986425673	20/05/17	13:15:45.00	Known	153.10	-58.92	0.5	MAXI Known Source detection.
+986397145	20/05/17	11:27:25.00	Unknown	17.23	-50.74	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+986397145	20/05/17	11:27:25.00	Unknown	16.37	-50.80	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8983892487	20/05/14	05:59:42.00	Known	332.17	+45.74	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+983051815	20/05/14	02:21:24.00	Unknown	170.10	+19.63	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+983051815	20/05/14	02:21:24.00	Unknown	169.97	+20.13	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8979899668	20/05/10	23:13:47.00	Known	339.69	-20.62	0.5	MAXI Known Source detection.
+8970453641	20/05/01	14:05:50.00	Known	228.69	+37.85	0.5	MAXI Known Source detection.
+8966674233	20/04/27	20:01:51.00	Known	294.07	+21.69	0.5	MAXI Known Source detection.
+8959849998	20/04/20	22:36:55.00	Known	264.98	-28.50	0.5	MAXI Known Source detection.
+8959124480	20/04/20	04:00:13.00	Known	288.83	+11.04	0.5	MAXI Known Source detection.
+8954139049	20/04/15	03:03:04.00	Known	311.14	-31.53	0.5	MAXI Known Source detection.
+8951035114	20/04/12	00:01:43.00	Known	89.38	-32.90	0.5	MAXI Known Source detection.
+8941226749	20/04/02	06:11:30.00	Known	269.13	-34.40	0.5	MAXI Known Source detection.
+8933075857	20/03/25	02:29:51.00	Known	84.38	+26.17	0.5	MAXI Known Source detection.
+928433613	20/03/20	13:12:46.00	Unknown	125.30	-75.91	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8928526009	20/03/20	16:21:51.00	Known	287.38	+0.97	0.5	MAXI Known Source detection.
+8928373676	20/03/20	11:43:43.00	Known	261.44	-30.77	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+918304181	20/03/10	09:23:22.00	Unknown	227.50	+48.33	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8906420377	20/02/27	12:31:19.00	Known	275.60	+6.94	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8893373963	20/02/14	11:51:12.00	Known	284.42	+5.65	0.5	MAXI Known Source detection.
+8899896452	20/02/20	15:30:35.00	Known	42.18	+31.12	0.5	MAXI Known Source detection.
+8892849995	20/02/13	11:35:35.00	Known	288.80	+10.95	0.5	MAXI Known Source detection.
+8891024736	20/02/12	01:00:43.00	Known	288.96	+10.45	0.5	MAXI Known Source detection.
+8890899373	20/02/11	22:31:05.00	Known	54.20	+0.59	0.5	MAXI Known Source detection.
+8889849999	20/02/10	03:02:27.00	Known	19.63	+63.74	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8887475417	20/02/08	14:00:42.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+8887274486	20/02/08	08:45:04.00	Known	292.89	+18.78	0.5	MAXI Known Source detection.
+887849999	20/02/08	08:01:12.00	Unknown	284.58	-8.39	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8885624924	20/02/06	18:45:30.00	Known	207.45	-63.55	0.5	MAXI Known Source detection.
+885126771	20/02/06	03:58:29.00	Unknown	284.32	-8.60	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8885126771	20/02/06	03:58:29.00	Known	284.84	-7.97	0.5	MAXI Known Source detection.
+884222838	20/02/05	06:54:31.00	Unknown	130.05	-35.36	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8876373933	20/01/28	11:53:17.00	Known	262.03	-31.53	0.5	MAXI Known Source detection.
+8861526500	20/01/13	15:59:22.00	Known	274.60	-25.80	0.5	MAXI Known Source detection.
+853741593	20/01/05	21:55:47.00	Unknown	318.94	-36.33	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8837615496	19/12/20	18:24:37.00	Known	253.77	-8.04	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8835076224	19/12/18	02:12:26.00	Known	254.66	-49.18	0.5	MAXI Known Source detection.
+8822275793	19/12/05	08:33:17.00	Known	322.62	+47.21	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8822275793	19/12/05	08:33:17.00	Known	322.62	+47.21	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8820324985	19/12/03	10:14:22.00	Known	285.10	+1.76	0.5	MAXI Known Source detection.
+8820324985	19/12/03	10:14:22.00	Known	285.10	+1.76	0.5	MAXI Known Source detection.
+8812025179	19/11/25	00:14:01.00	Known	205.80	-63.49	0.5	MAXI Known Source detection.
+8813891325	19/11/26	03:12:05.00	Known	332.17	+45.74	0.5	MAXI Known Source detection.
+8808890095	19/11/21	00:14:57.00	Known	193.08	-59.29	0.5	MAXI Known Source detection.
+8807741042	19/11/20	21:10:40.00	Known	32.19	-74.26	0.5	MAXI Known Source detection.
+8804628021	19/11/17	19:00:23.00	Known	264.42	-45.48	0.5	MAXI Known Source detection.
+789282818	19/11/02	08:10:31.00	Unknown	99.66	-42.42	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8778324474	19/10/22	10:06:25.00	Known	284.42	+3.68	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8771574230	19/10/15	17:04:45.00	Known	291.99	+18.45	0.5	MAXI Known Source detection.
+768849999	19/10/12	18:08:49.00	Unknown	281.76	-0.44	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8767524215	19/10/11	15:33:40.00	Known	282.06	-0.25	0.5	MAXI Known Source detection.
+8756849998	19/09/30	11:47:11.00	Known	267.69	-31.29	0.5	MAXI Known Source detection.
+756540957	19/09/30	15:12:31.00	Unknown	49.87	+5.17	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+8750676481	19/09/24	20:28:28.00	Known	255.50	-48.73	0.5	MAXI Known Source detection.
+8750690963	19/09/24	19:53:10.00	Known	54.01	+0.43	0.5	MAXI Known Source detection.
+8750474224	19/09/24	14:40:26.00	Known	288.26	+10.81	0.5	MAXI Known Source detection.
+8744474924	19/09/18	13:52:45.00	Known	207.05	-62.76	0.5	MAXI Known Source detection.
+8736617820	19/09/10	19:20:49.00	Known	271.81	+13.30	0.5	MAXI Known Source detection.
+8735274736	19/09/09	07:46:55.00	Known	288.96	+10.45	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8734690963	19/09/08	19:32:30.00	Known	54.01	+0.43	0.5	MAXI Known Source detection.
+8732626481	19/09/06	18:46:52.00	Known	255.50	-48.73	0.5	MAXI Known Source detection.
+8731891352	19/09/05	03:15:43.00	Known	51.65	+28.71	0.5	MAXI Known Source detection.
+723277116	19/08/28	07:58:08.00	Unknown	58.01	+46.45	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+723277116	19/08/28	07:58:08.00	Unknown	58.07	+46.55	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+723277116	19/08/28	07:58:08.00	Unknown	58.07	+46.55	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8721719865	19/08/26	21:57:35.00	Known	274.51	+7.48	0.5	MAXI Known Source detection.
+8719325600	19/08/24	10:20:01.00	Known	84.88	+26.98	0.5	MAXI Known Source detection.
+718431354	19/08/23	13:30:39.00	Unknown	279.28	-43.44	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+718431354	19/08/23	13:30:39.00	Unknown	279.18	-43.50	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8714525575	19/08/19	15:03:00.00	Known	53.53	+53.02	0.5	MAXI Known Source detection.
+8704678029	19/08/09	21:00:17.00	Known	271.94	-36.46	0.5	MAXI Known Source detection.
+8702426009	19/08/07	13:13:13.00	Known	287.38	+0.97	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+700151304	19/08/05	04:49:29.00	Unknown	211.85	+19.77	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+700151304	19/08/05	04:49:29.00	Unknown	212.07	+20.03	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+699271870	19/08/04	07:58:15.00	Unknown	239.44	-44.39	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8694724469	19/07/30	21:04:44.00	Known	282.20	-2.79	0.5	MAXI Known Source detection.
+8682025320	19/07/18	01:18:45.00	Known	54.24	+53.38	0.5	MAXI Known Source detection.
+678409110	19/07/14	13:20:40.00	Unknown	246.58	+14.92	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+678409110	19/07/14	13:20:40.00	Unknown	246.58	+14.92	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+672688062	19/07/08	19:50:21.00	Unknown	326.57	+7.71	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+672688062	19/07/08	19:50:21.00	Unknown	326.86	+7.64	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8671174676	19/07/07	05:49:17.00	Known	230.13	-57.42	0.5	MAXI Known Source detection.
+670147721	19/07/06	03:26:45.00	Unknown	26.61	-43.25	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+665325821	19/07/01	09:46:58.00	Unknown	27.55	+58.85	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8663897296	19/06/29	17:31:32.00	Known	24.76	-17.95	0.5	MAXI Known Source detection.
+8663024939	19/06/29	01:24:29.00	Known	242.78	-52.90	0.5	MAXI Known Source detection.
+8662537581	19/06/28	15:08:40.00	Known	358.65	+29.16	0.5	MAXI Known Source detection.
+8659847777	19/06/25	09:13:06.00	Known	292.90	+17.60	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8653890433	19/06/19	01:03:22.00	Known	115.83	+28.88	0.5	MAXI Known Source detection.
+8643075161	19/06/09	01:53:54.00	Known	153.68	-57.98	0.5	MAXI Known Source detection.
+8640722871	19/06/06	21:16:47.00	Known	192.55	-58.70	0.5	MAXI Known Source detection.
+635849998	19/06/01	20:49:45.00	Unknown	22.10	-74.60	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8636524736	19/06/02	15:27:54.00	Known	288.56	+10.82	0.5	MAXI Known Source detection.
+8634224924	19/05/31	06:04:48.00	Known	207.37	-63.38	0.5	MAXI Known Source detection.
+8633373162	19/05/30	11:42:40.00	Known	257.91	-33.39	0.5	MAXI Known Source detection.
+8628124736	19/05/25	03:14:10.00	Known	288.78	+10.88	0.5	MAXI Known Source detection.
+8624024224	19/05/21	00:16:35.00	Known	288.55	+10.95	0.5	MAXI Known Source detection.
+8617624992	19/05/14	18:19:48.00	Known	289.84	+10.79	0.5	MAXI Known Source detection.
+8615189048	19/05/12	04:45:17.00	Known	310.17	-32.33	0.5	MAXI Known Source detection.
+8604847777	19/05/01	04:24:56.00	Known	204.90	-63.40	0.5	MAXI Known Source detection.
+8604899350	19/05/01	22:27:19.00	Known	332.17	+45.74	0.5	MAXI Known Source detection.
+8597525238	19/04/24	15:51:10.00	Known	283.55	-2.59	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8586439047	19/04/13	12:25:29.00	Known	310.51	-32.64	0.5	MAXI Known Source detection.
+8583849999	19/04/10	23:37:05.00	Known	54.20	+0.59	0.5	MAXI Known Source detection.
+8583681334	19/04/10	20:30:23.00	Known	257.08	-67.25	0.5	MAXI Known Source detection.
+8582849999	19/04/09	11:46:25.00	Known	267.00	-29.40	0.5	MAXI Known Source detection.
+581642188	19/04/08	18:06:22.00	Unknown	47.34	+1.76	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8580185051	19/04/07	05:24:28.00	Known	42.13	+31.25	0.5	MAXI Known Source detection.
+577411373	19/04/04	13:14:34.00	Unknown	220.90	-22.54	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+577411373	19/04/04	13:14:34.00	Unknown	220.77	-22.69	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+577438870	19/04/04	12:24:23.00	Unknown	12.09	+27.49	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8576897380	19/04/03	17:43:32.00	Known	348.35	+2.68	0.5	MAXI Known Source detection.
+8571374180	19/03/29	11:43:12.00	Known	253.82	-41.13	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8568674939	19/03/26	20:21:37.00	Known	243.03	-52.42	0.5	MAXI Known Source detection.
+8560170377	19/03/18	05:30:12.00	Known	275.60	+6.94	0.5	MAXI Known Source detection.
+8553176737	19/03/11	05:16:32.00	Known	256.86	-48.53	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+548652539	19/03/06	20:52:10.00	Unknown	222.56	+30.94	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+548652539	19/03/06	20:52:10.00	Unknown	223.00	+30.55	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+547447273	19/03/05	13:07:43.00	Unknown	11.33	-50.12	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+547447273	19/03/05	13:07:43.00	Unknown	11.38	-50.19	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8541424742	19/02/27	12:55:36.00	Known	292.52	+18.17	0.5	MAXI Known Source detection.
+8539071374	19/02/25	02:09:39.00	Known	257.31	-26.96	0.5	MAXI Known Source detection.
+8534625470	19/02/20	18:38:04.00	Known	266.48	-32.27	0.5	MAXI Known Source detection.
+8527849998	19/02/13	12:16:30.00	Known	287.41	+9.83	0.5	MAXI Known Source detection.
+8526895052	19/02/12	12:08:19.00	Known	24.76	-17.95	0.5	MAXI Known Source detection.
+8522774986	19/02/08	22:35:19.00	Known	285.90	+3.31	0.5	MAXI Known Source detection.
+8518574908	19/02/04	17:20:30.00	Known	160.04	-59.31	0.5	MAXI Known Source detection.
+8517027584	19/02/03	00:41:40.00	Known	325.51	+43.38	0.5	MAXI Known Source detection.
+8518892708	19/02/04	06:30:48.00	Known	115.83	+28.88	0.5	MAXI Known Source detection.
+512449064	19/01/29	12:21:54.00	Unknown	11.46	-31.89	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8509624954	19/01/26	18:50:11.00	Known	261.59	-36.37	0.5	MAXI Known Source detection.
+8509624954	19/01/26	18:50:11.00	Known	261.59	-36.37	0.5	MAXI Known Source detection.
+509125179	19/01/26	03:16:23.00	Unknown	206.46	-63.10	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8503074164	19/01/20	02:04:40.00	Known	229.75	-56.95	0.5	MAXI Known Source detection.
+8495188792	19/01/12	05:48:48.00	Known	310.19	-31.97	0.5	MAXI Known Source detection.
+8494380954	19/01/11	10:41:25.00	Known	47.00	+40.75	0.5	MAXI Known Source detection.
+8493780954	19/01/10	23:52:49.00	Known	47.00	+40.75	0.5	MAXI Known Source detection.
+8493075857	19/01/10	02:16:20.00	Known	84.38	+26.17	0.5	MAXI Known Source detection.
+8480024661	18/12/28	00:09:06.00	Known	186.96	-62.75	0.5	MAXI Known Source detection. GCN OPS NOTE(08feb19): And error was corrected on the SRC_DATE; "-3 DOY; 19/01/-3" was changed to "362 DOY; 18/12/28".
+8476849999	18/12/24	14:50:36.00	Known	257.00	-44.20	0.5	MAXI Known Source detection.
+8475071374	18/12/23	02:08:46.00	Known	257.31	-26.96	0.5	MAXI Known Source detection.
+8474376481	18/12/22	11:13:01.00	Known	255.50	-48.73	0.5	MAXI Known Source detection.
+474228283	18/12/22	06:44:19.00	Unknown	270.97	-38.70	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8473224687	18/12/21	06:06:27.00	Known	248.13	-47.92	0.5	MAXI Known Source detection.
+8469576009	18/12/17	17:57:25.00	Known	287.45	+0.68	0.5	MAXI Known Source detection.
+8460849996	18/12/08	01:27:56.00	Known	272.40	-20.10	0.5	MAXI Known Source detection.
+8463174723	18/12/11	04:36:36.00	Known	280.15	-5.97	0.5	MAXI Known Source detection.
+8452849999	18/11/30	21:20:25.00	Known	273.20	-22.40	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8451374892	18/11/29	10:38:04.00	Known	131.99	-44.48	0.5	MAXI Known Source detection.
+8446897910	18/11/24	18:59:41.00	Known	51.65	+28.71	0.5	MAXI Known Source detection.
+8441288702	18/11/19	08:28:26.00	Known	78.26	-40.00	0.5	MAXI Known Source detection.
+8440126265	18/11/18	03:46:42.00	Known	287.59	+0.07	0.5	MAXI Known Source detection.
+8422849999	18/10/31	04:38:33.00	Known	274.01	-14.04	0.5	MAXI Known Source detection.
+8413573127	18/10/22	16:46:45.00	Known	193.08	-59.29	0.5	MAXI Known Source detection.
+8410849999	18/10/19	03:42:10.00	Known	322.80	+12.10	0.5	MAXI Known Source detection.
+8410893544	18/10/19	08:30:59.00	Known	24.76	-17.95	0.5	MAXI Known Source detection.
+405849997	18/10/14	16:26:20.00	Unknown	265.73	-29.89	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+402124071	18/10/11	03:36:21.00	Unknown	93.34	+20.39	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8401763495	18/10/10	23:09:13.00	Known	272.80	+49.56	0.5	MAXI Known Source detection.
+8391575417	18/09/30	16:57:46.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+8392326500	18/10/01	09:08:15.00	Known	274.85	-25.71	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8391893766	18/09/30	09:02:57.00	Known	47.04	+40.96	0.5	MAXI Known Source detection.
+8391893766	18/09/30	09:02:57.00	Known	47.04	+40.96	0.5	MAXI Known Source detection.
+8385849999	18/09/24	10:25:45.00	Known	257.50	-28.60	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8384784033	18/09/23	22:38:59.00	Known	51.27	+29.27	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8385125857	18/09/24	03:22:41.00	Known	84.38	+26.17	0.5	MAXI Known Source detection.
+8383849998	18/09/22	09:04:17.00	Known	275.09	+7.18	0.5	MAXI Known Source detection.
+384142869	18/09/23	04:08:30.00	Unknown	38.30	+6.30	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8381226245	18/09/20	07:30:03.00	Known	274.38	-24.90	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8377125470	18/09/16	03:05:00.00	Known	266.48	-32.27	0.5	MAXI Known Source detection.
+8370780697	18/09/09	23:05:10.00	Known	46.81	+41.22	0.5	MAXI Known Source detection.
+364241300	18/09/03	07:24:38.00	Unknown	13.14	-74.71	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8364241300	18/09/03	07:24:38.00	Known	13.27	-74.51	0.5	MAXI Known Source detection.
+8363174941	18/09/02	05:02:29.00	Known	245.50	-49.98	0.5	MAXI Known Source detection.
+8362489894	18/09/01	14:31:29.00	Known	12.05	+24.56	0.5	MAXI Known Source detection.
+8362489894	18/09/01	14:31:29.00	Known	12.05	+24.56	0.5	MAXI Known Source detection.
+359039177	18/08/29	00:05:31.00	Unknown	61.73	-1.98	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8346898070	18/08/16	19:22:36.00	Known	310.46	-32.44	0.5	MAXI Known Source detection.
+8340849999	18/08/10	16:03:40.00	Known	273.78	-12.10	0.5	MAXI Known Source detection.
+8338849999	18/08/08	09:57:26.00	Known	274.84	-25.41	0.5	MAXI Known Source detection.
+339385460	18/08/09	11:38:25.00	Unknown	297.79	-34.66	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+339385460	18/08/09	11:38:25.00	Unknown	297.95	-34.63	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8335374685	18/08/05	11:37:03.00	Known	245.72	-49.68	0.5	MAXI Known Source detection.
+8332849998	18/08/02	12:35:45.00	Known	267.69	-31.29	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8333674725	18/08/03	19:33:36.00	Known	281.84	-3.30	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8332849999	18/08/02	15:16:06.00	Known	256.00	-37.80	0.5	MAXI Known Source detection.
+332725718	18/08/02	22:05:32.00	Unknown	259.43	-40.98	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8332725718	18/08/02	22:05:32.00	Known	259.43	-40.98	0.5	MAXI Known Source detection.
+8332328054	18/08/02	09:36:57.00	Known	289.41	-4.93	0.5	MAXI Known Source detection.
+8332327798	18/08/02	09:36:46.00	Known	289.41	-4.93	0.5	MAXI Known Source detection.
+8325474933	18/07/26	14:17:42.00	Known	229.84	-57.56	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+321176797	18/07/22	05:59:16.00	Unknown	302.89	+24.22	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+321176797	18/07/22	05:59:16.00	Unknown	302.61	+24.24	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+319496378	18/07/20	14:28:29.00	Unknown	0.40	-2.63	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8311574676	18/07/12	16:53:21.00	Known	230.34	-57.16	0.5	MAXI Known Source detection.
+8311740963	18/07/12	21:18:27.00	Known	54.06	+0.37	0.5	MAXI Known Source detection.
+8304849999	18/07/05	16:24:03.00	Known	292.35	+18.27	0.5	MAXI Known Source detection.
+8304321124	18/07/05	09:25:45.00	Known	262.44	-20.05	0.5	MAXI Known Source detection.
+8303891807	18/07/04	04:20:45.00	Known	47.04	+40.96	0.5	MAXI Known Source detection.
+8298323980	18/06/29	10:04:34.00	Known	296.26	+26.72	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8295773238	18/06/26	23:35:32.00	Known	324.49	+56.36	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8288849999	18/06/19	13:42:53.00	Known	243.18	-52.42	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8279899301	18/06/10	22:19:54.00	Known	310.46	-32.44	0.5	MAXI Known Source detection.
+8277849999	18/06/08	01:36:40.00	Known	248.50	-47.39	0.5	MAXI Known Source detection.
+274420867	18/06/05	12:46:57.00	Unknown	261.97	-20.39	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+274420867	18/06/05	12:46:57.00	Unknown	261.89	-20.20	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8273424678	18/06/04	12:11:09.00	Known	233.10	-56.41	0.5	MAXI Known Source detection.
+8272075857	18/06/03	02:55:05.00	Known	84.38	+26.17	0.5	MAXI Known Source detection.
+8270894836	18/06/01	11:36:55.00	Known	245.09	-50.02	0.5	MAXI Known Source detection.
+8262774941	18/05/24	22:44:38.00	Known	245.61	-50.60	0.5	MAXI Known Source detection.
+8255021909	18/05/17	00:25:23.00	Known	276.44	-0.20	0.5	MAXI Known Source detection.
+8247624032	18/05/09	18:06:34.00	Known	40.31	+61.71	0.5	MAXI Known Source detection.
+8251471885	18/05/13	14:33:43.00	Known	257.49	-28.80	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8246849999	18/05/08	07:56:12.00	Known	258.14	-37.64	0.5	MAXI Known Source detection.
+8244723677	18/05/06	21:59:21.00	Known	262.16	-30.55	0.5	MAXI Known Source detection.
+8235849998	18/04/27	10:11:51.00	Known	272.69	-26.15	0.5	MAXI Known Source detection.
+8221892575	18/04/13	06:11:16.00	Known	24.76	-17.95	0.5	MAXI Known Source detection.
+8219325716	18/04/11	10:10:30.00	Known	257.70	-43.72	0.5	MAXI Known Source detection.
+8217849997	18/04/09	06:24:08.00	Known	274.84	-25.41	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8215124289	18/04/07	03:27:08.00	Known	41.08	+60.48	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8213893545	18/04/05	08:30:51.00	Known	51.65	+28.71	0.5	MAXI Known Source detection.
+8210788702	18/04/02	23:07:58.00	Known	78.66	-40.18	0.5	MAXI Known Source detection.
+8209090963	18/04/01	02:30:24.00	Known	54.01	+0.43	0.5	MAXI Known Source detection.
+8201575439	18/03/24	17:39:11.00	Known	216.62	-62.68	0.5	MAXI Known Source detection.
+8200461424	18/03/23	13:55:14.00	Known	257.54	+23.57	0.5	MAXI Known Source detection.
+8197475471	18/03/20	13:31:41.00	Known	267.05	-30.55	0.5	MAXI Known Source detection.
+8198523677	18/03/21	15:45:39.00	Known	261.91	-30.61	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8198523677	18/03/21	15:45:39.00	Known	261.91	-30.61	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8196725978	18/03/19	22:06:32.00	Known	264.10	-37.67	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+188420121	18/03/11	12:51:26.00	Unknown	274.88	+7.16	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+188420121	18/03/11	12:51:26.00	Unknown	274.88	+7.16	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8172237956	18/02/23	06:54:50.00	Known	82.71	-66.21	0.5	MAXI Known Source detection.
+8171034289	18/02/22	00:00:53.00	Known	51.65	+28.82	0.5	MAXI Known Source detection.
+168899999	18/02/19	23:23:05.00	Unknown	273.90	-10.10	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+8159849999	18/02/10	13:11:58.00	Known	229.20	-58.20	0.5	MAXI Known Source detection.
+8158340707	18/02/09	09:03:11.00	Known	54.31	+1.34	0.5	MAXI Known Source detection.
+8157794520	18/02/08	23:34:51.00	Known	20.47	+7.76	0.5	MAXI Known Source detection.
+8151676265	18/02/02	20:52:29.00	Known	287.59	+0.07	0.5	MAXI Known Source detection.
+8151027492	18/02/02	00:09:35.00	Known	235.24	-62.85	0.5	MAXI Known Source detection.
+8151027492	18/02/02	00:09:35.00	Known	235.24	-62.85	0.5	MAXI Known Source detection.
+8145525417	18/01/27	16:14:33.00	Known	152.12	-58.41	0.5	MAXI Known Source detection.
+8138740963	18/01/20	21:18:31.00	Known	54.01	+0.43	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+134001745	18/01/16	00:37:30.00	Unknown	215.66	+18.96	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+8132800020	18/01/14	21:07:49.00	Known	255.99	-37.84	0.5	MAXI Known Source detection.
+8126849998	18/01/08	00:48:00.00	Known	267.22	-20.36	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+8117899999	17/12/30	08:17:21.00	Known	265.17	-28.15	0.5	MAXI Known Source detection.
+8109302312	17/12/22	09:03:33.00	Known	165.77	+37.63	0.5	MAXI Known Source detection.
+8111124684	17/12/24	03:35:02.00	Known	244.16	-50.67	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+94563763	17/12/07	17:01:24.00	Unknown	278.66	+64.82	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+891849999	17/12/04	18:55:57.00	Known	247.68	-27.61	0.5	MAXI Known Source detection.
+890574469	17/12/03	17:25:54.00	Known	281.63	-2.40	0.5	MAXI Known Source detection.
+74368553	17/11/17	11:42:57.00	Unknown	247.06	-27.88	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+874173421	17/11/17	05:35:31.00	Known	261.05	-31.22	0.5	MAXI Known Source detection.
+69695336	17/11/12	20:50:01.00	Unknown	20.08	-59.64	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+868274700	17/11/11	07:31:06.00	Known	262.84	-33.50	0.5	MAXI Known Source detection.
+865534289	17/11/08	15:41:40.00	Known	51.42	+28.36	0.5	MAXI Known Source detection.
+854899999	17/10/28	04:49:05.00	Known	82.21	-66.37	0.5	MAXI Known Source detection.
+851125673	17/10/25	03:45:43.00	Known	152.38	-58.96	0.5	MAXI Known Source detection.
+851274463	17/10/25	08:11:45.00	Known	277.73	-9.90	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+847899999	17/10/21	01:35:53.00	Known	258.00	-38.20	0.5	MAXI Known Source detection.
+845224685	17/10/19	07:18:06.00	Known	245.72	-49.68	0.5	MAXI Known Source detection.
+845224685	17/10/19	07:18:06.00	Known	245.72	-49.68	0.5	MAXI Known Source detection.
+834125726	17/10/08	03:25:30.00	Known	267.90	-31.42	0.5	MAXI Known Source detection.
+832222662	17/10/06	06:44:54.00	Known	267.34	-20.04	0.5	MAXI Known Source detection.
+829034289	17/10/03	00:38:32.00	Known	51.42	+28.36	0.5	MAXI Known Source detection.
+828849999	17/10/02	16:21:46.00	Known	255.99	-37.84	0.5	MAXI Known Source detection.
+826485051	17/09/30	13:56:03.00	Known	42.13	+31.25	0.5	MAXI Known Source detection.
+7735275238	16/12/13	07:58:35.00	Known	283.55	-2.59	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+732899998	16/12/10	11:53:49.00	Unknown	46.58	+14.98	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7721476411	16/11/29	14:21:48.00	Known	112.19	-26.34	0.5	MAXI Known Source detection.
+7710849999	16/11/18	18:08:30.00	Known	258.58	-34.05	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+715147607	16/11/23	03:05:58.00	Unknown	32.36	-39.58	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+715147607	16/11/23	03:05:58.00	Unknown	32.21	-39.65	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7715147607	16/11/23	03:05:58.00	Known	32.36	-39.58	0.5	MAXI Known Source detection.
+7714234289	16/11/22	07:02:24.00	Known	51.23	+28.48	0.5	MAXI Known Source detection.
+7714134289	16/11/22	03:57:07.00	Known	51.42	+28.36	0.5	MAXI Known Source detection.
+7702076968	16/11/10	02:30:17.00	Known	196.04	-68.52	0.5	MAXI Known Source detection.
+7698388702	16/11/06	11:14:01.00	Known	78.66	-40.18	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7701075320	16/11/09	02:52:31.00	Known	54.41	+53.38	0.5	MAXI Known Source detection.
+7698374025	16/11/06	11:16:28.00	Known	19.53	+63.91	0.5	MAXI Known Source detection.
+7698125470	16/11/06	03:01:33.00	Known	266.48	-32.27	0.5	MAXI Known Source detection.
+696073309	16/11/04	02:20:21.00	Unknown	99.22	+14.60	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+696073309	16/11/04	02:20:21.00	Unknown	99.21	+14.22	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7689899997	16/10/28	17:19:55.00	Known	266.52	-29.52	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7689273422	16/10/28	08:59:38.00	Known	261.43	-30.15	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7685376528	16/10/24	10:45:42.00	Known	293.05	+9.09	0.5	MAXI Known Source detection.
+7669025302	16/10/08	00:42:37.00	Known	8.74	+61.02	0.5	MAXI Known Source detection.
+7662325319	16/10/01	09:47:16.00	Known	52.47	+54.20	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7660279855	16/09/29	08:20:01.00	Known	298.97	+3.49	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7658773933	16/09/27	23:40:50.00	Known	261.62	-31.12	0.5	MAXI Known Source detection.
+7657380954	16/09/26	10:55:14.00	Known	47.00	+40.75	0.5	MAXI Known Source detection.
+7653849999	16/09/22	16:17:53.00	Known	230.17	-57.17	0.5	MAXI Known Source detection.
+7653274209	16/09/22	07:54:52.00	Known	278.18	-7.75	0.5	MAXI Known Source detection.
+7650176521	16/09/19	05:50:28.00	Known	288.29	+0.81	0.5	MAXI Known Source detection.
+7650176521	16/09/19	05:50:28.00	Known	288.29	+0.81	0.5	MAXI Known Source detection.
+7648275417	16/09/17	08:14:01.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+7647624025	16/09/16	19:12:18.00	Known	19.53	+63.91	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7647574421	16/09/16	16:56:22.00	Known	229.49	-56.74	0.5	MAXI Known Source detection.
+7643899999	16/09/12	23:16:02.00	Known	267.00	-30.00	0.5	MAXI Known Source detection.
+7640775659	16/09/09	22:55:45.00	Known	129.39	-45.03	0.5	MAXI Known Source detection.
+7633025320	16/09/02	00:32:04.00	Known	54.41	+53.38	0.5	MAXI Known Source detection.
+7630423169	16/08/30	12:43:17.00	Known	263.97	-26.62	0.5	MAXI Known Source detection.
+7627899997	16/08/27	23:04:21.00	Known	248.50	-47.39	0.5	MAXI Known Source detection.
+7628089048	16/08/28	02:12:52.00	Known	310.58	-32.37	0.5	MAXI Known Source detection.
+608542033	16/08/08	16:23:04.00	Unknown	14.43	-72.13	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7605375195	16/08/05	11:28:48.00	Known	243.45	-52.77	0.5	MAXI Known Source detection.
+7597076265	16/07/28	01:55:18.00	Known	287.59	+0.07	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7599494520	16/07/30	14:54:45.00	Known	20.47	+7.76	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7592624933	16/07/23	18:04:40.00	Known	230.67	-57.75	0.5	MAXI Known Source detection.
+7585626193	16/07/16	19:18:51.00	Known	174.38	-65.33	0.5	MAXI Known Source detection.
+574072565	16/07/05	02:30:12.00	Unknown	117.01	-14.96	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+574072565	16/07/05	02:30:12.00	Unknown	116.75	-14.98	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7565523933	16/06/26	16:24:40.00	Known	262.22	-30.90	0.5	MAXI Known Source detection.
+7559524233	16/06/20	15:16:40.00	Known	294.08	+22.02	0.5	MAXI Known Source detection.
+7554461873	16/06/15	13:33:18.00	Known	206.82	-29.94	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7554174661	16/06/15	05:44:49.00	Known	187.20	-62.86	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7553417349	16/06/14	12:15:32.00	Known	301.21	+64.59	0.5	MAXI Known Source detection.
+7551300628	16/06/12	09:19:08.00	Known	203.30	+37.35	0.5	MAXI Known Source detection.
+7551074282	16/06/12	02:56:17.00	Known	20.07	+62.98	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7547052311	16/06/08	01:45:02.00	Known	165.93	+38.00	0.5	MAXI Known Source detection.
+7543899999	16/06/04	02:44:06.00	Known	201.60	-63.20	0.5	MAXI Known Source detection.
+7539421374	16/05/31	12:25:40.00	Known	257.51	-26.71	0.5	MAXI Known Source detection.
+7529899999	16/05/21	07:54:36.00	Known	273.40	-11.90	0.5	MAXI Known Source detection.
+7527674933	16/05/19	19:59:10.00	Known	230.16	-57.71	0.5	MAXI Known Source detection.
+7521375726	16/05/13	11:45:51.00	Known	267.94	-31.85	0.5	MAXI Known Source detection.
+7520373984	16/05/12	11:03:31.00	Known	299.55	+31.55	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7519899999	16/05/11	08:45:25.00	Known	42.18	+31.11	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+517316334	16/05/09	09:04:48.00	Unknown	312.13	+75.81	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+517316334	16/05/09	09:04:48.00	Unknown	311.31	+75.99	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+502528473	16/04/24	15:05:09.00	Unknown	119.58	-45.95	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+502528473	16/04/24	15:05:09.00	Unknown	119.58	-45.95	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7500674677	16/04/22	19:45:39.00	Known	230.63	-57.20	0.5	MAXI Known Source detection.
+486215333	16/04/08	06:13:23.00	Unknown	91.35	+71.31	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+7486215333	16/04/08	06:13:23.00	Known	91.35	+71.31	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7484471627	16/04/06	14:42:16.00	Known	255.50	-30.12	0.5	MAXI Known Source detection.
+7480849998	16/04/02	18:10:44.00	Known	316.50	+45.60	0.5	MAXI Known Source detection.
+7480849998	16/04/02	18:10:44.00	Known	316.50	+45.60	0.5	MAXI Known Source detection.
+7480523472	16/04/02	15:15:29.00	Known	298.35	+32.17	0.5	MAXI Known Source detection.
+7477017211	16/03/30	00:02:44.00	Known	147.38	-30.83	0.5	MAXI Known Source detection.
+7467899998	16/03/20	05:20:02.00	Known	268.37	-26.11	0.5	MAXI Known Source detection.
+7464550794	16/03/17	17:30:46.00	Known	182.81	+39.16	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7454671627	16/03/07	19:37:36.00	Known	255.50	-30.12	0.5	MAXI Known Source detection.
+7448521909	16/03/01	15:36:42.00	Known	276.31	+0.34	0.5	MAXI Known Source detection.
+7446725470	16/02/28	21:45:30.00	Known	266.48	-32.27	0.5	MAXI Known Source detection.
+7435224677	16/02/17	07:22:13.00	Known	230.03	-57.09	0.5	MAXI Known Source detection.
+7431684289	16/02/13	20:48:22.00	Known	51.30	+29.09	0.5	MAXI Known Source detection.
+424072583	16/02/06	02:52:43.00	Unknown	132.70	-36.10	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7411324152	16/01/24	09:13:44.00	Known	196.06	-61.64	0.5	MAXI Known Source detection.
+7410390963	16/01/23	10:57:53.00	Known	54.01	+0.43	0.5	MAXI Known Source detection.
+7408823677	16/01/21	04:20:04.00	Known	261.91	-30.61	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7402675417	16/01/15	20:21:16.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+7398774933	16/01/11	23:30:00.00	Known	230.75	-57.61	0.5	MAXI Known Source detection.
+394729601	16/01/07	22:20:12.00	Unknown	299.71	+6.45	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+394729601	16/01/07	22:20:12.00	Unknown	299.71	+6.45	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7394279855	16/01/07	08:27:13.00	Known	298.97	+3.49	0.5	MAXI Known Source detection.
+7393285114	16/01/06	08:00:12.00	Known	89.12	-33.31	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7392073513	16/01/05	01:57:13.00	Known	19.82	+65.10	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+391314067	16/01/04	10:13:09.00	Unknown	108.67	+54.95	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+391314067	16/01/04	10:13:09.00	Unknown	108.88	+54.87	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+7387625268	15/12/31	18:38:04.00	Known	305.94	+33.72	0.5	MAXI Known Source detection.
+7385275268	15/12/29	07:59:21.00	Known	305.72	+34.05	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+372632950	15/12/16	19:03:19.00	Unknown	323.91	+24.77	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7369384289	15/12/13	11:28:21.00	Known	51.42	+28.36	0.5	MAXI Known Source detection.
+368487901	15/12/12	14:00:27.00	Unknown	67.95	-3.87	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7368487901	15/12/12	14:00:27.00	Known	67.95	-3.87	0.5	MAXI Known Source detection.
+7366676126	15/12/10	20:21:49.00	Known	94.32	+9.28	0.5	MAXI Known Source detection.
+7364074726	15/12/08	02:48:30.00	Known	282.48	-2.05	0.5	MAXI Known Source detection.
+7363235051	15/12/07	06:51:41.00	Known	0.00	+0.00	0.5	MAXI Known Source detection.
+7362130697	15/12/06	03:04:40.00	Known	0.00	+0.00	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+361767105	15/12/05	23:54:08.00	Unknown	0.00	+0.00	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7355474421	15/11/29	14:23:24.00	Known	0.00	+0.00	0.5	MAXI Known Source detection.
+7354234289	15/11/28	06:42:07.00	Known	0.00	+0.00	0.5	MAXI Known Source detection.
+7345176476	15/11/19	05:58:44.00	Known	248.25	-54.10	0.5	MAXI Known Source detection.
+344187704	15/11/18	05:30:30.00	Unknown	82.64	-70.43	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7341534289	15/11/15	15:02:59.00	Known	51.42	+28.36	0.5	MAXI Known Source detection.
+7341476194	15/11/15	14:04:28.00	Known	175.98	-65.55	0.5	MAXI Known Source detection.
+338494614	15/11/12	13:45:23.00	Unknown	2.18	-61.67	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7337726513	15/11/11	22:23:47.00	Known	283.29	-8.72	0.5	MAXI Known Source detection.
+7329379801	15/11/03	10:30:24.00	Known	257.15	-61.99	0.5	MAXI Known Source detection.
+7329379801	15/11/03	10:30:24.00	Known	257.15	-61.99	0.5	MAXI Known Source detection.
+7325321627	15/10/30	09:24:27.00	Known	255.50	-30.12	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7310024025	15/10/15	00:05:58.00	Known	19.53	+63.91	0.5	MAXI Known Source detection.
+7310899999	15/10/15	02:54:48.00	Known	266.90	-29.60	0.5	MAXI Known Source detection.
+7306567093	15/10/11	17:14:33.00	Known	299.21	+64.28	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7305275402	15/10/10	08:03:18.00	Known	128.30	-42.99	0.5	MAXI Known Source detection.
+7293424478	15/09/28	12:53:35.00	Known	287.12	+8.25	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7293073513	15/09/28	02:06:50.00	Known	19.34	+64.96	0.5	MAXI Known Source detection.
+7289015109	15/09/24	01:29:07.00	Known	113.72	+32.31	0.5	MAXI Known Source detection.
+7288691548	15/09/23	19:32:05.00	Known	13.56	-73.72	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+288691548	15/09/23	19:32:05.00	Unknown	13.56	-73.72	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+7286074421	15/09/21	02:39:19.00	Known	230.93	-57.09	0.5	MAXI Known Source detection.
+277718310	15/09/12	21:03:01.00	Unknown	258.53	-13.51	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7276725345	15/09/11	21:10:32.00	Known	85.00	+26.94	0.5	MAXI Known Source detection.
+7276373896	15/09/11	11:03:19.00	Known	194.55	-61.07	0.5	MAXI Known Source detection.
+272520070	15/09/07	16:00:53.00	Unknown	224.84	-47.59	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+272520070	15/09/07	16:00:53.00	Unknown	223.90	-46.94	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7267348428	15/09/02	10:20:57.00	Known	24.39	-17.70	0.5	MAXI Known Source detection.
+7260506608	15/08/26	15:40:57.00	Known	224.92	-2.27	0.5	MAXI Known Source detection.
+260506608	15/08/26	15:40:57.00	Unknown	224.92	-2.27	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7256071627	15/08/22	02:20:38.00	Known	255.50	-30.12	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7254380595	15/08/20	11:51:06.00	Known	283.88	-31.24	0.5	MAXI Known Source detection.
+7242424677	15/08/08	13:08:45.00	Known	230.61	-57.05	0.5	MAXI Known Source detection.
+235016520	15/08/01	01:19:06.00	Unknown	255.93	-9.44	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7232626500	15/07/29	19:16:18.00	Known	274.60	-25.80	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7227785051	15/07/24	23:48:53.00	Known	42.13	+31.25	0.5	MAXI Known Source detection.
+7227525813	15/07/24	15:57:02.00	Known	6.12	+59.71	0.5	MAXI Known Source detection.
+7224899999	15/07/21	17:03:48.00	Known	47.04	+40.96	0.5	MAXI Known Source detection.
+7212675938	15/07/09	20:18:30.00	Known	174.75	-64.78	0.5	MAXI Known Source detection.
+7210125948	15/07/07	03:34:46.00	Known	209.05	-64.37	0.5	MAXI Known Source detection.
+7206523677	15/07/03	16:22:31.00	Known	261.91	-31.33	0.5	MAXI Known Source detection.
+7204619345	15/07/01	18:04:37.00	Known	268.38	-1.78	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7204024933	15/07/01	01:04:34.00	Known	230.67	-57.75	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7203850001	15/06/30	22:46:01.00	Known	348.35	+2.68	0.5	MAXI Known Source detection.
+195326733	15/06/22	10:23:43.00	Unknown	251.74	-52.94	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7193525320	15/06/20	15:57:32.00	Known	53.59	+53.34	0.5	MAXI Known Source detection.
+7192175268	15/06/19	05:26:51.00	Known	305.72	+34.05	0.5	MAXI Known Source detection.
+7189625524	15/06/16	18:49:01.00	Known	306.38	+34.19	0.5	MAXI Known Source detection.
+181396391	15/06/08	11:46:52.00	Unknown	13.65	-0.14	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7179899999	15/06/06	11:32:07.00	Known	266.56	-32.23	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7176824965	15/06/03	13:02:23.00	Known	271.62	-22.25	0.5	MAXI Known Source detection.
+7174702312	15/06/01	21:59:32.00	Known	165.77	+37.63	0.5	MAXI Known Source detection.
+7168073963	15/05/26	02:23:22.00	Known	284.42	+5.65	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+7170704692	15/05/28	22:18:01.00	Known	212.68	-2.97	0.5	MAXI Known Source detection.
+7169690963	15/05/27	20:34:01.00	Known	54.01	+0.43	0.5	MAXI Known Source detection.
+7162899999	15/05/20	08:07:02.00	Known	273.78	-12.10	0.5	MAXI Known Source detection.
+160705527	15/05/18	21:42:34.00	Unknown	234.21	+16.27	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+154849998	15/05/12	16:00:00.00	Unknown	299.36	+3.29	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7155224154	15/05/13	06:50:39.00	Known	201.24	-61.74	0.5	MAXI Known Source detection.
+7152175417	15/05/10	04:42:45.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+7151326514	15/05/09	09:28:28.00	Known	283.40	-8.59	0.5	MAXI Known Source detection.
+7149525031	15/05/07	15:46:46.00	Known	331.99	+54.41	0.5	MAXI Known Source detection.
+7144173896	15/05/02	05:35:25.00	Known	195.18	-61.49	0.5	MAXI Known Source detection.
+140269683	15/04/28	08:24:29.00	Unknown	60.25	+67.82	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+140269683	15/04/28	08:24:29.00	Unknown	59.72	+68.06	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7136174152	15/04/24	04:52:09.00	Known	196.06	-61.64	0.5	MAXI Known Source detection.
+130007249	15/04/18	00:52:22.00	Unknown	160.55	-4.94	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+7127849999	15/04/15	21:12:09.00	Known	264.70	-27.50	0.5	MAXI Known Source detection.
+7127673421	15/04/15	20:26:45.00	Known	261.18	-30.79	0.5	MAXI Known Source detection.
+7122478284	15/04/10	14:21:09.00	Known	272.20	-37.36	0.5	MAXI Known Source detection.
+797273962	15/03/16	08:57:03.00	Known	283.98	+4.80	0.5	MAXI Known Source detection.
+94115494	15/03/13	03:52:04.00	Unknown	252.29	-10.22	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+93704194	15/03/12	21:50:50.00	Unknown	212.02	+58.71	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+93704194	15/03/12	21:50:50.00	Unknown	211.06	+58.81	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+92512154	15/03/11	16:18:16.00	Unknown	235.10	-15.81	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+92512154	15/03/11	16:18:16.00	Unknown	235.00	-16.07	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+92139225	15/03/11	03:06:21.00	Unknown	77.75	-52.20	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+790490963	15/03/09	14:12:44.00	Known	53.76	+0.74	0.5	MAXI Known Source detection.
+789125983	15/03/08	03:25:34.00	Known	268.54	-31.67	0.5	MAXI Known Source detection.
+788324914	15/03/07	09:49:31.00	Known	176.79	-62.30	0.5	MAXI Known Source detection.
+785726265	15/03/04	22:27:41.00	Known	287.83	+0.65	0.5	MAXI Known Source detection.
+777228054	15/02/24	06:06:23.00	Known	289.76	-4.95	0.5	MAXI Known Source detection.
+772369000	15/02/19	11:20:46.00	Known	141.00	-31.61	0.5	MAXI Known Source detection.
+774899153	15/02/21	17:49:10.00	Known	287.82	+0.58	0.5	MAXI Known Source detection.
+769776265	15/02/16	23:44:18.00	Known	287.59	+0.07	0.5	MAXI Known Source detection.
+764899999	15/02/11	11:50:17.00	Known	271.04	-34.35	0.5	MAXI Known Source detection.
+761476180	15/02/08	14:40:10.00	Known	141.03	-55.36	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+61023453	15/02/08	00:42:25.00	Unknown	284.64	+8.70	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+59974130	15/02/06	14:30:02.00	Unknown	10.09	-63.18	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+757673421	15/02/04	20:55:37.00	Known	260.93	-31.32	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+754899999	15/02/01	08:05:26.00	Known	239.45	-54.42	0.5	MAXI Known Source detection.
+751425857	15/01/29	13:11:13.00	Known	84.38	+26.17	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+48746796	15/01/26	21:03:24.00	Unknown	350.50	-12.37	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+746224940	15/01/24	07:01:39.00	Known	243.36	-51.61	0.5	MAXI Known Source detection.
+45523329	15/01/23	15:01:50.00	Unknown	111.56	-9.69	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+742849999	15/01/20	12:50:05.00	Known	285.40	+1.50	0.5	MAXI Known Source detection.
+733631591	15/01/11	18:05:00.00	Known	259.37	-67.02	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+734725673	15/01/12	22:07:56.00	Known	152.38	-58.96	0.5	MAXI Known Source detection.
+733849998	15/01/11	04:08:15.00	Known	265.10	-30.40	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+32789959	15/01/10	23:41:05.00	Unknown	68.58	-16.87	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+32899999	15/01/10	11:52:52.00	Unknown	217.00	+18.90	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+721175417	14/12/30	05:05:21.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+20388683	14/12/29	11:49:12.00	Unknown	71.87	-19.05	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+719437956	14/12/28	12:46:53.00	Known	82.54	-66.33	0.5	MAXI Known Source detection.
+717110912	14/12/26	03:03:44.00	Known	256.48	+23.83	0.5	MAXI Known Source detection.
+715319090	14/12/24	09:16:40.00	Known	268.16	-0.88	0.5	MAXI Known Source detection.
+78899999	14/12/17	05:41:36.00	Known	287.40	+9.40	0.5	MAXI Known Source detection.
+78724151	14/12/17	21:59:53.00	Known	195.08	-61.88	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+74364855	14/12/13	11:14:59.00	Known	115.65	+29.45	0.5	MAXI Known Source detection.
+72273896	14/12/11	08:19:44.00	Known	194.90	-61.46	0.5	MAXI Known Source detection.
+71573896	14/12/10	16:52:09.00	Known	194.55	-61.07	0.5	MAXI Known Source detection.
+7675672	14/12/09	20:40:57.00	Known	150.21	-58.13	0.5	MAXI Known Source detection.
+6999875195	14/12/08	02:13:08.00	Known	243.18	-52.42	0.5	MAXI Known Source detection.
+6999035051	14/12/08	00:45:12.00	Known	42.13	+31.25	0.5	MAXI Known Source detection.
+6996474939	14/12/05	14:49:38.00	Known	242.34	-52.55	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6992073933	14/12/01	02:37:26.00	Known	262.03	-31.53	0.5	MAXI Known Source detection.
+6989568969	14/11/28	16:47:29.00	Known	116.08	+3.82	0.5	MAXI Known Source detection.
+6989134289	14/11/28	04:07:34.00	Known	51.79	+28.40	0.5	MAXI Known Source detection.
+6987074658	14/11/26	01:53:43.00	Known	177.46	-61.74	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6983777765	14/11/22	23:44:25.00	Known	264.37	-45.24	0.5	MAXI Known Source detection.
+982920750	14/11/21	03:50:43.00	Unknown	122.67	+22.23	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+975221107	14/11/14	07:11:20.00	Unknown	244.93	-38.38	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6974402312	14/11/13	13:19:03.00	Known	166.00	+38.17	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6970077510	14/11/09	01:57:04.00	Known	264.64	-44.22	0.5	MAXI Known Source detection.
+6969578054	14/11/08	16:35:34.00	Known	289.76	-4.95	0.5	MAXI Known Source detection.
+966125558	14/11/05	04:24:32.00	Unknown	10.24	+60.46	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6964526383	14/11/03	15:06:59.00	Known	94.07	+8.80	0.5	MAXI Known Source detection.
+6963175417	14/11/02	04:34:04.00	Known	152.76	-58.03	0.5	MAXI Known Source detection.
+959189447	14/10/29	04:32:09.00	Unknown	69.20	-16.16	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6950489048	14/10/20	14:40:15.00	Known	310.37	-32.16	0.5	MAXI Known Source detection.
+950352809	14/10/20	10:59:25.00	Unknown	214.30	+7.98	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6943573913	14/10/13	17:50:48.00	Known	236.16	-52.53	0.5	MAXI Known Source detection.
+6942725600	14/10/12	21:09:25.00	Known	84.44	+26.53	0.5	MAXI Known Source detection.
+6940824450	14/10/10	18:13:05.00	Known	268.61	-26.33	0.5	MAXI Known Source detection.
+6937899153	14/10/07	23:41:16.00	Known	202.20	-62.20	0.5	MAXI Known Source detection.
+6937625857	14/10/07	18:52:53.00	Known	84.38	+26.17	0.5	MAXI Known Source detection.
+6935524939	14/10/05	16:05:39.00	Known	242.34	-52.55	0.5	MAXI Known Source detection.
+6934027259	14/10/04	00:19:43.00	Known	268.33	-37.52	0.5	MAXI Known Source detection.
+930877083	14/09/30	14:27:03.00	Unknown	344.15	+52.75	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6929624676	14/09/29	19:15:43.00	Known	228.97	-57.62	0.5	MAXI Known Source detection.
+6929823127	14/09/29	19:10:54.00	Known	192.49	-59.24	0.5	MAXI Known Source detection.
+6925773727	14/09/25	23:15:13.00	Known	297.69	+30.06	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6902325417	14/09/02	09:50:34.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+6899849999	14/08/30	22:04:00.00	Known	273.63	-17.16	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6899849999	14/08/30	22:04:00.00	Known	273.63	-17.16	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6898274914	14/08/29	08:20:07.00	Known	176.19	-62.48	0.5	MAXI Known Source detection.
+6896173727	14/08/27	05:08:18.00	Known	297.69	+30.06	0.5	MAXI Known Source detection.
+6894276383	14/08/25	07:33:01.00	Known	93.95	+8.62	0.5	MAXI Known Source detection.
+887151727	14/08/18	05:31:56.00	Unknown	199.55	+6.89	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+887151727	14/08/18	05:31:56.00	Unknown	199.51	+6.80	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6882126009	14/08/13	03:18:37.00	Known	287.39	+0.81	0.5	MAXI Known Source detection.
+6868409132	14/07/30	12:56:46.00	Known	253.59	+38.95	0.5	MAXI Known Source detection.
+6864173933	14/07/26	05:01:03.00	Known	261.46	-30.97	0.5	MAXI Known Source detection.
+6860224509	14/07/22	07:21:59.00	Known	314.55	+45.72	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6854339357	14/07/16	10:06:14.00	Known	343.16	+17.16	0.5	MAXI Known Source detection.
+853734289	14/07/15	21:38:03.00	Unknown	51.51	+28.60	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6853684289	14/07/15	20:05:22.00	Known	51.37	+28.67	0.5	MAXI Known Source detection.
+6853388791	14/07/15	10:37:21.00	Known	309.58	-32.77	0.5	MAXI Known Source detection.
+6852026193	14/07/14	01:24:51.00	Known	172.75	-65.15	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6852026193	14/07/14	01:24:51.00	Known	172.75	-65.15	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6850074652	14/07/12	01:44:47.00	Known	161.81	-59.12	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6848024666	14/07/10	01:29:42.00	Known	202.29	-62.55	0.5	MAXI Known Source detection.
+6847026265	14/07/09	01:01:31.00	Known	287.58	+0.14	0.5	MAXI Known Source detection.
+6844639356	14/07/06	19:28:51.00	Known	342.19	+16.53	0.5	MAXI Known Source detection.
+6841168969	14/07/03	04:52:58.00	Known	115.98	+3.45	0.5	MAXI Known Source detection.
+6826573677	14/06/18	17:38:28.00	Known	261.41	-30.61	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6815473238	14/06/07	14:57:36.00	Known	324.49	+56.36	0.5	MAXI Known Source detection.
+803626528	14/05/26	18:09:36.00	Unknown	293.05	+9.09	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+803626528	14/05/26	18:09:36.00	Unknown	293.05	+9.09	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6802623677	14/05/25	18:55:57.00	Known	262.06	-30.49	0.5	MAXI Known Source detection.
+6802173677	14/05/25	05:00:23.00	Known	262.26	-30.39	0.5	MAXI Known Source detection.
+6796374766	14/05/19	11:19:53.00	Known	315.86	+45.85	0.5	MAXI Known Source detection.
+6794523422	14/05/17	15:57:11.00	Known	262.35	-29.77	0.5	MAXI Known Source detection.
+792429074	14/05/15	13:00:53.00	Unknown	289.35	-11.70	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+792429074	14/05/15	13:00:53.00	Unknown	289.47	-11.00	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+786530639	14/05/09	16:18:38.00	Unknown	312.97	+21.02	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+786530639	14/05/09	16:18:38.00	Unknown	313.12	+21.16	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6782395557	14/05/05	11:35:08.00	Known	339.76	-20.38	0.5	MAXI Known Source detection.
+6781073727	14/05/04	01:37:26.00	Known	297.23	+29.92	0.5	MAXI Known Source detection.
+6779187956	14/05/02	05:23:08.00	Known	82.54	-66.33	0.5	MAXI Known Source detection.
+6767130698	14/04/20	03:32:32.00	Known	48.20	+40.91	0.5	MAXI Known Source detection.
+6759029967	14/04/12	00:25:54.00	Known	86.19	+4.50	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6751664522	14/04/04	20:53:33.00	Known	278.23	+52.71	0.5	MAXI Known Source detection.
+745548350	14/03/29	15:21:17.00	Unknown	24.69	-18.01	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6743227223	14/03/27	07:04:26.00	Known	193.18	-68.85	0.5	MAXI Known Source detection.
+6741178054	14/03/25	04:34:46.00	Known	289.76	-4.95	0.5	MAXI Known Source detection.
+6731800001	14/03/15	07:19:08.00	Known	261.90	-30.80	0.5	MAXI Known Source detection.
+6726800001	14/03/10	22:20:02.00	Known	283.27	-8.71	0.5	MAXI Known Source detection.
+6727742033	14/03/11	22:04:01.00	Known	14.43	-72.13	0.5	MAXI Known Source detection.
+6725480954	14/03/09	14:20:14.00	Known	47.00	+40.75	0.5	MAXI Known Source detection.
+6722785758	14/03/06	23:49:28.00	Known	322.39	+12.27	0.5	MAXI Known Source detection.
+6720224734	14/03/04	07:01:42.00	Known	287.64	+7.96	0.5	MAXI Known Source detection.
+717849999	14/03/01	03:46:38.00	Unknown	292.69	+0.00	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+718176272	14/03/02	05:31:57.00	Unknown	292.18	+8.76	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+6715626112	14/02/27	19:18:53.00	Known	84.03	+26.26	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6711589048	14/02/23	17:08:11.00	Known	310.58	-32.37	0.5	MAXI Known Source detection.
+709226404	14/02/21	07:13:06.00	Unknown	107.36	-17.27	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6707676194	14/02/19	19:35:24.00	Known	175.98	-65.55	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6707526500	14/02/19	15:34:39.00	Known	274.60	-25.80	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6696526500	14/02/08	15:59:46.00	Known	274.60	-25.80	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6690152449	14/02/02	04:37:52.00	Known	165.30	+38.93	0.5	MAXI Known Source detection.
+6690784289	14/02/02	23:13:16.00	Known	51.37	+28.64	0.5	MAXI Known Source detection.
+6689554888	14/02/01	16:52:10.00	Known	212.98	-3.68	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6686850002	14/01/29	17:31:43.00	Known	201.00	-62.00	0.5	MAXI Known Source detection.
+6680876245	14/01/23	02:24:42.00	Known	274.38	-24.90	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+680398422	14/01/23	11:42:49.00	Unknown	18.09	-14.09	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+6678899998	14/01/21	07:38:10.00	Known	266.42	-29.01	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6674648350	14/01/17	19:25:17.00	Known	24.63	-17.30	0.5	MAXI Known Source detection.
+6673175195	14/01/16	04:37:34.00	Known	243.81	-52.81	0.5	MAXI Known Source detection.
+6673899006	14/01/16	03:17:44.00	Known	215.54	-61.49	0.5	MAXI Known Source detection.
+666024927	14/01/09	01:13:07.00	Unknown	215.72	-61.56	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6658073677	14/01/01	01:57:51.00	Known	262.13	-30.36	0.5	MAXI Known Source detection.
+6656475673	13/12/30	13:41:51.00	Known	152.12	-58.30	0.5	MAXI Known Source detection.
+6655788215	13/12/29	23:38:07.00	Known	78.42	-69.30	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6652675417	13/12/26	19:54:30.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+651326641	13/12/25	09:55:00.00	Unknown	95.04	+5.32	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+641314228	13/12/15	09:08:32.00	Unknown	259.03	+7.59	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6639789048	13/12/13	23:03:10.00	Known	310.58	-32.37	0.5	MAXI Known Source detection.
+6638040963	13/12/12	00:51:52.00	Known	54.01	+0.43	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6613849997	13/11/17	23:14:46.00	Known	94.28	+9.14	0.5	MAXI Known Source detection.
+6611377223	13/11/15	10:38:15.00	Known	193.18	-68.85	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6611377223	13/11/15	10:38:15.00	Known	193.18	-68.85	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6610424677	13/11/14	12:51:38.00	Known	230.42	-57.19	0.5	MAXI Known Source detection.
+6610424677	13/11/14	12:51:38.00	Known	230.42	-57.19	0.5	MAXI Known Source detection.
+6606368714	13/11/10	10:49:08.00	Known	116.84	+3.13	0.5	MAXI Known Source detection.
+6601226450	13/11/05	06:20:53.00	Known	173.94	-65.93	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+580727270	13/10/15	21:55:19.00	Unknown	277.25	-24.83	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+6576074410	13/10/11	02:42:43.00	Known	200.62	-62.06	0.5	MAXI Known Source detection.
+6575373470	13/10/10	10:33:44.00	Known	297.54	+30.01	0.5	MAXI Known Source detection.
+6572041300	13/10/07	01:06:32.00	Known	11.10	-74.51	0.5	MAXI Known Source detection.
+570899999	13/10/05	07:58:06.00	Unknown	124.30	+81.80	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+6567223727	13/10/02	07:27:02.00	Known	297.69	+30.06	0.5	MAXI Known Source detection.
+6559385758	13/09/24	10:37:52.00	Known	323.10	+12.47	0.5	MAXI Known Source detection.
+6511628054	13/08/07	18:07:15.00	Known	289.76	-4.95	0.5	MAXI Known Source detection.
+6504175470	13/07/31	04:44:48.00	Known	266.48	-32.27	0.5	MAXI Known Source detection.
+6493850001	13/07/20	08:58:42.00	Known	322.49	+12.17	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6482473897	13/07/09	13:35:09.00	Known	197.01	-61.20	0.5	MAXI Known Source detection.
+6476567094	13/07/03	17:43:18.00	Known	300.63	+65.48	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6454590707	13/06/11	17:33:18.00	Known	54.31	+1.34	0.5	MAXI Known Source detection.
+6452576266	13/06/09	17:23:54.00	Known	288.24	+1.32	0.5	MAXI Known Source detection.
+6441625195	13/05/29	18:48:54.00	Known	243.86	-52.50	0.5	MAXI Known Source detection.
+438899999	13/05/26	10:48:35.00	Unknown	264.70	-27.70	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6435387961	13/05/23	10:56:19.00	Known	79.62	-72.15	0.5	MAXI Known Source detection.
+6429274437	13/05/17	08:38:05.00	Known	255.04	-41.36	0.5	MAXI Known Source detection.
+432849998	13/05/20	03:55:05.00	Unknown	271.75	+19.45	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+432849998	13/05/20	03:55:05.00	Unknown	271.75	+19.45	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+6427329832	13/05/15	10:20:57.00	Known	284.75	-25.34	0.5	MAXI Known Source detection.
+6426074412	13/05/14	02:46:37.00	Known	206.50	-61.59	0.5	MAXI Known Source detection.
+418849999	13/05/06	00:46:37.00	Unknown	139.20	+1.60	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+409851159	13/04/27	08:41:33.00	Unknown	173.14	+27.69	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+406850001	13/04/24	01:53:55.00	Unknown	256.75	-17.24	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+6397381732	13/04/15	11:51:42.00	Known	59.04	+30.69	0.5	MAXI Known Source detection.
+6397334289	13/04/15	10:17:32.00	Known	51.42	+28.36	0.5	MAXI Known Source detection.
+6394252311	13/04/12	08:03:59.00	Known	166.22	+38.70	0.5	MAXI Known Source detection.
+6389217467	13/04/07	07:28:21.00	Known	147.04	-31.41	0.5	MAXI Known Source detection.
+6390849999	13/04/08	06:35:06.00	Known	276.11	-24.86	0.5	MAXI Known Source detection.
+389760130	13/04/07	23:37:01.00	Unknown	248.15	+10.36	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6387828054	13/04/05	09:56:40.00	Known	289.70	-4.88	0.5	MAXI Known Source detection.
+6386037956	13/04/04	00:02:24.00	Known	82.54	-66.33	0.5	MAXI Known Source detection.
+6385727013	13/04/03	22:24:17.00	Known	276.18	-24.96	0.5	MAXI Known Source detection.
+6382118969	13/03/31	03:57:42.00	Known	116.16	+3.39	0.5	MAXI Known Source detection.
+6362425471	13/03/11	12:45:25.00	Known	267.69	-31.33	0.5	MAXI Known Source detection.
+6358475494	13/03/07	14:39:28.00	Known	284.40	-2.24	0.5	MAXI Known Source detection.
+6360525814	13/03/09	16:07:01.00	Known	47.87	+0.00	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6349240707	13/02/26	06:45:12.00	Known	54.22	+1.08	0.5	MAXI Known Source detection.
+6345130697	13/02/22	03:42:59.00	Known	46.65	+41.62	0.5	MAXI Known Source detection.
+6336423896	13/02/13	12:09:50.00	Known	194.55	-61.07	0.5	MAXI Known Source detection.
+6322874450	13/01/30	01:58:12.00	Known	268.43	-25.74	0.5	MAXI Known Source detection.
+6320224152	13/01/28	06:29:34.00	Known	196.06	-61.64	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6310324724	13/01/18	10:03:22.00	Known	281.20	-4.55	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6301849999	13/01/09	12:00:07.00	Known	273.10	-19.10	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+294188500	13/01/02	04:41:56.00	Unknown	310.90	-72.08	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+290991150	12/12/29	05:00:27.00	Unknown	190.10	-50.59	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+286332360	12/12/25	09:50:24.00	Unknown	265.60	-65.67	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6284048429	12/12/23	00:21:11.00	Known	24.96	-18.48	0.5	MAXI Known Source detection.
+6279724677	12/12/18	21:42:21.00	Known	229.99	-57.06	0.5	MAXI Known Source detection.
+6278280697	12/12/17	07:50:02.00	Known	46.69	+41.09	0.5	MAXI Known Source detection.
+270940450	12/12/09	21:59:16.00	Unknown	326.80	-8.24	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6267823424	12/12/06	03:33:09.00	Known	264.27	-27.14	0.5	MAXI Known Source detection.
+6260387701	12/11/29	10:59:24.00	Known	84.16	-67.00	0.5	MAXI Known Source detection.
+6240125417	12/11/09	04:08:28.00	Known	151.95	-58.07	0.5	MAXI Known Source detection.
+6235275471	12/11/04	07:55:02.00	Known	267.33	-31.07	0.5	MAXI Known Source detection.
+6231800787	12/10/31	09:00:03.00	Known	195.32	-61.60	0.5	MAXI Known Source detection.
+6227328054	12/10/27	09:09:41.00	Known	289.69	-4.71	0.5	MAXI Known Source detection.
+227291276	12/10/27	08:12:53.00	Unknown	64.63	-57.86	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+225258354	12/10/25	07:46:41.00	Unknown	248.84	+27.97	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+220875462	12/10/20	17:37:48.00	Unknown	256.53	-42.25	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6211525195	12/10/11	15:05:09.00	Known	243.15	-52.33	0.5	MAXI Known Source detection.
+6206800002	12/10/06	01:00:02.00	Known	298.90	+32.10	0.5	MAXI Known Source detection.
+6202678053	12/10/02	19:41:41.00	Known	289.13	-6.20	0.5	MAXI Known Source detection.
+6202678053	12/10/02	19:41:41.00	Known	289.13	-6.20	0.5	MAXI Known Source detection.
+6194425470	12/09/24	13:01:12.00	Known	266.48	-32.27	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6187475161	12/09/17	13:41:37.00	Known	152.70	-58.03	0.5	MAXI Known Source detection.
+178763938	12/09/08	22:35:13.00	Unknown	230.77	-25.50	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6176073538	12/09/06	01:52:55.00	Known	75.31	+45.97	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+6174411168	12/09/04	13:14:45.00	Known	257.00	+24.35	0.5	MAXI Known Source detection.
+164849999	12/08/25	03:22:04.00	Unknown	271.96	-22.80	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+6163774469	12/08/24	23:29:49.00	Known	281.63	-2.40	0.5	MAXI Known Source detection.
+6155800002	12/08/16	09:59:59.00	Known	152.44	-58.29	0.5	MAXI Known Source detection.
+6152474933	12/08/13	14:28:12.00	Known	230.67	-57.75	0.5	MAXI Known Source detection.
+6148674725	12/08/09	20:14:33.00	Known	281.84	-3.30	0.5	MAXI Known Source detection.
+6144088957	12/08/05	02:29:57.00	Known	78.08	-39.91	0.5	MAXI Known Source detection.
+6143118814	12/08/04	04:15:06.00	Known	251.95	-23.30	0.5	MAXI Known Source detection.
+6139526436	12/07/31	16:13:47.00	Known	139.37	-54.88	0.5	MAXI Known Source detection.
+6134678310	12/07/26	19:46:21.00	Known	289.98	-5.84	0.5	MAXI Known Source detection.
+6132127541	12/07/24	04:29:16.00	Known	287.41	-6.01	0.5	MAXI Known Source detection.
+6129428311	12/07/21	13:12:30.00	Known	290.61	-4.60	0.5	MAXI Known Source detection.
+6122640963	12/07/14	18:02:57.00	Known	54.01	+0.43	0.5	MAXI Known Source detection.
+6119086168	12/07/11	02:45:12.00	Known	95.43	-71.25	0.5	MAXI Known Source detection.
+6114121118	12/07/06	03:55:07.00	Known	257.22	-26.04	0.5	MAXI Known Source detection.
+113343369	12/07/05	10:08:00.00	Unknown	56.53	-51.90	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6112224421	12/07/04	07:12:56.00	Known	229.49	-56.74	0.5	MAXI Known Source detection.
+112127645	12/07/04	03:41:24.00	Unknown	77.60	+28.15	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+6106899999	12/06/28	10:54:28.00	Known	290.10	-6.10	0.5	MAXI Known Source detection.
+106436408	12/06/28	13:11:26.00	Unknown	93.41	-51.32	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+104456467	12/06/26	13:38:14.00	Unknown	176.19	+68.65	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+100103596	12/06/22	03:21:46.00	Unknown	205.43	-1.71	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. [GCN OPS NOTE(19jan13): This is an update notice on the previous row notice.]
+100103596	12/06/22	03:21:46.00	Unknown	205.03	-1.41	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+93899997	12/06/15	08:35:07.00	Unknown	251.70	-23.00	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+92168887	12/06/14	05:49:10.00	Unknown	311.93	+65.09	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+90572398	12/06/12	17:18:19.00	Unknown	259.52	-28.35	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+688724766	12/06/10	22:06:22.00	Known	315.86	+45.85	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+78777285	12/05/31	22:36:28.00	Unknown	17.95	+0.00	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+78777285	12/05/31	22:36:28.00	Unknown	287.81	-5.75	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+75638955	12/05/28	18:12:08.00	Unknown	77.57	-37.61	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+669899998	12/05/22	19:59:45.00	Known	267.69	-31.29	0.5	MAXI Known Source detection.
+666428054	12/05/19	13:12:56.00	Known	289.92	-5.58	0.5	MAXI Known Source detection.
+664724408	12/05/17	21:06:56.00	Known	194.62	-62.26	0.5	MAXI Known Source detection.
+664515496	12/05/17	16:25:02.00	Known	253.77	-8.04	0.5	MAXI Known Source detection.
+664824942	12/05/17	07:22:46.00	Known	247.01	-49.20	0.5	MAXI Known Source detection.
+663724421	12/05/16	22:04:41.00	Known	229.33	-57.01	0.5	MAXI Known Source detection.
+659800001	12/05/12	00:00:00.00	Known	272.80	-26.10	0.5	MAXI Known Source detection.
+646124687	12/04/29	03:51:31.00	Known	248.66	-47.65	0.5	MAXI Known Source detection.
+68175471	12/03/22	05:46:44.00	Known	267.33	-31.07	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+67578311	12/03/21	17:32:28.00	Known	290.68	-4.86	0.5	MAXI Known Source detection.
+66675241	12/03/20	19:53:24.00	Known	285.47	+1.16	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+62226762	12/03/16	06:46:59.00	Known	279.01	-19.23	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5998015239	12/03/12	01:10:57.00	Known	253.29	-8.14	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+48	12/03/05	07:42:08.00	Unknown	337.46	-23.77	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5997376193	12/03/11	10:37:44.00	Known	172.75	-65.15	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5996290963	12/03/10	08:21:43.00	Known	54.16	+0.87	0.5	MAXI Known Source detection.
+5995074939	12/03/09	01:51:33.00	Known	243.11	-52.78	0.5	MAXI Known Source detection.
+5994774981	12/03/08	23:23:27.00	Known	282.69	-2.94	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+46	12/03/07	10:14:37.00	Unknown	301.78	-51.03	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5989124438	12/03/03	04:17:50.00	Known	256.18	-40.24	0.5	MAXI Known Source detection.
+5981087442	12/02/24	02:12:47.00	Known	85.57	-63.75	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5972476732	12/02/15	13:36:57.00	Known	249.82	-53.55	0.5	MAXI Known Source detection.
+5968334289	12/02/11	09:02:48.00	Known	52.11	+28.44	0.5	MAXI Known Source detection.
+5966580954	12/02/09	17:04:23.00	Known	47.00	+40.75	0.5	MAXI Known Source detection.
+5961068969	12/02/04	01:37:24.00	Known	116.18	+4.18	0.5	MAXI Known Source detection.
+5956291299	12/01/30	08:25:38.00	Known	13.21	-74.51	0.5	MAXI Known Source detection.
+5954275716	12/01/28	08:47:30.00	Known	257.24	-43.40	0.5	MAXI Known Source detection.
+5952578566	12/01/26	16:42:24.00	Known	290.77	-5.63	0.5	MAXI Known Source detection.
+5949724421	12/01/23	21:44:41.00	Known	229.06	-57.46	0.5	MAXI Known Source detection.
+5949321885	12/01/23	10:10:31.00	Known	257.44	-28.33	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+43	12/01/23	04:05:24.00	Unknown	41.45	+6.61	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+40	12/01/19	16:53:47.00	Unknown	50.54	+17.63	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5937024933	12/01/11	01:29:58.00	Known	230.87	-57.76	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5933734033	12/01/07	21:53:05.00	Known	51.52	+29.02	0.5	MAXI Known Source detection.
+5931623934	12/01/05	18:20:18.00	Known	263.00	-30.76	0.5	MAXI Known Source detection.
+5931075051	12/01/05	01:36:24.00	Known	24.82	+61.14	0.5	MAXI Known Source detection.
+5931125195	12/01/05	03:59:37.00	Known	243.92	-52.50	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5925575470	11/12/30	17:39:33.00	Known	266.84	-32.17	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5925346732	11/12/30	09:22:34.00	Known	37.68	-43.38	0.5	MAXI Known Source detection.
+5924240963	11/12/29	07:03:27.00	Known	54.01	+0.43	0.5	MAXI Known Source detection.
+5923854999	11/12/28	22:33:06.00	Known	282.07	-3.16	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5920374025	11/12/25	11:37:19.00	Known	19.53	+63.91	0.5	MAXI Known Source detection.
+5916524686	11/12/21	16:08:45.00	Known	248.47	-47.51	0.5	MAXI Known Source detection.
+5916274986	11/12/21	07:32:01.00	Known	285.62	+3.19	0.5	MAXI Known Source detection.
+5915191217	11/12/20	05:31:50.00	Known	53.83	+0.27	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5912026194	11/12/17	01:08:01.00	Known	175.98	-65.55	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5911523421	11/12/16	16:05:47.00	Known	261.99	-31.41	0.5	MAXI Known Source detection.
+5911626194	11/12/16	18:58:28.00	Known	175.98	-65.55	0.5	MAXI Known Source detection.
+5911130954	11/12/16	04:25:16.00	Known	46.87	+41.09	0.5	MAXI Known Source detection.
+5909425417	11/12/14	13:01:46.00	Known	152.35	-58.36	0.5	MAXI Known Source detection.
+5907187581	11/12/12	05:07:35.00	Known	358.65	+29.16	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5903775417	11/12/08	23:06:11.00	Known	152.79	-58.03	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5899724933	11/12/04	22:13:06.00	Known	230.09	-57.51	0.5	MAXI Known Source detection.
+5899675417	11/12/04	20:38:00.00	Known	151.95	-58.07	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5884474922	11/11/19	14:29:48.00	Known	201.39	-63.01	0.5	MAXI Known Source detection.
+5878124719	11/11/13	03:09:26.00	Known	277.85	-10.40	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+39	11/11/11	05:05:38.00	Unknown	28.54	-74.64	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5872278541	11/11/07	08:48:07.00	Known	273.27	-37.02	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5870793894	11/11/05	23:00:45.00	Known	349.08	+3.13	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+37	11/11/05	03:47:09.00	Unknown	89.78	+68.87	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+36	11/10/24	07:21:19.00	Unknown	222.09	+25.66	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5856374939	11/10/22	11:41:24.00	Known	242.83	-52.92	0.5	MAXI Known Source detection.
+5854898123	11/10/20	10:29:45.00	Known	292.41	+17.64	0.5	MAXI Known Source detection.
+5850025499	11/10/16	01:03:02.00	Known	287.51	+4.46	0.5	MAXI Known Source detection.
+5851124981	11/10/17	03:09:01.00	Known	282.30	-3.11	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5849276265	11/10/15	08:07:25.00	Known	288.00	+0.24	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5846899998	11/10/12	05:22:26.00	Known	290.68	-17.28	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5844035051	11/10/10	00:35:49.00	Known	42.13	+31.25	0.5	MAXI Known Source detection.
+34	11/10/05	23:31:53.00	Unknown	348.30	-48.80	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5837474421	11/10/03	14:02:54.00	Known	229.89	-57.08	0.5	MAXI Known Source detection.
+32	11/09/27	03:27:37.00	Unknown	37.00	-47.41	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5806674796	11/09/02	19:55:01.00	Known	26.50	+61.59	0.5	MAXI Known Source detection.
+5806639049	11/09/02	19:09:23.00	Known	310.86	-31.26	0.5	MAXI Known Source detection.
+5806674796	11/09/02	19:55:01.00	Known	26.50	+61.59	0.5	MAXI Known Source detection.
+5806528054	11/09/02	15:56:02.00	Known	289.76	-4.95	0.5	MAXI Known Source detection.
+5803826762	11/08/30	13:25:46.00	Unknown	279.12	-19.41	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+5802734289	11/08/29	21:11:11.00	Known	51.42	+28.36	0.5	MAXI Known Source detection.
+5802734289	11/08/29	21:11:11.00	Known	51.42	+28.36	0.5	MAXI Known Source detection.
+5802800011	11/08/29	00:00:00.00	Known	19.63	+63.74	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5795899997	11/08/22	08:52:30.00	Known	339.47	-21.00	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5786524933	11/08/13	15:06:32.00	Known	229.89	-57.69	0.5	MAXI Known Source detection.
+5778800001	11/08/05	00:00:00.00	Known	290.68	-17.28	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5781873219	11/08/08	04:54:04.00	Known	299.59	+35.20	0.5	MAXI Known Source detection.
+5775326126	11/08/02	09:50:49.00	Known	93.61	+9.55	0.5	MAXI Known Source detection.
+5769124672	11/07/27	03:16:43.00	Known	219.29	-60.22	0.5	MAXI Known Source detection.
+5752324422	11/07/10	09:52:01.00	Known	230.22	-57.12	0.5	MAXI Known Source detection.
+5751424422	11/07/09	12:20:03.00	Known	231.43	-56.34	0.5	MAXI Known Source detection.
+5749272615	11/07/07	08:02:53.00	Known	193.93	-58.46	0.5	MAXI Known Source detection.
+5739580595	11/06/27	17:44:18.00	Known	283.88	-31.24	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5736624723	11/06/24	18:58:30.00	Known	280.55	-5.80	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5733774946	11/06/21	23:32:30.00	Known	252.68	-45.39	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5733774946	11/06/21	23:32:30.00	Known	252.68	-45.39	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5722774025	11/06/10	23:26:44.00	Known	19.53	+63.91	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5717036014	11/06/05	00:09:48.00	Known	322.81	+11.54	0.5	MAXI Known Source detection.
+5715726988	11/06/03	21:38:46.00	Known	250.67	-54.82	0.5	MAXI Known Source detection.
+5713087701	11/06/01	02:21:08.00	Known	84.16	-67.00	0.5	MAXI Known Source detection.
+5709375073	11/05/28	11:46:42.00	Known	70.11	+44.76	0.5	MAXI Known Source detection.
+5697786014	11/05/16	23:23:29.00	Known	322.81	+11.54	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5697786014	11/05/16	23:23:29.00	Known	322.81	+11.54	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5696373896	11/05/15	11:29:45.00	Known	194.55	-61.07	0.5	MAXI Known Source detection.
+5692323896	11/05/11	09:59:51.00	Known	195.13	-61.60	0.5	MAXI Known Source detection.
+5689825191	11/05/08	04:21:15.00	Known	236.56	-56.19	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5689825191	11/05/08	04:21:15.00	Known	236.56	-56.19	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5689825191	11/05/08	04:21:15.00	Known	236.56	-56.19	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5689825191	11/05/08	04:21:15.00	Known	236.56	-56.19	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5689825191	11/05/08	04:21:15.00	Known	236.56	-56.19	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5689825191	11/05/08	04:21:15.00	Known	236.56	-56.19	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5689825191	11/05/08	04:21:15.00	Unknown	236.56	-56.19	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+5689825191	11/05/08	04:21:15.00	Known	236.56	-56.19	0.5	MAXI Known Source detection. WARNING: Message received with negative flux value(s).
+5689825191	11/05/08	04:21:15.00	Unknown	236.56	-56.19	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+5689825191	11/05/08	04:21:15.00	Unknown	0.00	+0.00	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient. WARNING: Message received with negative flux value(s).
+5689476477	11/05/08	13:31:17.00	Known	249.82	-53.60	0.5	MAXI Known Source Position.
+5680529031	11/04/29	16:12:42.00	Unknown	247.69	-63.30	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5677507800	11/04/26	15:08:33.00	Unknown	221.18	-10.88	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5670477014	11/04/19	14:05:33.00	Known	0.00	+0.00	0.5	MAXI Known Source Position.
+5649658894	11/03/29	20:08:06.00	Unknown	0.00	+0.00	1.0	MAXI Unknown Source Position. GRB or unknown X-ray Transient.
+5670477014	11/04/19	14:05:33.00	Known	277.21	-23.86	0.5	MAXI Known Source Position.
+5669824980	11/04/18	00:00:00.00	Known	281.58	-3.00	0.5	MAXI Known Source Position.
